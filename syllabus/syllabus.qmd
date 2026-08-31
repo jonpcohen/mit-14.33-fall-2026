@@ -3,11 +3,11 @@ title: "14.33 Research and Communication in Economics"
 subtitle: "Topics, Methods, and Implementation"
 author: "Fall 2026"
 date: last-modified
-date-format: long
 language:
-  title-block-published: "Last updated"
+  title-block-published: "Last updated:"
 format:
   html:
+    date-format: long
     embed-resources: true
     toc: true
     number-sections: false
@@ -15,6 +15,13 @@ format:
     include-in-header:
       text: |
         <style>
+        a {
+          color: #a31f34;
+        }
+        a:hover,
+        a:focus {
+          color: #750014;
+        }
         table tbody tr:nth-child(even) > * {
           background-color: #f5f7f9;
         }
@@ -26,8 +33,10 @@ format:
         }
         </style>
   typst:
+    date-format: "[Last updated:] MMMM D, YYYY"
     include-in-header:
       text: |
+        #show link: set text(fill: rgb("#a31f34"))
         #set table(
           fill: (_, y) => if calc.odd(y) { rgb("#f5f7f9") },
           inset: (x: 5pt, y: 4pt),
@@ -47,7 +56,7 @@ format:
 | **Location** | E51-395 |
 | **Instructor** | Jon Cohen ([jpcohen@mit.edu](mailto:jpcohen@mit.edu)), E52-508 |
 | **Teaching assistant** | Laurel Britt ([lrl@mit.edu](mailto:lrl@mit.edu)), E52-486 |
-| **Office hours** | TBD based on a poll of student availability |
+| **Office hours** | TBD based on responses to [poll of student availability](https://www.when2meet.com/?38220034-WYFBU) |
 
 ## Course description
 
