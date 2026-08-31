@@ -4,18 +4,7 @@ Course materials for the Fall 2026 offering of MIT 14.33, *Research and Communic
 
 ## Syllabus
 
-- [HTML syllabus](syllabus/syllabus.html)
-- [PDF syllabus](syllabus/syllabus.pdf)
-- [Quarto source](syllabus/syllabus.qmd)
-
-The rendered HTML and PDF are committed so that the published syllabus is preserved alongside its source.
-To regenerate both formats, install [Quarto](https://quarto.org/) and run this command from the repository root:
-
-```sh
-quarto render syllabus/syllabus.qmd
-```
-
-The HTML is self-contained and does not require a separate resources directory.
+- [PDF syllabus](docs/syllabus/syllabus.pdf)
 
 ## Repository scope
 
