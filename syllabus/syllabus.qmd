@@ -1,0 +1,174 @@
+---
+title: "14.33 Research and Communication in Economics"
+subtitle: "Topics, Methods, and Implementation"
+author: "Fall 2026"
+date: last-modified
+date-format: long
+language:
+  title-block-published: "Last updated"
+format:
+  html:
+    embed-resources: true
+    toc: true
+    number-sections: false
+    link-external-newwindow: true
+    include-in-header:
+      text: |
+        <style>
+        table tbody tr:nth-child(even) > * {
+          background-color: #f5f7f9;
+        }
+        table tbody td {
+          border-bottom: 1px solid #d8dee4;
+          padding-top: 0.55rem !important;
+          padding-bottom: 0.55rem !important;
+          vertical-align: top;
+        }
+        </style>
+  typst:
+    include-in-header:
+      text: |
+        #set table(
+          fill: (_, y) => if calc.odd(y) { rgb("#f5f7f9") },
+          inset: (x: 5pt, y: 4pt),
+          stroke: (_, y) => if y > 0 {
+            (bottom: 0.35pt + rgb("#d8dee4"))
+          } else {
+            none
+          },
+        )
+---
+
+## Course information
+
+| | |
+|---|---|
+| **Class meetings** | Mondays and Wednesdays, 10:30 a.m.–12:00 p.m. |
+| **Location** | E51-395 |
+| **Instructor** | Jon Cohen ([jpcohen@mit.edu](mailto:jpcohen@mit.edu)), E52-508 |
+| **Teaching assistant** | Laurel Britt ([lrl@mit.edu](mailto:lrl@mit.edu)), E52-486 |
+| **Office hours** | TBD based on a poll of student availability |
+
+## Course description
+
+The course will guide students through the design, execution, and communication of an economics research project. It emphasizes research judgment, reproducible workflows, responsible use of AI, writing clarity, and the ability to explain one's work.
+
+## Learning objectives
+
+By the end of the semester, students will be able to:
+
+| Objective | Purpose |
+|:---|:---|
+| Formulate an original research question | Develop research taste |
+| Organize a version-controlled, one-click reproducible research pipeline | Practice structured automation |
+| Use AI productively for research and coding | Treat AI as a complement rather than a substitute |
+| Write a clear research paper | Use writing as a way to think |
+| Communicate progress concisely in writing and in meetings | Learn to manage up effectively |
+| Provide constructive feedback on peer projects | Build collaboration-based social skills |
+| Present and defend the project's research design, analysis, code, and conclusions | Strengthen verbal communication |
+
+: {tbl-colwidths="[60,40]"}
+
+## Course format
+
+8 class meetings will be lectures. Each lecture will have a small but mandatory assignment to complete beforehand. The goal is to have the lectures be interactive, so thoughtfully engaging with the assigned material and completing the mandatory assignment prior to class is essential.
+
+13 class meetings will be research meetings. Students will rotate between scheduled 1-on-1 meetings with the instructor and TA. At least 24 hours before their 1-on-1 meeting, the student will submit a short agenda and progress update in the form of a GitHub issue. This should identify concrete progress, evidence or results, decisions that need to be made, blockers, and proposed next steps. When the student is not in a 1-on-1 meeting, they will be in assigned small groups to do a project-related exercise or provide structured peer feedback.
+
+2 class meetings will focus exclusively on small-group writing exercises.
+
+3 class meetings will be presentations in front of the class.
+
+The final exam will be a closed-book, individualized written exam assessing the student's understanding of their code and project.
+
+## Grading
+
+Final grade calculation:
+
+- 15% pre-class assignments and meeting agendas
+- 5% paper outline (due Monday October 19 by 10:30am)
+- 5% initial paper draft (due Monday November 2 by 10:30am)
+- 10% revised paper draft (due Wednesday November 18 by 10:30am)
+- 20% final paper (due Friday December 4 by 11:59pm)
+- 5% final code quality and reproducibility (due Friday December 4 by 11:59pm)
+- 15% final presentation (December 7 or December 9)
+- 25% final exam (final exam period)
+
+## Attendance
+
+In-person attendance is mandatory. Feedback with the professor, the TA, and peers is a core component of the class. There will be a full final letter grade deduction for more than two unexcused absences. The Wednesday class before Thanksgiving will meet but will not count as an unexcused absence if missed.
+
+## Laptop and cell phone use
+
+No cell phone use is allowed during any class meeting for any reason, while laptops are permitted for only limited use. Laptops are permitted for individual meetings with the instructor or TA for reviewing the GitHub issue at hand but not allowed during lectures. During peer feedback group meetings, the student sharing results or soliciting feedback is allowed to use a laptop but the others are not. The rationale is that randomized controlled trials at universities demonstrate the learning benefits of prohibiting [laptop](https://www.sciencedirect.com/science/article/abs/pii/S0272775716303454) and [cell phone](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5370727) use.
+
+## Use of artificial intelligence
+
+AI is a part of the modern research process and thus within the course's subject matter. The course's structure and AI policy are intended to encourage student behavior that facilitates learning. Students are expected to use tools in ways that support their reasoning abilities rather than replace them. Students must understand and be accountable for all of their work. 
+
+Because the iterative process of revising writing is a necessary foundational skill, AI usage is explicitly forbidden for one component of the class: writing prose in papers. All prose--the written text that appears as words in paper drafts--must be manually drafted and edited by students. Therefore, students must manually use Google Docs while connected to the internet when drafting prose.
+
+Students are expected to comply with this policy in the spirit of mutual respect, but the instructor and TA will ensure compliance using several verification steps. Specifically, the instructor and TA will audit the edit history to ensure it was done manually and reserve the right to use AI writing detection software. Any suspected violations will be reported to MIT's Office of Student Conduct and Community Standards.
+
+## Required text and materials
+
+- Varanya Chaubey, *[The Little Book of Research Writing](https://www.amazon.com/Little-Book-Research-Writing/dp/1974673162)*.
+- Three months of a $20-per-month subscription to an approved frontier LLM (e.g., Claude, ChatGPT, or Gemini) for use with exclusively low-risk, non-Institute data. If you are using at least medium-risk data or Institute data, then you must use an MIT [Parley account](https://orgchart.mit.edu/letters/parley-api-now-available-mit-community-undergraduate-students). This comes with $10 of API credits each month. Refer to [MIT's Generative AI usage policy guidance](https://ist.mit.edu/ai).
+
+## Accessibility and accommodations
+
+MIT is committed to the principle of equal access. Students who need disability accommodations are encouraged to speak with Disability and Access Services (DAS), prior to or early in the semester so that accommodation requests can be evaluated and addressed in a timely fashion. If you have a disability and are not planning to use accommodations, it is still recommended that you meet with DAS staff to familiarize yourself with their services and resources.
+
+The instructor and TA are ready to assist with any approved accommodations. Please inform the TA, who will oversee accommodation implementation for this course.
+
+## Inclusion
+
+Course participants will refer to one another using each person's preferred first name. Using preferred first names rather than pronouns has two purposes: engender a collegial atmosphere and avoid unintentional misgendering. Students will be provided name cards to facilitate learning each other's names. The one exception is for communicating with the instructor: please address the instructor and all other faculty members as 'Professor [Last Name]' in speech and email, unless expressly invited to do otherwise. The purpose is to maintain professional equity and respect for all instructors.
+
+Students are expected to be respectful when providing peer feedback. A growth mindset is useful when receiving feedback, but this is difficult to do when the feedback is ad hominem or destructive rather than substantive and constructive. Students should report any concerns to either the instructor or TA.
+
+## Course Feedback
+
+The course is intentionally structured to facilitate learning, but the instructor and TA are open to your feedback on how it can be improved. There will be a formal process at the course midpoint for collecting and addressing feedback on what's going well and what's not going well. But students are encouraged to anonymously send in constructive feedback to [this form](https://docs.google.com/forms/d/e/1FAIpQLSfiJ3Ash9kRQoSbOJtbyCOc8oxiTNxpTRo4AWuMAIoezVq9kA/viewform?usp=sharing&ouid=107655664528523787088) at any point in the semester. 
+
+## Tentative class schedule
+
+| No. | Date | Class content | Short assignment due |
+|---:|---|---|---|
+| 1 | Wed., Sept. 9 | Lecture: Syllabus Review + Class Introduction | N/A |
+| 2 | Mon., Sept. 14 | Lecture: Developing a Research Topic | >=5 of each: potential questions, potential settings, and potential data sources |
+| 3 | Wed., Sept. 16 | Individual meetings | Meeting agendas |
+| 4 | Mon., Sept. 21 | Individual meetings | Meeting agendas |
+| 5 | Wed., Sept. 23 | Lecture: Version Control and Reproducibility | Git exercises |
+| 6 | Mon., Sept. 28 | Lecture: Effective AI usage | Watch [Paul Goldsmith-Pinkham's NBER lecture on AI usage](https://paulgp.substack.com/p/using-ai-in-research) |
+| 7 | Wed., Sept. 30 | Lecture: Scripted Data Collection and Exploration | >=1 potential data source idea of each: public government data, FOIA request, web scraping, OCR; review MIT librarian's slide deck and send in one question (e.g., MIT library general resources, inquiry specific to your project idea, etc.) |
+| 8 | Mon., Oct. 5 | Lightning topic presentations | 1 slide project proposal overview |
+| 9 | Wed., Oct. 7 | Individual meetings | Meeting agendas; 1-paragraph project proposal due |
+| — | Mon., Oct. 12 | **No class — Indigenous Peoples' Day** | N/A |
+| 10 | Tues., Oct. 13 | Lecture: Structure of a Research Paper | Read through "Layer 1" of Chaubey (pages 1-59) and write a >=1 sentence takeaway of each section |
+| 11 | Wed., Oct. 14 | Small group exercises on paper outline | Read through "Layer 2" of Chaubey (pg 59-85) and write a >=1 sentence takeaway of each section |
+| 12 | Mon., Oct. 19 | Individual meetings | Paper outline due |
+| 13 | Wed., Oct. 21 | Individual meetings | Mid-course feedback due |
+| 14 | Mon., Oct. 26 | Small group exercises on paper drafting | Complete Chaubey (pg 99-173) and write a >=1 sentence takeaway of each section |
+| 15 | Wed., Oct. 28 | Individual meetings | Meeting agendas |
+| 16 | Mon., Nov. 2 | Individual meetings | Paper draft due |
+| 17 | Wed., Nov. 4 | Individual meetings | Feedback provided on paper drafts |
+| 18 | Mon., Nov. 9 | Individual meetings | Meeting agendas |
+| — | Wed., Nov. 11 | **No class — Veterans Day** | N/A |
+| 19 | Mon., Nov. 16 | (TA Lecture, Topic TBD) | (TBD) |
+| 20 | Wed., Nov. 18 | Individual meetings | Revised paper draft due |
+| 21 | Mon., Nov. 23 | Individual meetings | Meeting agendas |
+| 22 | Wed., Nov. 25 | Individual meetings (excused absence for Thanksgiving travel) | Meeting agendas |
+| 23 | Mon., Nov. 30 | Lecture: Giving an effective talk | Draft titles for each slide |
+| 24 | Wed., Dec. 2 | Individual meetings | Final paper due Fri., Dec 4 |
+| 25 | Mon., Dec. 7 | Final presentations | N/A |
+| 26 | Wed., Dec. 9 | Final presentations | N/A |
+| 27 | TBD, final exam period | Written final exam | N/A |
+
+: {tbl-colwidths="[8,17,31,44]"}
+
+<!--
+## Revision history
+
+- **August 30, 2026:** Revision tracking began.
+  -->
