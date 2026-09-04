@@ -57,7 +57,7 @@ format:
 | | |
 |---|---|
 | **Class meetings** | Mondays and Wednesdays, 10:30 a.m.–12:00 p.m. |
-| **Location** | E51-395 |
+| **Location** | E51-395 (primary classroom); E51-385 (breakout space as needed) |
 | **Instructor** | Jon Cohen ([jpcohen@mit.edu](mailto:jpcohen@mit.edu)), E52-508 |
 | **Teaching assistant** | Laurel Britt ([lrl@mit.edu](mailto:lrl@mit.edu)), E52-486 |
 | **Office hours** | TBD based on responses to [poll of student availability](https://www.when2meet.com/?38220034-WYFBU) |
@@ -94,10 +94,6 @@ By the end of the semester, students will be able to:
 
 - The final exam will be a closed-book, individualized written exam assessing the student's understanding of their code and project.
 
-## Course advice
-
-
-
 ## Grading
 
 Final grade calculation:
@@ -119,7 +115,7 @@ In-person attendance is mandatory. Feedback with the professor, the TA, and peer
 
 No cell phone use is allowed during any class meeting for any reason, while laptops are permitted for only limited use. Laptops are permitted for individual meetings with the instructor or TA for reviewing the GitHub issue at hand but not allowed during lectures. During peer feedback group meetings, the student sharing results or soliciting feedback is allowed to use a laptop but the others are not. The rationale is that randomized controlled trials at universities demonstrate the learning benefits of prohibiting [laptop](https://www.sciencedirect.com/science/article/abs/pii/S0272775716303454) and [cell phone](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5370727) use.
 
-## Use of artificial intelligence
+## Artificial intelligence use
 
 AI is a part of the modern research process and thus within the course's subject matter. The course's structure and AI policy are intended to encourage student behavior that facilitates learning. Students are expected to use tools in ways that support their reasoning abilities rather than replace them. Students must understand and be accountable for all of their work. 
 
