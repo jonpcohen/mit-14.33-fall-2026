@@ -1,6 +1,5 @@
 ---
 title: "14.33 Research and Communication in Economics"
-subtitle: "Topics, Methods, and Implementation"
 author: "Fall 2026"
 date: last-modified
 language:
@@ -48,10 +47,6 @@ format:
         )
 ---
 
-```{=typst}
-#v(-2em)
-```
-
 ## Course information
 
 | | |
@@ -70,13 +65,13 @@ The course will guide students through the design, execution, and communication 
 
 By the end of the semester, students will be able to:
 
-| Objective | Purpose |
+| Course competency | Broader purpose |
 |:---|:---|
-| Formulate an original research question | Develop research taste |
+| Formulate an original research question | Develop creativity and taste |
 | Organize a version-controlled, one-click reproducible research pipeline | Practice structured automation |
 | Use AI productively for research and coding | Treat AI as a complement rather than a substitute |
-| Write a clear research paper | Use writing as a way to think |
-| Communicate progress concisely in writing and in meetings | Learn to manage up effectively |
+| Write a clear research paper | Use writing to clarify, test, and develop ideas |
+| Communicate progress concisely in writing and in meetings | Learn to "manage up" effectively |
 | Provide constructive feedback on peer projects | Build collaboration-based social skills |
 | Present and defend the project's research design, analysis, code, and conclusions | Strengthen verbal communication |
 
@@ -86,7 +81,7 @@ By the end of the semester, students will be able to:
 
 - 8 class meetings will be lectures. Each lecture will have a small but mandatory assignment to complete beforehand. The goal is to have the lectures be interactive, so thoughtfully engaging with the assigned material and completing the mandatory assignment prior to class is essential.
 
-- 12 class meetings will be research meetings. Students will rotate between scheduled 1-on-1 meetings with the instructor and TA. At least 24 hours before their 1-on-1 meeting, the student will submit a short agenda and progress update in the form of a GitHub issue. This should identify concrete progress, evidence or results, decisions that need to be made, blockers, and proposed next steps. When the student is not in a 1-on-1 meeting, they will be in assigned small groups to do a project-related exercise or provide structured peer feedback.
+- 12 class meetings will be research meetings. Students will rotate between scheduled 1-on-1 meetings with the instructor or TA. At least 24 hours before each 1-on-1 meeting, the student will submit a meeting-specific GitHub issue (see [bottom of syllabus](#individual-meeting-preparation) for details). When the student is not in a 1-on-1 meeting, they will be in assigned small groups to do a project-related exercise or provide structured peer feedback.
 
 - 2 class meetings will focus exclusively on small-group writing exercises.
 
@@ -98,7 +93,7 @@ By the end of the semester, students will be able to:
 
 Final grade calculation:
 
-- 15% pre-class assignments and meeting agendas
+- 15% pre-class assignments and meeting-preparation issues
 - 5% paper outline (due Monday October 19 by 10:30am)
 - 5% initial paper draft (due Monday November 2 by 10:30am)
 - 10% revised paper draft (due Wednesday November 18 by 10:30am)
@@ -126,13 +121,17 @@ Students are expected to comply with this policy in the spirit of mutual respect
 ## Required text and materials
 
 - Varanya Chaubey, *[The Little Book of Research Writing](https://www.amazon.com/Little-Book-Research-Writing/dp/1974673162)*.
-- Three months of a $20-per-month subscription to an approved frontier LLM (e.g., Claude, ChatGPT, or Gemini) for use with exclusively low-risk, non-Institute data. If you are using at least medium-risk data or Institute data, then you must use an MIT [Parley account](https://orgchart.mit.edu/letters/parley-api-now-available-mit-community-undergraduate-students). This comes with $10 of API credits each month. Refer to [MIT's Generative AI usage policy guidance](https://ist.mit.edu/ai).
+- Three months of a $20-per-month subscription to an approved frontier LLM (e.g., Claude, ChatGPT, or Gemini) for use with exclusively low-risk, non-Institute data. If you are using at least medium-risk Institute data, then you must use an MIT [Parley account](https://orgchart.mit.edu/letters/parley-api-now-available-mit-community-undergraduate-students). Note that Parley does not include frontier models, relies on variable usage pricing, and provides undergraduates with only $10 of monthly API credits. Refer to [MIT's Generative AI usage policy guidance](https://ist.mit.edu/ai) for more detail.
 
 ## Accessibility and accommodations
 
-MIT is committed to the principle of equal access. Students who need disability accommodations are encouraged to speak with Disability and Access Services (DAS), prior to or early in the semester so that accommodation requests can be evaluated and addressed in a timely fashion. If you have a disability and are not planning to use accommodations, it is still recommended that you meet with DAS staff to familiarize yourself with their services and resources.
+MIT is committed to the principle of equal access. Students who need disability accommodations are encouraged to speak with Disability and Access Services (DAS), prior to or early in the semester so that accommodation requests can be evaluated and addressed in a timely fashion.
 
 The instructor and TA are ready to assist with any approved accommodations. Please inform the TA, who will oversee accommodation implementation for this course.
+
+## Late submissions
+
+The course structure scaffolds assignments to build on one another, so it is highly encouraged to submit all assignments on time. Late submission grades are penalized 25 points (out of 100 total potential points) per delayed day to incentivize timely submissions. The only exception is for a documented accommodation from MIT's Student Support Services (S3).
 
 ## Inclusion
 
@@ -142,7 +141,7 @@ Students are expected to be respectful when providing peer feedback. A growth mi
 
 ## Course Feedback
 
-The course is intentionally structured to facilitate learning, but the instructor and TA are open to your feedback on how it can be improved. There will be a formal process at the course midpoint for collecting and addressing feedback on what's going well and what's not going well. But students are encouraged to anonymously send in constructive feedback to [this form](https://docs.google.com/forms/d/e/1FAIpQLSfiJ3Ash9kRQoSbOJtbyCOc8oxiTNxpTRo4AWuMAIoezVq9kA/viewform?usp=sharing&ouid=107655664528523787088) at any point in the semester. 
+The course is structured to facilitate learning, but the instructor and TA are open to your feedback on how it can be improved. There will be a formal process at the course midpoint for collecting and addressing feedback on what's going well and what's not going well. But students are encouraged to anonymously send in constructive feedback to [this form](https://docs.google.com/forms/d/e/1FAIpQLSfiJ3Ash9kRQoSbOJtbyCOc8oxiTNxpTRo4AWuMAIoezVq9kA/viewform?usp=sharing&ouid=107655664528523787088) at any point in the semester.
 
 ## Tentative class schedule
 
@@ -150,28 +149,28 @@ The course is intentionally structured to facilitate learning, but the instructo
 |---:|---|---|---|
 | 1 | Wed., Sept. 9 | Lecture: Course Overview | N/A |
 | 2 | Mon., Sept. 14 | Lecture: Developing a Research Topic | >=5 of each: potential questions, potential settings, and potential data sources |
-| 3 | Wed., Sept. 16 | Individual meetings | • Meeting agendas<br>`#linebreak()`{=typst}• Preliminary ranking of 5 potential question + setting + data combinations |
-| 4 | Mon., Sept. 21 | Individual meetings | Meeting agendas |
+| 3 | Wed., Sept. 16 | Individual meetings | • Meeting-preparation issue<br>`#linebreak()`{=typst}• Preliminary ranking of 5 potential question + setting + data combinations |
+| 4 | Mon., Sept. 21 | Individual meetings | Meeting-preparation issue |
 | 5 | Wed., Sept. 23 | Lecture: Version Control and Reproducibility | Git exercises |
 | 6 | Mon., Sept. 28 | Lecture: Effective AI usage | Watch [Paul Goldsmith-Pinkham's NBER lecture on AI usage](https://paulgp.substack.com/p/using-ai-in-research) |
 | 7 | Wed., Sept. 30 | Lecture: Scripted Data Collection and Exploration | • Feasibility writeup of >=1 data source of each type: downloadable tabular, web scraped, free text, optical character recognition (OCR), Freedom of Information Act (FOIA) request<br>`#linebreak()`{=typst}• Review MIT librarian's slide deck and complete [short form](https://forms.gle/rzZ41dd9ukDnresc7) 24 hours in advance of class |
 | 8 | Mon., Oct. 5 | Lightning topic presentations | 1 slide project proposal overview |
-| 9 | Wed., Oct. 7 | Individual meetings | • Meeting agendas<br>`#linebreak()`{=typst}• 1-paragraph project proposal |
+| 9 | Wed., Oct. 7 | Individual meetings | • Meeting-preparation issue<br>`#linebreak()`{=typst}• 1-paragraph project proposal |
 | — | Mon., Oct. 12 | **No class — Indigenous Peoples' Day** | N/A |
 | 10 | Tues., Oct. 13 | Lecture: Structure of a Research Paper | Read through "Layer 1" of Chaubey (pages 1-59) and write a >=1 sentence takeaway of each section |
 | 11 | Wed., Oct. 14 | Small group exercises on paper outline | Read through "Layer 2" of Chaubey (pg 59-85) and write a >=1 sentence takeaway of each section |
-| 12 | Mon., Oct. 19 | Individual meetings | Paper outline |
-| 13 | Wed., Oct. 21 | Individual meetings | Mid-course feedback |
+| 12 | Mon., Oct. 19 | Individual meetings | • Meeting-preparation issue<br>`#linebreak()`{=typst}• Paper outline |
+| 13 | Wed., Oct. 21 | Individual meetings | • Meeting-preparation issue<br>`#linebreak()`{=typst}• Mid-course feedback |
 | 14 | Mon., Oct. 26 | Small group exercises on paper drafting | Complete Chaubey (pg 99-173) and write a >=1 sentence takeaway of each section |
-| 15 | Wed., Oct. 28 | Individual meetings | Meeting agendas |
-| 16 | Mon., Nov. 2 | Individual meetings | Paper draft |
-| 17 | Wed., Nov. 4 | Individual meetings | Feedback provided on paper drafts |
-| 18 | Mon., Nov. 9 | Individual meetings | Meeting agendas |
+| 15 | Wed., Oct. 28 | Individual meetings | Meeting-preparation issue |
+| 16 | Mon., Nov. 2 | Individual meetings | • Meeting-preparation issue<br>`#linebreak()`{=typst}• Paper draft |
+| 17 | Wed., Nov. 4 | Individual meetings | • Meeting-preparation issue<br>`#linebreak()`{=typst}• Feedback provided on paper drafts |
+| 18 | Mon., Nov. 9 | Individual meetings | Meeting-preparation issue |
 | — | Wed., Nov. 11 | **No class — Veterans Day** | N/A |
 | 19 | Mon., Nov. 16 | (TA Lecture, Topic TBD) | (TBD) |
-| 20 | Wed., Nov. 18 | Individual meetings | Revised paper draft |
-| 21 | Mon., Nov. 23 | Individual meetings | Meeting agendas |
-| 22 | Wed., Nov. 25 | Individual meetings (excused absence for Thanksgiving travel) | Meeting agendas |
+| 20 | Wed., Nov. 18 | Individual meetings | • Meeting-preparation issue<br>`#linebreak()`{=typst}• Revised paper draft |
+| 21 | Mon., Nov. 23 | Individual meetings | Meeting-preparation issue |
+| 22 | Wed., Nov. 25 | Individual meetings (excused absence for Thanksgiving travel) | Meeting-preparation issue |
 | 23 | Mon., Nov. 30 | Lecture: Giving an effective talk | Draft titles for each slide |
 | 24 | Wed., Dec. 2 | Small group practice presentations | • Draft presentation<br>`#linebreak()`{=typst}• Final paper due Fri., Dec 4 |
 | 25 | Mon., Dec. 7 | Final presentations | N/A |
@@ -179,6 +178,88 @@ The course is intentionally structured to facilitate learning, but the instructo
 | 27 | TBD, final exam period | Written final exam | N/A |
 
 : {tbl-colwidths="[8,17,31,44]"}
+
+## Individual meeting preparation {#individual-meeting-preparation}
+
+This section details how students will prepare agendas for their 1-on-1 meetings. At least 24 hours before the meeting, the student will open a meeting-specific issue in their GitHub repository using the template below. The instructor or TA will prepare for the meeting by reading the meeting agenda issue beforehand. The suggested word count for the agenda is approximately 250 words, excluding links and tables. Students should focus on results and decisions rather than time spent (e.g., write “Estimated the baseline specification and found...” rather than “Worked on regressions”).
+
+Students will use the following labels for both the overall project and the next course deliverable:
+
+- **On track:** Progress can continue without intervention.
+- **At risk:** A problem could affect the project or deliverable, but there is a plausible path forward.
+- **Blocked:** Progress requires a decision or assistance that is not independently obtainable.
+
+Students are required to link to evidence in their GitHub repository within the meeting agenda. They are highly encouraged to use separate GitHub issues for tracking consequential unresolved decisions or incomplete tasks. When collecting evidence on major decisions, they are also highly encouraged to test alternatives on short-lived branches.
+
+For concreteness, suppose an unresolved decision is about the main sample composition. The student would create a separate issue titled "Choose the appropriate sample definition," which would be automatically numbered by GitHub (e.g., #23). The student could test alternatives on branches named `23-full-sample` and `23-restricted-sample` and summarize the key differences in a comparison table in issue #23. The meeting agenda would link to issue #23 as an unresolved decision. Once a decision is made, the student would record the rationale in issue #23, merge the chosen branch into the main branch, and close issue #23.
+
+After the meeting, students will update the agenda with next steps and record any resolved decisions in the linked decision issues.
+
+### 1-on-1 meeting agenda issue template
+
+Title the issue `Meeting preparation — YYYY-MM-DD`.
+
+#### 1. Bottom line
+
+- **Overall project:** On track / At risk / Blocked (one-sentence explanation)
+- **Next course deliverable:** Name and due date
+- **Deliverable status:** On track / At risk / Blocked (one-sentence explanation)
+- **Goal for this meeting:** By the end of the meeting, I want to have decided or resolved...
+
+#### 2. Current project state
+
+**Work modes:** Not started / Building / Testing / Revising / Rebuilding / Holding steady
+
+For each row, select the progress description that best represents what is currently usable and the work mode that best represents your current focus.
+
+**2a. Research components**
+
+| Component | Current progress | Primary work mode |
+|---|---|---|
+| Research question | None / Candidate questions / Working question | Select one work mode |
+| Data | None / Candidate sources / Raw data / Analysis dataset / Documented quality checks | Select one work mode |
+| Analysis | None / Analysis ideas / Documented descriptives / Baseline estimate / Reproducible baseline | Select one work mode |
+
+: {tbl-colwidths="[25,45,30]"}
+
+**2b. Paper writing**
+
+**Writing artifacts:** None / Notes or outline / Partial draft / Complete working draft
+
+| Paper section | Current usable artifact | Primary work mode |
+|---|---|---|
+| Data | Select one writing artifact | Select one work mode |
+| Methodology | Select one writing artifact | Select one work mode |
+| Results | Select one writing artifact | Select one work mode |
+| Introduction | Select one writing artifact | Select one work mode |
+
+#### 3. Progress and learnings
+
+Report concrete findings rather than activities or time spent. Findings can be unexpected results or newly-discovered roadblocks.
+
+- **Finding:** Brief description + link to evidence
+- **Finding:** Brief description + link to evidence
+
+**Implication:** How did this help you make progress on the project? How does it inform the project's next steps?
+
+#### 4. Decisions, questions, or blockers
+
+Include 1-3 items, ordered by descending importance. For a blocker, include what you have already tried and the specific help needed in the brief description.
+
+1. **Decision, question, or blocker:** Brief description
+   - **Context and evidence:** Link to a separate issue, or provide 1–2 sentences explaining the relevant context and evidence.
+   - **Preliminary recommendation and reasoning (pre-meeting):** Completed prior to the meeting with the perceived best path forward
+   - **Next steps (post-meeting):** Completed after the meeting before resolving the meeting agenda, potentially linking to newly-created GitHub issues
+2. ...
+3. ...
+
+#### 5. Committed next steps
+
+Draft this section prior to the meeting and revise this section after the meeting. List 1-3 commitments. Each commitment should identify an observable output, its target date, and what will count as complete.
+
+1. **Specific deliverable (target date):** One-sentence completion criterion + optional link to GitHub issue
+2. ...
+3. ...
 
 <!--
 ## Revision history
