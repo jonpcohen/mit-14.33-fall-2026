@@ -55,7 +55,9 @@ format:
 | **Location** | E51-395 (primary classroom); E51-385 (breakout space as needed) |
 | **Instructor** | Jon Cohen ([jpcohen@mit.edu](mailto:jpcohen@mit.edu)), E52-508 |
 | **Teaching assistant** | Laurel Britt ([lrl@mit.edu](mailto:lrl@mit.edu)), E52-486 |
-| **Office hours** | TBD based on responses to [poll of student availability](https://www.when2meet.com/?38220034-WYFBU) |
+| **Communication Center contact** | Cameron Netland ([camnet@mit.edu](mailto:camnet@mit.edu)), E18-228 |
+| **MIT Library contact** | Nicholas Albaugh ([nalbaugh@mit.edu](mailto:nalbaugh@mit.edu)), 14S-202 |
+| **Office hours** | TBD based on [poll of availability](https://www.when2meet.com/?38220034-WYFBU) |
 
 ## Course description
 
@@ -122,12 +124,12 @@ Students are expected to comply with this policy in the spirit of mutual respect
 
 - Varanya Chaubey, *[The Little Book of Research Writing](https://www.amazon.com/Little-Book-Research-Writing/dp/1974673162)*.
 - Three months of a $20-per-month subscription to an approved frontier LLM (e.g., Claude, ChatGPT, or Gemini) for use with exclusively low-risk, non-Institute data. If you are using at least medium-risk Institute data, then you must use an MIT [Parley account](https://orgchart.mit.edu/letters/parley-api-now-available-mit-community-undergraduate-students). Note that Parley does not include frontier models, relies on variable usage pricing, and provides undergraduates with only $10 of monthly API credits. Refer to [MIT's Generative AI usage policy guidance](https://ist.mit.edu/ai) for more detail.
+- Paper notebook and pen/pencil brought to each class meeting
+- Free GitHub account and Gmail account. Students will add the instructor and TA as collaborators to their project's GitHub repository and as editors to all Google Docs.
 
 ## Accessibility and accommodations
 
-MIT is committed to the principle of equal access. Students who need disability accommodations are encouraged to speak with Disability and Access Services (DAS), prior to or early in the semester so that accommodation requests can be evaluated and addressed in a timely fashion.
-
-The instructor and TA are ready to assist with any approved accommodations. Please inform the TA, who will oversee accommodation implementation for this course.
+MIT is committed to the principle of equal access. Students who need disability accommodations are encouraged to speak with Disability and Access Services (DAS), prior to or early in the semester so that accommodation requests can be evaluated and addressed in a timely fashion. The instructor and TA are ready to assist with any approved accommodations.
 
 ## Late submissions
 
@@ -167,7 +169,7 @@ The course is structured to facilitate learning, but the instructor and TA are o
 | 17 | Wed., Nov. 4 | Individual meetings | • Meeting-preparation issue<br>`#linebreak()`{=typst}• Feedback provided on paper drafts |
 | 18 | Mon., Nov. 9 | Individual meetings | Meeting-preparation issue |
 | — | Wed., Nov. 11 | **No class — Veterans Day** | N/A |
-| 19 | Mon., Nov. 16 | (TA Lecture, Topic TBD) | (TBD) |
+| 19 | Mon., Nov. 16 | Lecture: Combining Theory and Empirics | >=1 sentence each on: >=3 general economic principles that the paper's results demonstrate/test and >=3 mechanisms that could drive the paper's results |
 | 20 | Wed., Nov. 18 | Individual meetings | • Meeting-preparation issue<br>`#linebreak()`{=typst}• Revised paper draft |
 | 21 | Mon., Nov. 23 | Individual meetings | Meeting-preparation issue |
 | 22 | Wed., Nov. 25 | Individual meetings (excused absence for Thanksgiving travel) | Meeting-preparation issue |
