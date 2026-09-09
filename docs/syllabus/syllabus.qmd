@@ -108,6 +108,8 @@ Final grade calculation:
 
 In-person attendance is mandatory. Feedback with the professor, the TA, and peers is a core component of the class. There will be a full final letter grade deduction for more than two unexcused absences. The Wednesday class before Thanksgiving will meet but will not count as an unexcused absence if missed.
 
+Students are encouraged to reach out to the professor and TA at least a week in advance if there is a known scheduling conflict, such as for religious observance. Any absence that was not requested with supporting information more than 48 hours in advance of the class can be marked as excused only with written confirmation from MIT Student Support Services (S3).
+
 ## Laptop and cell phone use
 
 No cell phone use is allowed during any class meeting for any reason, while laptops are permitted for only limited use. Laptops are permitted for individual meetings with the instructor or TA for reviewing the GitHub issue at hand but not allowed during lectures. During peer feedback group meetings, the student sharing results or soliciting feedback is allowed to use a laptop but the others are not. The rationale is that randomized controlled trials at universities demonstrate the learning benefits of prohibiting [laptop](https://www.sciencedirect.com/science/article/abs/pii/S0272775716303454) and [cell phone](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5370727) use.
@@ -119,6 +121,15 @@ AI is a part of the modern research process and thus within the course's subject
 Because the iterative process of revising writing is a necessary foundational skill, AI usage is explicitly forbidden for one component of the class: writing prose in papers. All prose--the written text that appears as words in paper drafts--must be manually drafted and edited by students. Therefore, students must manually use Google Docs while connected to the internet when drafting prose.
 
 Students are expected to comply with this policy in the spirit of mutual respect, but the instructor and TA will ensure compliance using several verification steps. Specifically, the instructor and TA will audit the edit history to ensure it was done manually and reserve the right to use AI writing detection software. Any suspected violations will be reported to MIT's Office of Student Conduct and Community Standards.
+
+## Assignment requirements
+
+Bring a completed physical copy of each pre-class assignment to class. This may be handwritten or printed from a typed copy before class. This avoids needing a laptop for in-class exercises based on the assignment.
+
+Every submitted assignment must include an AI-use statement. If there was no AI use, simply state that. If AI was forbidden for any component of the assignment, attest that you complied with that restriction. If there was any AI use, write 2–4 sentences describing what you used it for, one benefit, and one limitation. You may consider two dimensions:
+
+- *Your assignment*: Did AI improve the result or expand what you could do? Did its output require verification, create errors, or steer you toward an unproductive approach?
+- *Your learning*: Did AI reveal something you did not know or help you understand the material? Did it replace practice needed to develop a skill?
 
 ## Required text and materials
 
@@ -133,7 +144,7 @@ MIT is committed to the principle of equal access. Students who need disability 
 
 ## Late submissions
 
-The course structure scaffolds assignments to build on one another, so it is highly encouraged to submit all assignments on time. Late submission grades are penalized 25 points (out of 100 total potential points) per delayed day to incentivize timely submissions. The only exception is for a documented accommodation from MIT's Student Support Services (S3).
+The course structure scaffolds assignments to build on one another, so it is highly encouraged to submit all assignments on time. Late submission grades are penalized 25 points (out of 100 total potential points) per delayed day to incentivize timely submissions. The only exception is for a documented accommodation from MIT S3.
 
 ## Inclusion
 
@@ -154,7 +165,7 @@ The course is structured to facilitate learning, but the instructor and TA are o
 | 3 | Wed., Sept. 16 | Individual meetings | • Meeting-preparation issue<br>`#linebreak()`{=typst}• Preliminary ranking of 5 potential question + setting + data combinations |
 | 4 | Mon., Sept. 21 | Individual meetings | Meeting-preparation issue |
 | 5 | Wed., Sept. 23 | Lecture: Version Control and Reproducibility | Git exercises |
-| 6 | Mon., Sept. 28 | Lecture: Effective AI usage | Watch [Paul Goldsmith-Pinkham's NBER lecture on AI usage](https://paulgp.substack.com/p/using-ai-in-research) |
+| 6 | Mon., Sept. 28 | Lecture: Effective AI usage | Watch [Paul Goldsmith-Pinkham's NBER lecture on AI usage](https://paulgp.substack.com/p/using-ai-in-research). Write >=3 questions or points of confusion you have about the content. |
 | 7 | Wed., Sept. 30 | Lecture: Scripted Data Collection and Exploration | • Feasibility writeup of >=1 data source of each type: downloadable tabular, web scraped, free text, optical character recognition (OCR), Freedom of Information Act (FOIA) request<br>`#linebreak()`{=typst}• Review MIT librarian's slide deck and complete [short form](https://forms.gle/rzZ41dd9ukDnresc7) 24 hours in advance of class |
 | 8 | Mon., Oct. 5 | Lightning topic presentations | 1 slide project proposal overview |
 | 9 | Wed., Oct. 7 | Individual meetings | • Meeting-preparation issue<br>`#linebreak()`{=typst}• 1-paragraph project proposal |
@@ -263,8 +274,7 @@ Draft this section prior to the meeting and revise this section after the meetin
 2. ...
 3. ...
 
-<!--
+
 ## Revision history
 
-- **August 30, 2026:** Revision tracking began.
-  -->
+- **September 9, 2026:** Added excused attendance procedures and AI disclosure policy.
