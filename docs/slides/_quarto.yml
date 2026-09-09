@@ -1,0 +1,9 @@
+project:
+  type: default
+
+format:
+  clean-revealjs:
+    embed-resources: true
+    transition: none
+    slide-number: c/t
+

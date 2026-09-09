@@ -1,0 +1,6 @@
+/.quarto/
+**/*.quarto_ipynb
+
+# The Clean extension copies this helper beside each rendered deck even when
+# it has already been embedded in the self-contained HTML output.
+/*/mathjax-config.js

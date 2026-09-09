@@ -1,0 +1,358 @@
+---
+title: "Course Overview"
+subtitle: "14.33 Research and Communication in Economics"
+author: "Jon Cohen"
+date: "September 9, 2026"
+---
+
+## Today's plan
+
+- Introductions
+- Syllabus review, discussion, and feedback
+- Overview of developing a research topic
+- Case study of two published papers
+
+## Introductions
+
+- Name
+- Year
+- Course #
+- One fun thing you did this summer
+
+## Syllabus review
+
+- Read and reflect individually (20 minutes)
+- Debrief discussion and Q&A
+
+## Your feedback
+
+Based on the syllabus, write on an index card:
+
+- What would you like to **stop** happening in the course?
+- What would you like to **start** happening in the course?
+- What would you like to **continue** happening in the course?
+
+## Developing a research topic
+
+- **Research question:** what you want to learn
+- **Setting:** institutional context relevant to answering the question
+- **Data:** empirical measurements relevant to answering the question
+
+::: {.notes}
+Introduce the three components before discussing either paper. Then work
+through question, setting, and data for each paper in turn. This keeps the
+definitions available for reference and gives each example a continuous
+narrative.
+
+Students may begin with a question, an interesting institution, or a dataset.
+The eventual project needs all three to fit together.
+:::
+
+## Research question
+
+- Specific enough to answer empirically
+- Motivated by an economic theory or a substantive policy issue
+- May concern a [causal]{.fg style="--col: #107895"} effect or a [descriptive]{.fg style="--col: #9a2515"} relationship
+
+::: {.notes}
+A topic such as housing or insurance is broader than a research question.
+A question specifies what we want to learn: an effect, a comparison, or a
+pattern.
+
+A descriptive relationship can be a research contribution when it informs
+an economic explanation. Students do not have to force every idea into a
+causal design. They should be able to explain why the answer matters and
+what it adds to existing work.
+:::
+
+## Setting
+
+- Institutional details relevant to answering the question
+- [Causal]{.fg style="--col: #107895"}: variation supporting a credible comparison to an unobserved counterfactual
+- [Descriptive]{.fg style="--col: #9a2515"}: a context in which theory has testable predictions
+
+::: {.notes}
+For a causal question, the relevant institutional detail might be an
+assignment rule or the timing of a policy or event. The setting includes
+the source of identifying variation.
+
+Define the counterfactual as what would have happened without the treatment.
+It is unobserved for the treated group, so the design needs a comparison
+that can credibly represent it.
+
+For a descriptive question, understanding the choices people face helps
+us interpret observed relationships. The distinction between setting and
+data is their role: the setting explains why a comparison is informative;
+the data allow us to make it.
+:::
+
+## Data
+
+- Quantifiable measures relevant to answering the question
+- May be numeric or constructed from text, images, and other records
+
+::: {.notes}
+Separate what needs to be measured from the name of a dataset. Check the
+questionnaire or documentation for the actual variables, population,
+dates, and identifiers.
+
+Original work can use an established dataset in a new way or combine
+existing sources to answer a new question. Neither route requires
+collecting a new survey.
+
+For example, text can be classified by topic or assigned a sentiment score.
+The measurement still needs to capture the concept of interest; turning
+text into a number does not by itself make that number informative.
+:::
+
+## Initial ideas
+
+3 minutes, individually
+
+- Write one economic theory or policy issue that interests you.
+- Formulate a specific research question about it.
+- Explain what we would learn from the answer.
+
+::: {.notes}
+Have students write in their notebooks. A tentative question is sufficient;
+no setting or data source is required yet. The examples that follow show
+how these other components can develop.
+
+If useful, invite two students to share and discuss whether each question
+specifies something that could be answered.
+:::
+
+## Two examples
+
+[Descriptive: private information in insurance markets]{.fg style="--col: #9a2515"}\
+[Finkelstein and McGarry (2006), American Economic Review (Finkelstein is an MIT professor)](https://economics.mit.edu/sites/default/files/2022-08/Multiple%20Dimensions%20of%20Private%20Information-%20Eviden.pdf){style="color: inherit; font-weight: inherit;"}
+
+[Causal: local effects of large, mixed-income housing]{.fg style="--col: #107895"}\
+[Odayappan (2026), Journal of Housing Economics (Harvard undergraduate senior thesis)](https://www.sciencedirect.com/science/article/pii/S1051137726000240){style="color: inherit; font-weight: inherit;"}
+
+::: {.notes}
+Introduce both papers before discussing either in detail. The insurance
+paper revisits a classic theory of market failure. The housing paper
+investigates a current policy concern. Both will be discussed in the same
+order: research question, setting, data, and findings.
+
+References: [Finkelstein and McGarry (2006)](https://economics.mit.edu/sites/default/files/2022-08/Multiple%20Dimensions%20of%20Private%20Information-%20Eviden.pdf);
+[Odayappan (2026)](https://www.sciencedirect.com/science/article/pii/S1051137726000240).
+:::
+
+## [Insurance]{.fg style="--col: #9a2515"}: research question
+
+Do insurance buyers have private information relevant
+to their risk?
+
+- Adverse selection as a source of market failure: the “market for lemons”
+
+::: {.notes}
+The paper is “Multiple Dimensions of Private Information: Evidence from
+the Long-Term Care Insurance Market.”
+
+Recall the logic of the market for lemons: information that one party
+has and the other lacks can affect who participates in a market. In this
+application, buyers may know more about their likely need for care than
+the insurer does. Define long-term care insurance as coverage for expenses
+such as nursing-home care.
+
+The motivation starts with a classic economic idea and asks how it works
+in an actual market. Amy Finkelstein is an
+[MIT economics professor](https://economics.mit.edu/people/faculty/amy-finkelstein).
+:::
+
+## [Insurance]{.fg style="--col: #9a2515"}: setting
+
+- Supplemental insurance for long-term care expenses in the U.S.
+- Insurers assess risk when offering coverage and setting premiums
+- Individuals choose whether to buy coverage
+- Positive correlation test between insurance choice and risk realization
+
+::: {.notes}
+Voluntary purchase is the institutional feature that allows selection:
+people can choose coverage based on what they know about their own risk.
+Insurers also assess applicants, so private information means information
+beyond what insurers already know or use. Differences in age or known
+health alone do not establish it.
+
+Supplemental here refers to private coverage alongside public programs
+and out-of-pocket payment for care. It is not Medigap insurance.
+
+Source: [Finkelstein and McGarry (2006), sections I–II](https://economics.mit.edu/sites/default/files/2022-08/Multiple%20Dimensions%20of%20Private%20Information-%20Eviden.pdf).
+:::
+
+## [Insurance]{.fg style="--col: #9a2515"}: data
+
+Health and Retirement Study: a public survey of aging, health, and finances
+
+- Long-term care insurance ownership and subsequent nursing-home use
+- Respondents’ own beliefs about their future likelihood of needing care
+
+::: {.notes}
+The authors use the AHEAD cohort, observing insurance and expectations in
+1995 and nursing-home use through 2000. The expectations question asks
+respondents to assess their own chance of entering a nursing home within
+five years. These questions make an established survey useful for testing
+private information.
+
+The paper also uses insurer application forms and an actuarial model to
+approximate insurers' information. The public survey is the core source,
+but learning how insurers assess risk is part of the research.
+
+Sources: [paper, sections II–III](https://economics.mit.edu/sites/default/files/2022-08/Multiple%20Dimensions%20of%20Private%20Information-%20Eviden.pdf);
+[HRS public data access](https://hrs.isr.umich.edu/about/introduction-to-hrs).
+Public survey files require registration.
+:::
+
+## [Insurance]{.fg style="--col: #9a2515"}: findings
+
+- No evidence that insured people are more likely to enter a nursing home
+- Risk expectations predict both insurance ownership and care use, beyond insurers’ information
+
+::: {.notes}
+Both findings account for insurers' assessments of risk. The null result
+for the standard coverage–use test coexists with evidence of private
+information in the expectations data.
+
+More cautious people also buy insurance and have lower subsequent risk,
+which can offset selection based on expected need. The null finding helps
+expose a limitation of the standard test and motivates a richer model of
+selection.
+
+Source: [Finkelstein and McGarry (2006), section III](https://economics.mit.edu/sites/default/files/2022-08/Multiple%20Dimensions%20of%20Private%20Information-%20Eviden.pdf).
+:::
+
+## [Housing]{.fg style="--col: #107895"}: research question
+
+How do large mixed-income housing developments affect municipal finances
+and public services?
+
+- Understanding local opposition to new housing
+
+::: {.notes}
+The paper is “Knock, knock: The impact of large subsidized housing
+developments on the surrounding community.”
+
+The question addresses a salient policy debate in urban areas: residents
+may oppose development because they expect costs to existing residents.
+New residents may increase demand for services, while new development
+also adds tax revenue. The net effect is an empirical question.
+
+The project began as Sethu Odayappan's Harvard undergraduate senior thesis.
+Harvard's [thesis list](https://www.economics.harvard.edu/sites/g/files/omnuum5991/files/econ/files/archivedthesis1999_2023.pdf)
+lists the title and David Cutler as the adviser. Use this as an example of
+a question an undergraduate can pursue, without implying that a semester
+project must cover every outcome in the published paper.
+:::
+
+## [Housing]{.fg style="--col: #107895"}: setting
+
+- Massachusetts Chapter 40B allows zoning waivers for mixed-income housing
+- Projects are built at different times with uncertain completion dates
+- Difference-in-differences compares changes around openings across municipalities
+
+::: {.notes}
+Chapter 40B is the institutional context for the mixed-income developments.
+Its comprehensive permit process allows qualifying developments to seek
+waivers of local zoning. See [MassHousing's program overview](https://www.masshousing.com/en/programs-outreach/planning-programs/40b).
+The repeated openings provide a way to study short-run responses.
+
+Explain difference-in-differences verbally using one outcome, such as
+municipal spending: compare the change in a municipality where a project
+opens with the contemporaneous change in a comparable municipality without
+an opening. The paper uses matched controls and a staggered event-study
+design.
+
+The causal interpretation requires parallel trends: absent the development,
+the compared municipalities would have had similar changes. Uncertainty in
+timing helps motivate the design but does not establish that assumption.
+Pre-opening outcomes help assess it. Keep the distinction between project
+decisions and actual openings clear.
+
+Source: [published abstract](https://www.sciencedirect.com/science/article/pii/S1051137726000240).
+:::
+
+## [Housing]{.fg style="--col: #107895"}: data
+
+Records collected and combined from state and federal agencies
+
+- Treatment: Chapter 40B project decisions and opening dates
+- Outcomes: population, public safety, schools, and municipal finances
+- Sample: municipal panel covering years before and after project openings
+
+::: {.notes}
+Emphasize the range of records: familiar outcomes, less commonly used
+municipal finance measures, and specialized records identifying the
+housing developments. Combining them by municipality and year creates
+the dataset needed for this question.
+
+The published paper studies large developments built from 2002 to 2019.
+The long panel allows the author to examine changes before and after
+openings and assess whether pre-opening trends support the comparison.
+
+The published abstract measures public safety using arrest rates. Do not
+equate arrests with all crime. Likewise, a project's decision or approval
+date is conceptually different from its opening date; the empirical design
+must align outcomes with the relevant event.
+
+The broad data-source description follows the instructor's account.
+The [published article page](https://www.sciencedirect.com/science/article/pii/S1051137726000240)
+says the assembled data are available on request. Public underlying
+records should not be confused with a ready-to-download analysis dataset.
+:::
+
+## [Housing]{.fg style="--col: #107895"}: findings
+
+- No detectable deterioration in municipal fiscal health or measured public services
+- Population and short-run tax revenue increase
+
+::: {.notes}
+The null findings address concerns motivating local opposition. The paper
+finds no detectable effects on long-run fiscal health or the measured
+school, safety, and traffic outcomes. Increased tax revenue helps offset
+the costs of additional residents.
+
+These are findings about particular outcomes in this setting. They do not
+establish that every effect of development is zero.
+
+Source: [Odayappan (2026), published abstract](https://www.sciencedirect.com/science/article/pii/S1051137726000240).
+:::
+
+## Interpreting results
+
+- A null result can challenge a nonzero prediction from theory or policy claims ([Abadie 2020](https://economics.mit.edu/sites/default/files/publications/StatisticalNonsignificanceinEmpiricalEconomics.pdf))
+- A precise result can reduce uncertainty even when it confirms a prior, including zero
+
+::: {.notes}
+The first point concerns revising a prior. A simple adverse selection model
+predicts a positive relationship between coverage and care use. Local
+opposition to housing often predicts fiscal costs or worse public services.
+The null findings are interesting because these contexts give us reasons
+to expect a nonzero relationship or effect.
+
+The second point concerns precision. A result can strengthen an existing
+view by ruling out plausible alternatives, even if the initial expectation
+was zero. Surprise is not required for a contribution.
+
+In both cases, interpret the estimate and confidence interval. Failure to
+reject zero alone does not establish a small effect or justify a large
+revision of the prior.
+:::
+
+## For Monday, September 14
+
+Bring at least five of each:
+
+- Potential research questions
+- Potential settings
+- Potential data sources
+
+::: {.notes}
+These are three lists, as specified in the syllabus. Five complete
+projects are not required for Monday.
+
+For Wednesday, September 16, students will submit a preliminary ranking
+of five question + setting + data combinations. Monday's class will help
+them develop those combinations.
+:::
