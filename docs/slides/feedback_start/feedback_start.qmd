@@ -1,0 +1,125 @@
+---
+title: "Course Feedback and Responses"
+subtitle: "14.33 Research and Communication in Economics"
+author: "Jon Cohen"
+date: "September 14, 2026"
+---
+
+## Common themes
+
+- Example papers
+- Course structure
+- Policies and logistics
+
+::: {.notes}
+Thank students for the feedback. Explain that these slides address themes
+that appeared across multiple responses, plus several questions for which a
+short clarification may be useful to everyone.
+:::
+
+## Can we see past projects?
+
+- **Verdict:** No
+- **Why:** respect student privacy and avoid limiting creativity
+- **Similar format:** [American Economic Review: Insights](https://www.aeaweb.org/journals/aeri), [Journal of Public Economics (Short Papers)](https://www.sciencedirect.com/journal/journal-of-public-economics), [Reveiw of Economics and Statistics (Short Papers)](https://direct.mit.edu/rest), and [Journal of Urban Economics: Insights](https://www.sciencedirect.com/journal/journal-of-urban-economics)
+
+::: {.notes}
+The bureaucratic reason is respect for student privacy. The more important
+substantive reason is that past projects can become templates and limit the
+range of ideas students consider.
+
+The linked venues provide a rough sense of the content of a short economics
+paper. Their articles are more developed and polished than the projects
+expected in this course.
+:::
+
+## Can we read more economics papers?
+
+- **Verdict:** Yes, in service of your project
+- **Why:** build skill of efficient skimming and situate project in literature
+- **Plan:** short reading guidance memo and an in-class exercise
+
+::: {.notes}
+The goal is to help students read papers efficiently while avoiding an early
+focus on existing work that could narrow their search for ideas. The memo will
+provide a practical reading strategy, which students will then use in class.
+:::
+
+## Can we have more lectures?
+
+- **Verdict:** Keep the planned structure
+- **Why:** more lectures come at the expense of fewer (universally liked!) 1-on-1 meetings or communication practice
+
+::: {.notes}
+Students strongly valued the individual meetings. One student requested more
+lectures, but the course will continue to prioritize individualized feedback.
+This choice also explains why the final exam remains in the final exam period.
+:::
+
+## Can the final exam count less or happen earlier?
+
+- **Verdict:** No
+- **Why:** exam disincentivizes cognitive offloading and pre-exam week timing crowds out meetings
+- **Expectation:** nothing to study for if you have ownership over the project you submit
+
+::: {.notes}
+The exam checks that each student understands the work submitted during the
+semester. Holding it during the final exam period preserves class time for
+individual meetings and project preparation.
+:::
+
+## Can we collaborate more with peers?
+
+- **Verdict:** Individual-meeting class sessions heavily involve group exercises and peer feedback
+- **Boundary:** submitted assignments remain individual work
+
+::: {.notes}
+Students will collaborate while classmates rotate through individual meetings
+with the instructor and TA. Keeping submitted assignments individual balances
+the benefits of collaboration with ownership of each project.
+:::
+
+## Will final drafts use a scripted language?
+
+- **Verdict:** Yes. Quarto rather than LaTeX
+- **Why:** one-click reproducibility and publication-ready output
+- **Sequence:** manual prose drafting first, migration at the end
+
+::: {.notes}
+The initial manual drafting constraint is pedagogical: students need to
+practice writing and revising prose themselves. At the end of the course, they
+will move the paper into Quarto so that text, results, and formatting can be
+generated together. This is the workflow they should use in future research.
+:::
+
+## Will we cover research proposals?
+
+- **Verdict:** Not as core course content
+- **Why:** the format depends on the proposal's purpose
+- **Support:** bring a specific proposal type to office hours
+
+::: {.notes}
+A grant proposal, an NSF proposal, and an internal research plan serve
+different purposes. Students are welcome to ask for advice in office hours
+once they know what kind of proposal they need to write.
+:::
+
+## Can the absence policy be more flexible?
+
+- **Verdict:** The policy remains
+- **Why:** absences reduce your learning and your classmates' feedback
+
+::: {.notes}
+The course depends on discussion, peer response, and individual feedback.
+Attendance therefore affects both the absent student and the rest of the
+class. The syllabus already explains the allowance for unexcused absences and
+the process for excused absences.
+:::
+
+## Can assignments be posted on Canvas?
+
+- **Verdict:** Yes. Done
+
+::: {.notes}
+This request has already been incorporated.
+:::
