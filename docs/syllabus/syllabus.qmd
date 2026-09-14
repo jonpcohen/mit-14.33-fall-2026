@@ -36,6 +36,7 @@ format:
     include-in-header:
       text: |
         #show link: set text(fill: rgb("#a31f34"))
+        #show table.cell: set par(justify: false)
         #set table(
           fill: (_, y) => if calc.odd(y) { rgb("#f5f7f9") },
           inset: (x: 5pt, y: 4pt),
@@ -52,12 +53,13 @@ format:
 | | |
 |---|---|
 | **Class meetings** | Mondays and Wednesdays, 10:30 a.m.–12:00 p.m. |
-| **Location** | E51-395 (primary classroom); E51-385 (breakout space as needed) |
-| **Instructor** | Jon Cohen ([jpcohen@mit.edu](mailto:jpcohen@mit.edu)), E52-508 |
-| **Teaching assistant** | Laurel Britt ([lrl@mit.edu](mailto:lrl@mit.edu)), E52-486 |
-| **Communication Center contact** | Cameron Netland ([camnet@mit.edu](mailto:camnet@mit.edu)), E18-228 |
-| **MIT Library contact** | Nicholas Albaugh ([nalbaugh@mit.edu](mailto:nalbaugh@mit.edu)), 14S-202 |
-| **Office hours** | TBD based on [poll of availability](https://www.when2meet.com/?38220034-WYFBU) |
+| **Location** | E51-395 (primary classroom); E51-385 (breakout space) |
+| **Instructor** | Jon Cohen ([jpcohen@mit.edu](mailto:jpcohen@mit.edu)), E52-508 <br>`#linebreak()`{=typst}Office hours: Mondays, 2:00–4:00 p.m. |
+| **Teaching assistant** | Laurel Britt ([lrl@mit.edu](mailto:lrl@mit.edu)), E52-486 <br>`#linebreak()`{=typst}Office hours: Fridays, 10:00–11:00 a.m. and 4:00–5:00 p.m. |
+| **Communication Center** | Cameron Netland ([camnet@mit.edu](mailto:camnet@mit.edu)), E18-228 <br>`#linebreak()`{=typst} Office hours: by appointment |
+| **MIT Library** | Nicholas Albaugh ([nalbaugh@mit.edu](mailto:nalbaugh@mit.edu)), 14S-202 <br>`#linebreak()`{=typst} Office hours: by appointment |
+
+: {tbl-colwidths="[32,68]"}
 
 ## Course description
 
@@ -135,8 +137,8 @@ Every submitted assignment must include an AI-use statement. If there was no AI 
 
 - Varanya Chaubey, *[The Little Book of Research Writing](https://www.amazon.com/Little-Book-Research-Writing/dp/1974673162)*.
 - Three months of a $20-per-month subscription to an approved frontier LLM (e.g., Claude, ChatGPT, or Gemini) for use with exclusively low-risk, non-Institute data. If you are using at least medium-risk Institute data, then you must use an MIT [Parley account](https://orgchart.mit.edu/letters/parley-api-now-available-mit-community-undergraduate-students). Note that Parley does not include frontier models, relies on variable usage pricing, and provides undergraduates with only $10 of monthly API credits. Refer to [MIT's Generative AI usage policy guidance](https://ist.mit.edu/ai) for more detail.
-- Paper notebook and pen/pencil brought to each class meeting
-- Free GitHub account and Gmail account. Students will add the instructor and TA as collaborators to their project's GitHub repository and as editors to all Google Docs.
+- Paper notebook and pen/pencil brought to each class meeting.
+- Free GitHub account and Google account. Students will add the instructor and TA as collaborators to their project's GitHub repository and as editors to all Google Docs.
 
 ## Accessibility and accommodations
 
@@ -278,3 +280,4 @@ Draft this section prior to the meeting and revise this section after the meetin
 ## Revision history
 
 - **September 9, 2026:** Added excused attendance procedures and AI disclosure policy.
+- **September 14, 2026:** Replaced office hours availability poll with scheduled times.
