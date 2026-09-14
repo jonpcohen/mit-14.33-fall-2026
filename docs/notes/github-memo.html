@@ -2212,7 +2212,7 @@ a { color: #a31f34; }
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="github-memo.pdf"><i class="bi bi-file-pdf"></i>Typst</a></li></ul></div></div>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="../../github-memo.pdf"><i class="bi bi-file-pdf"></i>Typst</a></li></ul></div></div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
@@ -2236,14 +2236,18 @@ a { color: #a31f34; }
 
 
 <p>Git tracks changes to files on your computer. GitHub stores a remote copy of the repository and supports collaboration, issues, and links to evidence. These instructions use Git in a terminal; GitHub Desktop is not required.</p>
-<section id="create-the-github-repository" class="level2">
-<h2 class="anchored" data-anchor-id="create-the-github-repository">1. Create the GitHub repository</h2>
+<section id="create-a-repository-from-the-course-template" class="level2">
+<h2 class="anchored" data-anchor-id="create-a-repository-from-the-course-template">1. Create a repository from the course template</h2>
 <ol type="1">
-<li>Create a free account at <a href="https://github.com/">github.com</a>.</li>
-<li>Create a repository named <code>fa26-1433-YOUR-KERBEROS</code>. Replace <code>YOUR-KERBEROS</code> with your MIT Kerberos username.</li>
-<li>Use the repository visibility specified in class. Do not commit confidential data, passwords, API keys, or other secrets.</li>
-<li>In the repository, select <strong>Settings → Collaborators</strong>, then add the instructor and TA using the GitHub usernames provided in class. This access is required by the <a href="../syllabus/syllabus.html#required-text-and-materials">course syllabus</a>.</li>
+<li>Create a free account at <a href="https://github.com/">github.com</a>, or sign in to your existing account.</li>
+<li>Open the <a href="https://github.com/jonpcohen/mit-14.33-project-template">14.33 project template</a>.</li>
+<li>Select <strong>Use this template → Create a new repository</strong>.</li>
+<li>Select your personal GitHub account as the owner.</li>
+<li>Name the repository <code>fa26-1433-YOUR-KERBEROS</code>. Replace <code>YOUR-KERBEROS</code> with your MIT Kerberos username.</li>
+<li>Use the repository visibility specified in class, then select <strong>Create repository</strong>.</li>
+<li>In your new repository, select <strong>Settings → Collaborators</strong>. Add the instructor and TA using the GitHub usernames provided in class. This access is required by the <a href="../syllabus/syllabus.html#required-text-and-materials">course syllabus</a>.</li>
 </ol>
+<p>Your new repository contains the course directory structure and README files. It is separate from the original template. Do not commit confidential data, passwords, API keys, or other secrets.</p>
 </section>
 <section id="install-git-and-authentication-support" class="level2">
 <h2 class="anchored" data-anchor-id="install-git-and-authentication-support">2. Install Git and authentication support</h2>
@@ -2293,14 +2297,36 @@ a { color: #a31f34; }
 </section>
 <section id="use-github-issues-for-the-course" class="level2">
 <h2 class="anchored" data-anchor-id="use-github-issues-for-the-course">5. Use GitHub issues for the course</h2>
+<p>Use two types of issues:</p>
+<ul>
+<li>A <strong>meeting agenda issue</strong> summarizes the project before one scheduled meeting. Create a new agenda for each meeting.</li>
+<li>A <strong>work issue</strong> tracks one consequential decision, question, blocker, or incomplete task. Keep the issue open across meetings until you resolve it.</li>
+</ul>
+<section id="create-a-meeting-agenda-issue" class="level3">
+<h3 class="anchored" data-anchor-id="create-a-meeting-agenda-issue">Create a meeting agenda issue</h3>
 <p>At least 24 hours before each one-on-one meeting:</p>
 <ol type="1">
-<li>Open a new issue in your project repository.</li>
-<li>Title it <code>Meeting preparation — YYYY-MM-DD</code>.</li>
-<li>Complete the template in the <a href="../syllabus/syllabus.html#individual-meeting-preparation">Individual meeting preparation</a> section of the syllabus. Aim for approximately 250 words, excluding links and tables.</li>
-<li>Link to supporting evidence in the repository. Report findings and decisions rather than time spent.</li>
+<li>Select <strong>Issues → New issue</strong> in your project repository.</li>
+<li>Title the issue <code>Meeting preparation — YYYY-MM-DD</code>.</li>
+<li>Copy the template from the syllabus’s <a href="../syllabus/syllabus.html#individual-meeting-preparation">Individual meeting preparation</a> section into the issue.</li>
+<li>Complete each section. Aim for approximately 250 words, excluding links and tables.</li>
+<li>Link each finding to supporting code, output, or documentation in the repository.</li>
+<li>In <strong>Decisions, questions, or blockers</strong>, link each relevant work issue by typing its number, such as <code>#23</code>.</li>
 </ol>
-<p>Use separate issues for consequential unresolved decisions or incomplete tasks. You may test alternatives on short-lived branches and link those branches from the relevant issue. After each meeting, update the agenda with agreed next steps and record decisions in the linked issues.</p>
+<p>Report findings and decisions rather than time spent. Use the agenda as a concise guide for the meeting, not as the complete history of the project.</p>
+</section>
+<section id="create-and-link-a-work-issue" class="level3">
+<h3 class="anchored" data-anchor-id="create-and-link-a-work-issue">Create and link a work issue</h3>
+<p>Create a separate work issue when an item needs evidence, discussion, or follow-up beyond one meeting:</p>
+<ol type="1">
+<li>Give the issue a specific title, such as <code>Choose the appropriate sample definition</code>.</li>
+<li>State the decision, question, blocker, or task.</li>
+<li>Add the relevant evidence, alternatives, and your current recommendation.</li>
+<li>State what must be true before you can close the issue.</li>
+<li>Link the work issue from the next meeting agenda by typing its issue number.</li>
+</ol>
+<p>You may test important alternatives on short-lived branches. Link each branch from the applicable work issue. After the meeting, update the agenda with agreed next steps. Record each decision and its rationale in the applicable work issue, then close that issue when the work is complete.</p>
+</section>
 </section>
 <section id="correct-mistakes-without-deleting-history" class="level2">
 <h2 class="anchored" data-anchor-id="correct-mistakes-without-deleting-history">6. Correct mistakes without deleting history</h2>

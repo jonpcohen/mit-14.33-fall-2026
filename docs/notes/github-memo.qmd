@@ -40,12 +40,17 @@ format:
 
 Git tracks changes to files on your computer. GitHub stores a remote copy of the repository and supports collaboration, issues, and links to evidence. These instructions use Git in a terminal; GitHub Desktop is not required.
 
-## 1. Create the GitHub repository
+## 1. Create a repository from the course template
 
-1. Create a free account at [github.com](https://github.com/).
-2. Create a repository named `fa26-1433-YOUR-KERBEROS`. Replace `YOUR-KERBEROS` with your MIT Kerberos username.
-3. Use the repository visibility specified in class. Do not commit confidential data, passwords, API keys, or other secrets.
-4. In the repository, select **Settings → Collaborators**, then add the instructor and TA using the GitHub usernames provided in class. This access is required by the [course syllabus](../syllabus/syllabus.html#required-text-and-materials).
+1. Create a free account at [github.com](https://github.com/), or sign in to your existing account.
+2. Open the [14.33 project template](https://github.com/jonpcohen/mit-14.33-project-template).
+3. Select **Use this template → Create a new repository**.
+4. Select your personal GitHub account as the owner.
+5. Name the repository `fa26-1433-YOUR-KERBEROS`. Replace `YOUR-KERBEROS` with your MIT Kerberos username.
+6. Use the repository visibility specified in class, then select **Create repository**.
+7. In your new repository, select **Settings → Collaborators**. Add the instructor and TA using the GitHub usernames provided in class. This access is required by the [course syllabus](../syllabus/syllabus.html#required-text-and-materials).
+
+Your new repository contains the course directory structure and README files. It is separate from the original template. Do not commit confidential data, passwords, API keys, or other secrets.
 
 ## 2. Install Git and authentication support
 
@@ -112,14 +117,35 @@ Use short commit messages that describe completed work, such as `Add baseline su
 
 ## 5. Use GitHub issues for the course
 
+Use two types of issues:
+
+- A **meeting agenda issue** summarizes the project before one scheduled meeting. Create a new agenda for each meeting.
+- A **work issue** tracks one consequential decision, question, blocker, or incomplete task. Keep the issue open across meetings until you resolve it.
+
+### Create a meeting agenda issue
+
 At least 24 hours before each one-on-one meeting:
 
-1. Open a new issue in your project repository.
-2. Title it `Meeting preparation — YYYY-MM-DD`.
-3. Complete the template in the [Individual meeting preparation](../syllabus/syllabus.html#individual-meeting-preparation) section of the syllabus. Aim for approximately 250 words, excluding links and tables.
-4. Link to supporting evidence in the repository. Report findings and decisions rather than time spent.
+1. Select **Issues → New issue** in your project repository.
+2. Title the issue `Meeting preparation — YYYY-MM-DD`.
+3. Copy the template from the syllabus's [Individual meeting preparation](../syllabus/syllabus.html#individual-meeting-preparation) section into the issue.
+4. Complete each section. Aim for approximately 250 words, excluding links and tables.
+5. Link each finding to supporting code, output, or documentation in the repository.
+6. In **Decisions, questions, or blockers**, link each relevant work issue by typing its number, such as `#23`.
 
-Use separate issues for consequential unresolved decisions or incomplete tasks. You may test alternatives on short-lived branches and link those branches from the relevant issue. After each meeting, update the agenda with agreed next steps and record decisions in the linked issues.
+Report findings and decisions rather than time spent. Use the agenda as a concise guide for the meeting, not as the complete history of the project.
+
+### Create and link a work issue
+
+Create a separate work issue when an item needs evidence, discussion, or follow-up beyond one meeting:
+
+1. Give the issue a specific title, such as `Choose the appropriate sample definition`.
+2. State the decision, question, blocker, or task.
+3. Add the relevant evidence, alternatives, and your current recommendation.
+4. State what must be true before you can close the issue.
+5. Link the work issue from the next meeting agenda by typing its issue number.
+
+You may test important alternatives on short-lived branches. Link each branch from the applicable work issue. After the meeting, update the agenda with agreed next steps. Record each decision and its rationale in the applicable work issue, then close that issue when the work is complete.
 
 ## 6. Correct mistakes without deleting history
 
