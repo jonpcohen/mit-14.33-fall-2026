@@ -2235,7 +2235,7 @@ a { color: #a31f34; }
 </header>
 
 
-<p>Git tracks changes to files on your computer. GitHub stores a remote copy of the repository and supports collaboration, issues, and links to evidence. These instructions use Git in a terminal; GitHub Desktop is not required.</p>
+<p>Git tracks changes to files on your computer. GitHub stores a remote copy of the repository and supports collaboration, issues, and links to evidence. These instructions explain two ways to work with Git: the command line and GitHub Desktop, a user interface application.</p>
 <section id="create-a-repository-from-the-course-template" class="level2">
 <h2 class="anchored" data-anchor-id="create-a-repository-from-the-course-template">1. Create a repository from the course template</h2>
 <ol type="1">
@@ -2249,54 +2249,55 @@ a { color: #a31f34; }
 </ol>
 <p>Your new repository contains the course directory structure and README files. It is separate from the original template. Do not commit confidential data, passwords, API keys, or other secrets.</p>
 </section>
-<section id="install-git-and-authentication-support" class="level2">
-<h2 class="anchored" data-anchor-id="install-git-and-authentication-support">2. Install Git and authentication support</h2>
-<section id="windows" class="level3">
-<h3 class="anchored" data-anchor-id="windows">Windows</h3>
+<section id="choose-how-to-work-with-git" class="level2">
+<h2 class="anchored" data-anchor-id="choose-how-to-work-with-git">2. Choose how to work with Git</h2>
+<p>You can use either method throughout the course. Both methods change the same files and Git history.</p>
+<section id="github-desktop" class="level3">
+<h3 class="anchored" data-anchor-id="github-desktop">GitHub Desktop</h3>
+<p>Install <a href="https://desktop.github.com/download/">GitHub Desktop</a> and sign in to your GitHub account. GitHub Desktop provides buttons and menus for the most common Git actions.</p>
+</section>
+<section id="command-line" class="level3">
+<h3 class="anchored" data-anchor-id="command-line">Command line</h3>
+<p>The command line lets you run Git commands in a terminal.</p>
+<section id="windows" class="level4">
+<h4 class="anchored" data-anchor-id="windows">Windows</h4>
 <p>Install <a href="https://git-scm.com/install/windows">Git for Windows</a>. Keep Git Credential Manager selected during installation.</p>
 </section>
-<section id="macos" class="level3">
-<h3 class="anchored" data-anchor-id="macos">macOS</h3>
+<section id="macos" class="level4">
+<h4 class="anchored" data-anchor-id="macos">macOS</h4>
 <p>If you use <a href="https://brew.sh/">Homebrew</a>, run:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install git</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install <span class="at">--cask</span> git-credential-manager</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Git Credential Manager opens a browser when GitHub authentication is required. Follow the browser prompts. See <a href="https://docs.github.com/en/get-started/git-basics/caching-your-github-credentials-in-git">GitHub’s authentication instructions</a> if authentication fails.</p>
 </section>
-<section id="identify-your-commits" class="level3">
-<h3 class="anchored" data-anchor-id="identify-your-commits">Identify your commits</h3>
+<section id="identify-your-command-line-commits" class="level4">
+<h4 class="anchored" data-anchor-id="identify-your-command-line-commits">Identify your command-line commits</h4>
 <p>Run these commands once. Replace the example values with your name and the email address associated with GitHub.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">&quot;Your Name&quot;</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">&quot;your-email@example.com&quot;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
-<section id="clone-the-repository" class="level2">
-<h2 class="anchored" data-anchor-id="clone-the-repository">3. Clone the repository</h2>
+</section>
+<section id="clone-your-repository" class="level2">
+<h2 class="anchored" data-anchor-id="clone-your-repository">3. Clone your repository</h2>
+<p>Cloning downloads the repository to your computer and connects the local copy to GitHub.</p>
+<section id="github-desktop-1" class="level3">
+<h3 class="anchored" data-anchor-id="github-desktop-1">GitHub Desktop</h3>
+<ol type="1">
+<li>On your repository’s GitHub page, select <strong>Code → Open with GitHub Desktop</strong>.</li>
+<li>Select the local folder where you want to keep the project.</li>
+<li>Select <strong>Clone</strong>.</li>
+</ol>
+</section>
+<section id="command-line-1" class="level3">
+<h3 class="anchored" data-anchor-id="command-line-1">Command line</h3>
 <p>On the GitHub repository page, select <strong>Code → HTTPS</strong>, then copy the URL. In a terminal, run:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone REPOSITORY-HTTPS-URL</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> fa26-1433-YOUR-KERBEROS</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Cloning creates a local project directory and connects it to the GitHub repository.</p>
 </section>
-<section id="save-work-with-git" class="level2">
-<h2 class="anchored" data-anchor-id="save-work-with-git">4. Save work with Git</h2>
-<p>Use this cycle whenever you reach a meaningful checkpoint:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="at">--ff-only</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add path/to/file</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--staged</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Describe the completed change&quot;</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li><code>git pull --ff-only</code> downloads new remote commits without creating an unintended merge commit.</li>
-<li><code>git status</code> shows changed, staged, and untracked files.</li>
-<li><code>git add path/to/file</code> stages a specific file for the next commit.</li>
-<li><code>git diff --staged</code> shows exactly what the next commit will contain.</li>
-<li><code>git commit</code> records the staged changes locally.</li>
-<li><code>git push</code> sends local commits to GitHub.</li>
-</ul>
-<p>Use short commit messages that describe completed work, such as <code>Add baseline summary statistics</code>. Commit source code, documentation, and small derived outputs needed to understand the project. Do not commit large raw datasets unless the course staff approves them.</p>
 </section>
 <section id="use-github-issues-for-the-course" class="level2">
-<h2 class="anchored" data-anchor-id="use-github-issues-for-the-course">5. Use GitHub issues for the course</h2>
+<h2 class="anchored" data-anchor-id="use-github-issues-for-the-course">4. Use GitHub issues for the course</h2>
 <p>Use two types of issues:</p>
 <ul>
 <li>A <strong>meeting agenda issue</strong> summarizes the project before one scheduled meeting. Create a new agenda for each meeting.</li>
@@ -2307,11 +2308,12 @@ a { color: #a31f34; }
 <p>At least 24 hours before each one-on-one meeting:</p>
 <ol type="1">
 <li>Select <strong>Issues → New issue</strong> in your project repository.</li>
-<li>Title the issue <code>Meeting preparation — YYYY-MM-DD</code>.</li>
-<li>Copy the template from the syllabus’s <a href="../syllabus/syllabus.html#individual-meeting-preparation">Individual meeting preparation</a> section into the issue.</li>
-<li>Complete each section. Aim for approximately 250 words, excluding links and tables.</li>
+<li>Next to <strong>Meeting preparation</strong>, select <strong>Get started</strong>.</li>
+<li>Add the meeting date to the issue title: <code>Meeting preparation — YYYY-MM-DD</code>.</li>
+<li>Complete each section of the issue template. Aim for approximately 250 words, excluding links and tables.</li>
 <li>Link each finding to supporting code, output, or documentation in the repository.</li>
 <li>In <strong>Decisions, questions, or blockers</strong>, link each relevant work issue by typing its number, such as <code>#23</code>.</li>
+<li>Select <strong>Submit new issue</strong>.</li>
 </ol>
 <p>Report findings and decisions rather than time spent. Use the agenda as a concise guide for the meeting, not as the complete history of the project.</p>
 </section>
@@ -2319,23 +2321,57 @@ a { color: #a31f34; }
 <h3 class="anchored" data-anchor-id="create-and-link-a-work-issue">Create and link a work issue</h3>
 <p>Create a separate work issue when an item needs evidence, discussion, or follow-up beyond one meeting:</p>
 <ol type="1">
+<li>Select <strong>Issues → New issue</strong>.</li>
+<li>Next to <strong>Project decision or question</strong>, select <strong>Get started</strong>.</li>
 <li>Give the issue a specific title, such as <code>Choose the appropriate sample definition</code>.</li>
-<li>State the decision, question, blocker, or task.</li>
-<li>Add the relevant evidence, alternatives, and your current recommendation.</li>
-<li>State what must be true before you can close the issue.</li>
+<li>Complete the template with the relevant evidence, alternatives, and your current recommendation.</li>
+<li>Select <strong>Submit new issue</strong>.</li>
 <li>Link the work issue from the next meeting agenda by typing its issue number.</li>
 </ol>
 <p>You may test important alternatives on short-lived branches. Link each branch from the applicable work issue. After the meeting, update the agenda with agreed next steps. Record each decision and its rationale in the applicable work issue, then close that issue when the work is complete.</p>
 </section>
 </section>
-<section id="correct-mistakes-without-deleting-history" class="level2">
-<h2 class="anchored" data-anchor-id="correct-mistakes-without-deleting-history">6. Correct mistakes without deleting history</h2>
-<p>If a change has not been committed, edit the file again. To remove a file from the staging area without discarding its changes, run:</p>
+<section id="save-work-and-correct-mistakes-with-git" class="level2">
+<h2 class="anchored" data-anchor-id="save-work-and-correct-mistakes-with-git">5. Save work and correct mistakes with Git</h2>
+<p>Git records snapshots called <strong>commits</strong>. A commit exists only in your local repository until you <strong>push</strong> it to GitHub. <strong>Pull</strong> downloads commits that are on GitHub but not on your computer.</p>
+<section id="github-desktop-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="github-desktop-workflow">GitHub Desktop workflow</h3>
+<ol type="1">
+<li>Select <strong>Fetch origin</strong>. If GitHub Desktop shows <strong>Pull origin</strong>, select it.</li>
+<li>Review the files and line-by-line changes in the <strong>Changes</strong> tab.</li>
+<li>Clear the checkbox for any file that does not belong in the next commit.</li>
+<li>Enter a short summary of the completed change.</li>
+<li>Select <strong>Commit to main</strong>.</li>
+<li>Select <strong>Push origin</strong>.</li>
+</ol>
+<p>If you must reverse a committed change, open <strong>History</strong>, right-click the commit, and select <strong>Revert Changes in Commit</strong>. Push the new reversal commit.</p>
+</section>
+<section id="command-line-workflow" class="level3">
+<h3 class="anchored" data-anchor-id="command-line-workflow">Command-line workflow</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull <span class="at">--ff-only</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add path/to/file</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--staged</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Describe the completed change&quot;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To remove a file from the next commit without deleting your changes, run:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> restore <span class="at">--staged</span> path/to/file</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>If an incorrect commit is already on GitHub, preserve the shared history. Either make a correcting commit or create a reversal commit:</p>
+<p>To reverse a commit that is already on GitHub, preserve the shared history:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert COMMIT-ID</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Ask the instructor or TA before rewriting published history with commands such as <code>git reset --hard</code> or a force push.</p>
+</section>
+<section id="practices-for-both-workflows" class="level3">
+<h3 class="anchored" data-anchor-id="practices-for-both-workflows">Practices for both workflows</h3>
+<ul>
+<li>Review each commit before you create it.</li>
+<li>Make small, coherent commits with summaries such as <code>Add baseline summary statistics</code>.</li>
+<li>Commit source code, documentation, and small outputs needed to understand the project.</li>
+<li>Do not commit large raw datasets unless the course staff approves them.</li>
+<li>Never commit confidential data, passwords, API keys, or other secrets.</li>
+<li>Keep <code>main</code> usable. Use a short-lived branch to test an important alternative.</li>
+<li>Ask the instructor or TA before you rewrite published history with <code>git reset --hard</code> or a force push.</li>
+</ul>
+</section>
 </section>
 
 </main>

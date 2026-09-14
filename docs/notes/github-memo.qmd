@@ -19,17 +19,17 @@ format:
         </style>
   typst:
     papersize: us-letter
-    fontsize: 9.5pt
+    fontsize: 9pt
     margin:
-      top: 0.45in
-      bottom: 0.45in
+      top: 0.4in
+      bottom: 0.4in
       left: 0.6in
       right: 0.6in
     number-sections: false
     include-in-header:
       text: |
         #set page(numbering: none)
-        #set par(leading: 0.45em, spacing: 0.5em)
+        #set par(leading: 0.4em, spacing: 0.45em)
         #set list(spacing: 0.25em)
         #set enum(spacing: 0.25em)
         #show link: set text(fill: rgb("#a31f34"))
@@ -38,7 +38,7 @@ format:
         #show heading.where(level: 3): set text(size: 9.5pt)
 ---
 
-Git tracks changes to files on your computer. GitHub stores a remote copy of the repository and supports collaboration, issues, and links to evidence. These instructions use Git in a terminal; GitHub Desktop is not required.
+Git tracks changes to files on your computer. GitHub stores a remote copy of the repository and supports collaboration, issues, and links to evidence. These instructions explain two ways to work with Git: the command line and GitHub Desktop, a user interface application.
 
 ## 1. Create a repository from the course template
 
@@ -52,13 +52,27 @@ Git tracks changes to files on your computer. GitHub stores a remote copy of the
 
 Your new repository contains the course directory structure and README files. It is separate from the original template. Do not commit confidential data, passwords, API keys, or other secrets.
 
-## 2. Install Git and authentication support
+## 2. Choose how to work with Git
 
-### Windows
+You can use either method throughout the course. Both methods change the same files and Git history.
+
+### GitHub Desktop
+
+Install [GitHub Desktop](https://desktop.github.com/download/) and sign in to your GitHub account. GitHub Desktop provides buttons and menus for the most common Git actions.
+
+```{=typst}
+#parbreak()
+```
+
+### Command line
+
+The command line lets you run Git commands in a terminal.
+
+#### Windows
 
 Install [Git for Windows](https://git-scm.com/install/windows). Keep Git Credential Manager selected during installation.
 
-### macOS
+#### macOS
 
 If you use [Homebrew](https://brew.sh/), run:
 
@@ -69,7 +83,7 @@ brew install --cask git-credential-manager
 
 Git Credential Manager opens a browser when GitHub authentication is required. Follow the browser prompts. See [GitHub's authentication instructions](https://docs.github.com/en/get-started/git-basics/caching-your-github-credentials-in-git) if authentication fails.
 
-### Identify your commits
+#### Identify your command-line commits
 
 Run these commands once. Replace the example values with your name and the email address associated with GitHub.
 
@@ -78,7 +92,17 @@ git config --global user.name "Your Name"
 git config --global user.email "your-email@example.com"
 ```
 
-## 3. Clone the repository
+## 3. Clone your repository
+
+Cloning downloads the repository to your computer and connects the local copy to GitHub.
+
+### GitHub Desktop
+
+1. On your repository's GitHub page, select **Code → Open with GitHub Desktop**.
+2. Select the local folder where you want to keep the project.
+3. Select **Clone**.
+
+### Command line
 
 On the GitHub repository page, select **Code → HTTPS**, then copy the URL. In a terminal, run:
 
@@ -87,35 +111,11 @@ git clone REPOSITORY-HTTPS-URL
 cd fa26-1433-YOUR-KERBEROS
 ```
 
-Cloning creates a local project directory and connects it to the GitHub repository.
-
 ```{=typst}
 #pagebreak()
 ```
 
-## 4. Save work with Git
-
-Use this cycle whenever you reach a meaningful checkpoint:
-
-```bash
-git pull --ff-only
-git status
-git add path/to/file
-git diff --staged
-git commit -m "Describe the completed change"
-git push
-```
-
-- `git pull --ff-only` downloads new remote commits without creating an unintended merge commit.
-- `git status` shows changed, staged, and untracked files.
-- `git add path/to/file` stages a specific file for the next commit.
-- `git diff --staged` shows exactly what the next commit will contain.
-- `git commit` records the staged changes locally.
-- `git push` sends local commits to GitHub.
-
-Use short commit messages that describe completed work, such as `Add baseline summary statistics`. Commit source code, documentation, and small derived outputs needed to understand the project. Do not commit large raw datasets unless the course staff approves them.
-
-## 5. Use GitHub issues for the course
+## 4. Use GitHub issues for the course
 
 Use two types of issues:
 
@@ -127,11 +127,12 @@ Use two types of issues:
 At least 24 hours before each one-on-one meeting:
 
 1. Select **Issues → New issue** in your project repository.
-2. Title the issue `Meeting preparation — YYYY-MM-DD`.
-3. Copy the template from the syllabus's [Individual meeting preparation](../syllabus/syllabus.html#individual-meeting-preparation) section into the issue.
-4. Complete each section. Aim for approximately 250 words, excluding links and tables.
+2. Next to **Meeting preparation**, select **Get started**.
+3. Add the meeting date to the issue title: `Meeting preparation — YYYY-MM-DD`.
+4. Complete each section of the issue template. Aim for approximately 250 words, excluding links and tables.
 5. Link each finding to supporting code, output, or documentation in the repository.
 6. In **Decisions, questions, or blockers**, link each relevant work issue by typing its number, such as `#23`.
+7. Select **Submit new issue**.
 
 Report findings and decisions rather than time spent. Use the agenda as a concise guide for the meeting, not as the complete history of the project.
 
@@ -139,27 +140,60 @@ Report findings and decisions rather than time spent. Use the agenda as a concis
 
 Create a separate work issue when an item needs evidence, discussion, or follow-up beyond one meeting:
 
-1. Give the issue a specific title, such as `Choose the appropriate sample definition`.
-2. State the decision, question, blocker, or task.
-3. Add the relevant evidence, alternatives, and your current recommendation.
-4. State what must be true before you can close the issue.
-5. Link the work issue from the next meeting agenda by typing its issue number.
+1. Select **Issues → New issue**.
+2. Next to **Project decision or question**, select **Get started**.
+3. Give the issue a specific title, such as `Choose the appropriate sample definition`.
+4. Complete the template with the relevant evidence, alternatives, and your current recommendation.
+5. Select **Submit new issue**.
+6. Link the work issue from the next meeting agenda by typing its issue number.
 
 You may test important alternatives on short-lived branches. Link each branch from the applicable work issue. After the meeting, update the agenda with agreed next steps. Record each decision and its rationale in the applicable work issue, then close that issue when the work is complete.
 
-## 6. Correct mistakes without deleting history
+## 5. Save work and correct mistakes with Git
 
-If a change has not been committed, edit the file again. To remove a file from the staging area without discarding its changes, run:
+Git records snapshots called **commits**. A commit exists only in your local repository until you **push** it to GitHub. **Pull** downloads commits that are on GitHub but not on your computer.
+
+### GitHub Desktop workflow
+
+1. Select **Fetch origin**. If GitHub Desktop shows **Pull origin**, select it.
+2. Review the files and line-by-line changes in the **Changes** tab.
+3. Clear the checkbox for any file that does not belong in the next commit.
+4. Enter a short summary of the completed change.
+5. Select **Commit to main**.
+6. Select **Push origin**.
+
+If you must reverse a committed change, open **History**, right-click the commit, and select **Revert Changes in Commit**. Push the new reversal commit.
+
+### Command-line workflow
+
+```bash
+git pull --ff-only
+git status
+git add path/to/file
+git diff --staged
+git commit -m "Describe the completed change"
+git push
+```
+
+To remove a file from the next commit without deleting your changes, run:
 
 ```bash
 git restore --staged path/to/file
 ```
 
-If an incorrect commit is already on GitHub, preserve the shared history. Either make a correcting commit or create a reversal commit:
+To reverse a commit that is already on GitHub, preserve the shared history:
 
 ```bash
 git revert COMMIT-ID
 git push
 ```
 
-Ask the instructor or TA before rewriting published history with commands such as `git reset --hard` or a force push.
+### Practices for both workflows
+
+- Review each commit before you create it.
+- Make small, coherent commits with summaries such as `Add baseline summary statistics`.
+- Commit source code, documentation, and small outputs needed to understand the project.
+- Do not commit large raw datasets unless the course staff approves them.
+- Never commit confidential data, passwords, API keys, or other secrets.
+- Keep `main` usable. Use a short-lived branch to test an important alternative.
+- Ask the instructor or TA before you rewrite published history with `git reset --hard` or a force push.
