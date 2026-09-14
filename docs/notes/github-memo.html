@@ -2245,12 +2245,12 @@ a { color: #a31f34; }
 <li>Select your personal GitHub account as the owner.</li>
 <li>Name the repository <code>fa26-1433-YOUR-KERBEROS</code>. Replace <code>YOUR-KERBEROS</code> with your MIT Kerberos username.</li>
 <li>Use the repository visibility specified in class, then select <strong>Create repository</strong>.</li>
-<li>In your new repository, select <strong>Settings → Collaborators</strong>. Add the instructor and TA using the GitHub usernames provided in class. This access is required by the <a href="../syllabus/syllabus.html#required-text-and-materials">course syllabus</a>.</li>
+<li>In your new repository, select <strong>Settings → Collaborators</strong>. Add the instructor (<code>jonpcohen</code>) and the TA (<code>lbttrl</code>). This access is required by the <a href="../syllabus/syllabus.html#required-text-and-materials">course syllabus</a>.</li>
 </ol>
 <p>Your new repository contains the course directory structure and README files. It is separate from the original template. Do not commit confidential data, passwords, API keys, or other secrets.</p>
 </section>
-<section id="choose-how-to-work-with-git" class="level2">
-<h2 class="anchored" data-anchor-id="choose-how-to-work-with-git">2. Choose how to work with Git</h2>
+<section id="options-for-working-with-github" class="level2">
+<h2 class="anchored" data-anchor-id="options-for-working-with-github">2. Options for working with GitHub</h2>
 <p>You can use either method throughout the course. Both methods change the same files and Git history.</p>
 <section id="github-desktop" class="level3">
 <h3 class="anchored" data-anchor-id="github-desktop">GitHub Desktop</h3>
@@ -2291,9 +2291,15 @@ a { color: #a31f34; }
 </section>
 <section id="command-line-1" class="level3">
 <h3 class="anchored" data-anchor-id="command-line-1">Command line</h3>
-<p>On the GitHub repository page, select <strong>Code → HTTPS</strong>, then copy the URL. In a terminal, run:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone REPOSITORY-HTTPS-URL</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> fa26-1433-YOUR-KERBEROS</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ol type="1">
+<li>On your repository’s GitHub page, select <strong>Code → HTTPS</strong>.</li>
+<li>Copy the URL.</li>
+<li>In a terminal, type <code>git clone</code>, add a space, paste the copied URL, and press Enter.</li>
+<li>Type <code>cd</code>, add a space, type your repository name, and press Enter.</li>
+</ol>
+<p>For example, a student with the GitHub username <code>janedoe</code> and Kerberos username <code>jdoe</code> would run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/janedoe/fa26-1433-jdoe.git</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> fa26-1433-jdoe</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 </section>
 <section id="use-github-issues-for-the-course" class="level2">

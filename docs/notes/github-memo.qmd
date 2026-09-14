@@ -48,11 +48,11 @@ Git tracks changes to files on your computer. GitHub stores a remote copy of the
 4. Select your personal GitHub account as the owner.
 5. Name the repository `fa26-1433-YOUR-KERBEROS`. Replace `YOUR-KERBEROS` with your MIT Kerberos username.
 6. Use the repository visibility specified in class, then select **Create repository**.
-7. In your new repository, select **Settings → Collaborators**. Add the instructor and TA using the GitHub usernames provided in class. This access is required by the [course syllabus](../syllabus/syllabus.html#required-text-and-materials).
+7. In your new repository, select **Settings → Collaborators**. Add the instructor (`jonpcohen`) and the TA (`lbttrl`). This access is required by the [course syllabus](../syllabus/syllabus.html#required-text-and-materials).
 
 Your new repository contains the course directory structure and README files. It is separate from the original template. Do not commit confidential data, passwords, API keys, or other secrets.
 
-## 2. Choose how to work with Git
+## 2. Options for working with GitHub
 
 You can use either method throughout the course. Both methods change the same files and Git history.
 
@@ -104,11 +104,16 @@ Cloning downloads the repository to your computer and connects the local copy to
 
 ### Command line
 
-On the GitHub repository page, select **Code → HTTPS**, then copy the URL. In a terminal, run:
+1. On your repository's GitHub page, select **Code → HTTPS**.
+2. Copy the URL.
+3. In a terminal, type `git clone`, add a space, paste the copied URL, and press Enter.
+4. Type `cd`, add a space, type your repository name, and press Enter.
+
+For example, a student with the GitHub username `janedoe` and Kerberos username `jdoe` would run:
 
 ```bash
-git clone REPOSITORY-HTTPS-URL
-cd fa26-1433-YOUR-KERBEROS
+git clone https://github.com/janedoe/fa26-1433-jdoe.git
+cd fa26-1433-jdoe
 ```
 
 ```{=typst}
