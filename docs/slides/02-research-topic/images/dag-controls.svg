@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" role="img" aria-labelledby="title">
+<title id="title">An observed control blocks the confounding path</title>
+<defs>
+<marker id="causal-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#107895"/></marker>
+<marker id="confounding-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#9a2515"/></marker>
+<style>
+text { font-family: Arial, Helvetica, sans-serif; fill: #26353c; }
+.label { font-size: 27px; }
+.small { font-size: 23px; fill: #66747c; }
+.node-label { font-size: 42px; font-style: italic; }
+.node { stroke-width: 3; fill: white; }
+.node.treatment { stroke: #107895; fill: #eff7f9; }
+.node.outcome { stroke: #26353c; }
+.node.unobserved { stroke: #9a2515; stroke-dasharray: 8 5; fill: #fff8f5; }
+.node-label.treatment, .teal { fill: #107895; }
+.node-label.unobserved, .rust { fill: #9a2515; }
+.edge { fill: none; stroke-width: 3.2; }
+.causal { stroke: #107895; }
+.confounding { stroke: #9a2515; }
+.question { font-size: 37px; fill: #9a2515; }
+</style>
+</defs>
+<path d="M 448 94 L 285 153" class="edge confounding" marker-end="url(#confounding-arrow)" />
+<path d="M 240 208 L 240 246" class="edge causal" marker-end="url(#causal-arrow)" />
+<path d="M 510 106 L 688 257" class="edge confounding" marker-end="url(#confounding-arrow)" />
+<path d="M 285 290 L 674 290" class="edge causal" marker-end="url(#causal-arrow)" />
+
+<circle cx="480" cy="75" r="43" class="node unobserved"/><text x="480" y="89" class="node-label unobserved" text-anchor="middle">U</text>
+<circle cx="240" cy="162" r="43" class="node outcome"/>
+<text x="240" y="175" class="node-label" text-anchor="middle">X</text>
+<circle cx="240" cy="290" r="43" class="node treatment"/><text x="240" y="304" class="node-label treatment" text-anchor="middle">D</text>
+<circle cx="720" cy="290" r="43" class="node outcome"/><text x="720" y="304" class="node-label outcome" text-anchor="middle">Y</text>
+<text x="480" y="17" class="small" text-anchor="middle">Unobserved causes</text>
+<text x="175" y="173" class="small" text-anchor="end">Hold fixed</text>
+<text x="240" y="364" class="label" text-anchor="middle">Treatment</text>
+<text x="720" y="364" class="label" text-anchor="middle">Outcome</text>
+
+</svg>

@@ -1,0 +1,32 @@
+/* Lecture-local layout. Keep the shared Clean theme unchanged. */
+.reveal .agenda ol { font-size: 0.94em; line-height: 1.35; }
+.reveal .agenda li { margin-bottom: 0.55em; }
+.reveal .recap ul { font-size: 0.88em; line-height: 1.32; }
+.reveal .recap li { margin-bottom: 0.55em; }
+.reveal .reference { font-size: 0.62em; color: #525b60; margin-top: 1.4em; }
+.reveal .potential-outcomes table { font-size: 0.82em; margin: 0.7em 0; width: 100%; }
+.reveal .potential-outcomes > p { font-size: 0.88em; margin-top: 0.75em; }
+.reveal .diagram-slide .causal-diagram {
+  display: block; width: 900px; height: 340px; max-width: 100%;
+  margin: 0 auto; object-fit: contain;
+}
+.reveal .diagram-slide > p,
+.reveal .diagram-slide > div > p { margin: 0.25em 0; }
+.reveal .diagram-slide ul { font-size: 0.86em; line-height: 1.3; }
+.reveal .diagram-slide li { margin-bottom: 0.35em; }
+.reveal .plot-slide .trend-diagram {
+  display: block; width: 960px; height: 365px; max-width: 100%;
+  margin: 0 auto; object-fit: contain;
+}
+.reveal .plot-slide > p,
+.reveal .plot-slide > div > p { margin: 0.35em 0; font-size: 0.85em; }
+.reveal .draft-slide em { color: #9a2515; }
+.reveal .section-divider h2 {
+  margin-top: 2.5em;
+  text-align: center;
+  font-size: 1.9em;
+}
+.reveal .economist-shot {
+  display: block; max-width: 78%; max-height: 410px; width: auto; height: auto;
+  margin: 0.45em auto 0.6em;
+}

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" role="img" aria-labelledby="title">
+<title id="title">Confounding before and after treatment</title>
+<defs>
+<marker id="causal-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#107895"/></marker>
+<marker id="confounding-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#9a2515"/></marker>
+<style>
+text { font-family: Arial, Helvetica, sans-serif; fill: #26353c; }
+.label { font-size: 27px; }
+.small { font-size: 23px; fill: #66747c; }
+.node-label { font-size: 42px; font-style: italic; }
+.node { stroke-width: 3; fill: white; }
+.node.treatment { stroke: #107895; fill: #eff7f9; }
+.node.outcome { stroke: #26353c; }
+.node.unobserved { stroke: #9a2515; stroke-dasharray: 8 5; fill: #fff8f5; }
+.node-label.treatment, .teal { fill: #107895; }
+.node-label.unobserved, .rust { fill: #9a2515; }
+.edge { fill: none; stroke-width: 3.2; }
+.causal { stroke: #107895; }
+.confounding { stroke: #9a2515; }
+.question { font-size: 37px; fill: #9a2515; }
+</style>
+</defs>
+<path d="M 225 85 L 644 85" class="edge confounding" marker-end="url(#confounding-arrow)" />
+<path d="M 214 111 L 652 267" class="edge confounding" marker-end="url(#confounding-arrow)" />
+<path d="M 180 130 L 180 245" class="edge confounding" marker-end="url(#confounding-arrow)" />
+<path d="M 225 290 L 644 290" class="edge causal" marker-end="url(#causal-arrow)" />
+<circle cx="180" cy="85" r="43" class="node unobserved"/><text x="180" y="99" class="node-label unobserved" text-anchor="middle">U</text>
+<circle cx="180" cy="290" r="43" class="node treatment"/><text x="180" y="304" class="node-label treatment" text-anchor="middle">D</text>
+<circle cx="690" cy="85" r="43" class="node outcome"/><text x="690" y="99" class="node-label outcome" text-anchor="middle">Y</text>
+<circle cx="690" cy="290" r="43" class="node outcome"/><text x="690" y="304" class="node-label outcome" text-anchor="middle">Y</text>
+<text x="180" y="24" class="small" text-anchor="middle">Unobserved differences</text>
+<text x="180" y="364" class="label" text-anchor="middle">Treatment begins</text>
+<text x="754" y="95" class="label" text-anchor="start">Before</text>
+<text x="754" y="300" class="label" text-anchor="start">After</text>
+</svg>

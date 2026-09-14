@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" role="img" aria-labelledby="title">
+<title id="title">An instrumental variable supplies a separate source of treatment variation</title>
+<defs>
+<marker id="causal-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#107895"/></marker>
+<marker id="confounding-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#9a2515"/></marker>
+<style>
+text { font-family: Arial, Helvetica, sans-serif; fill: #26353c; }
+.label { font-size: 27px; }
+.small { font-size: 23px; fill: #66747c; }
+.node-label { font-size: 42px; font-style: italic; }
+.node { stroke-width: 3; fill: white; }
+.node.treatment { stroke: #107895; fill: #eff7f9; }
+.node.outcome { stroke: #26353c; }
+.node.unobserved { stroke: #9a2515; stroke-dasharray: 8 5; fill: #fff8f5; }
+.node-label.treatment, .teal { fill: #107895; }
+.node-label.unobserved, .rust { fill: #9a2515; }
+.edge { fill: none; stroke-width: 3.2; }
+.causal { stroke: #107895; }
+.confounding { stroke: #9a2515; }
+.question { font-size: 37px; fill: #9a2515; }
+</style>
+</defs>
+<path d="M 155 260 L 364 260" class="edge causal" marker-end="url(#causal-arrow)" />
+<path d="M 455 260 L 744 260" class="edge causal" marker-end="url(#causal-arrow)" />
+<path d="M 569 106 L 441 229" class="edge confounding" marker-end="url(#confounding-arrow)" />
+<path d="M 631 106 L 759 229" class="edge confounding" marker-end="url(#confounding-arrow)" />
+<circle cx="600" cy="75" r="43" class="node unobserved"/><text x="600" y="89" class="node-label unobserved" text-anchor="middle">U</text>
+<circle cx="110" cy="260" r="43" class="node treatment"/><text x="110" y="274" class="node-label treatment" text-anchor="middle">Z</text>
+<circle cx="410" cy="260" r="43" class="node treatment"/><text x="410" y="274" class="node-label treatment" text-anchor="middle">D</text>
+<circle cx="790" cy="260" r="43" class="node outcome"/><text x="790" y="274" class="node-label outcome" text-anchor="middle">Y</text>
+<text x="600" y="17" class="small" text-anchor="middle">Unobserved causes</text>
+<text x="110" y="338" class="label" text-anchor="middle">Instrument</text>
+<text x="410" y="338" class="label" text-anchor="middle">Treatment</text>
+<text x="790" y="338" class="label" text-anchor="middle">Outcome</text>
+</svg>
