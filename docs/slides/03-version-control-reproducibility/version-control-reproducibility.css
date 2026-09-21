@@ -1,0 +1,139 @@
+/* Lecture-local layouts for Git and reproducibility diagrams. */
+.reveal .agenda ol { font-size: 0.94em; line-height: 1.35; }
+.reveal .agenda li { margin-bottom: 0.55em; }
+.reveal .section-divider h2 {
+  margin-top: 2.5em;
+  text-align: center;
+  font-size: 1.9em;
+}
+.reveal pre code { max-height: 420px; }
+.reveal table { font-size: 0.78em; }
+.reveal .three-part,
+.reveal .comparison,
+.reveal .final-model {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 1.1rem;
+  margin: 1.2rem auto;
+}
+.reveal .three-part > div,
+.reveal .comparison > div,
+.reveal .final-model > div:not(.final-arrow) {
+  flex: 1;
+  padding: 1rem 1.2rem;
+  border: 2px solid #107895;
+  border-radius: 0.35rem;
+  background: #f5fafb;
+  text-align: center;
+}
+.reveal .three-part span,
+.reveal .final-model span,
+.reveal .environment-stack span {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.72em;
+  color: #4a5459;
+}
+.reveal .comparison h3 { margin: 0 0 0.6rem; }
+.reveal .comparison p { font-size: 0.78em; margin: 0.45rem 0; }
+.reveal .commit-graph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2.2rem auto;
+}
+.reveal .commit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 8.2rem;
+  height: 8.2rem;
+  border: 5px solid #107895;
+  border-radius: 50%;
+  text-align: center;
+  background: white;
+}
+.reveal .commit.current { border-color: #9a2515; }
+.reveal .commit span { font-weight: 700; font-size: 1.15em; }
+.reveal .commit small { font-size: 0.48em; line-height: 1.2; padding: 0.2rem; }
+.reveal .commit-graph .arrow { font-size: 2.2em; padding: 0 0.8rem; }
+.reveal .branch-graph {
+  display: grid;
+  grid-template-columns: 4.5rem 2.5rem 4.5rem 2.5rem 4.5rem 2.5rem 4.5rem;
+  grid-template-rows: 5rem auto;
+  align-items: center;
+  justify-content: center;
+  margin: 4.8rem auto 4.6rem;
+}
+.reveal .branch-graph > p { display: contents; }
+.reveal .graph-node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border: 3px solid #107895;
+  border-radius: 50%;
+  background: white;
+  font-family: monospace;
+}
+.reveal .graph-node.alt-node { border-color: #9a2515; }
+.reveal .graph-arrow { text-align: center; font-size: 1.35em; }
+.reveal .graph-label {
+  padding: 0.3rem 0.55rem;
+  border-radius: 0.25rem;
+  color: white;
+  text-align: center;
+  font-family: monospace;
+  font-size: 0.68em;
+  line-height: 1.15;
+}
+.reveal .main-label { grid-column: 5; grid-row: 2; background: #107895; }
+.reveal .alt-label {
+  grid-column: 7;
+  grid-row: 2;
+  min-width: 7rem;
+  background: #9a2515;
+  font-size: 0.52em;
+}
+.reveal .state-flow,
+.reveal .pipeline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin: 2rem auto;
+}
+.reveal .state-flow > div:not(.flow-arrow),
+.reveal .pipeline > div {
+  padding: 1rem 0.75rem;
+  border: 2px solid #107895;
+  border-radius: 0.35rem;
+  background: #f5fafb;
+  text-align: center;
+}
+.reveal .state-flow > div:not(.flow-arrow) { width: 24%; }
+.reveal .state-flow small { display: block; margin-top: 0.45rem; font-size: 0.58em; }
+.reveal .flow-arrow { font-size: 0.72em; white-space: nowrap; }
+.reveal .flow-arrow code { margin: 0 0.25rem; }
+.reveal .pipeline { gap: 0.4rem; }
+.reveal .pipeline > div { flex: 1; padding: 0.8rem 0.35rem; font-size: 0.68em; }
+.reveal .pipeline > span { font-size: 1.25em; }
+.reveal .environment-stack { width: 72%; margin: 1rem auto; }
+.reveal .environment-stack > div {
+  margin: 0.35rem 0;
+  padding: 0.55rem 1rem;
+  border: 2px solid #107895;
+  background: #f5fafb;
+  text-align: center;
+}
+.reveal .environment-stack > div:nth-child(2) { margin-left: 4%; margin-right: 4%; }
+.reveal .environment-stack > div:nth-child(3) { margin-left: 8%; margin-right: 8%; }
+.reveal .environment-stack > div:nth-child(4) { margin-left: 12%; margin-right: 12%; }
+.reveal .environment-stack span { display: inline; margin-left: 0.8rem; }
+.reveal .final-model { align-items: center; margin-top: 2.2rem; }
+.reveal .final-arrow { font-size: 2em; }
+.reveal .final-model > div:not(.final-arrow) { min-height: 5.2rem; }
+.reveal .agent-process ol { font-size: 0.86em; line-height: 1.25; }
+.reveal .agent-process li { margin-bottom: 0.35em; }

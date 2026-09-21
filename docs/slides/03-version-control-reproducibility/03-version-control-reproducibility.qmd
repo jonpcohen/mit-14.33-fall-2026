@@ -1,0 +1,880 @@
+---
+title: "Version Control and Reproducibility"
+subtitle: "14.33 Research and Communication in Economics"
+author: "Jon Cohen"
+date: "September 23, 2026"
+css: version-control-reproducibility.css
+---
+
+## Agenda {.agenda}
+
+1. Use the command line to describe actions precisely
+2. Use Git to record useful versions of a research project
+3. Use branches to separate exploratory work
+4. Make one version reproducible by another person
+
+::: {.notes}
+The lecture has two connected layers. Git records project history. Reproducible
+research requires enough information to run a selected version again.
+
+The command line is supporting material. Teach only the concepts needed to
+understand the Git examples and scripted research workflows.
+
+Suggested timing: motivation and command line, 15 minutes; Git's data model,
+20 minutes; individual workflow, 25 minutes; reproducibility, 15 minutes;
+summary and questions, 5 minutes.
+:::
+
+## The goal
+
+At the end of the semester, you should be able to answer:
+
+1. What changed?
+2. Why did it change?
+3. Which version produced this result?
+4. Can another person produce it again?
+
+::: {.notes}
+These questions apply to your future self, an adviser, a research assistant,
+or an AI agent. Version control answers the first three questions. The complete
+research workflow answers the fourth question.
+:::
+
+## Organization without version control
+
+```text
+analysis.py
+analysis_new.py
+analysis_final.py
+analysis_final_fixed.py
+analysis_final_final_no_seriously.py
+```
+
+**Prediction:** Which file produced the table in the paper?
+
+::: {.notes}
+Pause before asking for answers. The filenames record guesses about importance,
+not a reliable history. Copies also hide which lines changed and why.
+
+The problem is not only untidy filenames. The researcher cannot connect a
+result to a precise state of the complete project.
+:::
+
+## Version control records project states
+
+```text
+●  Estimate baseline model
+│
+●  Correct treatment coding
+│
+●  Import raw survey data
+```
+
+Each **commit** records a project snapshot and an explanation.
+
+::: {.notes}
+Define a commit as a recorded project snapshot plus metadata. The metadata
+include its parent, author, time, and message.
+
+Git usually stores file differences efficiently, but the useful mental model
+is a sequence or graph of complete project states.
+:::
+
+## Version control changes how you work
+
+| Without Git | With Git |
+|---|---|
+| Copy files to preserve versions | Record a commit |
+| Recall last month's changes | Inspect the history |
+| Fear an unsuccessful experiment | Create a branch |
+| Lose the last working version | Return to a prior commit |
+
+::: {.notes}
+For independent research, Git is primarily an organization and recovery tool.
+Collaboration is an important extension, but it is not the organizing case for
+this course.
+:::
+
+## A reproducible result
+
+> Another person can use the same inputs and instructions to produce the same result.
+
+Git preserves the version. Git does not preserve the complete computing environment.
+
+::: {.notes}
+Distinguish version control from reproducibility now. A repository can preserve
+the exact analysis code while omitting the data, package versions, seed, or run
+instructions. That repository has useful history but may not be reproducible.
+:::
+
+## Command line interface {.section-divider}
+
+## Three parts of a command-line session
+
+<div class="three-part">
+<div><strong>Terminal</strong><br><span>Displays text</span></div>
+<div><strong>Shell</strong><br><span>Interprets commands</span></div>
+<div><strong>Program</strong><br><span>Performs an action</span></div>
+</div>
+
+```text
+$ git status
+```
+
+::: {.notes}
+The terminal is the window. The shell reads the command. Git is the program
+that the shell starts. Students do not need the implementation details, but
+these terms prevent later confusion.
+
+The shell is valuable because each action has a textual representation. The
+same command can be inspected, repeated, documented, and given to an agent.
+
+Source: [Missing Semester: Course Overview and the Shell](https://missing.csail.mit.edu/2026/course-shell/).
+:::
+
+## A command has a structure
+
+| `git` | `log` | `--oneline` | `analysis.py` |
+|:---:|:---:|:---:|:---:|
+| Program | Action | Option | Argument |
+
+::: {.notes}
+Arguments are strings supplied to a program. Options or flags modify the
+program's behavior. The exact grammar differs across programs, so use
+`<command> --help` or documentation when needed.
+
+Students do not need to memorize every command. They need to read a command,
+identify its parts, and verify its effect.
+
+Source: [Missing Semester: Command-line Environment](https://missing.csail.mit.edu/2026/command-line-environment/).
+:::
+
+## Location matters
+
+```bash
+$ pwd
+/Users/you/research
+
+$ ls
+README.md  analysis.py  data  output
+
+$ cd data
+$ pwd
+/Users/you/research/data
+```
+
+Most Git commands act on the repository that contains the current directory.
+
+::: {.notes}
+Define the current working directory. A relative path begins from this
+directory. An absolute path begins from the root of the file system.
+
+Many command-line mistakes are location mistakes. Before a consequential
+command, students can use `pwd`, `ls`, and `git status` to verify context.
+:::
+
+## Prediction: where is the file?
+
+```bash
+$ pwd
+/Users/you/research/code
+
+$ ls ../data/raw
+survey.csv
+
+$ python clean.py ../data/raw/survey.csv
+```
+
+What path does `../data/raw/survey.csv` identify?
+
+::: {.notes}
+Ask students to interpret the path before revealing the answer. `..` means
+the parent directory. From `research/code`, the path identifies
+`research/data/raw/survey.csv`.
+
+This question prepares students to understand why code that depends on an
+unknown working directory is difficult to reproduce.
+:::
+
+## A small command-line vocabulary
+
+| Goal | Command |
+|---|---|
+| Show the current directory | `pwd` |
+| List files | `ls` |
+| Change directory | `cd <path>` |
+| Create a directory | `mkdir <path>` |
+| Read a text file | `cat <file>` |
+| Get help | `<command> --help` |
+
+::: {.notes}
+These examples use a Unix-style shell on macOS or Linux. Windows PowerShell
+has related commands, but some syntax differs. Git concepts do not depend on
+the shell.
+
+Do not turn this section into a syntax survey. The core ideas are current
+location, paths, programs, arguments, and observable output.
+:::
+
+## Prefer a recorded procedure
+
+**Manual workflow**
+
+> Open the CSV. Delete three rows. Rename two columns. Save a new file.
+
+**Scripted workflow**
+
+```bash
+python code/clean.py data/raw/survey.csv data/derived/survey.csv
+```
+
+::: {.notes}
+A script makes the transformation inspectable and repeatable. The command
+records the program, input, and output. The script records the precise rules.
+
+Manual review can remain part of research, but a manual data transformation
+must be documented. Prefer scripts for transformations that a computer can
+perform.
+:::
+
+## Git's data model {.section-divider}
+
+## Git and GitHub are different
+
+<div class="comparison">
+<div>
+<h3>Git</h3>
+<p>Version-control software</p>
+<p>Runs on your computer</p>
+<p>Does not require the internet</p>
+</div>
+<div>
+<h3>GitHub</h3>
+<p>Hosts Git repositories</p>
+<p>Supports sharing and review</p>
+<p>Requires a network connection</p>
+</div>
+</div>
+
+::: {.notes}
+A local repository contains its own history. GitHub can store another copy of
+that repository and provide web-based collaboration features.
+
+Students will use GitHub in the course, but GitHub is not the version-control
+system.
+:::
+
+## A Git repository contains a graph
+
+<div class="commit-graph linear">
+<div class="commit"><span>C1</span><small>Import data</small></div>
+<div class="arrow">←</div>
+<div class="commit"><span>C2</span><small>Clean data</small></div>
+<div class="arrow">←</div>
+<div class="commit current"><span>C3</span><small>Estimate model</small></div>
+</div>
+
+- Each commit records a snapshot
+- Each commit identifies its parent
+- The history records relationships, not only dates
+
+::: {.notes}
+The arrows point from a commit to its parent. Git history is a directed acyclic
+graph. Students do not need that term, but they should understand that history
+can branch and later merge.
+
+The commit identifier is derived from content. Short labels such as C1 are for
+teaching only; Git uses hashes.
+
+Source: [Missing Semester: Version Control and Git](https://missing.csail.mit.edu/2026/version-control/).
+:::
+
+## A commit is more than a saved file
+
+```text
+commit 8e12c4a
+Parent:  47d906b
+Author:  Student Name
+Date:    2026-09-16
+
+    Correct treatment coding
+```
+
+A useful commit records one coherent change.
+
+::: {.notes}
+The snapshot covers the repository, not only one file. The parent connects the
+snapshot to history. The message records intent.
+
+Recommend small commits that leave the project in a coherent state. A commit
+should be large enough to represent one meaningful change and small enough to
+explain in one sentence.
+:::
+
+## Branches are movable labels
+
+<div class="branch-graph">
+<span class="graph-node">C1</span><span class="graph-arrow">←</span>
+<span class="graph-node">C2</span><span class="graph-arrow">←</span>
+<span class="graph-node">C3</span><span class="graph-arrow">←</span>
+<span class="graph-node alt-node">C4</span>
+<span class="graph-label main-label">main</span>
+<span class="graph-label alt-label">alternative<br>(HEAD)</span>
+</div>
+
+`HEAD` identifies your current branch and commit.
+
+::: {.notes}
+A branch is not a second folder or a copy of every file. It is a movable name
+that identifies one line of development. New commits advance the current
+branch label.
+
+HEAD records the current position. Keep the explanation at this level. The
+students do not need Git's internal reference files.
+:::
+
+## Prediction: what moves?
+
+```bash
+git switch -c alternative-specification
+# edit analysis.py
+git add analysis.py
+git commit -m "Estimate quadratic specification"
+```
+
+After the commit:
+
+- Which branch label moves?
+- Does `main` move?
+- Which commit does `HEAD` identify?
+
+::: {.notes}
+Answer: `alternative-specification` moves to the new commit. `main` remains at
+the prior commit. HEAD identifies the new commit through the current branch.
+
+The value of the question is the prediction, not command memorization. Students
+who can predict the graph can usually recover from an unfamiliar situation.
+:::
+
+## Three states before a commit
+
+<div class="state-flow">
+<div><strong>Working tree</strong><small>Files you edit</small></div>
+<div class="flow-arrow">→<code>git add</code>→</div>
+<div><strong>Staging area</strong><small>Proposed snapshot</small></div>
+<div class="flow-arrow">→<code>git commit</code>→</div>
+<div><strong>Repository</strong><small>Recorded snapshots</small></div>
+</div>
+
+::: {.notes}
+The staging area is Git's proposed next snapshot. `git add` copies selected
+file content into that proposal. It does not upload a file or permanently
+record a commit.
+
+The same file can have one recorded version, one staged version, and one newer
+working-tree version at the same time.
+:::
+
+## Prediction: one file, three versions
+
+```bash
+# analysis.py contains model A
+git add analysis.py
+
+# analysis.py is edited and now contains model B
+git commit -m "Estimate baseline model"
+```
+
+Which model does the commit contain?
+
+::: {.notes}
+The commit contains model A because that content was staged. Model B remains
+in the working tree.
+
+This is a productive surprise. It makes the staging area concrete and explains
+why `git status` and both forms of `git diff` matter.
+:::
+
+## The core inspection loop
+
+```bash
+git status
+git diff
+git add analysis.py
+git diff --staged
+git commit -m "Estimate baseline model"
+```
+
+**Inspect before you change Git's state.**
+
+::: {.notes}
+`git status` summarizes the state. `git diff` shows unstaged changes.
+`git diff --staged` shows the proposed commit. `git commit` records only the
+staged content.
+
+Students can ask an AI system for syntax. They must still inspect the files,
+diff, and repository state before approving an action.
+:::
+
+## An individual research workflow {.section-divider}
+
+## Start with a project directory
+
+```text
+wage-project/
+├── README.md
+├── .gitignore
+├── code/
+│   ├── clean.py
+│   └── analyze.py
+├── data/
+│   ├── raw/
+│   └── derived/
+└── output/
+```
+
+```bash
+cd wage-project
+git init
+```
+
+::: {.notes}
+Use this project for the remaining Git examples. `git init` creates a hidden
+`.git` directory that stores objects and references. It does not place the
+project on GitHub.
+
+The exact directory names can vary. The important rule is to distinguish
+source material, code, derived data, and output.
+:::
+
+## Inspect the initial state
+
+```bash
+$ git status --short
+?? .gitignore
+?? README.md
+?? code/
+```
+
+`??` means that Git does not track the file.
+
+::: {.notes}
+Git does not automatically record every file inside the repository directory.
+Untracked means that no commit contains the file and the file is not staged.
+
+Use `git status` frequently. It is an observation command and is safe to run.
+:::
+
+## Select the first snapshot
+
+```bash
+git add README.md .gitignore code/
+git diff --staged
+git commit -m "Create analysis workflow"
+```
+
+The message completes the sentence: **This commit will...**
+
+::: {.notes}
+Do not recommend `git add .` as the only starting habit. Explicit paths make
+the selection visible. `git add .` can be appropriate after the researcher
+has inspected the complete status and ignore rules.
+
+An imperative message such as “Create analysis workflow” states what the
+commit does when applied.
+:::
+
+## Read the history
+
+```bash
+$ git log --oneline --decorate
+3cb418f (HEAD -> main) Create analysis workflow
+```
+
+```bash
+git show 3cb418f
+git log --oneline -- code/analyze.py
+```
+
+History is useful only when commits and messages are informative.
+
+::: {.notes}
+`git show` displays a commit and its changes. Limiting `git log` to a file can
+answer when and why that file changed.
+
+The persistent log is one of Git's principal benefits for independent work.
+It replaces memory and filename conventions with inspectable evidence.
+:::
+
+## Use a branch for an uncertain direction
+
+```bash
+git switch -c alternative-specification
+
+# edit, run, and inspect the analysis
+
+git add code/analyze.py
+git commit -m "Estimate quadratic specification"
+```
+
+`main` still identifies the prior working version.
+
+::: {.notes}
+A branch is useful for work that might be kept, revised, or discarded. Examples
+include an alternative specification, a large refactor, or a risky data change.
+
+A quick local edit does not always need a branch. Use one when separation
+reduces confusion or protects a stable line of work.
+:::
+
+## Compare before you decide
+
+```bash
+git diff main..alternative-specification
+git log --oneline --graph --all --decorate
+```
+
+Then choose:
+
+- Keep developing the branch
+- Merge the branch into `main`
+- Leave the branch for later
+- Delete the branch after rejecting the idea
+
+::: {.notes}
+The branch preserves both the code and the reasoning recorded in commits.
+The researcher can compare specifications without maintaining parallel files.
+
+If the work should become the main line, switch to `main` and merge the branch.
+Show the command only if time permits. The mental model is the priority.
+:::
+
+## Returning to working code
+
+```bash
+git log --oneline
+git show <commit>
+```
+
+First ask:
+
+1. Are the changes committed?
+2. Do I want to inspect, restore, or reverse them?
+3. Has another person received the commits?
+
+::: {.notes}
+Do not teach one universal “undo” command. Recovery depends on the state and
+the intended result.
+
+Committed work is usually recoverable. Uncommitted discarded work may be lost.
+Shared history requires extra care because rewriting it affects other copies.
+
+For this lecture, demonstrate inspection of an earlier commit. Defer `reset`,
+interactive rebase, and other history-editing commands. `git revert` is the
+safer conceptual model for undoing a shared commit because it adds a new commit.
+:::
+
+## Prediction: what would you protect?
+
+You have working code on `main`. You want to try a new estimator that may require many edits.
+
+Before the experiment, what would you do?
+
+1. Confirm that the working version is committed
+2. Create a branch
+3. Make and test the edits on that branch
+
+::: {.notes}
+Ask students for the steps before revealing them. The key protection is a
+known committed state. The branch gives the experiment a separate name and
+history.
+
+An agent should receive the same instruction: verify a clean starting state,
+create a named branch, make focused commits, and report the diff.
+:::
+
+## Keep unsuitable files out of Git
+
+```text
+# Private or restricted data
+data/raw/
+
+# Generated output
+output/
+
+# Local environments and system files
+.venv/
+.DS_Store
+```
+
+Commit `.gitignore` before Git tracks these files.
+
+::: {.notes}
+Do not commit secrets, restricted data, large raw datasets, local package
+environments, or easily regenerated output. An ignore rule does not remove a
+file that Git already tracks.
+
+Generated output is a judgment call. A final paper or small reference result
+may be useful to preserve. Large or frequently changing intermediate files
+usually are not.
+:::
+
+## Remote repositories provide another copy
+
+```bash
+git clone <url>
+git fetch
+git push
+```
+
+- `clone`: create a local repository from a remote repository
+- `fetch`: download remote commits and labels
+- `push`: send local commits and update a remote label
+
+::: {.notes}
+Keep the remote model brief. A remote repository is another repository, not a
+shared live folder. Git transfers commits and branch references between the
+copies.
+
+`git pull` combines fetch with integration. Separating the concepts prevents
+students from treating pull as unexplained synchronization.
+:::
+
+## When you collaborate later
+
+- Give each change a separate branch
+- Make small, coherent commits
+- Fetch before you integrate work
+- Review the diff before you merge
+- Use a pull request when review or discussion is useful
+
+::: {.notes}
+Pull requests are a hosting-platform workflow, not a core Git object. They are
+useful when another person should inspect and discuss a proposed merge.
+
+For this independent research course, students do not need to create pull
+requests for routine work. The habits of focused branches, clear commits, and
+diff review remain valuable.
+:::
+
+## Reproducible research {.section-divider}
+
+## A Git repository is necessary, not sufficient
+
+```text
+Exact code       ✓
+Input data       ?
+Run order        ?
+Package versions ?
+Random seed      ?
+System tools     ?
+```
+
+The commit identifies **what you wrote**, not every condition required to run it.
+
+::: {.notes}
+Use this checklist to reconnect the two parts of the lecture. Git identifies a
+precise project state. Reproduction requires all material inputs and execution
+conditions for that state.
+:::
+
+## Make the pipeline explicit
+
+<div class="pipeline">
+<div>Raw data</div><span>→</span><div>Cleaning script</div><span>→</span><div>Derived data</div><span>→</span><div>Analysis script</div><span>→</span><div>Tables and figures</div>
+</div>
+
+Each derived file should have a documented path back to its inputs and code.
+
+::: {.notes}
+The arrows represent executable transformations. A reader should not need to
+infer an undocumented manual step between boxes.
+
+Raw data are treated as inputs. Scripts create derived data and outputs. If
+raw data cannot be shared, document how an authorized researcher can obtain
+them and what files the scripts expect.
+:::
+
+## Record the computing environment
+
+<div class="environment-stack">
+<div><strong>Analysis</strong><span>Your scripts and notebooks</span></div>
+<div><strong>Packages</strong><span>pandas &lt;version&gt;, numpy &lt;version&gt;, ...</span></div>
+<div><strong>Language</strong><span>Python &lt;version&gt;</span></div>
+<div><strong>System</strong><span>Operating system and external tools</span></div>
+</div>
+
+Different environments can produce different results.
+
+::: {.notes}
+A virtual environment isolates a project's packages from packages used by
+other projects. A dependency file records which packages the project needs.
+A lock file or other exact version record pins the resolved package versions.
+
+Do not teach tool-specific setup here. The conceptual requirement is that a
+future user can reconstruct the relevant environment. Exact needs depend on
+the language, tools, and sensitivity of the analysis.
+:::
+
+## Isolation and pinning solve different problems
+
+| Practice | Question it answers |
+|---|---|
+| Virtual environment | Which packages belong to this project? |
+| Version pinning | Which package versions produced the result? |
+
+```text
+Project A → isolated environment → recorded versions
+Project B → isolated environment → different recorded versions
+```
+
+::: {.notes}
+An environment without recorded dependencies may work only on the researcher's
+computer. A version list without isolation can conflict with packages from
+other projects. Strong workflows use both concepts.
+
+Version pinning improves repeatability but does not guarantee indefinite
+reproduction. Systems, external services, and unavailable packages can still
+change.
+:::
+
+## Control randomness
+
+```python
+import numpy as np
+
+rng = np.random.default_rng(1433)
+sample = rng.choice(observations, size=500, replace=True)
+```
+
+- Set and record a seed
+- Use the same random-number generator
+- Document intentional variation across runs
+
+::: {.notes}
+A seed fixes the initial state of a pseudorandom number generator. The same
+seed can reproduce a sequence when the generator and relevant software remain
+the same.
+
+A seed does not correct a flawed simulation or guarantee identical results
+across all software and hardware. It removes one avoidable source of variation.
+:::
+
+## Use project-relative paths
+
+```python
+# Fragile: specific to one computer
+data = read_csv("/Users/name/Desktop/project/data/survey.csv")
+
+# Portable: relative to the project
+data = read_csv("data/raw/survey.csv")
+```
+
+Do not make another user reproduce your personal directory structure.
+
+::: {.notes}
+The portable example still assumes a defined project root. The run instructions
+must state where to execute the command, or the code should determine the root
+reliably.
+
+Also document file names, encodings, expected columns, and access restrictions
+when these details affect the run.
+:::
+
+## The README is the entry point
+
+A new reader should learn:
+
+1. What the project does
+2. Which data it requires
+3. How to create the environment
+4. Which command starts the workflow
+5. Where the outputs appear
+
+::: {.notes}
+Test the README from a clean copy of the repository. Instructions that work only
+because of unrecorded files or global packages are incomplete.
+
+The README should link to more detailed documentation when necessary. Keep the
+first successful run direct and visible.
+:::
+
+## Prediction: will this project reproduce?
+
+```text
+✓ Code is committed
+✓ README says: "Run analysis.py"
+✓ Random seed is set
+✗ Raw data location is not documented
+✗ Package versions are not recorded
+✗ clean_final.csv was edited manually
+```
+
+What must change before another researcher can reproduce the result?
+
+::: {.notes}
+Ask students to identify each broken link. The project needs data-access and
+file-location instructions, a recorded environment, and a scripted replacement
+for the manual edit or an exact documented protocol.
+
+The committed code and seed are useful but do not compensate for missing inputs
+or an undocumented transformation.
+:::
+
+## Directing an AI agent {.agent-process}
+
+Do not ask only: **“Fix my analysis.”**
+
+Specify the process:
+
+1. Inspect `README.md`, `git status`, and the recent history
+2. Create a branch from the current clean commit
+3. Change only the stated files
+4. Run the documented checks
+5. Show the diff and explain each commit
+
+::: {.notes}
+An agent can execute commands quickly. It cannot infer the researcher's
+preferred repository state or acceptable evidence without instructions.
+
+The Git mental model lets the researcher verify the agent's starting point,
+scope, history, and proposed integration. The reproducibility model lets the
+researcher require an executable and documented result.
+:::
+
+## One mental model
+
+<div class="final-model">
+<div><strong>Shell</strong><span>Express an action</span></div>
+<div class="final-arrow">→</div>
+<div><strong>Git</strong><span>Record project states</span></div>
+<div class="final-arrow">→</div>
+<div><strong>Reproducible project</strong><span>Reconstruct a result</span></div>
+</div>
+
+Organization is part of the research method.
+
+::: {.notes}
+Close by returning to the four opening questions: what changed, why it changed,
+which version produced the result, and whether another person can produce it.
+
+Git is not only a collaboration tool. For an independent researcher, it creates
+an inspectable record of decisions and protects productive experimentation.
+:::
+
+## Continue learning
+
+- [The Missing Semester: the shell](https://missing.csail.mit.edu/2026/course-shell/)
+- [The Missing Semester: command-line environment](https://missing.csail.mit.edu/2026/command-line-environment/)
+- [The Missing Semester: version control](https://missing.csail.mit.edu/2026/version-control/)
+- [Git for Ages 4 and Up](https://www.youtube.com/watch?v=1ffBJ4sVUb4)
+- [Pro Git](https://git-scm.com/book/en/v2)
+
+::: {.notes}
+The Missing Semester version-control lecture gives a bottom-up explanation of
+Git's data model. Git for Ages 4 and Up uses physical objects to visualize the
+commit graph. Pro Git is a detailed reference.
+
+This lecture also adapts the conceptual sequence and individual workflow from
+the [University of Chicago Harris Git lecture](https://github.com/uchicago-harris-dap/winter2026/blob/main/lectures/git/git.qmd).
+:::
