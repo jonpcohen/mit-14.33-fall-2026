@@ -565,9 +565,9 @@ font-size: 1.9em;
 }
 .reveal pre code { max-height: 420px; }
 .reveal table { font-size: 0.78em; }
+.reveal .branch-decisions table { font-size: 0.68em; }
 .reveal .three-part,
-.reveal .comparison,
-.reveal .final-model {
+.reveal .comparison {
 display: flex;
 align-items: stretch;
 justify-content: center;
@@ -575,8 +575,7 @@ gap: 1.1rem;
 margin: 1.2rem auto;
 }
 .reveal .three-part > div,
-.reveal .comparison > div,
-.reveal .final-model > div:not(.final-arrow) {
+.reveal .comparison > div {
 flex: 1;
 padding: 1rem 1.2rem;
 border: 2px solid #107895;
@@ -585,7 +584,6 @@ background: #f5fafb;
 text-align: center;
 }
 .reveal .three-part span,
-.reveal .final-model span,
 .reveal .environment-stack span {
 display: block;
 margin-top: 0.35rem;
@@ -594,6 +592,40 @@ color: #4a5459;
 }
 .reveal .comparison h3 { margin: 0 0 0.6rem; }
 .reveal .comparison p { font-size: 0.78em; margin: 0.45rem 0; }
+.reveal .stash-model,
+.reveal .stash-flow {
+display: flex;
+align-items: stretch;
+justify-content: center;
+gap: 0.65rem;
+margin: 1.2rem auto;
+}
+.reveal .stash-model > div,
+.reveal .stash-flow > div {
+flex: 1;
+padding: 0.75rem;
+border: 2px solid #107895;
+border-radius: 0.35rem;
+background: #f5fafb;
+text-align: center;
+font-size: 0.68em;
+}
+.reveal .stash-model span,
+.reveal .stash-flow span,
+.reveal .stash-model strong,
+.reveal .stash-flow strong {
+display: block;
+margin: 0.3rem 0;
+}
+.reveal .stash-model .stash-arrow {
+flex: 0.8;
+align-self: center;
+padding: 0.3rem;
+border: 0;
+background: transparent;
+font-weight: 700;
+}
+.reveal .stash-flow code { display: block; margin: 0.4rem 0; }
 .reveal .commit-graph {
 display: flex;
 align-items: center;
@@ -615,6 +647,37 @@ background: white;
 .reveal .commit span { font-weight: 700; font-size: 1.15em; }
 .reveal .commit small { font-size: 0.48em; line-height: 1.2; padding: 0.2rem; }
 .reveal .commit-graph .arrow { font-size: 2.2em; padding: 0 0.8rem; }
+.reveal .branch-map {
+display: block;
+width: 92%;
+height: 300px;
+margin: 0.2rem auto 0.4rem;
+}
+.reveal .branch-map line { stroke: #6b7478; stroke-width: 7; }
+.reveal .branch-map circle {
+fill: white;
+stroke: #107895;
+stroke-width: 7;
+}
+.reveal .branch-map circle.current-node { stroke: #9a2515; }
+.reveal .branch-map text {
+font-family: monospace;
+font-size: 28px;
+text-anchor: middle;
+fill: #152228;
+}
+.reveal .branch-map text.branch-name {
+font-size: 25px;
+text-anchor: start;
+fill: #107895;
+font-weight: 700;
+}
+.reveal .branch-map text.alt-name { fill: #9a2515; font-size: 20px; }
+.reveal .branch-map text.head-name {
+font-size: 22px;
+text-anchor: start;
+fill: #4a5459;
+}
 .reveal .branch-graph {
 display: grid;
 grid-template-columns: 4.5rem 2.5rem 4.5rem 2.5rem 4.5rem 2.5rem 4.5rem;
@@ -662,6 +725,22 @@ justify-content: center;
 gap: 0.55rem;
 margin: 2rem auto;
 }
+.reveal .state-zones {
+display: grid;
+grid-template-columns: 3fr 1fr;
+margin: 1.4rem 0 -1.4rem;
+font-size: 0.68em;
+font-weight: 700;
+color: #4a5459;
+text-align: center;
+}
+.reveal .state-zones span:first-child {
+border-bottom: 3px solid #107895;
+margin-right: 1rem;
+}
+.reveal .state-zones span:last-child {
+border-bottom: 3px solid #9a2515;
+}
 .reveal .state-flow > div:not(.flow-arrow),
 .reveal .pipeline > div {
 padding: 1rem 0.75rem;
@@ -670,13 +749,25 @@ border-radius: 0.35rem;
 background: #f5fafb;
 text-align: center;
 }
-.reveal .state-flow > div:not(.flow-arrow) { width: 24%; }
+.reveal .state-flow { gap: 0.25rem; }
+.reveal .state-flow > div:not(.flow-arrow) {
+width: 18%;
+padding: 0.8rem 0.35rem;
+}
+.reveal .state-flow > div:not(.flow-arrow):last-child { border-color: #9a2515; }
 .reveal .state-flow small { display: block; margin-top: 0.45rem; font-size: 0.58em; }
-.reveal .flow-arrow { font-size: 0.72em; white-space: nowrap; }
+.reveal .flow-arrow { font-size: 0.56em; white-space: nowrap; }
 .reveal .flow-arrow code { margin: 0 0.25rem; }
 .reveal .pipeline { gap: 0.4rem; }
 .reveal .pipeline > div { flex: 1; padding: 0.8rem 0.35rem; font-size: 0.68em; }
 .reveal .pipeline > span { font-size: 1.25em; }
+.reveal .pipeline > div.optional-step { border-style: dashed; }
+.reveal .pipeline > div.optional-step small {
+display: block;
+margin-top: 0.35rem;
+font-size: 0.68em;
+color: #4a5459;
+}
 .reveal .environment-stack { width: 72%; margin: 1rem auto; }
 .reveal .environment-stack > div {
 margin: 0.35rem 0;
@@ -689,9 +780,6 @@ text-align: center;
 .reveal .environment-stack > div:nth-child(3) { margin-left: 8%; margin-right: 8%; }
 .reveal .environment-stack > div:nth-child(4) { margin-left: 12%; margin-right: 12%; }
 .reveal .environment-stack span { display: inline; margin-left: 0.8rem; }
-.reveal .final-model { align-items: center; margin-top: 2.2rem; }
-.reveal .final-arrow { font-size: 2em; }
-.reveal .final-model > div:not(.final-arrow) { min-height: 5.2rem; }
 .reveal .agent-process ol { font-size: 0.86em; line-height: 1.25; }
 .reveal .agent-process li { margin-bottom: 0.35em; }
 </style>
@@ -1229,146 +1317,15 @@ Jon Cohen
 <section id="agenda" class="slide level2 agenda">
 <h2>Agenda</h2>
 <ol type="1">
-<li>Use the command line to describe actions precisely</li>
-<li>Use Git to record useful versions of a research project</li>
-<li>Use branches to separate exploratory work</li>
-<li>Make one version reproducible by another person</li>
+<li>Use the command line to navigate a project and run programs</li>
+<li>Use Git to record and recover project states</li>
+<li>Use Git while building an individual research project</li>
+<li>Record the inputs, environment, and commands needed to reproduce a result</li>
 </ol>
 <aside class="notes">
 <p>The lecture has two connected layers. Git records project history. Reproducible research requires enough information to run a selected version again.</p>
 <p>The command line is supporting material. Teach only the concepts needed to understand the Git examples and scripted research workflows.</p>
-<p>Suggested timing: motivation and command line, 15 minutes; Git’s data model, 20 minutes; individual workflow, 25 minutes; reproducibility, 15 minutes; summary and questions, 5 minutes.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="the-goal" class="slide level2">
-<h2>The goal</h2>
-<p>At the end of the semester, you should be able to answer:</p>
-<ol type="1">
-<li>What changed?</li>
-<li>Why did it change?</li>
-<li>Which version produced this result?</li>
-<li>Can another person produce it again?</li>
-</ol>
-<aside class="notes">
-<p>These questions apply to your future self, an adviser, a research assistant, or an AI agent. Version control answers the first three questions. The complete research workflow answers the fourth question.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="organization-without-version-control" class="slide level2">
-<h2>Organization without version control</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href></a>analysis.py</span>
-<span id="cb1-2"><a href></a>analysis_new.py</span>
-<span id="cb1-3"><a href></a>analysis_final.py</span>
-<span id="cb1-4"><a href></a>analysis_final_fixed.py</span>
-<span id="cb1-5"><a href></a>analysis_final_final_no_seriously.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Prediction:</strong> Which file produced the table in the paper?</p>
-<aside class="notes">
-<p>Pause before asking for answers. The filenames record guesses about importance, not a reliable history. Copies also hide which lines changed and why.</p>
-<p>The problem is not only untidy filenames. The researcher cannot connect a result to a precise state of the complete project.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="version-control-records-project-states" class="slide level2">
-<h2>Version control records project states</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a href></a>●  Estimate baseline model</span>
-<span id="cb2-2"><a href></a>│</span>
-<span id="cb2-3"><a href></a>●  Correct treatment coding</span>
-<span id="cb2-4"><a href></a>│</span>
-<span id="cb2-5"><a href></a>●  Import raw survey data</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Each <strong>commit</strong> records a project snapshot and an explanation.</p>
-<aside class="notes">
-<p>Define a commit as a recorded project snapshot plus metadata. The metadata include its parent, author, time, and message.</p>
-<p>Git usually stores file differences efficiently, but the useful mental model is a sequence or graph of complete project states.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="version-control-changes-how-you-work" class="slide level2">
-<h2>Version control changes how you work</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Without Git</th>
-<th>With Git</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Copy files to preserve versions</td>
-<td>Record a commit</td>
-</tr>
-<tr class="even">
-<td>Recall last month’s changes</td>
-<td>Inspect the history</td>
-</tr>
-<tr class="odd">
-<td>Fear an unsuccessful experiment</td>
-<td>Create a branch</td>
-</tr>
-<tr class="even">
-<td>Lose the last working version</td>
-<td>Return to a prior commit</td>
-</tr>
-</tbody>
-</table>
-<aside class="notes">
-<p>For independent research, Git is primarily an organization and recovery tool. Collaboration is an important extension, but it is not the organizing case for this course.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="a-reproducible-result" class="slide level2">
-<h2>A reproducible result</h2>
-<blockquote>
-<p>Another person can use the same inputs and instructions to produce the same result.</p>
-</blockquote>
-<p>Git preserves the version. Git does not preserve the complete computing environment.</p>
-<aside class="notes">
-<p>Distinguish version control from reproducibility now. A repository can preserve the exact analysis code while omitting the data, package versions, seed, or run instructions. That repository has useful history but may not be reproducible.</p>
+<p>Suggested timing: command line, 10 minutes; Git concepts and exercises, 30 minutes; building a reproducible project, 35 minutes; recap, 5 minutes.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1384,23 +1341,17 @@ display:block!important;
 <section id="command-line-interface" class="slide level2 section-divider">
 <h2>Command line interface</h2>
 </section>
-<section id="three-parts-of-a-command-line-session" class="slide level2">
-<h2>Three parts of a command-line session</h2>
-<div class="three-part">
-<div>
-<strong>Terminal</strong><br><span>Displays text</span>
-</div>
-<div>
-<strong>Shell</strong><br><span>Interprets commands</span>
-</div>
-<div>
-<strong>Program</strong><br><span>Performs an action</span>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href></a>$ git status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="a-terminal-lets-you-navigate-files-and-run-programs" class="slide level2">
+<h2>A terminal lets you navigate files and run programs</h2>
+<ul>
+<li>On macOS: <strong>Terminal</strong> or an installed application such as <strong>iTerm2</strong></li>
+<li>On Windows: <strong>PowerShell</strong>, <strong>Windows Terminal</strong>, or <strong>Git Bash</strong></li>
+<li>In an editor: an integrated terminal, such as the terminal in VS Code</li>
+</ul>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a href></a>current folder → enter a command → a program runs → text output</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
-<p>The terminal is the window. The shell reads the command. Git is the program that the shell starts. Students do not need the implementation details, but these terms prevent later confusion.</p>
-<p>The shell is valuable because each action has a textual representation. The same command can be inspected, repeated, documented, and given to an agent.</p>
+<p>The terminal is an application that displays the command-line interface. A shell reads each command and starts the requested program. Students do not need to memorize that distinction today.</p>
+<p>The current folder provides context. A student can inspect files, move between folders, and run a program that reads or writes files in that project.</p>
 <p>Source: <a href="https://missing.csail.mit.edu/2026/course-shell/">Missing Semester: Course Overview and the Shell</a>.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
@@ -1414,82 +1365,56 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="a-command-has-a-structure" class="slide level2">
-<h2>A command has a structure</h2>
+<section id="structure-of-a-command" class="slide level2">
+<h2>Structure of a command</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href></a><span class="fu">ls</span> <span class="at">-la</span> data/</span>
+<span id="cb2-2"><a href></a><span class="ex">python</span> code/clean.py data/raw/survey.csv</span>
+<span id="cb2-3"><a href></a><span class="fu">git</span> log <span class="at">--oneline</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;"><code>git</code></th>
-<th style="text-align: center;"><code>log</code></th>
-<th style="text-align: center;"><code>--oneline</code></th>
-<th style="text-align: center;"><code>analysis.py</code></th>
+<th>Example</th>
+<th>Program</th>
+<th>Subcommand</th>
+<th>Option</th>
+<th>Argument</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">Program</td>
-<td style="text-align: center;">Action</td>
-<td style="text-align: center;">Option</td>
-<td style="text-align: center;">Argument</td>
+<td><code>ls -la data/</code></td>
+<td><code>ls</code></td>
+<td>—</td>
+<td><code>-la</code></td>
+<td><code>data/</code></td>
+</tr>
+<tr class="even">
+<td><code>python code/clean.py data/raw/survey.csv</code></td>
+<td><code>python</code></td>
+<td>—</td>
+<td>—</td>
+<td>script and input file</td>
+</tr>
+<tr class="odd">
+<td><code>git log --oneline</code></td>
+<td><code>git</code></td>
+<td><code>log</code></td>
+<td><code>--oneline</code></td>
+<td>—</td>
 </tr>
 </tbody>
 </table>
 <aside class="notes">
-<p>Arguments are strings supplied to a program. Options or flags modify the program’s behavior. The exact grammar differs across programs, so use <code>&lt;command&gt; --help</code> or documentation when needed.</p>
+<p>An argument supplies an input to a program. An option or flag changes the program’s behavior. Command structure differs across programs, so use <code>&lt;command&gt; --help</code> or documentation when needed.</p>
 <p>Students do not need to memorize every command. They need to read a command, identify its parts, and verify its effect.</p>
 <p>Source: <a href="https://missing.csail.mit.edu/2026/command-line-environment/">Missing Semester: Command-line Environment</a>.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="location-matters" class="slide level2">
-<h2>Location matters</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href></a><span class="ex">$</span> pwd</span>
-<span id="cb4-2"><a href></a><span class="ex">/Users/you/research</span></span>
-<span id="cb4-3"><a href></a></span>
-<span id="cb4-4"><a href></a><span class="ex">$</span> ls</span>
-<span id="cb4-5"><a href></a><span class="ex">README.md</span>  analysis.py  data  output</span>
-<span id="cb4-6"><a href></a></span>
-<span id="cb4-7"><a href></a><span class="ex">$</span> cd data</span>
-<span id="cb4-8"><a href></a><span class="ex">$</span> pwd</span>
-<span id="cb4-9"><a href></a><span class="ex">/Users/you/research/data</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Most Git commands act on the repository that contains the current directory.</p>
-<aside class="notes">
-<p>Define the current working directory. A relative path begins from this directory. An absolute path begins from the root of the file system.</p>
-<p>Many command-line mistakes are location mistakes. Before a consequential command, students can use <code>pwd</code>, <code>ls</code>, and <code>git status</code> to verify context.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="prediction-where-is-the-file" class="slide level2">
-<h2>Prediction: where is the file?</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href></a><span class="ex">$</span> pwd</span>
-<span id="cb5-2"><a href></a><span class="ex">/Users/you/research/code</span></span>
-<span id="cb5-3"><a href></a></span>
-<span id="cb5-4"><a href></a><span class="ex">$</span> ls ../data/raw</span>
-<span id="cb5-5"><a href></a><span class="ex">survey.csv</span></span>
-<span id="cb5-6"><a href></a></span>
-<span id="cb5-7"><a href></a><span class="ex">$</span> python clean.py ../data/raw/survey.csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>What path does <code>../data/raw/survey.csv</code> identify?</p>
-<aside class="notes">
-<p>Ask students to interpret the path before revealing the answer. <code>..</code> means the parent directory. From <code>research/code</code>, the path identifies <code>research/data/raw/survey.csv</code>.</p>
-<p>This question prepares students to understand why code that depends on an unknown working directory is difficult to reproduce.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1533,6 +1458,14 @@ display:block!important;
 <td><code>cat &lt;file&gt;</code></td>
 </tr>
 <tr class="even">
+<td>Find the executable for a program</td>
+<td><code>which &lt;program&gt;</code></td>
+</tr>
+<tr class="odd">
+<td>Show an installed program’s version</td>
+<td><code>&lt;program&gt; --version</code></td>
+</tr>
+<tr class="even">
 <td>Get help</td>
 <td><code>&lt;command&gt; --help</code></td>
 </tr>
@@ -1540,30 +1473,8 @@ display:block!important;
 </table>
 <aside class="notes">
 <p>These examples use a Unix-style shell on macOS or Linux. Windows PowerShell has related commands, but some syntax differs. Git concepts do not depend on the shell.</p>
-<p>Do not turn this section into a syntax survey. The core ideas are current location, paths, programs, arguments, and observable output.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="prefer-a-recorded-procedure" class="slide level2">
-<h2>Prefer a recorded procedure</h2>
-<p><strong>Manual workflow</strong></p>
-<blockquote>
-<p>Open the CSV. Delete three rows. Rename two columns. Save a new file.</p>
-</blockquote>
-<p><strong>Scripted workflow</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href></a><span class="ex">python</span> code/clean.py data/raw/survey.csv data/derived/survey.csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<aside class="notes">
-<p>A script makes the transformation inspectable and repeatable. The command records the program, input, and output. The script records the precise rules.</p>
-<p>Manual review can remain part of research, but a manual data transformation must be documented. Prefer scripts for transformations that a computer can perform.</p>
+<p><code>which</code> is a Unix command. In PowerShell, use <code>Get-Command &lt;program&gt;</code>. The <code>--version</code> and <code>--help</code> options are common conventions, but a program can use different options. Check its documentation when either option fails.</p>
+<p>Do not turn this section into a syntax survey. The core ideas are programs, arguments, options, paths, and observable output.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1578,41 +1489,78 @@ display:block!important;
 </section>
 <section id="gits-data-model" class="slide level2 section-divider">
 <h2>Git’s data model</h2>
-</section>
-<section id="git-and-github-are-different" class="slide level2">
-<h2>Git and GitHub are different</h2>
-<div class="comparison">
-<div>
-<h3>
-Git
-</h3>
-<p>
-Version-control software
-</p>
-<p>
-Runs on your computer
-</p>
-<p>
-Does not require the internet
-</p>
-</div>
-<div>
-<h3>
-GitHub
-</h3>
-<p>
-Hosts Git repositories
-</p>
-<p>
-Supports sharing and review
-</p>
-<p>
-Requires a network connection
-</p>
-</div>
-</div>
 <aside class="notes">
-<p>A local repository contains its own history. GitHub can store another copy of that repository and provide web-based collaboration features.</p>
+<p>Students already created and cloned their course repository and completed the pre-class Git workflow. Use this section to explain what each command changed. Do not repeat the assignment as a syntax demonstration.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="organization-without-version-control" class="slide level2">
+<h2>Organization without version control</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a href></a>analysis.py</span>
+<span id="cb3-2"><a href></a>analysis_new.py</span>
+<span id="cb3-3"><a href></a>analysis_final.py</span>
+<span id="cb3-4"><a href></a>analysis_final_fixed.py</span>
+<span id="cb3-5"><a href></a>analysis_final_final_no_seriously.py</span>
+<span id="cb3-6"><a href></a>analysis_final_final_2026-09-22.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>The filenames record guesses about importance, not a reliable history. Copies also hide which lines changed and why.</p>
+<p>The problem is not only untidy filenames. The researcher cannot connect a result to a specific state of the complete project.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="version-control-records-project-states" class="slide level2">
+<h2>Version control records project states</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a href></a>●  Add a quadratic age term to analysis.py</span>
+<span id="cb4-2"><a href></a>│</span>
+<span id="cb4-3"><a href></a>●  Correct the treatment variable in analysis.py</span>
+<span id="cb4-4"><a href></a>│</span>
+<span id="cb4-5"><a href></a>●  Create the initial analysis.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Each <strong>commit</strong> records a project snapshot and an explanation.</p>
+<aside class="notes">
+<p>Define a commit as a recorded project snapshot plus metadata. The metadata include its parent, author, time, and message.</p>
+<p>Git stores file differences efficiently. Think of its history as a sequence or graph of complete project states.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="git-records-history-and-github-stores-a-remote-copy" class="slide level2">
+<h2>Git records history and GitHub stores a remote copy</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a href></a>Your computer                         GitHub</span>
+<span id="cb5-2"><a href></a>Git + local repository  ←────────→   remote Git repository</span>
+<span id="cb5-3"><a href></a>                                      + website and collaboration tools</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>Git</strong> is the version-control software</li>
+<li><strong>GitHub uses Git</strong> to store another copy of the repository</li>
+<li>Git works locally without GitHub or an internet connection</li>
+</ul>
+<aside class="notes">
+<p>A local repository contains its own history. GitHub hosts a remote Git repository and adds a website, access controls, issues, and pull requests.</p>
 <p>Students will use GitHub in the course, but GitHub is not the version-control system.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
@@ -1630,19 +1578,19 @@ display:block!important;
 <h2>A Git repository contains a graph</h2>
 <div class="commit-graph linear">
 <div class="commit">
-<span>C1</span><small>Import data</small>
+<span>C1</span><small>Baseline code</small>
 </div>
 <div class="arrow">
 ←
 </div>
 <div class="commit">
-<span>C2</span><small>Clean data</small>
+<span>C2</span><small>Treatment variable fixed</small>
 </div>
 <div class="arrow">
 ←
 </div>
 <div class="commit current">
-<span>C3</span><small>Estimate model</small>
+<span>C3</span><small>Quadratic term added</small>
 </div>
 </div>
 <ul>
@@ -1650,9 +1598,10 @@ display:block!important;
 <li>Each commit identifies its parent</li>
 <li>The history records relationships, not only dates</li>
 </ul>
+<p>Each circle represents a recorded state of the project.</p>
 <aside class="notes">
 <p>The arrows point from a commit to its parent. Git history is a directed acyclic graph. Students do not need that term, but they should understand that history can branch and later merge.</p>
-<p>The commit identifier is derived from content. Short labels such as C1 are for teaching only; Git uses hashes.</p>
+<p>The commit identifier is derived from content. Short labels such as C1 are for teaching only. Git uses hashes.</p>
 <p>Source: <a href="https://missing.csail.mit.edu/2026/version-control/">Missing Semester: Version Control and Git</a>.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
@@ -1668,13 +1617,13 @@ display:block!important;
 </section>
 <section id="a-commit-is-more-than-a-saved-file" class="slide level2">
 <h2>A commit is more than a saved file</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a href></a>commit 8e12c4a</span>
-<span id="cb7-2"><a href></a>Parent:  47d906b</span>
-<span id="cb7-3"><a href></a>Author:  Student Name</span>
-<span id="cb7-4"><a href></a>Date:    2026-09-16</span>
-<span id="cb7-5"><a href></a></span>
-<span id="cb7-6"><a href></a>    Correct treatment coding</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>A useful commit records one coherent change.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a href></a>commit 8e12c4a</span>
+<span id="cb6-2"><a href></a>Parent:  47d906b</span>
+<span id="cb6-3"><a href></a>Author:  Student Name</span>
+<span id="cb6-4"><a href></a>Date:    2026-09-16</span>
+<span id="cb6-5"><a href></a></span>
+<span id="cb6-6"><a href></a>    Correct treatment coding</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Best practice: make each commit one coherent change that you can explain in one sentence.</p>
 <aside class="notes">
 <p>The snapshot covers the repository, not only one file. The parent connects the snapshot to history. The message records intent.</p>
 <p>Recommend small commits that leave the project in a coherent state. A commit should be large enough to represent one meaningful change and small enough to explain in one sentence.</p>
@@ -1690,56 +1639,11 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="branches-are-movable-labels" class="slide level2">
-<h2>Branches are movable labels</h2>
-<div class="branch-graph">
-<p><span class="graph-node">C1</span><span class="graph-arrow">←</span> <span class="graph-node">C2</span><span class="graph-arrow">←</span> <span class="graph-node">C3</span><span class="graph-arrow">←</span> <span class="graph-node alt-node">C4</span> <span class="graph-label main-label">main</span> <span class="graph-label alt-label">alternative<br>(HEAD)</span></p>
+<section id="commits-stay-local-until-you-push-them" class="slide level2">
+<h2>Commits stay local until you push them</h2>
+<div class="state-zones">
+<span>On your computer</span><span>On GitHub</span>
 </div>
-<p><code>HEAD</code> identifies your current branch and commit.</p>
-<aside class="notes">
-<p>A branch is not a second folder or a copy of every file. It is a movable name that identifies one line of development. New commits advance the current branch label.</p>
-<p>HEAD records the current position. Keep the explanation at this level. The students do not need Git’s internal reference files.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="prediction-what-moves" class="slide level2">
-<h2>Prediction: what moves?</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href></a><span class="fu">git</span> switch <span class="at">-c</span> alternative-specification</span>
-<span id="cb8-2"><a href></a><span class="co"># edit analysis.py</span></span>
-<span id="cb8-3"><a href></a><span class="fu">git</span> add analysis.py</span>
-<span id="cb8-4"><a href></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Estimate quadratic specification&quot;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>After the commit:</p>
-<ul>
-<li>Which branch label moves?</li>
-<li>Does <code>main</code> move?</li>
-<li>Which commit does <code>HEAD</code> identify?</li>
-</ul>
-<aside class="notes">
-<p>Answer: <code>alternative-specification</code> moves to the new commit. <code>main</code> remains at the prior commit. HEAD identifies the new commit through the current branch.</p>
-<p>The value of the question is the prediction, not command memorization. Students who can predict the graph can usually recover from an unfamiliar situation.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="three-states-before-a-commit" class="slide level2">
-<h2>Three states before a commit</h2>
 <div class="state-flow">
 <div>
 <strong>Working tree</strong><small>Files you edit</small>
@@ -1754,12 +1658,20 @@ display:block!important;
 →<code>git commit</code>→
 </div>
 <div>
-<strong>Repository</strong><small>Recorded snapshots</small>
+<strong>Local repository</strong><small>Commits on your computer</small>
+</div>
+<div class="flow-arrow">
+→<code>git push</code>→
+</div>
+<div>
+<strong>Remote repository</strong><small>Commits on GitHub</small>
 </div>
 </div>
+<p><code>git pull</code> brings remote commits into the current local branch and updates the working files.</p>
 <aside class="notes">
-<p>The staging area is Git’s proposed next snapshot. <code>git add</code> copies selected file content into that proposal. It does not upload a file or permanently record a commit.</p>
-<p>The same file can have one recorded version, one staged version, and one newer working-tree version at the same time.</p>
+<p>The working tree and staging area are local. <code>git add</code> selects content for the next commit. <code>git commit</code> records that snapshot in the local repository.</p>
+<p>Only <code>git push</code> sends commits to the remote repository. A commit can exist on the student’s computer without existing on GitHub.</p>
+<p><code>git pull</code> combines two operations: fetch remote commits, then integrate them into the current branch. This explains why pulling can change working files.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1772,17 +1684,40 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="prediction-one-file-three-versions" class="slide level2">
-<h2>Prediction: one file, three versions</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href></a><span class="co"># analysis.py contains model A</span></span>
-<span id="cb9-2"><a href></a><span class="fu">git</span> add analysis.py</span>
-<span id="cb9-3"><a href></a></span>
-<span id="cb9-4"><a href></a><span class="co"># analysis.py is edited and now contains model B</span></span>
-<span id="cb9-5"><a href></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Estimate baseline model&quot;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Which model does the commit contain?</p>
+<section id="exercise-which-version-will-git-commit" class="slide level2">
+<h2>Exercise: which version will Git commit?</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href></a><span class="co"># The last commit contains the old model</span></span>
+<span id="cb7-2"><a href></a><span class="co"># The working file now contains model A</span></span>
+<span id="cb7-3"><a href></a><span class="fu">git</span> add analysis.py</span>
+<span id="cb7-4"><a href></a></span>
+<span id="cb7-5"><a href></a><span class="co"># Edit the working file again. It now contains model B</span></span>
+<span id="cb7-6"><a href></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Estimate baseline model&quot;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Location</th>
+<th>Content before <code>git commit</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Last commit</td>
+<td>Old model</td>
+</tr>
+<tr class="even">
+<td>Staging area</td>
+<td>Model A</td>
+</tr>
+<tr class="odd">
+<td>Working file</td>
+<td>Model B</td>
+</tr>
+</tbody>
+</table>
+<p>Which model will the new commit contain? What happens to the other two versions?</p>
 <aside class="notes">
-<p>The commit contains model A because that content was staged. Model B remains in the working tree.</p>
-<p>This is a productive surprise. It makes the staging area concrete and explains why <code>git status</code> and both forms of <code>git diff</code> matter.</p>
+<p>Answer: the new commit contains Model A. Model B remains in the working file. The old model remains available through the parent commit.</p>
+<p><code>git add</code> copies the selected content into the staging area. A later edit to the working file does not update the staged copy. Run <code>git add</code> again if the later edit belongs in the commit.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1795,17 +1730,43 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="the-core-inspection-loop" class="slide level2">
-<h2>The core inspection loop</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href></a><span class="fu">git</span> status</span>
-<span id="cb10-2"><a href></a><span class="fu">git</span> diff</span>
-<span id="cb10-3"><a href></a><span class="fu">git</span> add analysis.py</span>
-<span id="cb10-4"><a href></a><span class="fu">git</span> diff <span class="at">--staged</span></span>
-<span id="cb10-5"><a href></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Estimate baseline model&quot;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Inspect before you change Git’s state.</strong></p>
+<section id="the-correct-undo-command-depends-on-the-state" class="slide level2">
+<h2>The correct undo command depends on the state</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Where is the unwanted change?</th>
+<th>Goal</th>
+<th>Command model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Working file only</td>
+<td>Discard the local edit</td>
+<td><code>git restore &lt;file&gt;</code></td>
+</tr>
+<tr class="even">
+<td>Staging area</td>
+<td>Remove it from the proposed commit and keep the edit</td>
+<td><code>git restore --staged &lt;file&gt;</code></td>
+</tr>
+<tr class="odd">
+<td>A commit others might have</td>
+<td>Preserve history and reverse its effect</td>
+<td><code>git revert &lt;commit&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>First locate the change. Then choose how Git should handle it.</p>
 <aside class="notes">
-<p><code>git status</code> summarizes the state. <code>git diff</code> shows unstaged changes. <code>git diff --staged</code> shows the proposed commit. <code>git commit</code> records only the staged content.</p>
-<p>Students can ask an AI system for syntax. They must still inspect the files, diff, and repository state before approving an action.</p>
+<p>The same word, “undo,” describes different operations. Students should first ask whether the change is only in a working file, staged, committed locally, or already pushed.</p>
+<p><code>git revert</code> creates a new commit. It is the safe default for reversing a commit that another copy of the repository might contain. Do not introduce history-rewriting commands as the default recovery method.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1818,26 +1779,15 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="an-individual-research-workflow" class="slide level2 section-divider">
-<h2>An individual research workflow</h2>
-</section>
-<section id="start-with-a-project-directory" class="slide level2">
-<h2>Start with a project directory</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a href></a>wage-project/</span>
-<span id="cb11-2"><a href></a>├── README.md</span>
-<span id="cb11-3"><a href></a>├── .gitignore</span>
-<span id="cb11-4"><a href></a>├── code/</span>
-<span id="cb11-5"><a href></a>│   ├── clean.py</span>
-<span id="cb11-6"><a href></a>│   └── analyze.py</span>
-<span id="cb11-7"><a href></a>├── data/</span>
-<span id="cb11-8"><a href></a>│   ├── raw/</span>
-<span id="cb11-9"><a href></a>│   └── derived/</span>
-<span id="cb11-10"><a href></a>└── output/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href></a><span class="bu">cd</span> wage-project</span>
-<span id="cb12-2"><a href></a><span class="fu">git</span> init</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="a-branch-is-a-movable-name-for-a-commit" class="slide level2">
+<h2>A branch is a movable name for a commit</h2>
+<svg class="branch-map" viewbox="0 0 1100 330" role="img" aria-label="Commit graph with main and alternative-specification branches">
+<line x1="100" y1="120" x2="530" y2="120"></line> <line x1="300" y1="120" x2="500" y2="245"></line> <line x1="500" y1="245" x2="700" y2="245"></line> <circle cx="100" cy="120" r="34"></circle><circle cx="300" cy="120" r="34"></circle> <circle cx="530" cy="120" r="34"></circle><circle cx="500" cy="245" r="34"></circle> <circle cx="700" cy="245" r="34" class="current-node"></circle> <text x="100" y="130">C1</text><text x="300" y="130">C2</text> <text x="530" y="130">C3</text><text x="500" y="255">C4</text> <text x="700" y="255">C5</text> <text x="590" y="130" class="branch-name">main</text> <text x="750" y="238" class="branch-name alt-name">alternative-specification</text> <text x="750" y="274" class="head-name">HEAD</text>
+</svg>
+<p><code>main</code> points to C3; <code>alternative-specification</code> points to C5. <code>HEAD</code> identifies the current branch.</p>
 <aside class="notes">
-<p>Use this project for the remaining Git examples. <code>git init</code> creates a hidden <code>.git</code> directory that stores objects and references. It does not place the project on GitHub.</p>
-<p>The exact directory names can vary. The important rule is to distinguish source material, code, derived data, and output.</p>
+<p>A branch is a movable name, not a copy of the project directory. Each new commit advances the current branch name. Both branches retain their shared history before the split.</p>
+<p>Switching branches changes which recorded project state appears in the working tree. It does not delete the other line of work.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1850,16 +1800,23 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="inspect-the-initial-state" class="slide level2">
-<h2>Inspect the initial state</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href></a><span class="ex">$</span> git status <span class="at">--short</span></span>
-<span id="cb13-2"><a href></a><span class="ex">??</span> .gitignore</span>
-<span id="cb13-3"><a href></a><span class="ex">??</span> README.md</span>
-<span id="cb13-4"><a href></a><span class="ex">??</span> code/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>??</code> means that Git does not track the file.</p>
+<section id="exercise-follow-head-after-a-commit" class="slide level2">
+<h2>Exercise: follow HEAD after a commit</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href></a><span class="co"># Start on main at commit C3</span></span>
+<span id="cb8-2"><a href></a><span class="fu">git</span> switch main</span>
+<span id="cb8-3"><a href></a><span class="fu">git</span> switch <span class="at">-c</span> alternative-specification</span>
+<span id="cb8-4"><a href></a><span class="co"># edit analysis.py</span></span>
+<span id="cb8-5"><a href></a><span class="fu">git</span> add analysis.py</span>
+<span id="cb8-6"><a href></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Estimate quadratic specification&quot;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Think about the project immediately after the commit:</p>
+<ul>
+<li>Which commit does <code>HEAD</code> identify?</li>
+<li>Which version of <code>analysis.py</code> appears if you switch to <code>main</code>?</li>
+<li>Does switching to <code>main</code> delete the new commit?</li>
+</ul>
 <aside class="notes">
-<p>Git does not automatically record every file inside the repository directory. Untracked means that no commit contains the file and the file is not staged.</p>
-<p>Use <code>git status</code> frequently. It is an observation command and is safe to run.</p>
+<p>Answers: <code>HEAD</code> identifies the new commit on <code>alternative-specification</code>. Switching to <code>main</code> restores the version from C3. The new commit remains available through the <code>alternative-specification</code> label.</p>
+<p>The value of the question is reasoning about the graph, not command memorization. Students who can reason about the graph can usually recover from an unfamiliar situation.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1872,15 +1829,473 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="select-the-first-snapshot" class="slide level2">
-<h2>Select the first snapshot</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href></a><span class="fu">git</span> add README.md .gitignore code/</span>
-<span id="cb14-2"><a href></a><span class="fu">git</span> diff <span class="at">--staged</span></span>
-<span id="cb14-3"><a href></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Create analysis workflow&quot;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The message completes the sentence: <strong>This commit will…</strong></p>
+<section id="a-research-decision-determines-what-happens-to-a-branch" class="slide level2">
+<h2>A research decision determines what happens to a branch</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Decision</th>
+<th>Use it when…</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Merge</strong></td>
+<td>The branch’s changes should become part of <code>main</code></td>
+</tr>
+<tr class="even">
+<td><strong>Retain for now</strong></td>
+<td>The decision is pending and the work is worth revisiting</td>
+</tr>
+<tr class="odd">
+<td><strong>Delete</strong></td>
+<td>The work is rejected and the branch name no longer provides value</td>
+</tr>
+</tbody>
+</table>
+<p>If an alternative matters to the paper, preserve its code and result on <code>main</code> even when it is not the preferred specification.</p>
+<aside class="notes">
+<p>Merging is a research decision, not the automatic end of every branch. A researcher can retain a branch when the alternative and its history remain informative.</p>
+<p>Record consequential alternatives in the paper or research log. Delete short-lived branches after their work is merged or the separate label has no further value. <code>git branch -d</code> refuses to delete an unmerged branch. Git does not delete a merged commit when it deletes the redundant branch label.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="a-fast-forward-merge-moves-the-current-branch-label" class="slide level2">
+<h2>A fast-forward merge moves the current branch label</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a href></a>Before merge</span>
+<span id="cb9-2"><a href></a></span>
+<span id="cb9-3"><a href></a>C1 ← C2 ← C3             main (HEAD)</span>
+<span id="cb9-4"><a href></a>          ↖ C4           alternative-specification</span>
+<span id="cb9-5"><a href></a></span>
+<span id="cb9-6"><a href></a>git switch main                    # destination</span>
+<span id="cb9-7"><a href></a>git merge alternative-specification</span>
+<span id="cb9-8"><a href></a></span>
+<span id="cb9-9"><a href></a>After merge</span>
+<span id="cb9-10"><a href></a></span>
+<span id="cb9-11"><a href></a>C1 ← C2 ← C3 ← C4</span>
+<span id="cb9-12"><a href></a>                  ├── main (HEAD)</span>
+<span id="cb9-13"><a href></a>                  └── alternative-specification</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Git moves <code>main</code> to C4 without creating a merge commit. The source branch still points to C4.</p>
+<aside class="notes">
+<p><code>git merge alternative-specification</code> integrates that branch into the current branch. The command does not mean “merge main into alternative-specification.” The current branch is the destination.</p>
+<p>The merge does not blindly overwrite the destination. In this example, the source branch began at <code>main</code> and contains all of its earlier work. The source branch label remains after the merge and can be deleted once its separate name is no longer useful.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="exercise-can-git-fast-forward-this-merge" class="slide level2">
+<h2>Exercise: can Git fast-forward this merge?</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a href></a>C1 ← C2 ← C3 ← C5        main (HEAD)</span>
+<span id="cb10-2"><a href></a>          ↖ C4           alternative-specification</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You run <code>git merge alternative-specification</code>.</p>
+<ul>
+<li>Can Git move <code>main</code> directly to C4?</li>
+<li>Why might Git need a merge commit?</li>
+<li>When could Git ask you to resolve a conflict?</li>
+</ul>
+<aside class="notes">
+<p>Answers: Git cannot fast-forward because <code>main</code> and the alternative branch both advanced after C3. Git must combine the two histories, usually with a merge commit. A conflict can occur if C4 and C5 changed the same lines or made other changes that Git cannot combine automatically.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="a-divergent-merge-combines-two-lines-of-work" class="slide level2">
+<h2>A divergent merge combines two lines of work</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a href></a>Before merge</span>
+<span id="cb11-2"><a href></a></span>
+<span id="cb11-3"><a href></a>             C5  main (HEAD)</span>
+<span id="cb11-4"><a href></a>            ↗</span>
+<span id="cb11-5"><a href></a>C1 ← C2 ← C3</span>
+<span id="cb11-6"><a href></a>            ↘</span>
+<span id="cb11-7"><a href></a>             C4  alternative-specification</span>
+<span id="cb11-8"><a href></a></span>
+<span id="cb11-9"><a href></a>After merge</span>
+<span id="cb11-10"><a href></a></span>
+<span id="cb11-11"><a href></a>             C5 ───────┐</span>
+<span id="cb11-12"><a href></a>            ↗          ↓</span>
+<span id="cb11-13"><a href></a>C1 ← C2 ← C3           C6  main (HEAD)</span>
+<span id="cb11-14"><a href></a>            ↘          ↑</span>
+<span id="cb11-15"><a href></a>             C4 ───────┘   alternative-specification stays at C4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>C6 records the combined result. It has C5 and C4 as parents.</p>
+<aside class="notes">
+<p><code>git merge alternative-specification</code> runs while <code>main</code> is current. Git combines changes made since the shared ancestor C3. The merge commit C6 preserves both lines of history. The source branch name still identifies C4.</p>
+<p>If the branches changed unrelated parts of the project, Git can often combine them automatically. If their changes disagree, a person must resolve the conflict before C6 can be recorded.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="a-merge-conflict-marks-a-decision-git-cannot-make" class="slide level2">
+<h2>A merge conflict marks a decision Git cannot make</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a href></a>Shared starting line:  weight = baseline_weight</span>
+<span id="cb12-2"><a href></a></span>
+<span id="cb12-3"><a href></a>main changes it to:   weight = revised_baseline_weight</span>
+<span id="cb12-4"><a href></a>branch changes it to: weight = alternative_weight</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Git pauses the merge and marks the conflicting lines in the file.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a href></a>Inspect both versions → choose the intended code</span>
+<span id="cb13-2"><a href></a>Run checks → stage the resolved file → commit the merge</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The result may keep one version, both versions, or a new solution.</p>
+<aside class="notes">
+<p>Conflicts are not evidence that either branch is wrong. Git cannot infer which research specification should be primary. It identifies the overlapping changes and asks the researcher to write the intended result.</p>
+<p>Show conflict markers if students ask, but make the decision model central. After editing the file, run the relevant analysis or tests, stage the resolved file, and finish the merge commit. Do not automatically accept “ours” or “theirs” without understanding the content.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="exercise-integrate-a-robustness-check-without-replacing-the-baseline" class="slide level2">
+<h2>Exercise: integrate a robustness check without replacing the baseline</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a href></a>main:        baseline weights → primary estimate</span>
+<span id="cb14-2"><a href></a>alternative: replaces weights → different estimate</span>
+<span id="cb14-3"><a href></a>decision:    keep primary, report alternative as a check</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Would merging the branch as written preserve both estimates?</li>
+<li>What should the code produce before you merge it into <code>main</code>?</li>
+<li>What should the research record say about the difference?</li>
+</ul>
+<aside class="notes">
+<p>The source branch currently replaces the baseline calculation. An automatic merge could leave only the alternative version, especially if <code>main</code> has not changed since the branch point. Revise the branch so one scripted workflow computes both estimates and labels them clearly. Run it and compare outputs. Then merge the revised branch into <code>main</code>. Document the size of the change and the reason the baseline weights remain primary. This is a substantive research decision, not a Git conflict resolution rule.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="remote-commands-move-commits-between-repositories" class="slide level2">
+<h2>Remote commands move commits between repositories</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Command</th>
+<th>Mental model</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>git clone &lt;url&gt;</code></td>
+<td>Create a local repository and connect it to the remote</td>
+</tr>
+<tr class="even">
+<td><code>git fetch</code></td>
+<td>Update your local view of remote commits without changing your working files</td>
+</tr>
+<tr class="odd">
+<td><code>git pull --ff-only</code></td>
+<td>Fetch, then move your current branch forward only when no histories must be combined</td>
+</tr>
+<tr class="even">
+<td><code>git push</code></td>
+<td>Send local commits and advance the corresponding remote branch</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>Cloning is usually a one-time setup action. Fetch, pull, and push synchronize repositories. They do not synchronize one shared live folder.</p>
+<p>The pre-class exercise used <code>git pull --ff-only</code>. The option refuses the pull when local and remote histories have diverged. It prevents Git from choosing a merge strategy before the student understands the situation.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="exercise-predict-what-these-remote-commands-do" class="slide level2">
+<h2>Exercise: predict what these remote commands do</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb15-1"><a href></a>             C4  main (remote)   (README edit)</span>
+<span id="cb15-2"><a href></a>            ↗</span>
+<span id="cb15-3"><a href></a>C1 ← C2 ← C3</span>
+<span id="cb15-4"><a href></a>            ↘</span>
+<span id="cb15-5"><a href></a>             C5  main (local)    (analysis commit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Predict the result of each command:</p>
+<ol type="1">
+<li>Does <code>git push origin main</code> move remote <code>main</code> to C5, or does Git reject it? Explain from the graph.</li>
+<li>Does <code>git pull --ff-only origin main</code> move local <code>main</code> to include C4, or does it stop? Explain from the graph.</li>
+<li>After <code>git fetch origin</code>, does <code>origin/main</code> move? Do the project files change? What can <code>git log --oneline --graph --all</code> show?</li>
+</ol>
+<aside class="notes">
+<p><code>git push</code> is rejected because the remote <code>main</code> has C4, which the local branch does not contain. Accepting C5 as the new remote tip would make C4 no longer reachable from <code>main</code>. <code>git pull --ff-only</code> also stops because neither branch is an ancestor of the other. <code>git fetch</code> updates the local record of the remote tracking branch but does not change the project files. The log command lets students inspect both lines of history. After inspection, they can choose a merge or another integration method, resolve any conflicts, and push the result.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="build-a-reproducible-research-project" class="slide level2 section-divider">
+<h2>Build a reproducible research project</h2>
+</section>
+<section id="what-must-accompany-a-result" class="slide level2">
+<h2>What must accompany a result?</h2>
+<ul>
+<li>The code version: identify the Git commit</li>
+<li>The input data: identify the exact files or release</li>
+<li>The environment and settings: record what the code needs</li>
+<li>The run command and expected output: show how to recreate the result</li>
+</ul>
+<aside class="notes">
+<p>A repository can preserve the analysis code while omitting the data, package versions, seed, or run instructions. Your future self may face the same gaps as another researcher.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="exercise-what-could-make-results-fail-to-replicate" class="slide level2">
+<h2>Exercise: what could make results fail to replicate?</h2>
+<p>Two researchers check out the same commit. Each has a copy of the input data.</p>
+<div class="comparison">
+<div>
+<h3>
+Scenario 1: cannot run
+</h3>
+<p>
+The script stops before producing a result.
+</p>
+<p>
+Name two plausible explanations.
+</p>
+</div>
+<div>
+<h3>
+Scenario 2: different result
+</h3>
+<p>
+The script runs, but the estimate differs.
+</p>
+<p>
+Name two plausible explanations.
+</p>
+</div>
+</div>
+<p>For each scenario, identify what you would record or change to prevent it.</p>
+<aside class="notes">
+<p>Do not cue students with a software-version example. Let them identify the missing dimensions. A can result from an absolute path, missing package, missing credential, or unavailable external service. B can result from a different data snapshot, random draw, package version, numerical library, time-dependent query, or language-model response. Some conditions can cause either outcome. Ask which problems prevent execution and which let the code run but change its output.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="start-with-the-course-repository" class="slide level2">
+<h2>Start with the course repository</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb16-1"><a href></a>Course template → your GitHub repository → clone → your computer</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb17-1"><a href></a>fa26-1433-YOUR-KERBEROS/</span>
+<span id="cb17-2"><a href></a>├── README.md</span>
+<span id="cb17-3"><a href></a>├── .gitignore</span>
+<span id="cb17-4"><a href></a>├── code/</span>
+<span id="cb17-5"><a href></a>├── data/</span>
+<span id="cb17-6"><a href></a>└── output/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href></a><span class="fu">git</span> clone https://github.com/YOU/fa26-1433-YOUR-KERBEROS.git</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<aside class="notes">
+<p>Students first created a repository from the course template on GitHub. The template supplied the starting directory structure and documentation. Their new repository is separate from the template repository.</p>
+<p><code>git clone</code> then created the local directory, downloaded the files and commit history, and recorded the GitHub repository as the remote named <code>origin</code>.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="store-raw-data-according-to-access-and-size" class="slide level2">
+<h2>Store raw data according to access and size</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Data</th>
+<th>Git practice</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Restricted or confidential</td>
+<td>Keep out of Git</td>
+</tr>
+<tr class="even">
+<td>Large</td>
+<td>Store elsewhere and record its source and version</td>
+</tr>
+<tr class="odd">
+<td>Small, non-sensitive, and immutable</td>
+<td>Commit only if sharing is permitted</td>
+</tr>
+</tbody>
+</table>
+<p>Commit extraction code. Store excluded data in an approved location and document its exact version.</p>
+<p>Use <code>.gitignore</code> for raw data that must stay outside Git.</p>
+<aside class="notes">
+<p>Raw data must remain unchanged after acquisition. Cleaning scripts should read the raw snapshot and write new derived files.</p>
+<p>For data stored outside Git, record enough information to identify the exact input. Depending on the source, this can include a release number, retrieval date, URL, query, file name, and checksum.</p>
+<p>Keep a second copy in approved institutional or cloud storage. A synced folder helps protect against laptop loss, but does not identify a data version. Confirm that the storage service is allowed before placing restricted data there.</p>
+<p>Git retains earlier versions of a committed file. Never commit restricted data, secrets, or direct identifiers. Large binary data also make clones slow. Use an approved data archive or storage service. Use Git LFS only when the project has chosen and documented that workflow.</p>
+<p>Sources: <a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/repository-limits">GitHub repository limits</a> and <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository">GitHub: Removing sensitive data</a>.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="gitignore-keeps-selected-local-files-out-of-commits" class="slide level2">
+<h2><code>.gitignore</code> keeps selected local files out of commits</h2>
+<p><strong>Contents of <code>.gitignore</code>:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb19-1"><a href></a># Restricted or large raw data</span>
+<span id="cb19-2"><a href></a>data/raw/</span>
+<span id="cb19-3"><a href></a></span>
+<span id="cb19-4"><a href></a># Local environments and system files</span>
+<span id="cb19-5"><a href></a>.venv/</span>
+<span id="cb19-6"><a href></a>.DS_Store</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Commit <code>.gitignore</code> so every clone uses the same rules</li>
+<li>Add an ignore rule before you stage the file</li>
+<li>An ignore rule does not remove a file that Git already tracks</li>
+</ul>
+<aside class="notes">
+<p>A <code>.gitignore</code> file specifies intentionally untracked files. It helps keep generated files, local environments, and unsuitable data out of routine Git operations.</p>
+<p>An ignore rule is not an access-control or security mechanism. Never place a secret or restricted file in Git history. Deleting it in a later commit does not remove it from earlier commits.</p>
+<p>Source: <a href="https://git-scm.com/docs/gitignore">Git documentation: gitignore</a>.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="check-the-project-state-before-recording-work" class="slide level2">
+<h2>Check the project state before recording work</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb20-1"><a href></a>$ git status</span>
+<span id="cb20-2"><a href></a></span>
+<span id="cb20-3"><a href></a>Untracked files:</span>
+<span id="cb20-4"><a href></a>  notes/research-question.md</span>
+<span id="cb20-5"><a href></a></span>
+<span id="cb20-6"><a href></a>Changes not staged for commit:</span>
+<span id="cb20-7"><a href></a>  modified: code/analyze.py</span>
+<span id="cb20-8"><a href></a></span>
+<span id="cb20-9"><a href></a>Changes to be committed:</span>
+<span id="cb20-10"><a href></a>  modified: README.md</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li><strong>Untracked:</strong> exists in the folder but not in a commit or the staging area</li>
+<li><strong>Modified, not staged:</strong> working file differs from the staged version</li>
+<li><strong>Staged:</strong> selected for the next commit</li>
+</ul>
+<aside class="notes">
+<p>Git observes files inside the working tree, but it records only the content that the user stages and commits. An untracked file is a normal local file. Git does not include it in a commit until the user stages it.</p>
+<p>The short form, <code>git status --short</code>, uses <code>??</code> for untracked, <code>M</code> for modified but unstaged, and <code>M</code> for staged. Use the full status output when an abbreviation is unclear.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="record-a-coherent-project-change" class="slide level2">
+<h2>Record a coherent project change</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href></a><span class="fu">git</span> status</span>
+<span id="cb21-2"><a href></a><span class="fu">git</span> add README.md code/analyze.py</span>
+<span id="cb21-3"><a href></a><span class="fu">git</span> diff <span class="at">--staged</span></span>
+<span id="cb21-4"><a href></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Add baseline analysis&quot;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Review the staged diff before committing. The message completes: <strong>This commit will…</strong></p>
 <aside class="notes">
 <p>Do not recommend <code>git add .</code> as the only starting habit. Explicit paths make the selection visible. <code>git add .</code> can be appropriate after the researcher has inspected the complete status and ignore rules.</p>
-<p>An imperative message such as “Create analysis workflow” states what the commit does when applied.</p>
+<p>An imperative message such as “Add baseline analysis” states what the commit does when applied.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1893,16 +2308,19 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="read-the-history" class="slide level2">
-<h2>Read the history</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href></a><span class="ex">$</span> git log <span class="at">--oneline</span> <span class="at">--decorate</span></span>
-<span id="cb15-2"><a href></a><span class="ex">3cb418f</span> <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> main<span class="kw">)</span> <span class="ex">Create</span> analysis workflow</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href></a><span class="fu">git</span> show 3cb418f</span>
-<span id="cb16-2"><a href></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--</span> code/analyze.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>History is useful only when commits and messages are informative.</p>
+<section id="trace-a-result-back-to-a-code-change" class="slide level2">
+<h2>Trace a result back to a code change</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href></a><span class="ex">$</span> git log <span class="at">--oneline</span> <span class="at">--decorate</span></span>
+<span id="cb22-2"><a href></a><span class="ex">3cb418f</span> <span class="er">(</span><span class="ex">HEAD</span> <span class="at">-</span><span class="op">&gt;</span> main<span class="kw">)</span> <span class="ex">Add</span> baseline analysis</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb23-1"><a href></a>Result:  Table 1 baseline estimate</span>
+<span id="cb23-2"><a href></a>Code:    commit 3cb418f</span>
+<span id="cb23-3"><a href></a>Data:    survey release 2026-09, crosswalk version 2</span>
+<span id="cb23-4"><a href></a>Run:     bash run.sh from the project root</span>
+<span id="cb23-5"><a href></a>Output:  output/estimates.csv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Record the commit ID with each important result; identify data separately.</p>
 <aside class="notes">
-<p><code>git show</code> displays a commit and its changes. Limiting <code>git log</code> to a file can answer when and why that file changed.</p>
-<p>The persistent log is one of Git’s principal benefits for independent work. It replaces memory and filename conventions with inspectable evidence.</p>
+<p>This example applies Git’s commit model to a research result. The commit ID identifies the code and documentation in Git; it does not identify raw data stored elsewhere. A data release, retrieval record, or checksum can identify the exact external input. <code>git show 3cb418f</code> displays the recorded code change. <code>git log --oneline -- code/analyze.py</code> traces one file’s history.</p>
+<p>The persistent log is one of Git’s principal benefits for independent work. It replaces memory and filename conventions with inspectable evidence. The result record can live in a research log or result manifest.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1915,18 +2333,17 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="use-a-branch-for-an-uncertain-direction" class="slide level2">
-<h2>Use a branch for an uncertain direction</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href></a><span class="fu">git</span> switch <span class="at">-c</span> alternative-specification</span>
-<span id="cb17-2"><a href></a></span>
-<span id="cb17-3"><a href></a><span class="co"># edit, run, and inspect the analysis</span></span>
-<span id="cb17-4"><a href></a></span>
-<span id="cb17-5"><a href></a><span class="fu">git</span> add code/analyze.py</span>
-<span id="cb17-6"><a href></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Estimate quadratic specification&quot;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>main</code> still identifies the prior working version.</p>
+<section id="exercise-predict-what-happens-when-you-switch-branches" class="slide level2">
+<h2>Exercise: predict what happens when you switch branches</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb24-1"><a href></a>alternative-specification</span>
+<span id="cb24-2"><a href></a>  committed version: C4</span>
+<span id="cb24-3"><a href></a>  working file: edits made after C4, not yet committed</span>
+<span id="cb24-4"><a href></a></span>
+<span id="cb24-5"><a href></a>main</span>
+<span id="cb24-6"><a href></a>  committed version: C2, with a different version of code/analyze.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You want to inspect the committed version on <code>main</code>, then return to the edits. What might happen to the working file when you switch branches?</p>
 <aside class="notes">
-<p>A branch is useful for work that might be kept, revised, or discarded. Examples include an alternative specification, a large refactor, or a risky data change.</p>
-<p>A quick local edit does not always need a branch. Use one when separation reduces confusion or protects a stable line of work.</p>
+<p>Ask students to predict whether Git will switch branches, overwrite the uncommitted edits, or stop. Git stops when switching would lose local edits. It can switch when the changes do not conflict with the target branch. The point is to predict the interaction between the committed version and the current working file before running a command.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1939,20 +2356,54 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="compare-before-you-decide" class="slide level2">
-<h2>Compare before you decide</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href></a><span class="fu">git</span> diff main..alternative-specification</span>
-<span id="cb18-2"><a href></a><span class="fu">git</span> log <span class="at">--oneline</span> <span class="at">--graph</span> <span class="at">--all</span> <span class="at">--decorate</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Then choose:</p>
+<section id="git-stash-pauses-edits-without-advancing-the-branch" class="slide level2">
+<h2><code>git stash</code> pauses edits without advancing the branch</h2>
+<div class="stash-flow">
+<div>
+<strong>1. Save</strong><code>git stash push</code><span>Git records the local edits in a stash</span>
+</div>
+<div>
+<strong>2. Switch</strong><code>git switch main</code><span>The working tree can show the committed files from main</span>
+</div>
+<div>
+<strong>3. Return</strong><code>git switch alternative-specification</code><span>Go back to the work branch</span>
+</div>
+<div>
+<strong>4. Restore</strong><code>git stash pop</code><span>Reapply the edits on that branch</span>
+</div>
+</div>
+<p>A stash is local and temporary. Apply it after returning to the branch where you paused.</p>
+<p>By default, a stash does not include untracked files.</p>
+<aside class="notes">
+<p><code>git stash push</code> saves tracked working-tree and staged changes, then restores a clean working tree. Git stores the stash internally, but the current branch does not advance. <code>git stash pop</code> reapplies the most recent stash and removes it from the stash list if it applies cleanly. Return to the original branch first so the edits resume in their original context. A stash is not pushed.</p>
+<p>Prefer a coherent commit when the work represents a project state worth recording. Use a stash for a short interruption when the work is not ready to commit.</p>
+<p>Sources: <a href="https://git-scm.com/docs/git-switch">Git switch</a> and <a href="https://git-scm.com/docs/git-stash">Git stash</a>.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="exercise-switch-branches-without-losing-unfinished-work" class="slide level2">
+<h2>Exercise: switch branches without losing unfinished work</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb25-1"><a href></a>Current branch: alternative-specification</span>
+<span id="cb25-2"><a href></a>Tracked file:   code/analyze.py has uncommitted edits</span>
+<span id="cb25-3"><a href></a>New file:       notes/weighting.md has never been staged</span>
+<span id="cb25-4"><a href></a>Goal:           run the committed version on main, then resume both files</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li>Keep developing the branch</li>
-<li>Merge the branch into <code>main</code></li>
-<li>Leave the branch for later</li>
-<li>Delete the branch after rejecting the idea</li>
+<li>Would a default <code>git stash push</code> save both files?</li>
+<li>How can you preserve both files before switching branches?</li>
+<li>Why might a checkpoint commit be better if this work is already coherent?</li>
 </ul>
 <aside class="notes">
-<p>The branch preserves both the code and the reasoning recorded in commits. The researcher can compare specifications without maintaining parallel files.</p>
-<p>If the work should become the main line, switch to <code>main</code> and merge the branch. Show the command only if time permits. The mental model is the priority.</p>
+<p>Answer: a default stash saves changes to tracked files, but not the new <code>notes/weighting.md</code>. First inspect <code>git status</code>. Use <code>git stash push -u -m &quot;Pause alternative specification&quot;</code> to include untracked files, switch to <code>main</code>, then switch back and run <code>git stash pop</code>. The <code>-u</code> option includes untracked files. Check status after restoring the stash.</p>
+<p>A coherent checkpoint commit is another option when the work is in a state worth recording. Do not create a misleading commit only to clear the working tree.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1965,20 +2416,47 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="returning-to-working-code" class="slide level2">
-<h2>Returning to working code</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href></a><span class="fu">git</span> log <span class="at">--oneline</span></span>
-<span id="cb19-2"><a href></a><span class="fu">git</span> show <span class="op">&lt;</span>commit<span class="op">&gt;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>First ask:</p>
-<ol type="1">
-<li>Are the changes committed?</li>
-<li>Do I want to inspect, restore, or reverse them?</li>
-<li>Has another person received the commits?</li>
-</ol>
+<section id="if-you-need-a-python-notebook-choose-marimo" class="slide level2">
+<h2>If you need a Python notebook, choose marimo</h2>
+<p>A <strong>notebook</strong> lets you run code in cells beside notes, figures, and results.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Jupyter</th>
+<th>marimo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Saved file</td>
+<td><code>.ipynb</code> JSON with code, metadata, and often outputs</td>
+<td>A plain <code>.py</code> file</td>
+</tr>
+<tr class="even">
+<td>Git and coding agents</td>
+<td>Changes can be harder to review and edit</td>
+<td>Ordinary Python text is easier to diff and edit</td>
+</tr>
+<tr class="odd">
+<td>Running cells</td>
+<td>Old values can remain in memory</td>
+<td>Dependent cells update or are marked stale</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Course recommendation:</strong> use marimo for new interactive Python work.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href></a><span class="ex">marimo</span> edit notebooks/analysis.py  <span class="co"># explore</span></span>
+<span id="cb26-2"><a href></a><span class="ex">python</span> notebooks/analysis.py       <span class="co"># rerun from the command line</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
-<p>Do not teach one universal “undo” command. Recovery depends on the state and the intended result.</p>
-<p>Committed work is usually recoverable. Uncommitted discarded work may be lost. Shared history requires extra care because rewriting it affects other copies.</p>
-<p>For this lecture, demonstrate inspection of an earlier commit. Defer <code>reset</code>, interactive rebase, and other history-editing commands. <code>git revert</code> is the safer conceptual model for undoing a shared commit because it adds a new commit.</p>
+<p>This is a choice for students who want an interactive Python document. They do not need to use a notebook at all. A Jupyter notebook is an <code>.ipynb</code> file that stores cells, metadata, and outputs as JSON. That format can create noisy Git diffs, and its interactive execution can leave values in memory that no longer match the visible order of cells. Jupyter files can still be versioned and executed from a command; do not imply otherwise.</p>
+<p>marimo stores notebooks as Python source files. That makes code changes easier to inspect in Git and gives a text-editing coding agent an ordinary Python file to work with. Its reactive execution reruns affected cells or marks them stale. A marimo notebook can also run as a script with <code>python notebook.py</code>. The recommendation is for new Python notebook work, not a demand to convert an existing Jupyter project or to replace simple scripts. Keep dependencies in the project’s environment recipe, and check data permissions before committing any generated output.</p>
+<p>Sources: <a href="https://docs.jupyter.org/en/latest/reference/mimetype.html">Jupyter notebook format</a>, <a href="https://docs.marimo.io/">marimo overview</a>, and <a href="https://docs.marimo.io/guides/package_management/projects/">marimo project guidance</a>.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -1991,159 +2469,186 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="prediction-what-would-you-protect" class="slide level2">
-<h2>Prediction: what would you protect?</h2>
-<p>You have working code on <code>main</code>. You want to try a new estimator that may require many edits.</p>
-<p>Before the experiment, what would you do?</p>
-<ol type="1">
-<li>Confirm that the working version is committed</li>
-<li>Create a branch</li>
-<li>Make and test the edits on that branch</li>
-</ol>
-<aside class="notes">
-<p>Ask students for the steps before revealing them. The key protection is a known committed state. The branch gives the experiment a separate name and history.</p>
-<p>An agent should receive the same instruction: verify a clean starting state, create a named branch, make focused commits, and report the diff.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="keep-unsuitable-files-out-of-git" class="slide level2">
-<h2>Keep unsuitable files out of Git</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb20-1"><a href></a># Private or restricted data</span>
-<span id="cb20-2"><a href></a>data/raw/</span>
-<span id="cb20-3"><a href></a></span>
-<span id="cb20-4"><a href></a># Generated output</span>
-<span id="cb20-5"><a href></a>output/</span>
-<span id="cb20-6"><a href></a></span>
-<span id="cb20-7"><a href></a># Local environments and system files</span>
-<span id="cb20-8"><a href></a>.venv/</span>
-<span id="cb20-9"><a href></a>.DS_Store</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Commit <code>.gitignore</code> before Git tracks these files.</p>
-<aside class="notes">
-<p>Do not commit secrets, restricted data, large raw datasets, local package environments, or easily regenerated output. An ignore rule does not remove a file that Git already tracks.</p>
-<p>Generated output is a judgment call. A final paper or small reference result may be useful to preserve. Large or frequently changing intermediate files usually are not.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="remote-repositories-provide-another-copy" class="slide level2">
-<h2>Remote repositories provide another copy</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href></a><span class="fu">git</span> clone <span class="op">&lt;</span>url<span class="op">&gt;</span></span>
-<span id="cb21-2"><a href></a><span class="fu">git</span> fetch</span>
-<span id="cb21-3"><a href></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<ul>
-<li><code>clone</code>: create a local repository from a remote repository</li>
-<li><code>fetch</code>: download remote commits and labels</li>
-<li><code>push</code>: send local commits and update a remote label</li>
-</ul>
-<aside class="notes">
-<p>Keep the remote model brief. A remote repository is another repository, not a shared live folder. Git transfers commits and branch references between the copies.</p>
-<p><code>git pull</code> combines fetch with integration. Separating the concepts prevents students from treating pull as unexplained synchronization.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="when-you-collaborate-later" class="slide level2">
-<h2>When you collaborate later</h2>
-<ul>
-<li>Give each change a separate branch</li>
-<li>Make small, coherent commits</li>
-<li>Fetch before you integrate work</li>
-<li>Review the diff before you merge</li>
-<li>Use a pull request when review or discussion is useful</li>
-</ul>
-<aside class="notes">
-<p>Pull requests are a hosting-platform workflow, not a core Git object. They are useful when another person should inspect and discuss a proposed merge.</p>
-<p>For this independent research course, students do not need to create pull requests for routine work. The habits of focused branches, clear commits, and diff review remain valuable.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="reproducible-research" class="slide level2 section-divider">
-<h2>Reproducible research</h2>
-</section>
-<section id="a-git-repository-is-necessary-not-sufficient" class="slide level2">
-<h2>A Git repository is necessary, not sufficient</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb22-1"><a href></a>Exact code       ✓</span>
-<span id="cb22-2"><a href></a>Input data       ?</span>
-<span id="cb22-3"><a href></a>Run order        ?</span>
-<span id="cb22-4"><a href></a>Package versions ?</span>
-<span id="cb22-5"><a href></a>Random seed      ?</span>
-<span id="cb22-6"><a href></a>System tools     ?</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The commit identifies <strong>what you wrote</strong>, not every condition required to run it.</p>
-<aside class="notes">
-<p>Use this checklist to reconnect the two parts of the lecture. Git identifies a precise project state. Reproduction requires all material inputs and execution conditions for that state.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="make-the-pipeline-explicit" class="slide level2">
-<h2>Make the pipeline explicit</h2>
+<section id="script-each-stage-and-run-it-from-one-entry-point" class="slide level2">
+<h2>Script each stage and run it from one entry point</h2>
 <div class="pipeline">
-<div>
-Raw data
+<div class="optional-step">
+Extraction script(s)<small>optional step 0</small>
 </div>
 <span>→</span>
 <div>
-Cleaning script
+Raw-data snapshot
 </div>
 <span>→</span>
 <div>
-Derived data
+Cleaning script(s)
 </div>
 <span>→</span>
 <div>
-Analysis script
+Analysis script(s)
 </div>
 <span>→</span>
 <div>
-Tables and figures
+Results
 </div>
 </div>
-<p>Each derived file should have a documented path back to its inputs and code.</p>
+<p>The workflow should have one documented entry point that runs the stages in order.</p>
 <aside class="notes">
-<p>The arrows represent executable transformations. A reader should not need to infer an undocumented manual step between boxes.</p>
-<p>Raw data are treated as inputs. Scripts create derived data and outputs. If raw data cannot be shared, document how an authorized researcher can obtain them and what files the scripts expect.</p>
+<p>The entry point runs the stages in order. A reader should not need to infer an undocumented manual step between boxes. The extraction step is optional when a raw-data snapshot is already available. The snapshot preserves the inputs used for one result even if the external source later changes.</p>
+<p>If the data source provides a stable download rather than an API, step 0 can be a documented download command or procedure.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="use-project-relative-paths-so-the-workflow-can-run-elsewhere" class="slide level2">
+<h2>Use project-relative paths so the workflow can run elsewhere</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb27-2"><a href></a></span>
+<span id="cb27-3"><a href></a><span class="co"># Run the project command from the repository root.</span></span>
+<span id="cb27-4"><a href></a>data <span class="op">=</span> pd.read_csv(<span class="st">&quot;data/raw/survey.csv&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A relative path works when the run command starts from the documented project root.</p>
+<aside class="notes">
+<p>The portable example assumes a defined project root. The run instructions must state where to execute the command, or the code should determine the root reliably.</p>
+<p>Also document file names, encodings, expected columns, and access restrictions when these details affect the run.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="a-shell-script-records-command-order" class="slide level2">
+<h2>A shell script records command order</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href></a><span class="co">#!/usr/bin/env bash</span></span>
+<span id="cb28-2"><a href></a><span class="bu">set</span> <span class="at">-euo</span> pipefail</span>
+<span id="cb28-3"><a href></a><span class="ex">python</span> code/extract.py    <span class="co"># writes data/raw/survey.csv</span></span>
+<span id="cb28-4"><a href></a><span class="ex">python</span> code/clean.py      <span class="co"># reads survey and crosswalk; writes data/clean.csv</span></span>
+<span id="cb28-5"><a href></a><span class="ex">Rscript</span> code/estimate.R   <span class="co"># writes output/estimates.csv</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run this from the project root. The script stops if a command fails.</p>
+<aside class="notes">
+<p>This shell script is a concrete entry point for the workflow above. Shell scripts can run several programs in sequence. The comments describe inputs and outputs for a person. The shell does not use those comments to decide which commands to run. Each successful run executes every listed command. <code>set -e</code> stops after a failed command, while <code>-u</code> catches unset variables and <code>pipefail</code> catches failures inside pipelines. This example assumes Bash is available. The crosswalk is a separately supplied raw input.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="exercise-how-could-you-avoid-rerunning-every-command" class="slide level2">
+<h2>Exercise: how could you avoid rerunning every command?</h2>
+<p>Use the script on the previous slide.</p>
+<ol type="1">
+<li>You changed only <code>estimate.R</code>. Which outputs are still valid and can be reused?</li>
+<li><code>crosswalk.csv</code> changed, but neither script changed. What must be rebuilt before you trust <code>estimates.csv</code>?</li>
+<li>What file relationships would an automation tool need to know to make these decisions?</li>
+</ol>
+<aside class="notes">
+<p>When only <code>estimate.R</code> changes, <code>clean.csv</code> can be reused and only the final estimate must be rebuilt. When <code>crosswalk.csv</code> changes, the cleaning step must rebuild <code>clean.csv</code> before estimation. Running only the last command in the second case could produce a plausible estimate from stale cleaned data. To choose the right commands, automation must know which files each step reads and writes. This information forms a dependency graph.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="make-records-dependencies-between-inputs-and-outputs" class="slide level2">
+<h2>Make records dependencies between inputs and outputs</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Output</th>
+<th>Required inputs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>data/clean.csv</code></td>
+<td><code>data/raw/survey.csv</code>, <code>data/raw/crosswalk.csv</code>, <code>code/clean.py</code></td>
+</tr>
+<tr class="even">
+<td><code>output/estimates.csv</code></td>
+<td><code>data/clean.csv</code>, <code>code/estimate.R</code></td>
+</tr>
+</tbody>
+</table>
+<p>Make can use declared file dependencies and modification times to decide what to rerun.</p>
+<aside class="notes">
+<p>The first rule must list both raw data files and the cleaning script as prerequisites. The second must list the cleaned data and estimation script. If only <code>estimate.R</code> changes, Make can rerun estimation. If a raw input changes, it can rerun cleaning and then estimation. Make compares file modification times, so it only works as intended when the declared dependencies are complete. The extraction step needs its own rule or a separate documented command when raw data must be regenerated.</p>
+<p>Source: <a href="https://www.gnu.org/software/make/manual/html_node/Prerequisite-Types.html">GNU Make manual: prerequisites</a>.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="three-ways-to-automate-project-steps" class="slide level2">
+<h2>Three ways to automate project steps</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Option</th>
+<th>What it runs</th>
+<th>How it decides what to run</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>One Python script</td>
+<td>Python analysis steps</td>
+<td>Runs the steps written in the script, in order</td>
+</tr>
+<tr class="even">
+<td>Shell script</td>
+<td>Commands from Python and other command-line programs</td>
+<td>Runs the listed commands, in order</td>
+</tr>
+<tr class="odd">
+<td>Makefile</td>
+<td>Commands from Python and other command-line programs</td>
+<td>Rebuilds targets with newer declared prerequisites</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>One Python script is simple when all steps use Python. It becomes awkward when it must coordinate other applications. A shell script is a file of terminal commands. It can run Python, R, and other command-line programs in sequence. A Makefile can run those same commands. It also records a dependency graph, such as which data and scripts produce each output. Make uses that graph to rerun the steps affected by a change and leave other outputs alone. Make can only do this when the dependency rules describe the workflow correctly.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -2174,8 +2679,7 @@ display:block!important;
 </div>
 <p>Different environments can produce different results.</p>
 <aside class="notes">
-<p>A virtual environment isolates a project’s packages from packages used by other projects. A dependency file records which packages the project needs. A lock file or other exact version record pins the resolved package versions.</p>
-<p>Do not teach tool-specific setup here. The conceptual requirement is that a future user can reconstruct the relevant environment. Exact needs depend on the language, tools, and sensitivity of the analysis.</p>
+<p>The conceptual requirement is that a future user can reconstruct the relevant environment. Exact needs depend on the language, tools, and sensitivity of the analysis.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -2188,31 +2692,48 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="isolation-and-pinning-solve-different-problems" class="slide level2">
-<h2>Isolation and pinning solve different problems</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Practice</th>
-<th>Question it answers</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Virtual environment</td>
-<td>Which packages belong to this project?</td>
-</tr>
-<tr class="even">
-<td>Version pinning</td>
-<td>Which package versions produced the result?</td>
-</tr>
-</tbody>
-</table>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb23-1"><a href></a>Project A → isolated environment → recorded versions</span>
-<span id="cb23-2"><a href></a>Project B → isolated environment → different recorded versions</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="python-example-give-each-project-its-own-virtual-environment" class="slide level2">
+<h2>Python example: give each project its own virtual environment</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb29-1"><a href></a>Python installation</span>
+<span id="cb29-2"><a href></a>├── Project A/.venv/ → Project A&#39;s Python and packages</span>
+<span id="cb29-3"><a href></a>└── Project B/.venv/ → Project B&#39;s separate Python and packages</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href></a><span class="ex">python</span> <span class="at">-m</span> venv .venv</span>
+<span id="cb30-2"><a href></a><span class="bu">source</span> .venv/bin/activate</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<ul>
+<li>Activating <code>.venv</code> makes its Python and packages current in the terminal</li>
+<li>Packages installed in Project A’s environment do not change Project B’s</li>
+<li><code>.venv/</code> is a local directory. Add it to <code>.gitignore</code></li>
+</ul>
 <aside class="notes">
-<p>An environment without recorded dependencies may work only on the researcher’s computer. A version list without isolation can conflict with packages from other projects. Strong workflows use both concepts.</p>
+<p><code>python -m venv .venv</code> creates a virtual environment named <code>.venv</code> inside the project. The activation command shown is for macOS and Unix-style shells. Windows uses a different activation path.</p>
+<p>The virtual environment isolates installed packages. It does not tell another researcher which packages to install. The project must also record the dependencies and versions.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="commit-the-environment-recipe-not-.venv" class="slide level2">
+<h2>Commit the environment recipe, not <code>.venv/</code></h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb31-1"><a href></a>research-project/</span>
+<span id="cb31-2"><a href></a>├── .venv/             local installed environment (ignore)</span>
+<span id="cb31-3"><a href></a>├── requirements.txt   pinned packages and versions (commit)</span>
+<span id="cb31-4"><a href></a>└── code/</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href></a><span class="ex">python</span> <span class="at">-m</span> venv .venv</span>
+<span id="cb32-2"><a href></a><span class="bu">source</span> .venv/bin/activate</span>
+<span id="cb32-3"><a href></a><span class="ex">python</span> <span class="at">-m</span> pip install <span class="at">-r</span> requirements.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A pinned dependency file helps another researcher recreate <code>.venv/</code>.</p>
+<aside class="notes">
+<p>A dependency file states what the project requires. A lock file or equivalent record states the exact versions selected. <code>requirements.txt</code> can record exact versions, including transitive dependencies. Other Python tools use <code>pyproject.toml</code> and lock files.</p>
+<p>Both isolation and version recording are standard parts of a reproducible workflow. The specific files depend on the language and package manager.</p>
 <p>Version pinning improves repeatability but does not guarantee indefinite reproduction. Systems, external services, and unavailable packages can still change.</p>
+<p>Sources: <a href="https://docs.python.org/3/library/venv.html">Python virtual environment documentation</a> and <a href="https://pip.pypa.io/en/stable/topics/repeatable-installs/">pip repeatable installs</a>.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -2227,10 +2748,10 @@ display:block!important;
 </section>
 <section id="control-randomness" class="slide level2">
 <h2>Control randomness</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb24-2"><a href></a></span>
-<span id="cb24-3"><a href></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">1433</span>)</span>
-<span id="cb24-4"><a href></a>sample <span class="op">=</span> rng.choice(observations, size<span class="op">=</span><span class="dv">500</span>, replace<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb33-2"><a href></a></span>
+<span id="cb33-3"><a href></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">1433</span>)</span>
+<span id="cb33-4"><a href></a>sample_indices <span class="op">=</span> rng.choice(<span class="dv">1000</span>, size<span class="op">=</span><span class="dv">500</span>, replace<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Set and record a seed</li>
 <li>Use the same random-number generator</li>
@@ -2251,17 +2772,38 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="use-project-relative-paths" class="slide level2">
-<h2>Use project-relative paths</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href></a><span class="co"># Fragile: specific to one computer</span></span>
-<span id="cb25-2"><a href></a>data <span class="op">=</span> read_csv(<span class="st">&quot;/Users/name/Desktop/project/data/survey.csv&quot;</span>)</span>
-<span id="cb25-3"><a href></a></span>
-<span id="cb25-4"><a href></a><span class="co"># Portable: relative to the project</span></span>
-<span id="cb25-5"><a href></a>data <span class="op">=</span> read_csv(<span class="st">&quot;data/raw/survey.csv&quot;</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Do not make another user reproduce your personal directory structure.</p>
+<section id="language-model-api-calls-can-change-the-analysis-input" class="slide level2">
+<h2>Language-model API calls can change the analysis input</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb34-1"><a href></a>Input text → prompt + model call → cleaned or coded data → analysis</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Source of change</th>
+<th>What to record</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Generated responses can vary across calls</td>
+<td>Retain the exact responses used, subject to data permissions</td>
+</tr>
+<tr class="even">
+<td>A provider can update a model</td>
+<td>Record the model ID, date, and available version details</td>
+</tr>
+<tr class="odd">
+<td>A prompt or setting can change</td>
+<td>Version the prompt, parameters, and transformation code</td>
+</tr>
+</tbody>
+</table>
 <aside class="notes">
-<p>The portable example still assumes a defined project root. The run instructions must state where to execute the command, or the code should determine the root reliably.</p>
-<p>Also document file names, encodings, expected columns, and access restrictions when these details affect the run.</p>
+<p>This is a preview of the later lecture on AI use. A random seed alone may not make a remote model call repeatable. A model name may also refer to a service that changes over time. Treat the response used in the analysis as an input that must be retained when permissions allow.</p>
+<p>This is a reproducibility risk, like an unrecorded random seed or package version.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -2274,127 +2816,80 @@ overflow: hidden!important;
 display:block!important;
 }</style></aside>
 </section>
-<section id="the-readme-is-the-entry-point" class="slide level2">
-<h2>The README is the entry point</h2>
-<p>A new reader should learn:</p>
-<ol type="1">
-<li>What the project does</li>
-<li>Which data it requires</li>
-<li>How to create the environment</li>
-<li>Which command starts the workflow</li>
-<li>Where the outputs appear</li>
-</ol>
-<aside class="notes">
-<p>Test the README from a clean copy of the repository. Instructions that work only because of unrecorded files or global packages are incomplete.</p>
-<p>The README should link to more detailed documentation when necessary. Keep the first successful run direct and visible.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="prediction-will-this-project-reproduce" class="slide level2">
-<h2>Prediction: will this project reproduce?</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb26-1"><a href></a>✓ Code is committed</span>
-<span id="cb26-2"><a href></a>✓ README says: &quot;Run analysis.py&quot;</span>
-<span id="cb26-3"><a href></a>✓ Random seed is set</span>
-<span id="cb26-4"><a href></a>✗ Raw data location is not documented</span>
-<span id="cb26-5"><a href></a>✗ Package versions are not recorded</span>
-<span id="cb26-6"><a href></a>✗ clean_final.csv was edited manually</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>What must change before another researcher can reproduce the result?</p>
-<aside class="notes">
-<p>Ask students to identify each broken link. The project needs data-access and file-location instructions, a recorded environment, and a scripted replacement for the manual edit or an exact documented protocol.</p>
-<p>The committed code and seed are useful but do not compensate for missing inputs or an undocumented transformation.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="directing-an-ai-agent" class="slide level2 agent-process">
-<h2>Directing an AI agent</h2>
-<p>Do not ask only: <strong>“Fix my analysis.”</strong></p>
-<p>Specify the process:</p>
-<ol type="1">
-<li>Inspect <code>README.md</code>, <code>git status</code>, and the recent history</li>
-<li>Create a branch from the current clean commit</li>
-<li>Change only the stated files</li>
-<li>Run the documented checks</li>
-<li>Show the diff and explain each commit</li>
-</ol>
-<aside class="notes">
-<p>An agent can execute commands quickly. It cannot infer the researcher’s preferred repository state or acceptable evidence without instructions.</p>
-<p>The Git mental model lets the researcher verify the agent’s starting point, scope, history, and proposed integration. The reproducibility model lets the researcher require an executable and documented result.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="one-mental-model" class="slide level2">
-<h2>One mental model</h2>
-<div class="final-model">
-<div>
-<strong>Shell</strong><span>Express an action</span>
-</div>
-<div class="final-arrow">
-→
-</div>
-<div>
-<strong>Git</strong><span>Record project states</span>
-</div>
-<div class="final-arrow">
-→
-</div>
-<div>
-<strong>Reproducible project</strong><span>Reconstruct a result</span>
-</div>
-</div>
-<p>Organization is part of the research method.</p>
-<aside class="notes">
-<p>Close by returning to the four opening questions: what changed, why it changed, which version produced the result, and whether another person can produce it.</p>
-<p>Git is not only a collaboration tool. For an independent researcher, it creates an inspectable record of decisions and protects productive experimentation.</p>
-<style type="text/css">
-span.MJX_Assistive_MathML {
-position:absolute!important;
-clip: rect(1px, 1px, 1px, 1px);
-padding: 1px 0 0 0!important;
-border: 0!important;
-height: 1px!important;
-width: 1px!important;
-overflow: hidden!important;
-display:block!important;
-}</style></aside>
-</section>
-<section id="continue-learning" class="slide level2">
-<h2>Continue learning</h2>
+<section id="write-run-instructions-in-the-readme" class="slide level2">
+<h2>Write run instructions in the README</h2>
+<p>The README should state:</p>
 <ul>
-<li><a href="https://missing.csail.mit.edu/2026/course-shell/">The Missing Semester: the shell</a></li>
-<li><a href="https://missing.csail.mit.edu/2026/command-line-environment/">The Missing Semester: command-line environment</a></li>
-<li><a href="https://missing.csail.mit.edu/2026/version-control/">The Missing Semester: version control</a></li>
-<li><a href="https://www.youtube.com/watch?v=1ffBJ4sVUb4">Git for Ages 4 and Up</a></li>
-<li><a href="https://git-scm.com/book/en/v2">Pro Git</a></li>
+<li>What the project does and where its inputs come from</li>
+<li>Which environment to create</li>
+<li>Which command runs the analysis</li>
+<li>Where to find the outputs and how to interpret them</li>
 </ul>
+<p>For example: from the repository root, run <code>bash run.sh</code>.</p>
 <aside class="notes">
-<p>The Missing Semester version-control lecture gives a bottom-up explanation of Git’s data model. Git for Ages 4 and Up uses physical objects to visualize the commit graph. Pro Git is a detailed reference.</p>
+<p>A README is the first guide for a person who did not create the project. It helps the user understand the purpose, setup, and expected outputs. It should point to the command that runs the analysis. That command should run a script, not require the user to copy commands from the README one at a time.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="summary-keep-a-clear-path-from-research-question-to-result" class="slide level2">
+<h2>Summary: keep a clear path from research question to result</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Practice</th>
+<th>Why it matters to another person and to your future self</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Use the command line</td>
+<td>Start the project in a known directory and run a documented workflow</td>
+</tr>
+<tr class="even">
+<td>Use Git</td>
+<td>Identify the code for each result and preserve research decisions</td>
+</tr>
+<tr class="odd">
+<td>Script and document the workflow</td>
+<td>Identify inputs, recreate the environment, and rerun the result</td>
+</tr>
+</tbody>
+</table>
+<aside class="notes">
+<p>Return to the motivating audience: someone else may need to reproduce a result, and your future self will eventually be that person. The command line provides a repeatable way to enter the project and run one documented workflow. Git preserves code history and supports safe exploration. The reproducible workflow records the inputs, environment, settings, and instructions needed to recreate the result. Together, these practices make research easier to inspect, resume, and verify.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="additional-resources" class="slide level2">
+<h2>Additional resources</h2>
+<ol type="1">
+<li><a href="https://missing.csail.mit.edu/">The Missing Semester</a>, including its <a href="https://missing.csail.mit.edu/2026/course-shell/">shell</a> and <a href="https://missing.csail.mit.edu/2026/version-control/">Git</a> lectures</li>
+<li><a href="https://git-scm.com/book/en/v2">Pro Git</a></li>
+</ol>
+<aside class="notes">
+<p>The Missing Semester provides further command-line and version-control instruction. Pro Git is a detailed Git reference. The pre-class assignment already linked to Git for Ages 4 and Up.</p>
 <p>This lecture also adapts the conceptual sequence and individual workflow from the <a href="https://github.com/uchicago-harris-dap/winter2026/blob/main/lectures/git/git.qmd">University of Chicago Harris Git lecture</a>.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {

@@ -8,9 +8,9 @@
 }
 .reveal pre code { max-height: 420px; }
 .reveal table { font-size: 0.78em; }
+.reveal .branch-decisions table { font-size: 0.68em; }
 .reveal .three-part,
-.reveal .comparison,
-.reveal .final-model {
+.reveal .comparison {
   display: flex;
   align-items: stretch;
   justify-content: center;
@@ -18,8 +18,7 @@
   margin: 1.2rem auto;
 }
 .reveal .three-part > div,
-.reveal .comparison > div,
-.reveal .final-model > div:not(.final-arrow) {
+.reveal .comparison > div {
   flex: 1;
   padding: 1rem 1.2rem;
   border: 2px solid #107895;
@@ -28,7 +27,6 @@
   text-align: center;
 }
 .reveal .three-part span,
-.reveal .final-model span,
 .reveal .environment-stack span {
   display: block;
   margin-top: 0.35rem;
@@ -37,6 +35,40 @@
 }
 .reveal .comparison h3 { margin: 0 0 0.6rem; }
 .reveal .comparison p { font-size: 0.78em; margin: 0.45rem 0; }
+.reveal .stash-model,
+.reveal .stash-flow {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.65rem;
+  margin: 1.2rem auto;
+}
+.reveal .stash-model > div,
+.reveal .stash-flow > div {
+  flex: 1;
+  padding: 0.75rem;
+  border: 2px solid #107895;
+  border-radius: 0.35rem;
+  background: #f5fafb;
+  text-align: center;
+  font-size: 0.68em;
+}
+.reveal .stash-model span,
+.reveal .stash-flow span,
+.reveal .stash-model strong,
+.reveal .stash-flow strong {
+  display: block;
+  margin: 0.3rem 0;
+}
+.reveal .stash-model .stash-arrow {
+  flex: 0.8;
+  align-self: center;
+  padding: 0.3rem;
+  border: 0;
+  background: transparent;
+  font-weight: 700;
+}
+.reveal .stash-flow code { display: block; margin: 0.4rem 0; }
 .reveal .commit-graph {
   display: flex;
   align-items: center;
@@ -58,6 +90,37 @@
 .reveal .commit span { font-weight: 700; font-size: 1.15em; }
 .reveal .commit small { font-size: 0.48em; line-height: 1.2; padding: 0.2rem; }
 .reveal .commit-graph .arrow { font-size: 2.2em; padding: 0 0.8rem; }
+.reveal .branch-map {
+  display: block;
+  width: 92%;
+  height: 300px;
+  margin: 0.2rem auto 0.4rem;
+}
+.reveal .branch-map line { stroke: #6b7478; stroke-width: 7; }
+.reveal .branch-map circle {
+  fill: white;
+  stroke: #107895;
+  stroke-width: 7;
+}
+.reveal .branch-map circle.current-node { stroke: #9a2515; }
+.reveal .branch-map text {
+  font-family: monospace;
+  font-size: 28px;
+  text-anchor: middle;
+  fill: #152228;
+}
+.reveal .branch-map text.branch-name {
+  font-size: 25px;
+  text-anchor: start;
+  fill: #107895;
+  font-weight: 700;
+}
+.reveal .branch-map text.alt-name { fill: #9a2515; font-size: 20px; }
+.reveal .branch-map text.head-name {
+  font-size: 22px;
+  text-anchor: start;
+  fill: #4a5459;
+}
 .reveal .branch-graph {
   display: grid;
   grid-template-columns: 4.5rem 2.5rem 4.5rem 2.5rem 4.5rem 2.5rem 4.5rem;
@@ -105,6 +168,22 @@
   gap: 0.55rem;
   margin: 2rem auto;
 }
+.reveal .state-zones {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  margin: 1.4rem 0 -1.4rem;
+  font-size: 0.68em;
+  font-weight: 700;
+  color: #4a5459;
+  text-align: center;
+}
+.reveal .state-zones span:first-child {
+  border-bottom: 3px solid #107895;
+  margin-right: 1rem;
+}
+.reveal .state-zones span:last-child {
+  border-bottom: 3px solid #9a2515;
+}
 .reveal .state-flow > div:not(.flow-arrow),
 .reveal .pipeline > div {
   padding: 1rem 0.75rem;
@@ -113,13 +192,25 @@
   background: #f5fafb;
   text-align: center;
 }
-.reveal .state-flow > div:not(.flow-arrow) { width: 24%; }
+.reveal .state-flow { gap: 0.25rem; }
+.reveal .state-flow > div:not(.flow-arrow) {
+  width: 18%;
+  padding: 0.8rem 0.35rem;
+}
+.reveal .state-flow > div:not(.flow-arrow):last-child { border-color: #9a2515; }
 .reveal .state-flow small { display: block; margin-top: 0.45rem; font-size: 0.58em; }
-.reveal .flow-arrow { font-size: 0.72em; white-space: nowrap; }
+.reveal .flow-arrow { font-size: 0.56em; white-space: nowrap; }
 .reveal .flow-arrow code { margin: 0 0.25rem; }
 .reveal .pipeline { gap: 0.4rem; }
 .reveal .pipeline > div { flex: 1; padding: 0.8rem 0.35rem; font-size: 0.68em; }
 .reveal .pipeline > span { font-size: 1.25em; }
+.reveal .pipeline > div.optional-step { border-style: dashed; }
+.reveal .pipeline > div.optional-step small {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.68em;
+  color: #4a5459;
+}
 .reveal .environment-stack { width: 72%; margin: 1rem auto; }
 .reveal .environment-stack > div {
   margin: 0.35rem 0;
@@ -132,8 +223,5 @@
 .reveal .environment-stack > div:nth-child(3) { margin-left: 8%; margin-right: 8%; }
 .reveal .environment-stack > div:nth-child(4) { margin-left: 12%; margin-right: 12%; }
 .reveal .environment-stack span { display: inline; margin-left: 0.8rem; }
-.reveal .final-model { align-items: center; margin-top: 2.2rem; }
-.reveal .final-arrow { font-size: 2em; }
-.reveal .final-model > div:not(.final-arrow) { min-height: 5.2rem; }
 .reveal .agent-process ol { font-size: 0.86em; line-height: 1.25; }
 .reveal .agent-process li { margin-bottom: 0.35em; }
