@@ -1,0 +1,1941 @@
+---
+title: "Effective AI Usage"
+subtitle: "14.33 Research and Communication in Economics"
+author: "Jon Cohen"
+date: "September 28, 2026"
+css: effective-ai-usage.css
+---
+
+## Agenda {.agenda}
+
+1. Agentic AI
+2. Context management
+3. Intellectual ownership
+4. Verification
+5. Permissions
+
+::: {.notes}
+Main message: AI made execution cheap. The constraints are now what the agent
+knows, which decisions the researcher makes, how the researcher checks the
+work, and what the agent is allowed to do. Each section covers one of these.
+
+Running theme: there is no special trick to using agents well. Most good
+practice is established software engineering practice, applied to a new
+kind of collaborator. Return to this idea in each section.
+
+The lecture teaches mental models, not one tool. Paul Goldsmith-Pinkham's
+materials use Claude Code. The same ideas apply to Codex CLI, Gemini CLI, and
+open-source harnesses. Tool-specific names are on the terms slides and were
+checked against each tool's documentation in September 2026.
+
+Suggested timing (80 minutes):
+
+- Warm-up and motivation: 4 minutes
+- Agentic AI: 8 minutes
+- Context management: 23 minutes
+- Intellectual ownership: 10 minutes
+- Verification: 23 minutes
+- Permissions: 10 minutes
+- Summary: 2 minutes
+
+Section openings, terminology recaps, and takeaways take about 30 seconds
+each. Exercises and discussion take most of the time.
+
+Cuts if time is short: the autonomy ladder, terminology recaps, and the
+third-party skills slide. Keep the agent loop, the
+instruction versus skill distinction, the literature example, and the PDF
+verification discussion.
+:::
+
+## Cheap execution makes judgment and verification more important
+
+<table>
+<thead><tr><th>Cheaper with AI</th><th class="fragment" data-fragment-index="0">More important with AI</th></tr></thead>
+<tbody>
+<tr><td>Implement a known estimator</td><td class="fragment" data-fragment-index="0">Choose a credible research design</td></tr>
+<tr><td>Clean and restructure data</td><td class="fragment" data-fragment-index="0">Identify high-value datasets</td></tr>
+<tr><td>Write and debug code</td><td class="fragment" data-fragment-index="0">Implement the right verification tests</td></tr>
+<tr><td>Make figures and tables</td><td class="fragment" data-fragment-index="0">Decide how to present the main idea efficiently</td></tr>
+</tbody></table>
+
+::: {.notes}
+Read each row as a pair. The left task became cheap. The right task decides
+whether the left task was worth doing.
+
+This is the thesis of Paul's NBER talk. He calls it the "Research O-Ring":
+some tasks became much easier, so the remaining hard tasks now set the pace.
+Paul's NBER example, a replication and extension of a published paper on
+public data, took about three hours. He says it was easy because the agent
+followed existing work.
+
+Source: [NBER materials](https://github.com/paulgp/nber_hf_2026).
+:::
+
+## Good agent use applies established software practices
+
+<table>
+<thead><tr><th>Software practice</th><th class="fragment" data-fragment-index="0">Application to agents</th></tr></thead>
+<tbody>
+<tr><td>Do not repeat yourself</td><td class="fragment" data-fragment-index="0">Put recurring instructions in files and code</td></tr>
+<tr><td>Documentation</td><td class="fragment" data-fragment-index="0">Keep durable decisions and plans in the repository</td></tr>
+<tr><td>Version control</td><td class="fragment" data-fragment-index="0">Review each agent change as a commit</td></tr>
+<tr><td>Testing</td><td class="fragment" data-fragment-index="0">Protect checks and review changes to them</td></tr>
+<tr><td>Least privilege</td><td class="fragment" data-fragment-index="0">Give the agent only the access it needs</td></tr>
+</tbody></table>
+
+::: {.notes}
+This is the running theme. Students often expect a secret technique for
+using agents. There is no secret technique. Software engineers developed
+these practices for work by people whose output must be checked by other
+people. An agent is one more such collaborator.
+
+Each row returns later in the lecture:
+
+- Do not repeat yourself: Context management
+- Documentation: Context management
+- Version control: Verification, building on the previous lecture
+- Testing: Verification
+- Least privilege: Permissions
+:::
+
+## Recall purpose of this course's AI disclosure policy {.productivity-slide}
+
+<table class="productivity-grid">
+<thead><tr><th></th><th>Can help</th><th>Can hurt</th></tr></thead>
+<tbody>
+<tr><th>Short-term</th><td>Iterate on code quickly</td><td>Follow a reassuring but unproductive approach</td></tr>
+<tr><th>Long-term</th><td>Reveal tools and practices you did not know</td><td>Replace practice you need to learn implementation</td></tr>
+</tbody></table>
+
+::: {.notes}
+The point is to evaluate AI use along two dimensions: did it improve this
+assignment, and did it help the student learn? The two can move in different
+directions. An agent can accelerate a code iteration, but also confidently
+steer a student down an unproductive path. It can reveal an unknown tool or
+best practice, but also take over the implementation work through which a
+student would have learned it. This is a prompt for honest reflection, not an
+argument against AI.
+
+The syllabus requires an AI-use statement on every submitted assignment. If
+there was no AI use, students simply say so. If AI was forbidden for a
+component, they attest that they complied. If they used AI, they write 2–4
+sentences saying what they used it for, one benefit, and one limitation.
+:::
+
+## 1. Agentic AI {.section-open}
+
+- An agent is a model that uses tools in a loop
+- Agents fit long projects whose work lives in files
+- Chat access to a model is not agent access
+
+## An agent is a model that uses tools in a loop
+
+**You set the task and constraints.** The agent repeats this cycle:
+
+```{=html}
+<div class="agent-loop" role="img" aria-label="A loop: the model proposes an action, the harness checks access, a tool runs, and the model reads the result before proposing another action.">
+  <div class="loop-step">Step 1: Model proposes an action</div><div class="loop-arrow">→</div><div class="loop-step">Step 2: Harness checks access</div>
+  <div class="loop-arrow">↑</div><div class="loop-center">Repeat until the task ends</div><div class="loop-arrow">↓</div>
+  <div class="loop-step">Step 4: Model reads the result</div><div class="loop-arrow">←</div><div class="loop-step">Step 3: Allowed tool runs</div>
+</div>
+```
+
+The harness is the program, such as Codex or Claude Code. Tools include
+files, commands, and web access.
+
+::: {.notes}
+The model is the same model that you use in a web chat. The harness is the
+program that connects the model to tools. Examples: Claude Code, Codex CLI,
+Gemini CLI, and open-source harnesses such as pi or OpenCode. One model can
+run in different harnesses.
+
+The model can run on the provider's servers or, for open-weight models, on
+your own computer. The code that the agent runs usually runs on your
+computer, with your installed Python or R.
+
+For this course, "build an agent" usually means configure an existing coding
+harness for a project, then give it a task. Students do not need to write a
+new agent loop. The harness checks its settings before it executes an action.
+It may allow the action, ask the user, or block it. Later slides explain
+project instructions and access settings.
+
+Optional figure: Paul's drawing of an LLM that gets tools. From this lecture's
+directory, run
+`curl -L -o images/llm-to-agent.png https://raw.githubusercontent.com/paulgp/nber_hf_2026/main/assets/image-9.png`
+and add `![](images/llm-to-agent.png)` to this slide. Credit Paul
+Goldsmith-Pinkham.
+:::
+
+## The loop lets an agent recover from errors
+
+Task: "Get homeownership rates and average wages by age."
+
+1. Searches a familiar data site. The series it finds lack age detail.
+2. Tries a government site. A request gets a 403 error.
+3. Reads the error and changes the request header.
+4. Downloads two tables, parses them, and joins them by age.
+
+::: {.fragment}
+**Exercise**
+
+1. What could still be wrong even if the code runs?
+2. How could you set up the task better?
+:::
+
+::: {.notes}
+This adapts Paul's homeownership example from Part 2 of his series. Adding
+wages creates an extra research choice about definitions, geography, years,
+and age bins. The agent can recover from a request error and still make a
+wrong join or compare unlike quantities.
+
+A 403 error means that the website refused the request. Many government sites
+block requests that do not identify as a browser.
+
+Give students a minute to identify risks before the discussion fragment
+appears. Likely answers include different age bins, different years, household
+versus individual measures, nominal versus real wages, or geographic mismatch.
+Ask what they would specify in advance and what they would check against the
+source tables. Step 3 shows why the loop is useful. Step 4 shows why the
+researcher must still guide and verify it.
+
+Source: [From an empty folder to a figure](https://paulgp.substack.com/p/from-an-empty-folder-to-a-figure).
+:::
+
+## Terminology clarification on "agent"
+
+| Phrase | What it means here |
+|---|---|
+| Coding agent | The running tool, such as Codex or Claude Code |
+| Custom agent or subagent | An optional second agent with a focused role or tools |
+| `AGENTS.md` | Project instructions that a coding agent reads. The file does **not** create a custom agent |
+
+::: {.notes}
+The plural filename `AGENTS.md` is easy to misread. It is a convention for
+instructions given to an existing coding agent. Claude Code commonly uses
+`CLAUDE.md` for the same purpose. Some products also support separately
+configured custom agents or subagents. Those are a different feature.
+Sources: [Codex project instructions](https://learn.chatgpt.com/docs/agent-configuration/agents-md),
+[Claude Code project instructions](https://code.claude.com/docs/en/memory),
+and [Claude Code subagents](https://code.claude.com/docs/en/sub-agents).
+:::
+
+## For projects, agentic AI is better than AI chatbots
+
+<table>
+<thead><tr><th></th><th>Web chat with uploads</th><th class="fragment" data-fragment-index="0">Agent in a project folder</th></tr></thead>
+<tbody>
+<tr><th>What it sees</th><td>Files that you upload to each chat</td><td class="fragment" data-fragment-index="0">Files that it finds in the project</td></tr>
+<tr><th>Where code runs</th><td>The provider's environment</td><td class="fragment" data-fragment-index="0">Your computer, with your data and software</td></tr>
+<tr><th>Where work stays</th><td>The chat history</td><td class="fragment" data-fragment-index="0">Files and commits</td></tr>
+</tbody>
+</table>
+
+::: {.notes}
+Do not present this as a strict difference in ability. Web chat interfaces now
+accept files, run code, and keep project documents. For a one-time question,
+web chat is often the faster choice.
+
+The difference is where the work lives. A research project runs for months.
+It has many scripts, data files, and decisions. An agent that works in the
+project folder leaves its work in files and git history. The next session,
+a coauthor, or you in two months can use that record. Work that stays in a
+chat history is hard to find, rerun, or review.
+:::
+
+## LLMs support many levels of autonomy
+
+| Level | You | The AI |
+|---|---|---|
+| Chat | Copy code in and out | Suggests text |
+| Inline completion | Write code | Completes the line |
+| Agentic editor | Describe a task | Edits files in the editor |
+| Command-line agent | Describe a task | Reads, edits, runs, iterates |
+| Autonomous agent | Set the goal and the environment | Works for hours without approval |
+
+Which level describes your most recent use?
+
+::: {.notes}
+Ask for a show of hands for each row.
+
+This ladder is from Kyle Jensen, described in Paul's Part 1. The levels add
+tools and structure. They do not add a better model. Higher is not always
+better. The autonomous level needs the most setup, which the Permissions
+section covers.
+
+My recommendation, without being prescriptive: a command-line agent in the
+terminal inside VS Code. Claude Code, Codex, and Gemini CLI all have VS Code
+integrations that show each change as a diff in the editor.
+
+Cut this slide if time is short.
+:::
+
+## MIT Agentic AI Infrastructure: Parley
+
+Do not put sensitive or Institute data into public third-party models. Check
+[MIT's data guidance](https://ist.mit.edu/node/4290) before using any AI tool.
+
+<table class="parley-table">
+<colgroup><col style="width:18%"><col style="width:82%"></colgroup>
+<thead><tr><th>Route</th><th>What you can do</th></tr></thead>
+<tbody>
+<tr><td><a href="https://parley.mit.edu/">Web chat</a></td><td>Converse in a browser. No local coding-agent tools</td></tr>
+<tr><td><a href="https://parley-docs.mit.edu/">API</a></td><td>Application programming interface. Call models from code or a coding agent. Pay per token</td></tr>
+</tbody></table>
+
+**API suggestion:** students get $10 of initial credit. Try a small batch of
+model-coded records, inspect labels and spend, then decide whether to scale.
+
+::: {.notes}
+The web interface is non-agentic. The separate API is an OpenAI-compatible
+gateway to several model providers. A script can call it repeatedly and
+request structured output. Its PDF support could help with a classification
+pilot. The Parley CLI can configure a coding harness to use that same API,
+so Parley can also back an agent. A harness makes many model calls in a tool
+loop, which can use the credit quickly. The $10 is initial credit after first
+login to the admin portal, not $10 renewed every month. Check current model
+availability and prices before teaching or running a batch.
+
+Students can get a key from the admin portal or use the Parley CLI setup.
+Never put an API key in Git. The course's data rules still apply. For
+Institute data, consult [MIT's guidance](https://ist.mit.edu/node/4290)
+and the instructor about the approved workflow and what files a CLI harness
+may access. MIT says to use MIT-licensed tools such as Parley for low- and
+medium-risk Institute data and not to use any generative AI tool for high-risk
+data. Public third-party tools are not a substitute for that approval.
+
+Source: [Parley API documentation](https://parley-docs.mit.edu/).
+:::
+
+## Running example: public election reports in PDFs
+
+- A government site links to hundreds of county election reports
+- The goal is one row per county, year, contest, and candidate
+- A coding agent can help build download and extraction scripts
+- The researcher checks source coverage and vote totals
+
+We will use this project to decide what belongs in a prompt, project
+instructions, a skill, or a tool setting.
+
+::: {.notes}
+This example comes from a student question but is presented as a general
+research workflow. It connects this lecture's setup and verification ideas
+to the next lecture on data collection. The eventual CSV must be traceable
+to source files and pages. Do not assume students have already heard about
+this example before this slide.
+:::
+
+## Running example: does each election PDF need a model call?
+
+| Pipeline | Who handles each PDF? | What scales with the number of PDFs? |
+|---|---|---|
+| Local extraction | Saved text-extraction or optical character recognition (OCR) script | Computer time |
+| Model extraction | Saved script calls a model API for each document or page | API usage cost |
+
+A subscription coding agent can **help build either script** and inspect sample
+election reports interactively. If the saved script itself calls a hosted model
+for each PDF, budget for a separate, metered API.
+
+::: {.notes}
+These are two axes, not competing products. First decide whether a model is
+needed to interpret each PDF. Then decide how to write the saved pipeline. A
+subscription coding agent can help create either pipeline, inspect messy PDF
+samples, and debug the result. It can read a PDF with its tools, so a student
+can pilot model-assisted extraction within a subscription. The saved program
+may still need an API if it sends every document to a hosted model. A PDF with
+selectable text may need no OCR or model call at all.
+
+Subscription sessions and API calls may access similar model capabilities,
+but they have different interfaces, limits, and billing. An interactive agent
+reading 500 PDFs one by one is hard to audit and rerun. A script using a
+model API can save one prompt, model name, response, and source ID per PDF.
+A CLI agent can itself use a metered API, as with Parley. A subscription does
+not automatically pay for a separate model API. Pilot costs and accuracy on
+a small sample before scaling. Check current provider terms.
+
+Source: [OpenAI API pricing](https://developers.openai.com/api/docs/pricing).
+:::
+
+## Terminology recap: agentic AI {.terms}
+
+| Term | Meaning |
+|---|---|
+| Token | A unit of text, about 3/4 of a word |
+| Context window | The maximum number of tokens that a model reads on one turn |
+| Model | Reads the context window and predicts the next tokens |
+| Tool | An action outside the model, such as reading a file or running a command |
+| Harness | The program that gives a model tools and runs them, such as Claude Code, Codex CLI, or Gemini CLI |
+| Agent | A model and a harness, working in a loop |
+| Model Context Protocol (MCP) | A standard way to connect a harness to tools or data sources |
+
+::: {.notes}
+Read the table from top to bottom. Each term uses the terms above it.
+
+Leave on screen for 30 seconds. It is here for reference.
+:::
+
+## Takeaways: agentic AI {.takeaways}
+
+- An agent is a model with tools that works in a loop
+- It observes results, so it can recover from errors
+- Its advantage is largest when the work persists in a project
+- Browser chat alone is not agent access. An API can also power a coding agent
+
+## 2. Context management {.section-open}
+
+- The agent knows only what is in its context window
+- Write project knowledge to plain-text files
+- Do not repeat yourself: codify recurring instructions
+
+::: {.notes}
+Students already give context in prompts, for example by pasting a codebook.
+This section moves to two software-engineering ideas. First, keep project
+knowledge in documentation that persists after the session ends. Second, do
+not repeat yourself: turn instructions that you give often into files or
+code.
+:::
+
+## What enters the context window on each turn
+
+```text
+At session start:
+  System instructions + project instructions (AGENTS.md or CLAUDE.md)
+  Tool descriptions + brief names/descriptions of available skills
+
+Conversation so far:
+  Your prompts + agent replies + tool calls and their results
+
+When relevant:
+  Full SKILL.md and its supporting files, after the agent opens them
+
+New prompt → model sees this context and chooses the next step
+```
+
+::: {.notes}
+On each turn, the harness sends the active conversation history to the model.
+That includes earlier user prompts, agent responses, tool calls, and their
+outputs. When the session grows too long, the harness may compact or trim
+older material, so this is a mental model rather than a promise that every
+word remains forever. The model reads the current window and predicts the
+next step.
+
+Project instruction files are loaded at session start by tools that support
+them. Available skills initially contribute only their names and short
+descriptions. The full singular `SKILL.md` enters when a relevant skill is
+opened. Supporting documents enter only if read. This is progressive
+disclosure, which the later slides explain in detail.
+
+Every file read and every long output stays in the window. A 10-minute detour
+stays in the window too.
+
+Claude Code's `/context` command shows what fills the window. Gemini CLI's
+`/stats model` shows token counts.
+
+Optional figure: Paul's hand-drawn version, based on HumanLayer:
+`curl -L -o images/context-window.png https://raw.githubusercontent.com/paulgp/nber_hf_2026/main/assets/image-prompt.png`
+
+Source: [Getting started](https://paulgp.substack.com/p/getting-started-with-claude-code).
+:::
+
+## A heuristic: wrong, missing, or extra context lowers performance
+
+$$
+\text{performance} \sim \frac{\text{correctness}^2 \times \text{completeness}}{\text{size}}
+$$
+
+1. Wrong information does the most damage
+2. Missing information makes the agent guess
+3. Irrelevant information dilutes the relevant information
+
+Source: HumanLayer, ["Advanced context engineering for coding agents"](https://www.humanlayer.dev/blog/advanced-context-engineering)
+
+::: {.notes}
+HumanLayer builds tools for coding agents. The author calls this "a dumb
+equation." It is a heuristic, not a measured relationship. Paul uses it in
+his NBER talk. The useful part is the ranking of the three failures.
+
+As the window fills, performance drops. Paul notes that turn 30 of a long
+session is noticeably worse than turn 3. HumanLayer suggests keeping the
+window 40% to 60% full.
+
+Ask: which failure is hardest to notice? Usually wrong information, because
+the agent uses it with confidence.
+:::
+
+## Keep each session to one task
+
+| Practice | Reason |
+|---|---|
+| Start a new session for each task | Old turns stop competing for attention |
+| Rewind a wrong path instead of arguing | The wrong path leaves the window |
+| Compact on purpose, with a focus | You choose what the summary keeps |
+| Send searches to a subagent | Search results stay out of the main window |
+
+::: {.notes}
+One task per session: Paul suggests focused sessions of 5 to 10 turns with a
+clear goal, for example "get the cleaning script to run."
+
+Rewind: Claude Code and Gemini CLI have `/rewind`. It can restore the
+conversation, the code, or both. In Gemini CLI, Esc twice is a shortcut.
+Arguing adds text to the window.
+
+Compaction: `/compact` in Claude Code and Codex, `/compress` in Gemini CLI.
+The tool summarizes the conversation and continues from the summary.
+Automatic compaction can lose a decision from earlier in the session. Manual
+compaction lets you give a focus, for example "keep the decisions about the
+sample."
+
+Subagents: the main agent starts a helper with its own window. The helper
+searches and reports a summary. Caution: the helper sees only the prompt that
+the main agent writes for it. In Paul's HMDA demo, he told the main agent not
+to look in the parent folder. The subagent never got that instruction and
+kept trying.
+:::
+
+## Carry your plan into a new session
+
+1. Decide the goal and review the plan with the agent
+2. Save your decisions and next step to `docs/progress.md`
+3. Start a new session
+4. Ask the agent to read that file and confirm its understanding
+
+::: {.notes}
+The new session starts with a full context budget and the relevant
+decisions. HumanLayer calls this "intentional compaction."
+
+The researcher owns the goal and accepts or corrects the plan before saving
+it. In Paul's EDGAR and HMDA demos, the agent researched the task, wrote a
+plan file, cleared its context, and started work from the plan. Students can
+use the same pattern while retaining control of the direction.
+:::
+
+## Plain-text files work well for both agents and git
+
+<table>
+<thead><tr><th>Easy to diff and search</th><th class="fragment" data-fragment-index="0">Needs extra work to inspect</th></tr></thead>
+<tbody>
+<tr><td>Markdown, plain text</td><td class="fragment" data-fragment-index="0">Word documents, slide decks</td></tr>
+<tr><td>Scripts: <code>.py</code>, <code>.R</code>, <code>.sh</code></td><td class="fragment" data-fragment-index="0">Notebooks with saved outputs</td></tr>
+<tr><td>Small <code>.csv</code>, <code>.tsv</code></td><td class="fragment" data-fragment-index="0">Excel workbooks, images of figures</td></tr>
+<tr><td>Text-based PDFs</td><td class="fragment" data-fragment-index="0">Scanned PDFs, images of tables</td></tr>
+</tbody></table>
+
+::: {.notes}
+Plain text is small, readable by both humans and agents, and git can show a
+line-by-line diff of each change.
+
+Files in the right column hold formatting and other metadata that inflate
+the context window, or they require a conversion step that can lose
+information. Git cannot show a readable diff for most of them. Agents can
+often read these formats with extra tools, but the result is slower and less
+reliable.
+
+Practical rule: keep notes, decisions, and plans in Markdown. Keep code in
+scripts. Keep large data out of the context window and describe it in text
+instead, for example with a codebook file.
+
+A notebook is JSON with the outputs stored inside it. Clear outputs before
+you commit, or keep analysis in scripts.
+:::
+
+## Example: Project directory with context files
+
+```text
+election-project/
+├── README.md               Project overview, directory structure, and how to run it
+├── AGENTS.md               Project instructions, explained shortly
+├── DECISIONS.md            Major research choices and reasons
+├── docs/                   Source descriptions and methodological notes
+│   ├── source-notes.md     URLs, formats, and source caveats
+│   └── methodology-notes.md  Definitions and design choices
+├── code/                   Download and extraction scripts
+├── data/
+│   ├── raw/                Saved source PDFs
+│   └── clean/              Generated analysis data
+└── output/                 Figures and tables
+```
+
+::: {.notes}
+This is one workable layout, not a mandated set of filenames. Explain that
+`AGENTS.md` is a Markdown instruction file for an existing coding agent. The
+next slides explain it. A README introduces what the project does, why the
+data matter, where outputs live, and how someone can run or inspect the work.
+It is not only a replication command list. `docs/` holds longer material that
+is relevant only to some tasks. A running `LOG.md` is optional and often
+duplicates commits, issues, and task notes, so it is omitted here.
+
+The same notes help in a one-on-one meeting, help a coauthor, and help the
+next agent session.
+
+Git history is also a notes system. Commit messages that say why are
+searchable context.
+
+Next lecture: for large datasets, a database can store documentation for each
+column. Paul's HMDA example keeps a metadata table inside DuckDB. Details next
+time.
+:::
+
+## Keep durable research decisions with the project
+
+```markdown
+## 2026-09-20: Which election reports are authoritative?
+
+Decision:    Use certified county canvass PDFs.
+Alternative: Use election-night reports, which may change later.
+Reason:      Certified reports are the final official totals.
+Evidence:    docs/source-notes.md
+Issue:       https://github.com/your-name/election-project/issues/23
+```
+
+Use GitHub issues for open questions and work that needs tracking. For a
+**major research decision**, put the implemented rule in code or tests and
+keep its rationale in project documentation. You do not need an issue for
+every line of code.
+
+::: {.notes}
+The syllabus asks students to track unresolved decisions in GitHub issues.
+Issues live on GitHub's servers, not in the repository. An agent in the
+project folder cannot see them unless it uses the `gh` command-line tool
+with your GitHub login and network access. A clone of the repository does not
+contain them.
+
+Recommended workflow: discuss a substantial open question in an issue. When
+it is resolved, change the code or tests that implement it. Record the
+rationale in a nearby comment, `README.md`, or `DECISIONS.md`. The URL in the
+example is illustrative and points to the issue that informed the choice.
+There is no need to copy every closed issue into a second log. The issue
+holds the discussion. The repository should hold the durable rule and the
+reason when that reason affects future work.
+
+Each field in the record has a purpose. The alternatives show what you
+considered. The evidence line makes the reason checkable. The confidence line
+tells future readers what to revisit.
+:::
+
+## Choose the instruction by when it should apply
+
+| When should it apply? | Put it here |
+|---|---|
+| Just this task | Your prompt |
+| Every session in this repo | `AGENTS.md` or `CLAUDE.md` |
+| When a repeatable task comes up | `SKILL.md` |
+
+::: {.notes}
+These are instructions for the model. They differ mainly in scope and when
+their full text loads. None is the election project's processing pipeline.
+Keep the transformation and its checks in scripts so they run without an
+agent. File and network access are controlled separately through tool
+settings and the sandbox.
+:::
+
+## `AGENTS.md` or `CLAUDE.md`: short directions for every session
+
+Save one at the project root, then commit it to Git.
+
+```markdown
+# Project instructions
+- Keep source PDFs in data/raw/ unchanged. Write derived data to data/clean/.
+- Put each data transformation in code/ and use project-relative paths.
+- Run `python -m pytest -q` before reporting a completed code change.
+- Record durable source and schema decisions in DECISIONS.md.
+```
+
+This file guides the model. It does not set tool permissions.
+
+::: {.notes}
+File names differ by tool:
+
+- Codex reads `AGENTS.md`.
+- Claude Code uses `CLAUDE.md` for project instructions. Check its current
+  import rules before assuming it will also load an `AGENTS.md` file.
+- Gemini CLI reads `GEMINI.md` by default.
+
+Codex offers `/init` to create an `AGENTS.md` scaffold. In any coding tool,
+you can instead ask it to draft the file from the project, then edit the
+draft yourself.
+
+When to add a rule, from Claude Code's documentation: the agent makes the same
+mistake twice, or you type the same correction that you typed last session.
+Write rules that you can verify: "Run the parser test before reporting a
+completed code change," not "test your changes." Instructions are context, not enforced
+configuration. Keep the file short. Move a multi-step procedure to a skill
+only when you actually repeat that procedure.
+:::
+
+## Starting: create and refine `AGENTS.md`
+
+Open the project in a command-line interface (CLI):
+
+```bash
+cd election-project
+git status            # confirm the repository
+codex                 # or launch claude
+```
+
+1. **Write a first version yourself.** Include only standing project facts:
+   the directory map, exact test command, and raw-data rule.
+2. **Ask the coding agent to audit it.** Have it check paths and commands
+   against the repository. You accept or reject each suggested edit.
+3. **Commit and revise it.** Add a rule after a repeated correction or a
+   workflow change. Review the instruction-file diff.
+
+The CLI starts the agent and `AGENTS.md` guides it.
+
+::: {.notes}
+No separate agent program is required for this task. The coding-agent app
+supplies the model, tool loop, and access to the project. `AGENTS.md` supplies
+repo-specific instructions, and Git records revisions. In Claude Code the
+analogous instruction file is `CLAUDE.md`.
+
+Live prompt after writing an initial file: "Read `AGENTS.md`, the README,
+and the existing scripts. Which paths or commands in `AGENTS.md` are wrong?
+Which rules are too generic to help on every task? Suggest a minimal diff,
+but do not edit the file yet." The researcher decides which changes to make
+and commits the result. `/init` can provide a scaffold, but its output still
+needs this review.
+
+For a personal example, describe one real task from your private-sector work:
+what the agent could access, one script it wrote, one error you caught, and
+which files or commits let a colleague reproduce the result. Do not suggest
+that `AGENTS.md` itself ran the data pipeline.
+:::
+
+## `SKILL.md`: a recipe for a task you repeat
+
+Once adapting the parser to another report layout becomes repeatable, save a
+recipe in a named project skill folder. Its instruction file is `SKILL.md`,
+singular.
+
+```markdown
+---
+name: add-report-layout
+description: Use when adapting the election parser to a new PDF layout.
+---
+1. Inspect representative PDFs and record the layout in docs/source-notes.md.
+2. Update the parser in code/ and add test fixtures for the new layout.
+3. Run the extraction and tests from a clean checkout.
+4. Report coverage gaps and rows needing a hand check.
+```
+
+The agent reads the full recipe when this task comes up. Do not make a skill
+for a task you will do only once.
+
+::: {.notes}
+A skill is a folder with a singular `SKILL.md` file, not `SKILLS.md`, plus
+optional supporting files. The agent first sees its name and description.
+The body loads when the skill is used. Project skills go in
+`.claude/skills/` (Claude Code), `.agents/skills/` (Codex), or the Gemini CLI
+workspace skills folder. `/skills` lists the installed skills in each tool.
+
+Write the description as a trigger ("Use when..."), not as a title.
+
+Install skills in the project, not for your whole computer. Each skill
+description uses context in every session. A project skill also goes into
+git, so a collaborator gets it.
+
+This example is a candidate only after the first few report layouts reveal a
+stable checklist. It guides the agent to extend saved code and tests. The
+saved code, not an agent session, reproduces the CSV. Exploratory analysis can
+also use a skill if its procedure repeats, but consequential transformations
+still need to become scripts. The skill does not give the agent new file
+permissions. Ask the agent to draft the skill,
+then test the trigger and procedure on another source. Sources: [Codex skills](https://learn.chatgpt.com/docs/build-skills)
+and [Claude Code skills](https://code.claude.com/docs/en/skills).
+
+A second example to voice over: after the same exploratory audit is repeated
+for several counties, a skill could tell the agent to run a saved profiling
+script, inspect coverage and anomalies, and record findings. Any confirmed
+cleaning rule goes into the parser and its tests. The audit script and parser
+can run without the agent.
+:::
+
+## Same Markdown, different jobs
+
+<table>
+<thead><tr><th></th><th><code>AGENTS.md</code> / <code>CLAUDE.md</code></th><th class="fragment" data-fragment-index="0"><code>SKILL.md</code></th></tr></thead>
+<tbody>
+<tr><th>Question</th><td>How do we work in this repository?</td><td class="fragment" data-fragment-index="0">How do we do this kind of task?</td></tr>
+<tr><th>Content</th><td>Short, broadly useful rules and project facts</td><td class="fragment" data-fragment-index="0">Steps, references, and scripts for one repeatable workflow</td></tr>
+<tr><th>Loaded first</th><td>The project instructions</td><td class="fragment" data-fragment-index="0">The skill's name and description</td></tr>
+<tr><th>Election project</th><td>Keep raw PDFs unchanged. Save transformations as code.</td><td class="fragment" data-fragment-index="0">When a new layout appears, update the parser and its tests.</td></tr>
+</tbody>
+</table>
+
+The full skill procedure loads **when the task calls for it** (i.e.,
+progressive disclosure).
+
+::: {.notes}
+Both are Markdown instructions for the same coding agent. `AGENTS.md` is not
+a second agent. `SKILL.md` is the required file inside a named skill folder.
+That folder may also contain references, scripts, and templates. The skill
+does not grant new tool permissions or replace the extraction script.
+
+At the start of a supported Codex session, project instructions are loaded.
+Available skills contribute their names and brief descriptions. The full
+`SKILL.md` body loads when the skill is used, and its supporting files can be
+read as needed. Skills still have a small initial context cost, so avoid
+creating many vague or overlapping ones. Claude Code uses `CLAUDE.md` for
+project instructions. Exact discovery rules vary across tools.
+
+Ask students: would this rule still matter if today's task were to make a
+figure instead of adapting a report layout? If yes, it probably belongs in
+the project instructions. If it is a procedure for a new report layout,
+consider a skill after that procedure becomes stable and repeatable.
+
+Sources: [Codex project instructions](https://learn.chatgpt.com/docs/agent-configuration/agents-md),
+[Codex skills](https://learn.chatgpt.com/docs/build-skills), and
+[Chris Reddington's worked example](https://chrisreddington.com/blog/building-your-agent-toolbox/).
+:::
+
+## Build project instructions as the work matures
+
+**Suggested workflow**
+
+1. Establish `AGENTS.md` with short election project instructions at the start.
+2. Add a skill after a repeatable procedure emerges.
+3. Revise both as the project matures.
+
+The saved scripts and tests reproduce the data. These files guide the agent's
+work on them.
+
+::: {.notes}
+Start with a short project instruction file that you can verify against the
+repository. Wait for an actual repeated procedure before adding a skill.
+Revise each as the source collection and code evolve. The PDF-to-CSV script,
+not an instruction file or skill, makes the data reproducible. Source facts
+and methodological decisions belong in `docs/` and code.
+:::
+
+## Exercise: what goes in `AGENTS.md` versus `SKILL.md`?
+
+For each line, choose **project instructions**, **a skill**, or **somewhere
+else**. Explain your choice.
+
+1. "Use project-relative paths in all scripts."
+2. "Run `python -m pytest -q` before reporting a completed code change."
+3. "When adding a county, check whether its PDFs have a text layer."
+4. "For each new county, compare parsed row counts with source totals."
+5. "Today, inspect just these three counties."
+6. "Block the agent from writing to `data/raw/`."
+
+Would you create the skill before you have processed your first county?
+
+::: {.notes}
+Three minutes in pairs, then take answers. Ask for the reason, not just the
+filename.
+
+1. `AGENTS.md` or `CLAUDE.md`: a convention for every script in this repo.
+2. `AGENTS.md` or `CLAUDE.md`: a broadly useful completion check. The test
+   command itself must work outside the agent.
+3. `SKILL.md`: one step in the recurring county-onboarding procedure.
+4. `SKILL.md`: another step in that procedure. Put the actual count check in
+   code so it can also run without an agent.
+5. Current prompt: it applies to this task only.
+6. Tool settings, sandbox, or filesystem permissions: instructions can remind
+   the agent, but they cannot remove write access.
+
+Do not create the skill before the first county. Pilot first, record the
+procedure, and package it as a skill once you expect to reuse it.
+:::
+
+## Terminology recap: context management {.terms}
+
+| Term | Meaning | Claude Code, Codex, Gemini CLI |
+|---|---|---|
+| Instruction file | Short project directions read each session | `CLAUDE.md`, `AGENTS.md`, `GEMINI.md` |
+| Draft an instruction file | Generate a first version, then edit it | `/init` in Codex or ask the agent |
+| New session | Start with an empty window | `/clear`, `/new`, `/clear` |
+| Compaction | Summarize the window to free space | `/compact`, `/compact`, `/compress` |
+| Plan mode | Read and propose, but do not edit | `/plan` in all three |
+| Skill | A reusable procedure read for a relevant task | Singular `SKILL.md`, listed by `/skills` |
+
+## Takeaways: context management {.takeaways}
+
+- Each session starts empty. The agent knows only what is in its window.
+- Keep each session focused. Compact or restart on purpose.
+- Keep decisions and plans in plain-text files in the repository
+- Use project instructions for every-session rules and skills for repeated tasks
+- Put enforceable checks in code or tool settings, not only in instructions
+
+## 3. Intellectual ownership {.section-open}
+
+- You are accountable for the result
+- Make the key decisions yourself, before the agent does
+- Plan first, then work in small steps
+- Recall purpose of this course's individualized final exam
+
+## You remain accountable for work that the agent does
+
+<div class="accountability-card">
+<strong>IBM training manual (1979):</strong>
+<p>“A computer can never be held accountable. Therefore a computer must never make a management decision.”</p>
+</div>
+
+<div class="accountability-card">
+<strong>Garicano, Li, and Wu, <a href="https://messyjobs.ai/"><em>Messy Jobs</em></a> (2026):</strong>
+<p>AI can take on well-specified tasks. People still supply judgment and accept responsibility for unpredictable outcomes.</p>
+</div>
+
+::: {.notes}
+The IBM slide is widely attributed to an IBM training session in 1979. Paul
+dates it to 1977. The original document is lost.
+
+*Messy Jobs* is a recent book by three economists: Luis Garicano (LSE), Jin Li
+(HKU), and Yanhui Wu (HKU). Their main idea is a spectrum of messiness. AI
+replaces single, well-defined tasks easily. It struggles to replace work that
+is hard to specify in advance and full of conflicting goals. Their price-theory
+argument: when intelligence becomes cheap, judgment and responsibility become
+scarce and valuable.
+
+A research project is a messy job. Coding a specification is a clean task
+inside it. Choosing the question, the design, and the checks, and defending
+them, is the messy part. That part stays with the student.
+:::
+
+## Good prompting is project management
+
+- State the goal and what a usable result looks like
+- Give facts, constraints, and source material the agent cannot infer
+- Ask it to surface choices and uncertainties before executing
+- Inspect an early result. Update the task and project notes as you learn
+
+Adding "think carefully" cannot supply your sample definition or tell the
+agent which tradeoffs you would make.
+
+[Weidmann, Xu, and Deming (2025)](https://www.nber.org/papers/w33662) find that
+performance leading AI agents strongly predicts performance leading human
+teams in a lab study.
+
+::: {.notes}
+The durable prompting skill resembles managing a research assistant: specify
+the objective, the constraints, the evidence to use, and when to ask for a
+decision. Give feedback on a small result and record what you learn. The
+point is not that spelling or wording never matters. A stock
+phrase cannot provide missing project facts or substitute for review.
+
+This NBER paper is evidence about leadership, not an experiment on particular
+prompt phrases. Weidmann, Xu, and Deming report a correlation of 0.81 between
+their AI-agent leadership measure and estimated causal impact as leaders of
+human teams in a preregistered lab experiment. Successful leaders asked more
+questions and engaged in more conversational turn-taking. Do not infer that
+the paper validates any specific prompting template for coding agents.
+:::
+
+## Decisions that you skip, the agent makes silently
+
+The same ownership problem appears in data analysis.
+
+Request: "Estimate abnormal returns after initial public offerings (IPOs). Report a figure and a table."
+
+Decisions left to the agent:
+
+- Buy-and-hold or cumulative abnormal returns
+- The benchmark
+- The event window
+- The treatment of delisted firms
+- How to match firms across datasets
+
+::: {.notes}
+This is Paul's example from Part 8. He left the method vague on purpose and
+required a detailed record of each choice. The agent chose buy-and-hold
+returns against the CRSP value-weighted index. That choice is defensible. It
+was still the agent's choice until Paul reviewed it.
+
+Source: [Integration and collaboration](https://paulgp.substack.com/p/integration-and-collaboration-in)
+and the [repository](https://github.com/paulgp/ipo-bump).
+:::
+
+## Exercise: find the decisions that a vague request leaves to the agent
+
+> Use the Current Population Survey (CPS) to estimate whether state minimum wage increases reduced teen employment.
+
+1. What potentially important decisions are left unspecified?
+2. How would you provide more structure in the prompt?
+
+::: {.notes}
+Four minutes in pairs, on paper.
+
+Possible decisions:
+
+- Years and survey months
+- Definition of teen (16 to 19?)
+- Outcome: employment rate, hours, or both
+- Treatment: any increase, size of the increase, or bite relative to local
+  wages
+- Comparison group: all other states, neighboring states, or not-yet-treated
+  states
+- Estimator: two-way fixed effects, or an estimator for staggered adoption
+- Survey weights
+- Clustering of standard errors
+- States with several increases
+
+The comparison group and the estimator are the usual answers for "could
+change the sign." The minimum wage literature has real disagreements on both.
+
+Ask two pairs to read their revisions. Point out that any choices they settle
+should be visible in the analysis code and, where helpful, `DECISIONS.md`.
+:::
+
+## Small tasks with specific feedback are easier to check
+
+- One goal per session: "Get the cleaning script to run"
+- Review each result before the next step
+- Stop the agent early if it goes the wrong way
+
+| Vague feedback | Specific feedback |
+|---|---|
+| "This seems off." | "Find why four county reports are missing from the download manifest." |
+
+::: {.notes}
+Paul found that large tasks cause the agent to skip steps. His fix was
+smaller tasks, not stronger instructions. Software teams prefer small pull
+requests for the same reason.
+
+Specific feedback gives the agent a target and gives you a way to check the
+fix.
+:::
+
+## Ensure reproducibility: ask for a script
+
+| Request | Result |
+|---|---|
+| "Download the election reports." | PDFs, with no record of how |
+| "Write `code/download_reports.py` and run it." | PDFs and a procedure that you can run again |
+
+::: {.notes}
+This connects to the previous lecture. A script records the procedure. An
+agent that works interactively can leave no record.
+
+Example: in Paul's HMDA demo, the agent downloaded 18 small files with
+commands that it typed in the terminal. The downloads worked, but nothing in
+the project could repeat them.
+
+Put this rule in the instruction file.
+:::
+
+## Do not outsource your understanding
+
+- An agent can propose a design or summarize papers quickly
+- You must understand the choices, evidence, and disagreements behind your project
+- Read the important papers and explain your contribution in your own words
+
+The individual final exam tests that understanding without the agent.
+
+::: {.notes}
+Reproducible code is necessary, but research ownership also requires
+substantive expertise. An agent can make a strong-sounding argument about how
+your paper fits the literature. Students still need to read the central
+papers and defend that account themselves. The next slide gives a useful
+workflow without treating summaries as a substitute for reading.
+:::
+
+## Example: AI-assisted literature review
+
+**AI can search, collect, summarize, and suggest how to situate your paper.**
+You decide which claims survive your own reading.
+
+| Step | What to do | What to save |
+|---|---|---|
+| Find | Start with [Connected Papers](https://www.connectedpapers.com/). Script searches the [Semantic Scholar API](https://www.semanticscholar.org/product/api) for papers, citations, and recommendations | `candidates.csv` with IDs, queries, and dates |
+| Explore | Agent collects available full text, summarizes papers, and proposes how they relate to yours | Claim table with paper and page references |
+| Own | Read central papers and their literature reviews. Check claims and write your synthesis | Your account of the field and your contribution |
+
+The agent's proposed map is a **reading plan and a set of claims to check**.
+It cannot build your expertise for you.
+
+::: {.notes}
+Connected Papers maps related work using citation patterns, including
+co-citation and shared references. It is a useful non-LLM starting point from
+one seed paper, not a comprehensive search. Try multiple seeds and search
+terms, and follow both references and later citing papers.
+
+Concrete API prompt: "Write `code/search_literature.py` to query Semantic
+Scholar's Academic Graph API for these search terms. Request paper ID, title,
+year, authors, abstract, URL, and open-access PDF links where available. For
+each seed paper, retrieve its references and citing papers, then request
+recommendations. Save the query, retrieval date, and raw responses as well
+as a deduplicated `candidates.csv`. Handle pagination and rate limits. Do not
+invent missing abstracts or links." The API can provide metadata and links.
+A separate step can download available full texts and use an LLM to propose
+summaries and a map of the field. Respect access and copyright rules. Keep any
+API key outside Git.
+
+The agent can organize titles and abstracts into a shortlist using screening
+criteria that you set. Verify the metadata and read the full text of papers
+that matter, including their literature reviews. Record each paper's question,
+data, design, finding, and relation to your project. Confirm quotations,
+numerical findings, and claims about what the field knows in the papers
+themselves. This prevents substantive verification debt: a polished AI
+summary is not expertise. The individual final exam asks students to defend
+these claims in their own words, including why their project differs from
+prior work.
+
+Sources: [Semantic Scholar API tutorial](https://www.semanticscholar.org/product/api/tutorial),
+[Academic Graph API](https://api.semanticscholar.org/api-docs/), and
+[Connected Papers](https://www.connectedpapers.com/about).
+:::
+
+## Takeaways: intellectual ownership {.takeaways}
+
+- The agent does the work. You own the decisions and the result.
+- Make the important decisions before the agent makes them for you
+- Write and revise your plan. Use the agent to test feasibility, then work in small steps
+- Ask for scripts, not results
+- The individual final exam checks what you can explain without an agent
+
+## 4. Verification {.section-open}
+
+- Delegate more where checking is cheap
+- Build verification checks as you work, not at the end
+- Choose the right kind of check for each risk
+
+## First ask: how hard is the result to check?
+
+**Implementation cost:** effort to produce a result.  
+**Verification cost:** effort to tell whether it is correct.
+
+<table class="delegation-grid">
+<thead><tr><th></th><th>Cheap to make</th><th>Costly to make</th></tr></thead>
+<tbody>
+<tr><th>Costly to verify</th><td class="grid-caution">Caution<br><small>Easy output, hard audit</small></td><td class="grid-trap">Trap<br><small>Tempting to delegate, hard to audit</small></td></tr>
+<tr><th>Cheap to verify</th><td class="grid-low">Low stakes<br><small>Easy to redo or check</small></td><td class="grid-delegate">Delegate<br><small>Large effort, clear check</small></td></tr>
+</tbody></table>
+
+**Delegate most when verification is cheap.** Make verification easier before
+delegating a task in the upper row.
+
+::: {.notes}
+Costs are measured without AI. The grid is from a post by Clifford Russell,
+used in Paul's Part 8 and NBER talk. Explain each cell before advancing.
+The trap is work that is tempting to delegate but still hard to verify.
+:::
+
+## Exercise: place each task in the grid {.exercise-grid-slide}
+
+:::: {.columns}
+::: {.column width="42%"}
+<table class="delegation-grid exercise-grid">
+<thead><tr><th></th><th>Cheap to make</th><th>Costly to make</th></tr></thead>
+<tbody>
+<tr><th>Costly to verify</th><td class="grid-caution">Caution</td><td class="grid-trap">Trap</td></tr>
+<tr><th>Cheap to verify</th><td class="grid-low">Low stakes</td><td class="grid-delegate">Delegate</td></tr>
+</tbody></table>
+:::
+::: {.column width="58%"}
+1. Change the colors of a figure
+2. Implement an estimator from a 2023 paper that has a Stata package
+3. Extract one section from 120 annual reports
+4. Summarize the literature on minimum wages, with citations
+5. Build a 20-step cleaning pipeline for a survey
+:::
+::::
+
+What could make a hard-to-check task easier to verify?
+
+::: {.notes}
+Four minutes in pairs.
+
+1. Low stakes. You can see the figure.
+2. Delegate. Costly to implement, cheap to verify, because you can compare
+   with the authors' package. Paul did this with a bunching estimator.
+3. Costly to implement. Verification is moderate with a quality report. In
+   Paul's EDGAR demo, the report showed that 8 of 120 filings had no
+   extracted section.
+4. Caution. Cheap to implement, costly to verify. Citations and claims can be
+   wrong or invented. You must read the sources.
+5. Trap.
+
+What moves a task down: a reference implementation (task 2), a quality report
+(task 3), checks at each step plus an attrition table (task 5). For task 4,
+little moves it down except reading the sources.
+
+Paul's rule: delegate the most where verification is cheap. Work side by side
+with the agent where verification is expensive.
+
+Optional figure: Paul's drawing of this grid:
+`curl -L -o images/verify-grid.png https://raw.githubusercontent.com/paulgp/nber_hf_2026/main/assets/image-14.png`
+:::
+
+## Unchecked output accumulates as verification debt
+
+- Each result that you accept without checking adds to the debt
+- More autonomy moves all the checking to the end
+- A polished result gives no information about whether it is correct
+
+Next: make one consequential choice visible as the sample is built.
+
+::: {.notes}
+The term comes from software engineering. Paul uses it in Part 8.
+
+Polish is cheap for an agent. It is not evidence. The attrition table on the
+next slide is one way to check a substantive choice while it is still easy to
+change.
+:::
+
+## Example: track sample losses
+
+**Bad record after a merge:** “10,000 election rows before. 9,908 after.”
+It hides which 92 rows disappeared and why.
+
+::: {.fragment}
+**Better:** Save a report from the merge code and make its counts reconcile.
+
+```text
+Candidate rows before merge        10,000
+Matched to county lookup            9,908
+Unmatched: county field blank          57
+Unmatched: county not in lookup        35
+```
+
+```python
+assert len(matched) + len(unmatched) == len(input_rows)
+assert unmatched["reason"].notna().all()
+```
+:::
+
+::: {.notes}
+Ask which 35 county names are absent from the lookup. Are they spelling
+variants, a different geographic level, or a source error? The count check
+detects unexplained losses, and the reason report helps the researcher decide
+what to do. In a real script, give each unmatched row a reason column and
+assert that it is complete.
+
+The report and assertions should be generated by saved code on every run.
+The agent can write that code, but the researcher chooses the acceptable
+matching rule and examines the unmatched records.
+:::
+
+## Commits let you review one change at a time
+
+```text
+$ git log --oneline
+a41c9e2 Audit county vote totals
+7d02b18 Parse candidate rows from PDFs
+3f9a6c1 Test three report layouts
+c18e4d0 Save the report URL manifest
+09b2f77 Create project structure
+```
+
+::: {.notes}
+This connects to the previous lecture: `git log`, `git show`, and `git diff`.
+The editor's source-control panel shows the same diffs. Codex also has
+`/diff`.
+
+Paul's point: commits change the unit of verification. You review 50 lines at
+a time, not 800 lines at once. The sequence also tells a story: collect,
+test, parse, audit. Ask whether the order makes sense. When you ask for a
+change, you review only the new diff against work that you already checked.
+
+One large commit has no history to review.
+:::
+
+## Four kinds of checks catch different errors
+
+<table class="check-reveal">
+<thead><tr><th>Check</th><th>What it compares</th><th>Use it when</th></tr></thead>
+<tbody>
+<tr><th class="fragment" data-fragment-index="0">Unit test</th><td class="fragment" data-fragment-index="1">A function's output with a known answer on a small input</td><td class="fragment" data-fragment-index="1">Function logic can go wrong</td></tr>
+<tr><th class="fragment" data-fragment-index="2">Assertion</th><td class="fragment" data-fragment-index="3">Real data with rules that must hold</td><td class="fragment" data-fragment-index="3">A pipeline step can lose or duplicate rows</td></tr>
+<tr><th class="fragment" data-fragment-index="4">Regression test</th><td class="fragment" data-fragment-index="5">New output with saved earlier output</td><td class="fragment" data-fragment-index="5">A code change should preserve results</td></tr>
+<tr><th class="fragment" data-fragment-index="6">External check</th><td class="fragment" data-fragment-index="7">Your result with an independent source</td><td class="fragment" data-fragment-index="7">A published number or official series exists</td></tr>
+</tbody></table>
+
+::: {.notes}
+These are standard software-engineering ideas applied to research.
+
+- A unit test checks logic. It does not need the real data, so it runs in
+  seconds after every change. Good for edge cases: missing values, ties, top
+  codes.
+- An assertion runs on the real data inside the pipeline. It catches problems
+  in the data that no unit test can anticipate, such as a new code in next
+  year's file.
+- A regression test (also called a snapshot test) saves key outputs, such as
+  the final row count and main coefficients, and fails if they change. It is
+  useful when you ask an agent to speed up or reorganize code.
+- An external check compares with a source outside your code. It is the
+  strongest, because it does not depend on your own code.
+
+Hand inspection of a random sample of records is a fifth check. It is the main
+check for text or other data extracted by a model.
+:::
+
+## A unit test checks logic on a small known input
+
+```python
+# tests/test_merge.py
+import pandas as pd
+from code.clean import merge_policy
+
+def test_merge_keeps_one_row_per_person():
+    people = pd.DataFrame({"id": [1, 2, 3], "state": ["MA", "MA", "NH"]})
+    policy = pd.DataFrame({"state": ["MA", "NH"], "min_wage": [15.00, 7.25]})
+
+    merged = merge_policy(people, policy)
+
+    assert len(merged) == 3
+    assert merged["id"].is_unique
+    assert merged.loc[merged["id"] == 3, "min_wage"].item() == 7.25
+```
+
+::: {.notes}
+Read the test aloud. The input is small enough to check by hand. Each
+assertion states one thing that must be true.
+
+Run all tests with `pytest` after every change.
+
+The agent can write the test code. You decide what the test checks. Read the
+test as carefully as the code.
+
+In R, the `testthat` package does the same job.
+:::
+
+## An assertion stops the pipeline on a broken assumption
+
+```python
+n_people = len(people)
+
+merged = people.merge(
+    policy, on=["state", "year"], how="left", validate="many_to_one"
+)
+
+assert len(merged) == n_people, "Merge changed the number of people"
+assert merged["min_wage"].notna().mean() > 0.99, "Too many unmatched states"
+assert merged["age"].between(16, 64).all(), "Age outside sample range"
+```
+
+::: {.notes}
+`validate="many_to_one"` makes pandas raise an error if the policy file has
+two rows for one state-year. That is the most common silent merge error.
+
+The thresholds, such as 0.99, are research choices. Record them in
+`DECISIONS.md`.
+
+In Stata, `merge m:1` and `assert` do the same job. In R, use `stopifnot`, or
+`relationship = "many-to-one"` in `dplyr` joins.
+:::
+
+## External checks use a source that your code did not make
+
+- Reproduce a published number before you extend it
+- Compare your totals with an official series
+- Compare your estimator with the authors' implementation
+- Check a random sample of records by hand
+
+::: {.notes}
+Examples from Paul's work:
+
+- He first reproduced the published output of a replication package end to
+  end, then extended it.
+- He compared his bunching estimator with the Stata code from the original
+  authors.
+- In EDGAR, one filing (3M) could not be parsed automatically. For a
+  published paper, he would check it by hand.
+:::
+
+## Exercise: choose the check for each risk
+
+1. A function converts weekly earnings to hourly wages, with top codes
+2. Next year's survey file may add a new code for "refused"
+3. The agent rewrites the cleaning script to run faster
+4. You construct county unemployment rates from microdata
+5. A model extracts firm names from 2,000 news articles
+
+Unit test, assertion, regression test, external check, or hand inspection?
+
+::: {.notes}
+Three minutes in pairs.
+
+1. Unit test. The logic has edge cases: top-coded values, zero hours, missing
+   hours. Construct small inputs with known answers.
+2. Assertion. Assert that the variable takes only known codes. A unit test
+   cannot anticipate a code that does not exist yet.
+3. Regression test. The final dataset and main estimates should be identical
+   before and after the rewrite.
+4. External check. Compare with the BLS Local Area Unemployment Statistics.
+   Expect differences. Decide in advance how large a difference is
+   acceptable.
+5. Hand inspection of a random sample, to estimate an error rate. No other
+   check tells you whether the extraction is correct.
+
+Most real projects need all five kinds somewhere. The question is which risk
+each check addresses.
+:::
+
+## Look at the data to learn what to check
+
+| What someone saw | Check that it motivated |
+|---|---|
+| 8 of 120 filings had no extracted section | An extraction report for each filing |
+| Los Angeles County had several rows per year | One row per county-year |
+| The fintech share dropped in 2018 | Flag the year when lender IDs changed |
+| Loan amounts cluster at round numbers | Separate round-number effects from the policy effect |
+
+::: {.notes}
+All four examples are from Paul's demos.
+
+1. EDGAR: a pattern required "Item 1A" and "Risk Factors" on one line. Some
+   filings had a line break between them.
+2. HMDA: inconsistent state codes split one county into several rows.
+3. HMDA: the change from respondent IDs to LEIs in 2018 caused weak matches.
+   The dip is an artifact, not a market change.
+4. NBER talk: loan amounts bunch at round numbers. This can look like
+   bunching at the policy limit.
+
+Paul calls this "95% fast, last 5% requires judgment." Good checks come from
+exploration of your data, not from a generic list.
+:::
+
+## Exercise: evaluate the agent's fix for a duplicate row
+
+```text
+people.csv          10,000 rows   one row per person
+state_policy.csv        52 rows   expected: one row per state
+merged.csv          10,212 rows
+```
+
+The agent's fix: keep the first row for each state. All tests pass.
+
+**Question:** What is wrong with this fix?
+
+::: {.notes}
+Three minutes in pairs. The policy file has 51 states and 52 rows.
+
+1. The duplicate probably means that the state changed its minimum wage in the
+   middle of the year. "Keep the first row" assigns the old wage to everyone,
+   including people surveyed after the change. The file order decides the
+   treatment. The tests pass because they check the row count, not which row
+   was kept.
+2. Assign the minimum wage in effect in each person's survey month. You need
+   the effective date of each change and the survey month of each person.
+   This is a research decision. The agent should have asked.
+3. A regression test on the main estimates would show the change. Also
+   tabulate the minimum wage for the affected state by survey month. Record
+   the rule in `DECISIONS.md`.
+
+:::
+
+## An agent can pass tests without correct code
+
+If the goal is "the tests pass," an agent can:
+
+- Edit the test instead of the code
+- Hard-code the expected value
+- Drop the rows that fail
+
+Passing tests means only that the code satisfies **those tests**. Read the
+tests, inspect source records, and review any diff that changes a test.
+
+::: {.notes}
+This behavior is called reward hacking or specification gaming. The agent
+satisfies the measure, not the intent. It is the same problem as an incentive
+contract that rewards the wrong measure.
+:::
+
+## Make final paper numbers traceable to code
+
+- While drafting in Google Docs, mark citations and generated numbers with `[XXX placeholder]`
+- The final paper will be written in a script, such as Quarto or LaTeX. Its
+  figures, tables, and numbers in text will come from files in `output/`
+- Trace each final number to an output file, a script, and a commit
+
+::: {.notes}
+Paul's rule: no final number in the paper is typed by hand. He connects the
+pipeline to the paper directly. Students begin drafts in Google Docs, where
+that rule is premature. A placeholder next to each citation or generated
+number makes the later source check easier. When we move paper writing to
+scripts, each final number should come from a file in `output/` written by a
+script.
+
+The agent's chat summary can contain numbers that do not match the output
+file.
+
+Review the method before you trust the trace. A clean pipeline can faithfully
+publish a wrong estimate.
+:::
+
+## Takeaways: verification {.takeaways}
+
+- Delegate the most where checking is cheap. Make checking cheap where it is not.
+- Build checks as you work. Keep commits, decisions, and attrition tables as you go.
+- Confirm the agent's claims against the code and the output
+- Match each risk to a check: unit, assertion, regression, external, or by hand
+- You decide what the tests check, and review any changes to tests.
+
+## 5. Permissions {.section-open}
+
+- Limit folder access and tool access separately
+- Design the environment, then choose the approval mode
+- Sandboxes do not keep data from the provider
+
+::: {.notes}
+Paul's framing: a model that only produces text cannot damage your computer.
+The tools that make an agent useful are the same tools that make it risky.
+
+The software practice here is least privilege: give a program only the access
+that it needs for its task.
+:::
+
+## Limit folder access and tool access separately
+
+| Set a boundary for | Ask |
+|---|---|
+| Files and folders | What can the agent read or change? |
+| Tools | Can it run shell commands, Python, or Git? |
+| Network | Can it reach websites or send data to an API? |
+
+Starting in `election-project/` sets the **working directory**. It may not
+limit what the agent can read elsewhere.
+
+::: {.notes}
+Folder access is similar to questions that students already ask about
+Dropbox or Google Drive. Read access is safer than write access. The internet
+is a separate channel that the agent can use to retrieve public material or
+send information elsewhere.
+
+Tool access is harder to reason about. An agent that can run shell commands
+can find other ways to do a restricted action. Paul's HMDA subagent kept
+finding new commands to look in the parent folder after he denied each one.
+:::
+
+## Check effective permissions before the first task
+
+1. Start the agent in `election-project/`.
+2. Keep API keys and restricted data outside its reach.
+3. Inspect its effective file, tool, and network permissions.
+
+Project defaults can live in tool settings: Codex `.codex/config.toml` or
+Claude Code `.claude/settings.json`. `AGENTS.md` cannot enforce them.
+
+::: {.notes}
+Demonstrate the permission view in the CLI you use. The working directory is
+where the task starts. It is not necessarily a read boundary. Check the
+sandbox or allowed folders separately. For the election project, grant network
+access only as needed to reach the public source and do not put an API key in
+the repository.
+
+Codex can preconfigure sandbox and approval policy in project
+`.codex/config.toml` once the project is trusted. Claude Code can configure
+tool allow/ask/deny rules in project `.claude/settings.json`. A student's
+personal or organization settings can also apply, so inspect the effective
+permissions in the tool before starting. See [Codex configuration](https://learn.chatgpt.com/docs/config-file/config-basic),
+[Codex approvals and sandboxing](https://learn.chatgpt.com/docs/agent-approvals-security),
+and [Claude Code settings](https://code.claude.com/docs/en/settings).
+:::
+
+## The approval mode sets when the agent asks to act
+
+| Mode | The agent asks before | Risk depends on |
+|---|---|---|
+| Manual | Most actions | Whether you read each request |
+| Auto | Only actions that a classifier or rule flags | The classifier and the rules |
+| Bypass ("YOLO") | Nothing | The environment |
+
+Check the mode shown by your tool. Defaults vary by version, interface, model,
+and settings. None of these modes checks whether the extracted data are right.
+
+::: {.notes}
+Manual: the agent asks before edits, commands, and network use.
+
+Auto: routine actions run without a prompt. In Claude Code's auto mode, a
+second model reviews actions instead of you. Codex's Auto preset allows
+actions inside its workspace boundary without asking. Its separate
+Auto-review feature can review actions that seek to cross that boundary.
+These are tool-specific settings, not a common mode shared by every agent.
+Paul uses auto mode as his default and says that it causes him to build up
+verification debt.
+
+Bypass: the agent never asks. It is fast. It can also work on the wrong thing
+for an hour before you notice. Bypass mode is not bad in itself. It needs
+guardrails that do not depend on the agent.
+
+Claude Code's built-in starting mode depends on version and interface, and
+auto mode requires an eligible model and settings. Inspect the indicator
+instead of assuming its value. Shift+Tab cycles modes in Claude Code. Codex
+uses `/permissions`. Gemini CLI uses `--approval-mode`. Sources: [Claude Code
+permission modes](https://code.claude.com/docs/en/permission-modes) and [Codex
+approvals and Auto-review](https://learn.chatgpt.com/docs/agent-approvals-security).
+:::
+
+## Auto mode does not verify extracted data
+
+| Phase | Let the agent do | Researcher check before proceeding |
+|---|---|---|
+| Plan | Inspect three PDF types and propose a schema | Approve row definition and missing-value rules |
+| Pilot | Write and run code on a small, varied batch | Compare source pages with output rows by hand |
+| Full run | Process saved PDFs, log failures, make an audit report | Check coverage, totals, and a fresh random sample |
+
+Auto mode can reduce prompts during a bounded task. Pause at these stage
+boundaries even when the agent can run without asking.
+
+::: {.notes}
+Permission prompts ask whether a command may run. They do not tell you
+whether a vote total or candidate name is correct. No one can hand-check
+every row in hundreds of PDFs, so require a manifest, programmatic checks,
+and a hand-labeled sample. The next lecture builds this pipeline. Use plan or
+manual mode while deciding the schema. Auto mode is more useful once the
+sample pipeline and checks work. Review any changes to the parser or checks.
+:::
+
+## Approving without reading gives no protection
+
+- After many prompts, most people approve without reading
+- Then each prompt costs time and protects nothing
+- Real protection comes from limits that the agent cannot change
+
+::: {.notes}
+Ask: who has approved an agent action without reading it? Most hands go up.
+
+Mario Zechner, who wrote the pi harness, calls most per-action security
+measures "security theater." His point: once an agent can write and run code
+and reach the network, prompts cannot close every path.
+
+The conclusion is not "ignore security." Design the environment before the
+session, then let the agent work inside it.
+:::
+
+## Ask what the environment allows, not whether you trust the model
+
+1. Which folders can the agent see?
+2. Can it write, install, or delete?
+3. Are keys, passwords, or tokens within reach?
+4. Can it reach the internet?
+5. What is the worst case, and can you undo it?
+
+::: {.notes}
+These are Paul's questions.
+
+Example: an agent started in your home folder with no sandbox can reach
+`~/.ssh`, every API key in your environment variables, and every other
+project on your computer.
+
+Git answers part of question 5 for code. With a clean commit and a remote
+copy, most damage to tracked files can be undone. Git does not protect files
+outside the repository or files that git ignores, such as raw data.
+:::
+
+## Recap aside: What is a virtual environment?
+
+::: {.fragment}
+- A Python virtual environment is a project-specific set of installed packages
+- Create it in the project, activate it, and install the packages the project needs
+- Record those package requirements so someone else can recreate the setup
+:::
+
+::: {.notes}
+This recaps the previous lecture. A `.venv` helps keep Python dependencies
+consistent across projects. Its name can sound like a security boundary, so
+the next slide separates package isolation from agent permissions.
+:::
+
+## A virtual environment does not isolate the agent
+
+<table>
+<thead><tr><th></th><th>Virtual environment</th><th class="fragment" data-fragment-index="0">Sandbox or container</th></tr></thead>
+<tbody>
+<tr><th>Purpose</th><td>Keep project packages separate</td><td class="fragment" data-fragment-index="0">Limit what the agent can reach</td></tr>
+<tr><th>Can limit file reads?</th><td>No</td><td class="fragment" data-fragment-index="0">Yes</td></tr>
+<tr><th>Can limit network?</th><td>No</td><td class="fragment" data-fragment-index="0">Yes</td></tr>
+</tbody>
+</table>
+
+::: {.notes}
+Both ideas use the word "isolation," so students confuse them. An agent
+inside an active `.venv` can still read the whole home folder.
+
+A virtual environment changes which Python packages a program uses. It does
+not change which files the program can open.
+
+A sandbox or container limits what the program can reach. A container can
+also include a pinned environment, so the two ideas can be combined.
+:::
+
+## A built-in sandbox controls what tools can reach
+
+| Tool | Default | Writes | Reads | Network |
+|---|---|---|---|---|
+| Claude Code | Off. Turn on with `/sandbox` | Project folder | Broad unless you add deny rules | Asks for each new domain |
+| Codex CLI | On | Project folder. `.git` is read-only. | Full disk | Off |
+| Gemini CLI | Off. Turn on with `--sandbox` | Project folder | Broad in the default macOS profile | On in the default macOS profile |
+
+::: {.notes}
+Sources: the sandboxing pages in each tool's documentation (September 2026).
+Check the documentation again before you teach this. Defaults change often.
+
+Main point: many default sandboxes focus on protecting files from damage.
+Do not assume that starting in a project folder blocks reads outside it.
+Inspect the actual read rules in the tool and mode you use.
+
+Claude Code's sandbox applies to shell commands. Its file-reading tool is
+controlled by permission rules instead.
+
+Each tool can restrict reads further. Claude Code has deny rules for reads and
+a setting that blocks reads outside the working directories. Codex has
+restricted read profiles. Gemini CLI has stricter macOS profiles and container
+sandboxes.
+:::
+
+## Advanced option: put the agent in a container
+
+- A **sandbox** restricts tool actions, such as writes or network access.
+  Read limits depend on its configuration.
+- A **container** packages the project's software environment and exposes
+  selected folders through mounts. This helps teammates run the same code.
+- Configure mounts and network access to limit what the agent can reach.
+  Save outputs in a mounted folder so they remain available on your computer.
+
+For a simple course project, start with Git, a virtual environment, and
+careful tool permissions. Add a container when isolation or portability
+justifies the setup.
+
+::: {.notes}
+Paul's analogy: a small figure inside a dollhouse who does not know that the
+room outside exists.
+
+Paul's Docker command mounts only the project folder and the agent's login
+folder, and drops system capabilities:
+
+```bash
+docker run --rm -it \
+  -v "$PWD/replication":/home/rstudio/work \
+  -v "$HOME/.claude":/home/rstudio/.claude \
+  --cap-drop=ALL \
+  --security-opt=no-new-privileges \
+  econ-sandbox \
+  claude --dangerously-skip-permissions
+```
+
+Codex documents a secure devcontainer example with an outbound firewall.
+Gemini CLI can run its tools in Docker with `GEMINI_SANDBOX=docker`.
+
+Caution from Codex's documentation: in bypass mode inside a container, a
+malicious project can still send out anything inside the container,
+including the agent's credentials.
+
+Students do not need to set up a container this week. Containers are useful
+beyond agent safety: a project image can pin system tools and dependencies
+that a Python virtual environment does not capture. A container is not a
+perfect security boundary; its mounts, network policy, and privileges matter.
+
+Source: [Permissions, sandboxes, and autonomous agents](https://paulgp.substack.com/p/permissions-sandboxes-and-autonomous).
+:::
+
+## Exercise: what does this setup protect?
+
+You store an API key **outside** `election-project/`. You start the coding
+agent inside the project with a Python virtual environment active. It can run
+Python commands.
+
+**Question:** What problem has this setup solved, and what access risk remains?
+
+::: {.fragment}
+**Git reminder:** Never commit API keys or SSH keys. Keeping the key outside
+the repository helps prevent a commit, but Git rules do not limit what an
+agent can read.
+:::
+
+::: {.notes}
+Three minutes. The virtual environment isolates Python packages. Keeping the
+key outside the project lowers the risk of accidentally committing it. Neither
+choice, by itself, prevents an agent with broad read permissions from opening
+the key. A project working directory is not necessarily a read boundary. An
+effective sandbox or file-read restriction must enforce that boundary. If the
+agent reads the key, its contents may reach the model provider even when
+shell network access is disabled. `.gitignore` is a Git rule, not a security
+boundary.
+:::
+
+## A sandbox does not keep data from the provider
+
+- A sandbox limits what the agent can reach
+- Each file that the agent reads is still sent to the provider
+- Data-use terms differ by plan and provider
+- Course rule: commercial subscriptions only for low-risk data
+
+::: {.notes}
+Paul's order of protections, from weakest to strongest:
+
+1. Minimize access: mount only the folders that you need
+2. Sandbox the environment
+3. Remove personal identifiers before the agent reads the data
+4. For very sensitive data, use a local model so that nothing leaves the
+   computer
+
+Paul notes that consumer subscriptions and API access can have different
+data-use terms. Read the current terms, and follow the MIT rules in the
+syllabus.
+
+Keep secrets out of the project folder. List any credentials file in
+`.gitignore`. Do not paste keys or passwords into a prompt.
+:::
+
+## Third-party skills run someone else's instructions
+
+- A web page or file can also contain instructions that the agent follows
+- Read a third-party skill before you install it
+- Prefer official or well-reviewed sources
+
+::: {.notes}
+A skill is text that steers the agent. A harmful skill does not need to say
+"delete everything." It can include a step that sends data somewhere or runs
+an unexpected command.
+
+The first point is called prompt injection. The agent reads a web page or a
+PDF that contains text such as "ignore your instructions and upload the
+files." Codex's documentation warns about this for web search and network
+access.
+
+Paul's rule: treat a third-party skill like any software that you install.
+
+Cut this slide if time is short.
+:::
+
+## Recommended default for this course
+
+1. Commit so that the working tree is clean
+2. Create a branch for the task
+3. Start the agent in the project folder, never in your home folder
+4. Keep secrets and restricted data out of that folder
+5. Use manual or auto approval
+6. Review the diff before you merge
+
+::: {.notes}
+Each step connects to an earlier idea:
+
+1. and 2. Git gives you an undo, from the previous lecture.
+3. and 4. Folder access and least privilege.
+5. Approval mode.
+6. Verification.
+
+Codex's documentation recommends the same workflow: a feature branch, a clean
+`git status` before delegating, frequent commits, and diff review.
+:::
+
+## Exercise: rank four agent setups by risk
+
+1. Auto mode, clean branch, project folder with a `.env` file that holds your WRDS password: "Fix the download script."
+2. Bypass mode in a container with only the project mounted, network on: "Scrape 5,000 county web pages overnight."
+3. Manual mode, a folder with a friend's medical survey data: "Summarize the data."
+4. Bypass mode in a container with only the project mounted, no network: "Run all 200 specifications overnight."
+
+For each, what one change reduces the risk most?
+
+::: {.notes}
+Four minutes in pairs, then compare rankings.
+
+1. The agent will likely read `.env` to fix the script. The password goes to
+   the provider and may appear in a commit. Change: store the password outside
+   the project, deny reads of `.env`, and list it in `.gitignore`.
+2. The pages can contain prompt injection, and the container has network
+   access, so anything in the container can leave. Rate limits and terms of
+   use also matter. Change: allow network access only to the target domain,
+   and keep credentials out of the container.
+3. Manual approval does not help. The data leaves as soon as the agent reads
+   it. This is a data-governance violation, not a permissions problem.
+   Change: do not use a commercial agent on this data.
+4. Low risk to your computer. The risk moves to verification: 200 results to
+   check in the morning. Change: write the checks before the run.
+
+Most pairs rank 3 or 1 as riskiest. Both are defensible. Setup 4 is the
+safest environment and the largest verification debt.
+:::
+
+## Terminology recap: permissions {.terms}
+
+| Mode | Claude Code | Codex CLI | Gemini CLI |
+|---|---|---|---|
+| Ask before edits and commands | Manual (`default`) | `--sandbox read-only` | `default` |
+| Allow edits without asking | `acceptEdits` | Auto preset: `workspace-write`, `on-request` | `auto_edit` |
+| A model reviews risky actions | `auto` | `approvals_reviewer = "auto_review"` | |
+| Read and plan only | `plan` | `/plan` | `plan` |
+| Never ask | `--dangerously-skip-permissions` | `--yolo` | `--approval-mode=yolo` |
+
+::: {.notes}
+Codex separates two controls: the sandbox mode (what commands can reach) and
+the approval policy (when Codex asks). The other tools combine them more.
+
+Names change often. Check the documentation on the references slide.
+:::
+
+## Takeaways: permissions {.takeaways}
+
+- Decide folder access and tool access separately
+- Design the environment first. Then choose the approval mode.
+- A virtual environment isolates packages, not the agent
+- Default sandboxes limit writes more than reads
+- The provider receives everything that the agent reads
+
+## Summary: five ideas for research with agents
+
+| Section | Main idea |
+|---|---|
+| Agentic AI | An agent is a model with tools, working in a loop in your project |
+| Context management | Files persist and sessions do not, so codify what you repeat |
+| Intellectual ownership | You make the decisions, and you are accountable for the result |
+| Verification | Build checks as you work, and confirm every claim |
+| Permissions | Limit the environment, then give the agent freedom inside it |
+
+::: {.notes}
+Return to the running theme: each row is an established software practice
+applied to agents. Do not repeat yourself, documentation, code review,
+testing, and least privilege.
+
+Close with the four questions from the previous lecture: what changed, why it
+changed, which version produced the result, and whether another person can
+produce it again. An agent makes these questions more important, because it
+changes more code faster.
+
+Next lecture: scripted data collection. The ideas from today apply directly:
+staged context, scripts instead of results, and quality reports.
+:::
+
+## References
+
+:::: {.columns}
+::: {.column width="46%"}
+**Tool documentation**
+
+- [Claude Code](https://code.claude.com/docs/en/overview)
+- [Codex](https://developers.openai.com/learn/codex)
+- [Gemini CLI](https://geminicli.com/docs/)
+- [Semantic Scholar API](https://www.semanticscholar.org/product/api/tutorial)
+
+**Research tools and papers**
+
+- [Connected Papers](https://www.connectedpapers.com/)
+- Weidmann, Xu, and Deming, [*Measuring Human Leadership Skills with AI Agents*](https://www.nber.org/papers/w33662)
+:::
+
+::: {.column width="54%"}
+**Agent research and examples**
+
+- Paul Goldsmith-Pinkham, [agent series](https://paulgp.substack.com/p/getting-started-with-claude-code) and [NBER talk materials](https://github.com/paulgp/nber_hf_2026)
+- Garicano, Li, and Wu, [*Messy Jobs*](https://messyjobs.ai/)
+- HumanLayer, ["Advanced context engineering for coding agents"](https://www.humanlayer.dev/blog/advanced-context-engineering)
+:::
+::::
+
+::: {.notes}
+Pages used for the terms slides and the sandbox table (checked September
+2026):
+
+- Claude Code: [permission modes](https://code.claude.com/docs/en/permission-modes),
+  [commands](https://code.claude.com/docs/en/commands),
+  [memory and CLAUDE.md](https://code.claude.com/docs/en/memory),
+  [sandboxing](https://code.claude.com/docs/en/sandboxing)
+- Codex: [approvals and security](https://developers.openai.com/codex/agent-approvals-security/)
+- Gemini CLI: [commands](https://geminicli.com/docs/reference/commands/),
+  [CLI reference](https://geminicli.com/docs/cli/cli-reference/),
+  [sandboxing](https://geminicli.com/docs/cli/sandbox/)
+
+Part 8 of Paul's series was not assigned, but the Verification section uses
+it heavily. Recommend it. Paul's example repository with a decision record is
+[paulgp/ipo-bump](https://github.com/paulgp/ipo-bump).
+
+Full Paul Goldsmith-Pinkham series used here: [1. Setup](https://paulgp.substack.com/p/getting-started-with-claude-code),
+[2. First figure](https://paulgp.substack.com/p/from-an-empty-folder-to-a-figure),
+[3. EDGAR](https://paulgp.substack.com/p/from-edgar-filings-to-a-structured),
+[4. Large datasets](https://paulgp.substack.com/p/large-datasets-and-structured-databases),
+[5. Writing](https://paulgp.substack.com/p/writing-and-thinking-with-ai-assistance),
+[6. Skills](https://paulgp.substack.com/p/skills-specifying-how-an-agent-should),
+[7. Permissions](https://paulgp.substack.com/p/permissions-sandboxes-and-autonomous),
+[8. Verification](https://paulgp.substack.com/p/integration-and-collaboration-in).
+:::

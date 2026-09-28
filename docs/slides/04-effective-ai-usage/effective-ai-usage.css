@@ -1,0 +1,75 @@
+/* Lecture-local styles for the effective AI usage lecture. */
+
+.reveal .agenda ol { font-size: 0.94em; line-height: 1.35; }
+.reveal .agenda li { margin-bottom: 0.5em; }
+.reveal pre code { max-height: 440px; }
+.reveal table { font-size: 0.74em; }
+.reveal .terms table { font-size: 0.64em; }
+.reveal .compact table { font-size: 0.66em; }
+.reveal .compact li { font-size: 0.9em; }
+
+/* Section opening and takeaway slides use the course accent color. */
+.reveal .section-open h2,
+.reveal .takeaways h2 { color: #107895; }
+.reveal .section-open h2 {
+  border-bottom: 3px solid #107895;
+  padding-bottom: 0.2em;
+}
+.reveal .takeaways li { margin-bottom: 0.4em; }
+.reveal table code { white-space: nowrap; }
+.reveal .agent-loop {
+  display: grid;
+  grid-template-columns: 1fr 72px 1fr;
+  grid-template-rows: 92px 64px 92px;
+  align-items: center;
+  justify-items: center;
+  gap: 4px;
+  margin: 22px auto 12px;
+  width: 89%;
+}
+.reveal .agent-loop .loop-step {
+  border: 2px solid #107895;
+  border-radius: 12px;
+  padding: 15px 18px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 0.76em;
+  background: #f3f9fb;
+}
+.reveal .agent-loop .loop-arrow {
+  color: #107895;
+  font-size: 1.4em;
+  font-weight: 700;
+}
+.reveal .agent-loop .loop-center {
+  color: #53616a;
+  font-size: 0.63em;
+  text-align: center;
+}
+.reveal .delegation-grid { font-size: 0.78em; width: 100%; }
+.reveal .delegation-grid th,
+.reveal .delegation-grid td { padding: 0.45em 0.4em; }
+.reveal .delegation-grid small { font-size: 0.76em; }
+.reveal .delegation-grid .grid-caution { background: #fff1cb; }
+.reveal .delegation-grid .grid-trap { background: #fbe1df; }
+.reveal .delegation-grid .grid-low { background: #e8f0f4; }
+.reveal .delegation-grid .grid-delegate { background: #dbf1e2; }
+.reveal .delegation-grid.exercise-grid { font-size: 0.55em; }
+.reveal .delegation-grid.exercise-grid th,
+.reveal .delegation-grid.exercise-grid td { padding: 0.5em 0.3em; }
+.reveal .exercise-grid-slide ol { font-size: 0.77em; line-height: 1.15; }
+.reveal .exercise-grid-slide li { margin-bottom: 0.35em; }
+.reveal .check-reveal { font-size: 0.7em; }
+.reveal .productivity-grid { width: 100%; font-size: 0.72em; }
+.reveal .productivity-grid th,
+.reveal .productivity-grid td { padding: 0.55em 0.55em; }
+.reveal .productivity-grid th:first-child { width: 25%; }
+.reveal .accountability-card {
+  border-left: 4px solid #107895;
+  background: #f3f9fb;
+  padding: 0.55em 0.7em;
+  margin: 0.55em 0;
+  font-size: 0.83em;
+}
+.reveal .accountability-card p { margin: 0.28em 0 0; }
