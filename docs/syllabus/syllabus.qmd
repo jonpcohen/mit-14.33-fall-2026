@@ -91,7 +91,7 @@ By the end of the semester, students will be able to:
 
 - 4 class meetings will be presentations in front of your peers.
 
-- The final exam will be a closed-book, individualized written exam assessing the student's understanding of their code and project.
+- The final exam will be a closed-book, individualized written exam assessing the student's understanding of their code and project. It will take place Tuesday, December 15, 2026, from 9:00 a.m. to 12:00 p.m. in E51-145.
 
 ## Grading
 
@@ -104,7 +104,7 @@ Final grade calculation:
 - 20% final paper (due Friday December 4 by 11:59pm)
 - 5% final code quality and reproducibility (due Friday December 4 by 11:59pm)
 - 15% final presentation (December 7 or December 9)
-- 25% final exam (final exam period)
+- 25% final exam (Tuesday, December 15, 9:00 a.m.–12:00 p.m., E51-145)
 
 ## Attendance
 
@@ -136,7 +136,7 @@ Every submitted assignment must include an AI-use statement. If there was no AI 
 ## Required text and materials
 
 - Varanya Chaubey, *[The Little Book of Research Writing](https://www.amazon.com/Little-Book-Research-Writing/dp/1974673162)*.
-- Three months of a $20-per-month subscription to an approved frontier LLM (e.g., Claude, ChatGPT, or Gemini) for use with exclusively low-risk, non-Institute data. If you are using at least medium-risk Institute data, then you must use an MIT [Parley account](https://orgchart.mit.edu/letters/parley-api-now-available-mit-community-undergraduate-students). Note that Parley does not include frontier models, relies on variable usage pricing, and provides undergraduates with only $10 of monthly API credits. Refer to [MIT's Generative AI usage policy guidance](https://ist.mit.edu/ai) for more detail.
+- Three months of a $20-per-month subscription to an approved frontier LLM (e.g., Claude, ChatGPT, or Gemini) for use with exclusively low-risk, non-Institute data. If you are using at least medium-risk Institute data, then you must use an MIT [Parley account](https://parley-docs.mit.edu/). Parley has a browser chat and a separate, usage-priced API that can also connect to coding agents. Refer to [MIT's Generative AI usage policy guidance](https://ist.mit.edu/ai) for more detail.
 - Paper notebook and pen/pencil brought to each class meeting.
 - Free GitHub account and Google account. Students will add the instructor and TA as collaborators to their project's GitHub repository and as editors to all Google Docs.
 
@@ -190,7 +190,7 @@ The course is structured to facilitate learning, but the instructor and TA are o
 | 24 | Wed., Dec. 2 | Small group practice presentations | • Draft presentation<br>`#linebreak()`{=typst}• Final paper due Fri., Dec 4 |
 | 25 | Mon., Dec. 7 | Final presentations | N/A |
 | 26 | Wed., Dec. 9 | Final presentations | N/A |
-| 27 | TBD, final exam period | Written final exam | N/A |
+| 27 | Tues., Dec. 15 | Written final exam (9:00 a.m.–12:00 p.m., E51-145) | N/A |
 
 : {tbl-colwidths="[8,17,31,44]"}
 
@@ -279,5 +279,6 @@ Draft this section prior to the meeting and revise this section after the meetin
 
 ## Revision history
 
-- **September 9, 2026:** Added excused attendance procedures and AI disclosure policy.
+- **September 28, 2026:** Added final exam details and clarified Parley web chat and API access.
 - **September 14, 2026:** Replaced office hours availability poll with scheduled times.
+- **September 9, 2026:** Added excused attendance procedures and AI disclosure policy.
