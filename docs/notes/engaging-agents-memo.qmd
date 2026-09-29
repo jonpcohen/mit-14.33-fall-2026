@@ -109,6 +109,7 @@ Your project is now in `$HOME/course/project`. Skip the clone command if you alr
 ```bash
 module load apptainer/1.4.2
 mkdir -p "$HOME/.local/share/agent-shell"
+salloc -c 4 --mem=8G -t 00:30:00
 apptainer pull "$HOME/.local/share/agent-shell/node22.sif" docker://node:22-bookworm
 ```
 
