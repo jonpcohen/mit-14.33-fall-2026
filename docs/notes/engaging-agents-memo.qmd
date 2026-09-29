@@ -1,0 +1,308 @@
+---
+title: "Git and AI coding agents on Engaging"
+subtitle: "14.33 Research and Communication in Economics · Fall 2026"
+engine: markdown
+format:
+  html:
+    embed-resources: true
+    toc: false
+    link-external-newwindow: true
+    include-in-header:
+      text: |
+        <style>
+        main { max-width: 850px; font-size: 15px; line-height: 1.35; }
+        h1 { font-size: 1.65rem; }
+        h2 { font-size: 1.15rem; margin-top: 1.2rem; }
+        h3 { font-size: 1rem; margin-top: 1rem; }
+        li { margin-bottom: 0.25rem; }
+        pre { padding: 0.7rem; }
+        a { color: #a31f34; }
+        </style>
+  typst:
+    papersize: us-letter
+    fontsize: 9pt
+    margin:
+      top: 0.4in
+      bottom: 0.4in
+      left: 0.6in
+      right: 0.6in
+    number-sections: false
+    include-in-header:
+      text: |
+        #set page(numbering: none)
+        #set par(leading: 0.4em, spacing: 0.45em)
+        #set list(spacing: 0.25em)
+        #set enum(spacing: 0.25em)
+        #show link: set text(fill: rgb("#a31f34"))
+        #show heading.where(level: 1): set text(size: 16pt)
+        #show heading.where(level: 2): set text(size: 11pt)
+        #show heading.where(level: 3): set text(size: 9.5pt)
+---
+
+Set up Git and your choice of **Codex, Claude Code, or Gemini CLI** on Engaging. Complete the setup once, then use section 6 for later sessions.
+
+## 1. Connect to Engaging
+
+**Purpose:** Open a terminal on Engaging, where your files and agent will run.
+
+Choose either option:
+
+- **Web browser:** Log into [OnDemand](https://orcd-ood.mit.edu) with your MIT account. Under **Clusters**, open Engaging's **Shell Access** to get a terminal.
+- **SSH:** Open a terminal on your computer and run the following, replacing `YOUR-KERBEROS` with your MIT username:
+
+```bash
+ssh YOUR-KERBEROS@orcd-login.mit.edu
+```
+
+Run the remaining commands in your **Engaging terminal**, whether you opened it through OnDemand or SSH.
+
+## 2. Connect GitHub and copy your project
+
+**Purpose:** Let Engaging access your GitHub repository, then download a working copy of your project. Git will help you review and save the agent's changes.
+
+First check whether you already have an SSH public key, which identifies this computer to GitHub:
+
+```bash
+cat "$HOME/.ssh/id_ed25519.pub"
+```
+
+If it prints a key, reuse it. If it says the file does not exist, create one:
+
+```bash
+ssh-keygen -t ed25519 -C "$USER@mit.edu"
+```
+
+Press Enter for the default location. You may add a passphrase for extra protection. **Do not overwrite an existing key.** Then print the public key:
+
+```bash
+cat "$HOME/.ssh/id_ed25519.pub"
+```
+
+Copy the complete line. On GitHub, open **Settings → SSH and GPG keys → New SSH key**, title it `Engaging`, and paste the key. Only share the `.pub` file, never the private key without `.pub`.
+
+Test the connection:
+
+```bash
+ssh -T git@github.com
+```
+
+If asked to accept GitHub's identity, compare its fingerprint (the displayed identifier) with [GitHub's published fingerprints](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints). A successful test says you authenticated and that GitHub does not provide shell access. That is normal.
+
+Create your personal repository using the [GitHub memo](github-memo.html). On its GitHub page, select **Code → SSH** and copy the URL. Replace the name and email below, then paste the URL when prompted:
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "your-email@example.com"
+mkdir -p "$HOME/course"
+read -r -p 'Paste your repository SSH URL: ' project_url
+git clone "$project_url" "$HOME/course/project"
+```
+
+Your project is now in `$HOME/course/project`. Skip the clone command if you already have your project there.
+
+## 3. Prepare the container
+
+**Purpose:** Give the agent a separate working environment that limits which of your files it can access. A **container** provides this environment; an **image** is the downloadable file containing its operating system and basic tools.
+
+[Apptainer](https://orcd-docs.mit.edu/software/apptainer/) runs containers on Engaging. Download a ready-made image. The same image works for all three agents and all your projects:
+
+```bash
+module load apptainer/1.4.2
+mkdir -p "$HOME/.local/share/agent-shell"
+apptainer pull "$HOME/.local/share/agent-shell/node22.sif" docker://node:22-bookworm
+```
+
+Download once. If `node22.sif` already exists from this setup, skip the download. No administrator access or custom image build is needed.
+
+The agent will have access to these two folders:
+
+| Folder on Engaging | Name inside the container | Contents |
+|---|---|---|
+| The project folder you choose | `/workspace` | Your project files |
+| A separate folder created automatically for that project | `/home/student` | Agent software, login, and conversations |
+
+Your other personal folders and GitHub SSH keys are not shared. The agent can change or delete files in **both shared folders**, and it can still access the network. Keep backups and only share data approved for use with your chosen AI service.
+
+## 4. Create your container command {#open-container}
+
+**Purpose:** Save the container-opening instructions in a **Bash script**, a file of terminal commands. Set it up once, then run `agent-shell` whenever you want to work.
+
+Expand the box below and paste the entire block into your **ordinary Engaging terminal**. It creates the script, makes it runnable, and tells your terminal where to find it. **No paths need editing.**
+
+<details>
+<summary><strong>One-time setup: create the agent-shell command</strong></summary>
+
+```bash
+mkdir -p "$HOME/.local/bin"
+cat > "$HOME/.local/bin/agent-shell" <<'AGENT_SHELL_SCRIPT'
+#!/usr/bin/env bash
+# Open a container for the chosen project. No agent runs on the host.
+set -eo pipefail
+umask 077
+
+if [[ ${1-} == --help || ${1-} == -h ]]; then
+  echo 'Usage: agent-shell [PROJECT_FOLDER]'
+  echo 'Without an argument, share the current folder.'
+  exit 0
+fi
+if (( $# > 1 )); then
+  echo 'Use: agent-shell [PROJECT_FOLDER]. Quote paths containing spaces.' >&2
+  exit 1
+fi
+if [[ -n ${APPTAINER_CONTAINER-} || -n ${SINGULARITY_CONTAINER-} ]]; then
+  echo 'You are already in a container. Type exit before opening another.' >&2
+  exit 1
+fi
+
+project=$(cd -- "${1:-.}" && pwd -P)
+host_home=$(cd -- "$HOME" && pwd -P)
+if [[ "$project" == / || "$host_home/" == "$project/"* ]]; then
+  echo 'Choose a project folder, not your home folder or a parent of it.' >&2
+  exit 1
+fi
+case "$project:$host_home" in
+  *,*|*$'\n'*) echo 'Folder names cannot contain commas or newlines.' >&2; exit 1 ;;
+esac
+if [[ "$project" == *:* || "$host_home" == *:* ]]; then
+  echo 'Folder names cannot contain colons.' >&2
+  exit 1
+fi
+
+image="$host_home/.local/share/agent-shell/node22.sif"
+[[ -f "$image" ]] || { echo 'Download the image in memo section 3 first.' >&2; exit 1; }
+# Give each project its own persistent installation and login folder.
+project_id=$(printf '%s' "$project" | sha256sum)
+state="$host_home/.local/state/agent-shell/${project_id%% *}"
+if [[ "$state/" == "$project/"* ]]; then
+  echo 'Choose a project folder outside the agent installation folders.' >&2
+  exit 1
+fi
+mkdir -p "$state"
+chmod 700 "$state"
+
+if ! command -v apptainer >/dev/null 2>&1; then
+  if ! type module >/dev/null 2>&1 && [[ -r /etc/profile.d/modules.sh ]]; then
+    source /etc/profile.d/modules.sh
+  fi
+  module load apptainer/1.4.2
+fi
+# Prevent inherited options from sharing extra folders or settings.
+for variable in ${!APPTAINER_@} ${!APPTAINERENV_@} ${!SINGULARITY_@} ${!SINGULARITYENV_@}; do
+  unset "$variable"
+done
+
+printf 'Project: %s\nAgent installation and login: %s\n' "$project" "$state"
+exec apptainer exec --containall --cleanenv --no-privs \
+  --no-mount hostfs,bind-paths,cwd,sys \
+  --home "$state:/home/student" \
+  --bind "$project:/workspace:rw" \
+  --pwd /workspace "$image" \
+  /usr/bin/env \
+  PATH=/home/student/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+  NO_BROWSER=true PS1='(agent container) \w $ ' \
+  /bin/bash --noprofile --norc
+AGENT_SHELL_SCRIPT
+chmod 700 "$HOME/.local/bin/agent-shell"
+export PATH="$HOME/.local/bin:$PATH"
+if ! grep -qxF 'export PATH="$HOME/.local/bin:$PATH"' "$HOME/.bashrc" 2>/dev/null; then
+  printf '\n%s\n' 'export PATH="$HOME/.local/bin:$PATH"' >> "$HOME/.bashrc"
+fi
+```
+
+</details>
+
+Now enter your project folder and open the container:
+
+```bash
+cd "$HOME/course/project"
+agent-shell
+```
+
+**`agent-shell` shares the folder you are currently in.** Choose your project's top folder, not your home folder. Alternatively, provide a folder directly:
+
+```bash
+agent-shell "$HOME/course/project"
+```
+
+For another project, pass that project's folder instead. Put paths containing spaces in quotes. You never need to edit the script. `agent-shell --help` shows a reminder.
+
+The script prints the folders it will share, then opens a prompt beginning with **`(agent container)`**. Your chosen project appears as `/workspace`. If opening the container fails, stop and ask course staff for help.
+
+The script automatically keeps a separate installation and login folder for each project. Reopening the same project preserves both. A new or moved project needs the installation and sign-in step again.
+
+You can [read the script separately](scripts/agent-shell). Its `--bind` line shares the selected project, and `--home` shares its login folder. The remaining restrictions prevent automatically sharing other personal folders and settings. System files needed to run programs remain available. See [Apptainer's folder-sharing controls](https://apptainer.org/docs/user/1.4/bind_paths_and_mounts.html).
+
+## 5. Install and sign in to your agent
+
+**Purpose:** Install one agent inside the container and connect it to your account. Complete only the option you plan to use, at the **`(agent container)`** prompt.
+
+### Option A: Codex
+
+```bash
+curl -fsSL https://chatgpt.com/codex/install.sh | sh
+codex login --device-auth
+```
+
+Open the printed link in your computer's browser. Sign in with your ChatGPT subscription account and enter the displayed code. If needed, enable device-code login in ChatGPT's security settings.
+
+Start Codex:
+
+```bash
+codex --sandbox danger-full-access --ask-for-approval on-request
+```
+
+**Use these options only inside this container.** Apptainer supplies the file-access restrictions, so Codex's additional internal restrictions are disabled. Approval requests remain available, but not every action requires approval. [Codex setup and sign-in](https://learn.chatgpt.com/docs/auth).
+
+### Option B: Claude Code
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+claude
+```
+
+Choose the Claude subscription sign-in option. Open the printed link in your computer's browser and follow the terminal's instructions. Use the account with Claude Code access, rather than the separate API billing option. Keep the normal permission prompts. [Claude Code setup](https://code.claude.com/docs/en/setup).
+
+### Option C: Gemini CLI
+
+```bash
+npm install --global --prefix "$HOME/.local" @google/gemini-cli
+gemini --sandbox=false
+```
+
+Choose **Sign in with Google**. Open the printed link in your computer's browser and paste the authorization code into the terminal when prompted. Use the account associated with your Google AI subscription, if you have one. School accounts may require additional setup.
+
+`--sandbox=false` prevents Gemini from trying to open a second container. The Apptainer container still restricts file access. [Gemini CLI sign-in](https://geminicli.com/docs/get-started/authentication/).
+
+## 6. Work in later sessions
+
+**Purpose:** Return to your existing environment without reinstalling anything.
+
+1. Connect to Engaging through OnDemand or SSH.
+2. Use `cd` to enter your project folder, then run `agent-shell`.
+3. At the **`(agent container)`** prompt, run your agent:
+
+| Agent | Command inside the container |
+|---|---|
+| Codex | `codex --sandbox danger-full-access --ask-for-approval on-request` |
+| Claude Code | `claude` |
+| Gemini CLI | `gemini --sandbox=false` |
+
+Ask the agent to work on files in `/workspace`. You can close and restart an agent while keeping this container terminal open. To finish, close the agent (`/exit` for Codex or Claude, `/quit` for Gemini), then type `exit` to leave the container.
+
+Software installed elsewhere on Engaging is not automatically available inside the container. Run substantial computations through Engaging's job scheduler, following the course's computing instructions.
+
+## 7. Review and save your work
+
+**Purpose:** Check what changed and save the intended changes to GitHub. Do this after leaving the container, where your GitHub SSH key is available.
+
+```bash
+cd "$HOME/course/project"
+git status
+git diff
+git add path/to/changed-file
+git diff --staged
+git commit -m "Describe the completed change"
+git push
+```
+
+If you chose a different project folder, use it in the `cd` command. Replace `path/to/changed-file` with the file you want to save. See the [GitHub memo](github-memo.html) for more detail.

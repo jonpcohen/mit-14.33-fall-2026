@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+# Open a container for the chosen project. No agent runs on the host.
+set -eo pipefail
+umask 077
+
+if [[ ${1-} == --help || ${1-} == -h ]]; then
+  echo 'Usage: agent-shell [PROJECT_FOLDER]'
+  echo 'Without an argument, share the current folder.'
+  exit 0
+fi
+if (( $# > 1 )); then
+  echo 'Use: agent-shell [PROJECT_FOLDER]. Quote paths containing spaces.' >&2
+  exit 1
+fi
+if [[ -n ${APPTAINER_CONTAINER-} || -n ${SINGULARITY_CONTAINER-} ]]; then
+  echo 'You are already in a container. Type exit before opening another.' >&2
+  exit 1
+fi
+
+project=$(cd -- "${1:-.}" && pwd -P)
+host_home=$(cd -- "$HOME" && pwd -P)
+if [[ "$project" == / || "$host_home/" == "$project/"* ]]; then
+  echo 'Choose a project folder, not your home folder or a parent of it.' >&2
+  exit 1
+fi
+case "$project:$host_home" in
+  *,*|*$'\n'*) echo 'Folder names cannot contain commas or newlines.' >&2; exit 1 ;;
+esac
+if [[ "$project" == *:* || "$host_home" == *:* ]]; then
+  echo 'Folder names cannot contain colons.' >&2
+  exit 1
+fi
+
+image="$host_home/.local/share/agent-shell/node22.sif"
+[[ -f "$image" ]] || { echo 'Download the image in memo section 3 first.' >&2; exit 1; }
+# Give each project its own persistent installation and login folder.
+project_id=$(printf '%s' "$project" | sha256sum)
+state="$host_home/.local/state/agent-shell/${project_id%% *}"
+if [[ "$state/" == "$project/"* ]]; then
+  echo 'Choose a project folder outside the agent installation folders.' >&2
+  exit 1
+fi
+mkdir -p "$state"
+chmod 700 "$state"
+
+if ! command -v apptainer >/dev/null 2>&1; then
+  if ! type module >/dev/null 2>&1 && [[ -r /etc/profile.d/modules.sh ]]; then
+    source /etc/profile.d/modules.sh
+  fi
+  module load apptainer/1.4.2
+fi
+# Prevent inherited options from sharing extra folders or settings.
+for variable in ${!APPTAINER_@} ${!APPTAINERENV_@} ${!SINGULARITY_@} ${!SINGULARITYENV_@}; do
+  unset "$variable"
+done
+
+printf 'Project: %s\nAgent installation and login: %s\n' "$project" "$state"
+exec apptainer exec --containall --cleanenv --no-privs \
+  --no-mount hostfs,bind-paths,cwd,sys \
+  --home "$state:/home/student" \
+  --bind "$project:/workspace:rw" \
+  --pwd /workspace "$image" \
+  /usr/bin/env \
+  PATH=/home/student/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin \
+  NO_BROWSER=true PS1='(agent container) \w $ ' \
+  /bin/bash --noprofile --norc
