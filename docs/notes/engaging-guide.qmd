@@ -1,0 +1,80 @@
+---
+title: "Guide to Using MIT's High Performance Compute Cluster"
+author: "14.33 Fall 2026"
+format: html
+---
+
+## Purpose
+
+Engaging OOD provides MIT students with high performance computing resources. This includes storage space and access to GPUs. You will likely need to use Engaging if the data you are working with is too large to store locally. However, there are some drawbacks to using Engaging that this document will cover.
+
+Remember that all code must be hosted on GitHub regardless of whether you are working remotely with Engaging. Please refer to `docs/notes/engaging-agents-memo` to learn how to integrate your GitHub account with the Engaging server.
+
+## Documentation
+
+Comprehensive documentation for ORCD can be found at: <https://orcd-docs.mit.edu/getting-started/>.
+
+## File Storage
+
+ORCD will provide you with three personal file systems:
+
+1. `/home/username`: Backed up, 200 GB
+2. `/home/username/orcd/pool`: Not backed up, 1TB
+3. `/home/username/orcd/scratch`: Not backed up, 1TB
+
+Please store code files in the `/home/username` directory as it is the only one that is backed up. You may also store data here, unless it is too large.
+
+::: {.callout-warning}
+## Warning!!
+
+ORCD does monthly maintenance on the on the third Tuesday of every month. Be mindful that during maintenance periods, you will not have access to the cluster. Please do not put off work if the due date is close to the maintenance period.
+:::
+
+## Uploading Files
+
+I can think of three ways to access data on ORCD. Which works best depends on the nature of your data.
+
+1. Use `rsync` to move files from your local computer to ORCD.
+    - Use this if the data lives locally on your computer.
+2. Use the interactive web browser to download files from the internet into ORCD.
+    - Use this if you download the data from the web.
+3. Pull data directly from your code's pipeline.
+    - Use this if you access data from an API.
+
+## Recommended Workflow With Agents
+
+Follow the `docs/notes/engaging-agents-memo` memo to learn how to setup coding agents on Engaging. From here, you will be able to create and edit files using a coding agent.
+
+When it comes time to run files, you have a few options.
+
+- **Run from the command line.**
+    - First, start a compute note:
+
+        ```bash
+        salloc -c 4 --mem=8G -t 00:30:00
+        ```
+
+    - Second, run your script:
+
+        ```bash
+        python script.py
+        ```
+
+    - Explore output from the remote desktop.
+        - On [orcd-ood.mit.edu](https://orcd-ood.mit.edu), tab to **My Interactive Sessions**
+        - Launch a Jupyter notebook. Within Jupyter you can inspect output such as .pdfs, regression tables, etc...
+
+- **Run in the interactive session.**
+    - Launch a Jupyter notebook under **My Interactive Sessions**
+    - In a notebook, run your .py file using:
+
+        ```python
+        %run script.py
+        ```
+
+    - Output should populate in the notebook.
+    - This is the best option for data exploration. You can quickly see how output changes before committing to something in the notebook.
+
+- **Have your agent create a Jupyter notebook version of the code you are working with.**
+    - You can instruct your agent to produce both a .py file and an interactive .ipynb file. This way, you can conduct data exploration and inspect output easily in the Jupyter interactive session.
+    - Once you quickly inspect output in the Jupyter notebook, you can instruct your agent to make changes that will populate to both your main .py file that will live in your codebase and the test .ipynb version that you use for exploration.
