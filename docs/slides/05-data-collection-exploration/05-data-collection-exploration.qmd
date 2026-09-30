@@ -51,10 +51,8 @@ css: data-collection-exploration.css
 
 ## General best practices
 
-- When possible, extract raw data through a script
-- Test the script on a subset of the data
-- Always store unedited raw data
-- In either case, record the URL, access date, and version next to the data
+- **Scripting**:When possible, extract raw data through a script. Test first on data subset.
+- **Versioning**: Store unedited raw data and record access date/version
 
 ## API best practices
 
@@ -72,26 +70,30 @@ css: data-collection-exploration.css
 
 ## Public-record request best practices
 
-- Check if data are vended publicly (e.g., [NYC Open Data](https://www.nyc.gov/opendata))
-- Check for existing requests (e.g., [MuckRock](https://www.muckrock.com/), [Data Liberation Project](https://www.data-liberation-project.org/))
-- Initial response deadlines: generally 20 business days for [federal](https://www.foia.gov/foia-statute.html), 10 business days for [MA](https://www.sec.state.ma.us/divisions/public-records/public-records-law/public-records-request.htm). Delivery can take longer.
-- Ask for an existing database export in an electronic format
-- Be specific: fields, years, and record system
+- **Check existing availability**
+    - if data are vended publicly (e.g., [NYC Open Data](https://www.nyc.gov/opendata))
+    - if there are existing requests (e.g., [MuckRock](https://www.muckrock.com/), [Data Liberation Project](https://www.data-liberation-project.org/))
+- **Expect delays** 
+    - response deadlines of 20 business days for [federal](https://www.foia.gov/foia-statute.html), 10 business days for [MA](https://www.sec.state.ma.us/divisions/public-records/public-records-law/public-records-request.htm)
+    - delivery often takes longer
+- **Be specific***
+    - Ask for an existing database export in an electronic format
+    - Specify fields, years, and record system
 
 
 ## Archives best practices
 
-- Check for a digitized version: Search library and institutional repositories before scanning yourself
+- **Check availability**: Search library and institutional repositories before scanning yourself
    - [HathiTrust](https://www.hathitrust.org/)
    - [Internet Archive](https://archive.org/)
    - [Chronicling America](https://chroniclingamerica.loc.gov/)
-- Optical character recognition (OCR) quality: Prefer sources with a text layer rather than image-only scans
+- **Native text availability**: Prefer sources with a text layer rather than image-only scans
 
 ## Types of data {.section-open}
 
 - Your final analysis will be tabular: columns of variables and rows of observations
 - But there are many ways to get there!
-- Six nonstandard examples: JSON, spatial data, networks, text, PDF scans, images/video/audio
+- Six nonstandard examples: JSON, PDFs, spatial data, networks, text, images/video/audio
 
 ## Tabular data is the target format
 
@@ -123,47 +125,84 @@ Target tables:
 | `firms` | Firm | `cik` |
 | `filings` | Filing | `cik` and filing number |
 
-## Example 2: Spatial
+## Example 2: PDFs
 
-- Put all layers in the same coordinate reference system before a join
+- If it has a native text layer, directly extract it:
+    - [pdfplumber](https://github.com/jsvine/pdfplumber) for text and tables
+    - [Camelot](https://github.com/camelot-dev/camelot) for tables
+- If not, use optical character recognition (OCR):
+   - [Marker](https://api.datalab.to/blog/marker-2) for open-source, CPU/GPU-compatible OCR
+   - [Docling](https://github.com/docling-project/docling) + [Tesseract](https://github.com/tesseract-ocr/tesseract) for OCR on CPU
+- [OCR leaderboards](https://huggingface.co/collections/davanstrien/ocr-leaderboards) show multimodal AI models have state-of-the-art performance
 
-| Format | Represents |
-|---|---|
-| Vector points | Point locations |
-| Vector polygons | Generic areas |
-| Raster | Grid of squares |
+## Example 2a: PDF with native text layer {.ocr-example}
 
 ```{=html}
-<div class="r-stack spatial-examples">
-<img src="images/spatial-points.svg" class="fragment fade-out" data-fragment-index="0" alt="Vector points: bank branch locations in an illustrative region.">
-<img src="images/spatial-polygons.svg" class="fragment current-visible" data-fragment-index="0" alt="Vector polygons: county boundaries in the same illustrative region.">
-<img src="images/spatial-raster.svg" class="fragment fade-in" data-fragment-index="1" alt="Raster: population density by grid cell in the same illustrative region.">
-</div>
+<img src="images/pdf_native_text.png" alt="PDF table of job openings, hires, and separations with text selected in blue, illustrating a native text layer.">
 ```
 
-::: {.notes}
-Advance twice to replace points with polygons, then polygons with a raster.
-All three diagrams depict the same invented region. Points could locate bank
-branches, polygons could delineate counties, and raster cells could measure
-population density. These are illustrations, not observed data.
-:::
+## Example 2b: Structured PDF scan {.ocr-example}
+
+```{=html}
+<img src="images/ocr_structured.jpeg" alt="Scanned structured form with fields in a repeated layout.">
+```
+
+## Example 2c: Unstructured PDF scan {.ocr-example}
+
+```{=html}
+<img src="images/ocr_unstructured.png" alt="Scanned unstructured document with text and varied layout.">
+```
+
+## Example 3: Spatial
+
+- Put all layers in the same coordinate reference system before joining
+- Transform spatial data into a table, such as distance from a fixed location for each unit
+
+## Example 3a: Spatial, vector points {.spatial-example}
+
+- Vector points represent individual locations, such as bank branches
+
+```{=html}
+<img src="images/spatial-points.svg" alt="Bank branches represented as points in an illustrative region.">
+```
+
+## Example 3b: Spatial, vector polygons {.spatial-example}
+
+- Vector polygons represent areas, such as counties
+
+```{=html}
+<img src="images/spatial-polygons.svg" alt="County boundaries represented as polygons in an illustrative region.">
+```
+
+## Example 3c: Spatial, raster {.spatial-example}
+
+- A raster stores one value per grid cell, such as population density
+
+```{=html}
+<img src="images/spatial-raster.svg" alt="Population density shown as a rectangular grid of square cells, with darker cells representing higher values.">
+```
 
 
-## Example 3: Networks
+## Example 4: Networks {.network-example}
 
-- Networks become a node table and an edge table
+```{=html}
+<img src="images/network-supply-chain.svg" alt="Directed supply-chain network: suppliers F07 and F09 both sell to customer F01. Firms are nodes and supplier-to-customer links are edges.">
+```
+
+Target tables: one row per node and one row per edge
 
 ```text
 nodes:  firm_id  industry         edges:  supplier  customer  year  sales
         F01      auto                     F07       F01       2004  ...
         F07      parts                    F09       F01       2004  ...
+        F09      parts
 ```
 
 - Examples: friend connections, supply chains, financial intermediaries
 - Survey: [Graham (2020), "Network Data," *Handbook of Econometrics*](https://bryangraham.github.io/econometrics/downloads/publications/HandbookOfEconometrics_7A_2020/NetworkDataPublished.pdf)
 
 
-## Example 4: Text
+## Example 5: Text
 
 ```text
 doc_id  firm  year  paragraph                          tariff_risk
@@ -175,16 +214,6 @@ doc_id  firm  year  paragraph                          tariff_risk
 - Non-LLM resource: [Gentzkow, Kelly, and Taddy (2019), "Text as Data"](https://www.aeaweb.org/articles?id=10.1257/jel.20181020)
 - LLM resource: [Expected Parrot](https://docs.expectedparrot.com/en/latest)
 
-## Example 5: PDF scans
-
-- If it has a text layer:
-    - [pdfplumber](https://github.com/jsvine/pdfplumber) for text and tables
-    - [Camelot](https://github.com/camelot-dev/camelot) for tables
-- If not:
-   - [Marker](https://api.datalab.to/blog/marker-2) for open-source, CPU/GPU-compatible OCR
-   - [Docling](https://github.com/docling-project/docling) + [Tesseract](https://github.com/tesseract-ocr/tesseract) for OCR on CPU
-- Compare multimodal AI models and OCR tools on [OCR leaderboards](https://huggingface.co/collections/davanstrien/ocr-leaderboards)
-
 ## Example 6: Images, Audio, or Video
 
 - Multimodal LLMs can transform images, audio, or video (and, of course, text!) to structured numeric output
@@ -192,7 +221,7 @@ doc_id  firm  year  paragraph                          tariff_risk
     - Audio example: [Gorodnichenko et al '23](https://www.aeaweb.org/articles?id=10.1257/aer.20220129) on emotion in Federal Reserve chair speech
     - Video example: [Dietrich '21](https://brycejdietrich.com/files/papers/Dietrich_cspan.pdf) on politicians literally crossing the aisle on C-SPAN
 - Using a frontier model through an API generally incurs usage costs
-- Open-weight models can run locally (e.g., through Ollama) or on a GPU cluster, depending on size
+- Open-weight models can run locally through a provider like Ollama depending on size, especially on the MIT server's GPUs
 - In any case, validate a random sample with human annotation or source-of-truth measurements ([Dell and Rambachan '26](https://arxiv.org/html/2608.23524v1))
 
 ## Efficient tabular data management {.section-open}
@@ -205,10 +234,10 @@ doc_id  firm  year  paragraph                          tariff_risk
 
 ## Script the workflow once and reuse results
 
-**Raw downloads → comparable records → county-year counts → tables and figures**
+**Raw downloads → cleaned data → analysis output → tables and figures**
 
 - Keep downloads unchanged, with source URLs, dates, and versions
-- Script cleaning, joins, and descriptive statistics
+- Script cleaning, joins, and descriptive statistics and analysis
 
 
 ## Record lessons learned for yourself and agents
@@ -219,7 +248,7 @@ doc_id  firm  year  paragraph                          tariff_risk
 - **Exploration**: distributions, trends, and correlations; figures for you and CSVs for agents
 
 
-## Opinionated efficient tabular data storage: Parquet files
+## Opinionated efficient tabular data storage: Parquet
 
 - [Apache Parquet](https://parquet.apache.org/docs/overview/) is a highly compressible columnar file type for tables
 - Tradeoff is that there is no simple spreadsheet double-click inspection
@@ -257,14 +286,14 @@ Example `.gitignore`:
 
 : 100 million rows, 5 GB, five grouped summaries
 
-| DuckDB | Python pandas |
-|---:|---:|
-| 2 seconds | 42 seconds |
+| DuckDB | Python `pandas` | R `dplyr` |
+|---:|---:|---:|
+| 2 seconds | 42 seconds | error |
 
 
 ## Using DuckDB {.duckdb-workflow}
 
-Multiple ways to apply the same SQL logic for extracting relevant data
+Multiple ways to apply the same SQL query logic
 
 ```sql
 SELECT county, year, COUNT(*) AS originations

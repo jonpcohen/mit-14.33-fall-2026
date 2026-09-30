@@ -28,10 +28,10 @@
   width: auto;
 }
 
-/* Replace spatial examples in place with two clicks. */
-.reveal .spatial-examples { margin-top: 0.25em; }
-.reveal .spatial-examples img { width: 710px; height: 345px; margin: 0; }
-.reveal .spatial-examples p { margin: 0; text-align: center; }
+/* One spatial illustration per slide in both HTML and PDF. */
+.reveal .spatial-example > img { display: block; width: 840px; height: 410px; margin: 0.4em auto 0; }
+.reveal .network-example > img { display: block; width: 760px; height: 230px; margin: 0.15em auto; }
+.reveal .network-example > ul { font-size: 0.84em; }
 
 /* Preserve the outline’s multimedia examples within one slide. */
 .reveal #example-6-images-audio-or-video > ul { font-size: 0.85em; }
@@ -41,3 +41,5 @@
 .reveal .duckdb-benefits > ul { font-size: 0.88em; }
 .reveal .duckdb-benefits > p { font-size: 0.84em; }
 .reveal .duckdb-workflow > p { font-size: 0.86em; }
+
+.reveal .ocr-example > img { display: block; max-height: 570px; max-width: 100%; width: auto; margin: 0 auto; }

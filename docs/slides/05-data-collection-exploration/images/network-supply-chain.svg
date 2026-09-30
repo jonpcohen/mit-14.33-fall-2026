@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 230" role="img">
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#107895"/></marker></defs>
+<g fill="none" stroke="#107895" stroke-width="3" marker-end="url(#arrow)">
+<path d="M190 60L518 104"/><path d="M190 170L518 126"/>
+</g>
+<g fill="#d3e9ef" stroke="#107895" stroke-width="3"><circle cx="150" cy="55" r="40"/><circle cx="150" cy="175" r="40"/><circle cx="560" cy="115" r="40"/></g>
+<g fill="#174652" font-family="Arial,sans-serif" text-anchor="middle" font-size="23"><text x="150" y="63">F07</text><text x="150" y="183">F09</text><text x="560" y="123">F01</text></g>
+<g fill="#555" font-family="Arial,sans-serif" text-anchor="middle" font-size="18"><text x="350" y="55">sells to</text><text x="350" y="190">sells to</text><text x="685" y="122">customer</text><text x="55" y="122">suppliers</text></g>
+</svg>
