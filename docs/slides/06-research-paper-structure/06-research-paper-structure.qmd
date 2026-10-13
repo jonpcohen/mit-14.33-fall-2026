@@ -9,8 +9,8 @@ css: research-paper-structure.css
 ## Motivation: writing as thinking
 
 - Writing organizes scattered ideas into a structured argument
-    - Low-latency writing builds same skills for high-latency speech
-- Editing asks "is the explanation unclear, or is the argument incomplete?"
+    - Low-latency writing builds the same skills for high-latency speech
+- Editing asks: "Is the explanation unclear, or is the argument incomplete?"
     - Inspect each step and spot gaps that conversation or thought can gloss over
 
 ## Learning goals
@@ -19,7 +19,7 @@ From narrow to broad:
 
 1. Write a clear empirical economics research paper
 2. Identify useful analysis based on how it will feature in the paper
-3. Apply heuristics to other forms of communication (e.g., slides, emails, arguments, etc)
+3. Apply heuristics to other forms of communication (e.g., slides, emails, and arguments)
 
 ## Key takeaways {.takeaways}
 
@@ -38,7 +38,7 @@ From narrow to broad:
 
 3. Make the argument easy to skim
     - Helps a cursory reader still extract key ideas
-    - Both section takeaways and topic sentences alone should each convey the paper’s argument coherently
+    - Reading only section takeaways or only topic sentences should convey the paper’s argument coherently
     - Body paragraphs and body sentences should each simply descend into the details of the key takeaways
 
 :::
@@ -46,9 +46,9 @@ From narrow to broad:
 ## Unifying theme: state ideas then descend into details
 
 - The paper structure is like a fractal
-    - Section headings subdivide overall paper
-    - Subsection headings subdivides each section
-    - Paragraph topic sentences subdivides each subsection
+    - Section headings subdivide the overall paper
+    - Subsection headings subdivide each section
+    - Paragraph topic sentences subdivide each subsection
     - Paragraph body sentences support their topic sentence
 
 ## Agenda {.agenda}
@@ -56,7 +56,7 @@ From narrow to broad:
 1. Purpose of paper: RAP
 2. Structure of paper: Outline
 3. Details of paper: Paragraphs
-4. Prose of paper: Sentences structure and word choice
+4. Prose of paper: Sentence structure and word choice
 
 ## Purpose of paper: RAP {.section-open}
 
@@ -75,6 +75,7 @@ From narrow to broad:
 - In your current analysis stage, a tentative RAP helps prioritization
 
 ::: {.fragment}
+
 - In your future writing stage, a clear RAP helps exposition. If any content isn't RAP-relevant, then either:
     1. The RAP should be reframed
     2. The content should be reframed
@@ -85,7 +86,7 @@ From narrow to broad:
 ## Research question
 
 - What the project does
-- Strikes balance between specificity to focus reader vs. broadness to highlight importance
+- Strikes a balance between specificity to focus the reader and breadth to highlight importance
 
 ## Answer
 
@@ -96,18 +97,18 @@ From narrow to broad:
 
 - Why the findings matter
 - The single sentence highlighting the gap between what is already known and what would be useful to know
-    - "What is already known" = positioning in existing literature
+    - "What is already known" = positioning in the existing literature
     - "What would be useful to know" = positioning for improving economic theory or policy
 
 ## Connection with the class's initial taxonomy
 
-- Topic development taxonomy was "question, setting, data"
-- Encouragement to motivate question with economic theory or policy was preparation for "P"
-- Encouragement to specify setting to a precise causal effect or descriptive theory test was preparation for "A"
+- The topic development taxonomy was "question, setting, data"
+- Encouragement to motivate the question with economic theory or policy was preparation for "P"
+- Encouragement to specify the setting for a precise causal effect or descriptive test of theory was preparation for "A"
 
 ## Connections between R, A, and P
 
-- P $\rightarrow$ R motivation: gap that a reader naturally wants filled
+- P $\rightarrow$ R motivation: a gap that a reader naturally wants filled
 - A $\leftrightarrow$ R wording: "Does..."="yes/no", "Why..."="Because...", "How..."="By..."
 - A $\rightarrow$ P framing: broad but defensible scope for who cares and why
 
@@ -122,17 +123,17 @@ From narrow to broad:
 ## Relevance of an outline
 
 - Expands the RAP into a paper structure
-- Focuses next steps: highlights analysis necessary to develop argument
-- Works back from a desired end state: headings in final paper help readers see logical flow and find answers to their own questions
+- Focuses next steps: highlights the analysis necessary to develop the argument
+- Works back from a desired end state: headings in the final paper help readers see the logical flow and find answers to their own questions
 
 ## High-level outline: sections
 
-- Use common key words (e.g. "Institutional Details", "Theoretical Framework", “Data”, “Empirical Strategy”, “Results”, "Policy Implications")
-- Add specifics to those key words to give clearer first impression of the RAP (e.g. "Data: Credit Bureau Panel", “Empirical Strategy: Regression Discontinuity Around Loan Approval Threshold”, Results: Null Impacts of Approval on Default”)
+- Use common key words (e.g., "Institutional Details", "Theoretical Framework", "Data", "Empirical Strategy", "Results", "Policy Implications")
+- Add specifics to those key words to give a clearer first impression of the RAP (e.g., "Data: Credit Bureau Panel", "Empirical Strategy: Regression Discontinuity Around Loan Approval Threshold", "Results: Null Impacts of Approval on Default")
 
 ::: {.fragment}
 
-- The Introduction and Conclusion sections are mini-papers of their own, so we will defer on outlining those
+- The Introduction and Conclusion sections are mini-papers of their own, so we will defer outlining them
 
 :::
 
@@ -144,34 +145,34 @@ From narrow to broad:
     - Comparison of Trends in Affective Polarization
     - Comparison of Trends in Potential Explanatory Factors
 
-## Low-level outline: subections
+## Low-level outline: subsections
 
 - Each section heading will have subsection headings further developing the argument
-- For example, under the section heading “Empirical Strategy: Regression Discontinuity Around Approval Threshold”” could be:
+- For example, the section "Empirical Strategy: Regression Discontinuity Around Approval Threshold" could have the following subsections:
     - "Local randomization-based estimating equation"
-    - "Identifying assumption: As-if random assignment within window"
+    - "Identifying assumption: As-if random assignment within the window"
     - "Validation tests: Continuity in running variable density and pre-treatment characteristics"
 
 ## Guidelines for (sub)section headings
 
 - Ensure a logical flow from one (sub)section to the next
     - If details in a subsequent (sub)section are necessary to understand a current (sub)section, then switch the ordering
-- Consider how much reader must hold in their head to follow the argument
+- Consider how much the reader must hold in mind to follow the argument
     - Method 1 $\rightarrow$ Method 2 $\rightarrow$ Results 1 $\rightarrow$ Results 2?
 - Construct headings to answer natural reader questions
     - What methods do you use?
     - How does Section 3 connect to Section 4?
     - Why is assumption B reasonable?
 
-## Filling in outline details: ~1 paragraph takeaways
+## Filling in outline details: takeaways of ~1 paragraph
 
 - Start with a 1-sentence high-level takeaway of each (sub)section
-- This natural provokes probing questions:
-    - *There is no evidence of manipulation around the loan approval threshold* $\rightarrow$ "How do you measure this?", "How powered is the test?", "Is there an a priori reason we would expect this?", etc
-- A ~1 paragraph takeaway cohesively addresses the most pressing questions
-- Looking forward: 
-    - section takeaways may appear in the final paper under the heading
-    - subsection takeaways useful to write paragraph topic sentences
+- This naturally provokes probing questions:
+    - *There is no evidence of manipulation around the loan approval threshold* $\rightarrow$ "How do you measure this?", "How much power does the test have?", "Is there an a priori reason we would expect this?", etc.
+- A takeaway of about one paragraph cohesively addresses the most pressing questions
+- Looking forward:
+    - Section takeaways may appear in the final paper under the heading
+    - Subsection takeaways can be used to write paragraph topic sentences
 
 ## Reverse-engineering an outline from real economics papers
 
@@ -229,7 +230,7 @@ From narrow to broad:
 <details>
 <summary>Data on Psychological Traits, Education, and Work</summary>
 
-> In this paper, we estimate earnings regressions by combining military test score data with administrative tax and education records using unique person identifiers
+> In this paper, we estimate earnings regressions by combining military test score data with administrative tax and education records using unique person identifiers.
 
 </details>
 
@@ -279,7 +280,7 @@ From narrow to broad:
 </details>
 
 <details>
-<summary>Why Does Food Policy Respond to Shocks?</summary>
+<summary>Why Does Food Policy React to Shocks?</summary>
 
 - A Model of Food Policy and Redistribution
 - Optimal Policy and Its Response to Shocks
@@ -315,7 +316,7 @@ From narrow to broad:
 </details>
 
 <details>
-<summary>Why Does Food Policy React to Shocks</summary>
+<summary>Why Does Food Policy React to Shocks?</summary>
 
 > We next show that our full set of empirical results can be rationalized with a model of trade policy as an instrument for domestic redistribution. We also discuss why alternative models predicated on insurance motives and price stabilization are less consistent with our empirical results.
 
@@ -328,14 +329,14 @@ From narrow to broad:
 
 </details>
 
-## Example 3: [Ganong et al (2025)](https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/1/801/files/2025/09/2025-08-20-earnings-instability.pdf) {.paper-example .scrollable}
+## Example 3: [Ganong et al. (2025)](https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/1/801/files/2025/09/2025-08-20-earnings-instability.pdf) {.paper-example .scrollable}
 
 - Title: Earnings Instability
 - Structure choice: Flowery section titles, informative subsection titles, verbose takeaways
 
 ## Example 3: Section and Subsection Headings {.paper-example .scrollable}
 
-[Ganong et al (2025)](https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/1/801/files/2025/09/2025-08-20-earnings-instability.pdf)
+[Ganong et al. (2025)](https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/1/801/files/2025/09/2025-08-20-earnings-instability.pdf)
 
 <details>
 <summary>Data Description and Measuring Volatility</summary>
@@ -365,7 +366,7 @@ From narrow to broad:
 </details>
 
 <details>
-<summary>Monthly Earnings Instability is Costly</summary>
+<summary>Monthly Earnings Instability Is Costly</summary>
 
 - Spending Evidence
 - Job Quits Evidence
@@ -374,12 +375,12 @@ From narrow to broad:
 
 ## Example 3: Section Takeaways {.paper-example .scrollable}
 
-[Ganong et al (2025)](https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/1/801/files/2025/09/2025-08-20-earnings-instability.pdf)
+[Ganong et al. (2025)](https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/1/801/files/2025/09/2025-08-20-earnings-instability.pdf)
 
 <details>
 <summary>Data Description and Measuring Volatility</summary>
 
-> We use two main datasets to study monthly earnings volatility. The primary dataset comes from a payroll processor. Its greatest strength is that we observe many details about employees’ paychecks. We also analyze bank account data from the JPMorganChase Institute where we can link income with consumption
+> We use two main datasets to study monthly earnings volatility. The primary dataset comes from a payroll processor. Its greatest strength is that we observe many details about employees’ paychecks. We also analyze bank account data from the JPMorganChase Institute where we can link income with consumption.
 
 </details>
 
@@ -398,7 +399,7 @@ From narrow to broad:
 </details>
 
 <details>
-<summary>Monthly Earnings Instability is Costly</summary>
+<summary>Monthly Earnings Instability Is Costly</summary>
 
 > We have now shown that workers face significant fluctuations in monthly pay, and that firm-driven labor demand changes, rather than worker choices, play an important role in driving these movements. However, there are theoretical reasons to think these earnings fluctuations still might not matter much for welfare. First, Section 3.4 shows that they are transitory. Second, although Section 4.1 showed a lack of seasonality, these fluctuations may actually be predictable to the workers themselves.
 >
@@ -408,15 +409,15 @@ From narrow to broad:
 
 ## Exercise: Identifying RAP-Relevance in Section Takeaways
 
-- Which part(s) of RAP does each sentence the takeaways in Example 2 (Hsiao, Moscona, and Sastry '26) likely advance?
-- Do the same the takeaways in Example 3 (Ganong et al. '25)
+- Which part(s) of RAP does each sentence in the Example 2 takeaways (Hsiao, Moscona, and Sastry '26) likely advance?
+- Do the same for the takeaways in Example 3 (Ganong et al. '25)
 - What differences do you notice?
 
 ## Details of paper: Paragraphs {.section-open}
 
 ## Going from an outline to a draft
 
-- Recall that each ~1 paragraph subsection takeaway is a coherent argument covering the main ideas of that subsection
+- Recall that each subsection takeaway, about one paragraph long, is a coherent argument covering the main ideas of that subsection
 - Since all of the ideas are in the same subsection, there should be a logical flow between them
 - Each distinct idea gets its own paragraph
     - Topic sentence states the idea
@@ -424,10 +425,10 @@ From narrow to broad:
 
 ## Writing the topic sentence
 
-- Highlight link between the message and the overall argument 
+- Highlight the link between the message and the overall argument
     - "I collect multiple independent elicitations of numeracy to address measurement error in any given one."
 - When possible, it helps to have multiple parts of the RAP
-    - "The model’s main departure from the previous literature is that is has three periods."
+    - "The model’s main departure from the previous literature is that it has three periods."
 - Set expectations for the evidence you'll provide in the paragraph
 
 ## Writing the supporting sentences
@@ -448,25 +449,25 @@ From narrow to broad:
 
 - Topic sentences in Subsection 3.2 "Hourly Workers Face More Volatility Than Salaried Workers":
     - Figure 4 shows that frequent earnings fluctuations are the norm for hourly workers but relatively rare for salaried workers.
-    - Differences in volatility between hourly and salaried workers are even larger when compared to liquidity. 
-    - Changes in hours—-and changes in earnings for hourly workers-—are roughly symmetric.
-    - Earnings changes for salaried workers, in contrast, are mostly increases off a stable base. 
+    - Differences in volatility between hourly and salaried workers are even larger when compared to liquidity.
+    - Changes in hours—and changes in earnings for hourly workers—are roughly symmetric.
+    - Earnings changes for salaried workers, in contrast, are mostly increases off a stable base.
     - While these bonus payments are infrequent, they are also large.
-    - However, it is still important to note that even though hourly workers face much more frequent and less predictable fluctuations, this does not imply that salaried workers face no monthly income risk. 
+    - However, it is still important to note that even though hourly workers face much more frequent and less predictable fluctuations, this does not imply that salaried workers face no monthly income risk.
 - Exercises:
     1. Identify RAP-relevance in each topic sentence
-    2. Identify flows across each topic sentence
+    2. Identify the logical flow from one topic sentence to the next
 
 ## Exercise: Examining body sentences in Ganong et al. (2025) {.activity .compact-exercise .scrollable}
 
 - First paragraph in Subsection 3.2 "Hourly Workers Face More Volatility Than Salaried Workers":
     - "Figure 4 shows that frequent earnings fluctuations are the norm for hourly workers but relatively rare for salaried workers. Table 1, Panel C shows that hourly workers experience earnings changes in 92 percent of months—meaning that in 11 out of 12 months, they earn a different amount than the prior month. These changes are sizable: the median absolute change is 9 percent, and the 75th percentile is 21 percent. Table 1, Panel D shows similar patterns for full-time and prime-age hourly workers, revealing that these differences are not simply due to weaker labor force attachment among hourly workers. In contrast, salaried workers’ earnings are far more stable: the median absolute change is zero, and the 75th percentile is only 6 percent."
 - Exercises:
-    1. What are the questions provoked by the topic sentence that the body sentences answer?
-    2. How does the text write-up of results add to the figures and tables that readers can directly reference themselves?
+    1. Which questions does the topic sentence raise that the body sentences answer?
+    2. How does the written discussion of results add to what readers can learn directly from the figures and tables?
     3. How does word choice connect body sentences?
 
-## Prose of paper: Sentences structure and word choice {.section-open}
+## Prose of paper: Sentence structure and word choice {.section-open}
 
 ## Use consistent terminology
 
@@ -481,12 +482,12 @@ From narrow to broad:
 - *“Although”*: competing evidence, creating tension to resolve
 - *“First…second…finally”*: step-by-step flow to follow
 - *“Because, therefore”*: cause and effect
-- Logical connectors (e.g. *“however”*, *“nevertheless”*, etc.): context for the relationship you think is obvious only because of your familiarity
+- Logical connectors (e.g., *“however”* and *“nevertheless”*): context for the relationship you think is obvious only because of your familiarity
 
 ## Aside on AI-isms {.ai-isms}
 
 - You're not allowed to use AI for drafting prose
-- Aesthetic preferences can vary on AI writing tells, but some of them do not follow best practices for research writing:
+- Aesthetic preferences about AI writing tells can vary, but some common patterns do not follow best practices for research writing:
 
 1. **Inflated diction**
     - [✗]{style="color: #b33;"} "Delve into the intricate interplay..."
