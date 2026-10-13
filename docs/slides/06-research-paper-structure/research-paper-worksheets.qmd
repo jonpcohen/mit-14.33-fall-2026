@@ -1,0 +1,336 @@
+---
+title: "Develop your RAP and outline"
+subtitle: "14.33 · Wednesday, October 14, 2026"
+format:
+  html:
+    embed-resources: true
+    toc: false
+    page-layout: full
+    anchor-sections: false
+    include-in-header:
+      text: |
+        <style>
+        body { color: #17191c; }
+        main { max-width: 850px; font-size: 15px; line-height: 1.3; }
+        a { color: #a31f34; }
+        .worksheet-page { padding: 1.2rem 1.5rem; margin: 1.5rem 0; border: 1px solid #cbd5db; }
+        .worksheet-page h2 { font-size: 1.4rem; margin: 0 0 0.5rem; color: #107895; border: none; }
+        .worksheet-page h3 { font-size: 1rem; margin: 0.8rem 0 0.35rem; }
+        .worksheet-page p { margin: 0.35rem 0; }
+        .worksheet-page li { margin-bottom: 0.2rem; }
+        .worksheet-page ol, .worksheet-page ul { margin-top: 0.35rem; margin-bottom: 0.45rem; }
+        .worksheet-page table { width: 100%; font-size: 0.9em; margin: 0.5rem 0; }
+        .worksheet-page td, .worksheet-page th { border: 1px solid #cbd5db; padding: 0.35rem; vertical-align: top; }
+        .write-box { border: 1px solid #b5bfc5; min-height: 0.55in; margin: 0.3rem 0 0.45rem; }
+        .write-box p { margin: 0; }
+        .write-box.short { min-height: 0.35in; }
+        .write-box.medium { min-height: 0.75in; }
+        .write-box.long { min-height: 1.1in; }
+        .rap-table td { height: 0.62in; }
+        .map-table td { height: 0.70in; }
+        .reader-table td { height: 0.38in; }
+        .revision-table td { height: 0.65in; }
+        .candidate-table td { height: 0.33in; }
+        .candidate-table th:first-child, .candidate-table td:first-child { width: 24%; }
+        .action-table td { height: 0.55in; }
+        .action-table th:first-child, .action-table td:first-child { width: 10%; }
+        .rap-table th:first-child, .rap-table td:first-child { width: 28%; }
+        .reader-table th:first-child, .reader-table td:first-child { width: 40%; }
+        .revision-table th, .revision-table td { width: 50%; }
+        .rap-table col:first-child { width: 28% !important; }
+        .rap-table col:last-child { width: 72% !important; }
+        .reader-table col:first-child { width: 40% !important; }
+        .reader-table col:last-child { width: 60% !important; }
+        .map-table col:first-child { width: 36% !important; }
+        .map-table col:last-child { width: 64% !important; }
+        .write-box.section-draft { min-height: 1.55in; }
+        .page-footer { font-size: 0.8em; color: #555; margin-top: 0.6rem; }
+        @page { size: letter; margin: 0.5in; }
+        @media print {
+          html, body { font-size: 10.5pt; }
+          #title-block-header, .screen-intro, #quarto-margin-sidebar,
+          #quarto-sidebar, .quarto-anchor-link, .quarto-title-meta { display: none !important; }
+          #quarto-content, main.content { display: block !important; margin: 0 !important; padding: 0 !important; width: auto !important; max-width: none !important; }
+          main { font-size: 10.5pt; line-height: 1.18; }
+          .worksheet-page { border: none; padding: 0; margin: 0; break-after: page; }
+          .worksheet-page:last-child { break-after: auto; }
+          .worksheet-page h2 { font-size: 15pt; margin: 0 0 0.08in; }
+          .worksheet-page h3 { font-size: 11pt; margin: 0.12in 0 0.04in; }
+          .worksheet-page p { margin: 0.035in 0; }
+          .worksheet-page li { margin-bottom: 0.025in; }
+          .worksheet-page ol, .worksheet-page ul { margin-top: 0.04in; margin-bottom: 0.06in; }
+          .worksheet-page table { font-size: 10pt; margin: 0.06in 0; }
+          .worksheet-page td, .worksheet-page th { padding: 0.045in; }
+          .write-box { margin: 0.04in 0 0.06in; }
+          .page-footer { font-size: 9pt; margin-top: 0.08in; }
+          h2, h3 { break-after: avoid; }
+          table, tr, .write-box { break-inside: avoid; }
+        }
+        </style>
+---
+
+::: {.screen-intro}
+You will pair off with a classmate to complete individual exercises and provide peer feedback. Stay with the same partner so your feedback can build on a shared understanding of each project.
+:::
+
+::: {.worksheet-page #draft-rap}
+## 1. Draft your RAP
+
+**Name:** __________________________ **Partner:** __________________________
+
+**Project:** ______________________________________________________________
+
+### Get started (3 minutes)
+
+Exchange brief descriptions of your projects: the question, setting, and data. During peer feedback, write on your partner's sheet.
+
+### Draft independently (12 minutes)
+
+Write one sentence for each component. Choose one R and P for the table, using brief phrases for alternatives below.
+
+::: {.rap-table}
+| Component | Your current sentence |
+|---|---|
+| **R: Research question**<br>What specific question will you answer? | |
+| **A: Answer or answer plan**<br>What do you find, or what analysis will answer R? | |
+| **P: Positioning statement**<br>What useful gap will your answer fill? | |
+:::
+
+If A is unknown, label it **planned** and specify the output and data or comparison. 
+**Try two R variants: one that's more specific to focus the reader and one that's broader to highlight generality.**
+
+::: {.write-box .medium}
+:::
+
+**Briefly describe why A is feasible given your understanding of the data and setting. Name one unresolved issue:**
+
+::: {.write-box .medium}
+:::
+
+**Try separate candidate P's for (1) economic theory, (2) policy, and (3) your understanding of the existing literature.**
+
+::: {.candidate-table}
+| Perspective | Candidate contribution or gap |
+|---|---|
+| Economic theory | |
+| Policy | |
+| Existing literature | |
+:::
+
+::: {.page-footer}
+Minutes 0–15 · Page 1 of 6
+:::
+:::
+
+::: {.worksheet-page #review-rap}
+## 2. Test and revise your RAP
+
+**Author:** __________________________ **Reader:** __________________________
+
+### Exchange feedback (10 minutes)
+
+Give each author **5 minutes**: the reader spends **2 minutes** reviewing page 1 and noting specific strengths or concerns below, then both spend **3 minutes** discussing a priority revision. Switch roles and repeat.
+
+::: {.reader-table}
+| Check | Reader's feedback |
+|---|---|
+| **R:** Is it well defined and appropriately scoped? | |
+| **A and feasibility:** Is the planned output clear and feasible? What needs checking? | |
+| **R and A:** Would A or the proposed analysis directly answer R? | |
+| **P:** Which candidate best explains why the answer matters? To which audience? | |
+:::
+
+**Discuss:** Does the project hinge on finding a specific direction of results? Or would the results be useful regardless of what they turn out to be?
+
+**Priority revision and reason:**
+
+::: {.write-box .short}
+:::
+
+### Revise independently (5 minutes)
+
+Incorporate the feedback to revise R, A, and P as needed.
+
+::: {.rap-table}
+| | Revised sentence |
+|---|---|
+| **R** | |
+| **A and status** | |
+| **P** | |
+:::
+
+### Class checkpoint: sharing revisions (5 minutes)
+
+One volunteer who revised R shares the initial version, final version, and reason for the change. Another does the same for P. Discuss what each change gains or gives up.
+
+**A lesson I could apply to my own RAP:** _____________________________________
+
+::: {.page-footer}
+Minutes 15–35 · Page 2 of 6
+:::
+:::
+
+::: {.worksheet-page #draft-outline}
+## 3. Build an outline from your RAP
+
+**Name:** __________________________ **Project:** __________________________
+
+### Draft independently (12 minutes)
+
+Use your revised RAP to identify what the paper must establish. Focus on the body sections today. Start with the questions a reader needs answered, then give each question a place in the paper.
+
+Use recognizable headings with specifics (e.g., "Data: Credit Bureau Panel", "Empirical Strategy: Regression Discontinuity Around Loan Approval Threshold"). Label planned takeaways. Use more or fewer sections than the five rows below.
+
+::: {.map-table}
+| Body section heading | 1-sentence takeaway |
+|---|---|
+| 1. | |
+| 2. | |
+| 3. | |
+| 4. | |
+| 5. | |
+:::
+
+**Explain one ordering choice:** What must the reader understand before reaching a later section?
+
+::: {.write-box .medium}
+:::
+
+**The section most important to develop next, and why:**
+
+::: {.write-box .short}
+:::
+
+::: {.page-footer}
+Minutes 35–47 · Page 3 of 6
+:::
+:::
+
+::: {.worksheet-page #review-outline}
+## 4. Read your partner's outline
+
+**Author:** __________________________ **Reader:** __________________________
+
+### Exchange feedback (10 minutes)
+
+Give each author **5 minutes**: **2 minutes** to skim the revised RAP and outline, then **3 minutes** to discuss one potential structural change. Switch roles and repeat.
+
+- Does each section help answer R, support the answer, or explain its importance?
+- Does an important reader question lack a home?
+- Does a section depend on a definition or assumption explained later?
+- Does each takeaway answer the question its heading raises?
+- Are findings distinguishable from plans and unknowns?
+
+**One section to keep, and the job it does:**
+
+::: {.write-box .medium}
+:::
+
+**The most important unanswered question:** Name the section that raises it, or where an answer should appear.
+
+::: {.write-box .medium}
+:::
+
+**One structural change to try:** Move, rename, add, combine, split, or remove a section. Explain which reader question this would help answer.
+
+::: {.write-box .medium}
+:::
+
+**Author: the change I will make, or why I will keep the current structure:**
+
+::: {.write-box .medium}
+:::
+
+::: {.page-footer}
+Minutes 47–57 · Page 4 of 6
+:::
+:::
+
+::: {.worksheet-page #develop-takeaways}
+## 5. Develop one part of your outline
+
+**Name:** __________________________ **Project:** __________________________
+
+### Work independently (8 minutes)
+
+**2 minutes:** revise your outline using page 4. **4 minutes:** expand one section takeaway. **2 minutes:** sketch one supporting subsection or paragraph.
+
+**Section heading:** ______________________________________________________
+
+**Reader question:** ______________________________________________________
+
+**Section takeaway:** Expand page 3's sentence into 3–4 rough sentences: the main message, high-level support, and link to RAP. If results are pending, describe the planned analysis.
+
+::: {.write-box .section-draft}
+:::
+
+**Supporting subsection heading:** __________________________________________
+
+**Question it answers:** ___________________________________________________
+
+**Supporting message or plan:** Sketch one sentence developing the section's message. If no subsection is needed, write a supporting paragraph's topic sentence.
+
+::: {.write-box .long}
+:::
+
+**One piece of evidence, definition, or assumption needed beneath these takeaways:**
+
+::: {.write-box .medium}
+:::
+
+::: {.page-footer}
+Minutes 57–65 · Page 5 of 6
+:::
+:::
+
+::: {.worksheet-page #revise-and-plan}
+## 6. Revise and choose your next steps
+
+**Author:** __________________________ **Reader:** __________________________
+
+### Final peer check and individual revision (10 minutes)
+
+Spend **3 minutes on each author's work**: read the revised RAP, outline, and section takeaway, then suggest one priority change. **Both revise independently for 4 minutes**.
+
+**Reader: the most important issue to resolve and my suggested change:**
+
+::: {.write-box .medium}
+:::
+
+**Author: record one consequential revision.** Revise earlier pages, including RAP, as needed.
+
+::: {.revision-table}
+| Before: heading or sentence | After: revised version |
+|---|---|
+| | |
+:::
+
+**This revision helps the reader understand…**
+
+::: {.write-box .short}
+:::
+
+### Next steps (5 minutes)
+
+**Check:** revised RAP, headings with takeaway sentences, and one developed section with a supporting idea.
+
+Based on the outline, reflect on the highest priority items to complete. Is there anything the outline exercise suggests you should prioritize? Or deprioritize?
+
+**List two next actions in priority order and their outputs:**
+
+::: {.action-table}
+| Priority | Action and question it resolves | Concrete output |
+|---|---|---|
+| 1. | | |
+| 2. | | |
+:::
+
+**One task I will defer or drop because it contributes less to RAP:**
+
+::: {.write-box .short}
+:::
+
+::: {.page-footer}
+Outline due October 19 at 10:30 a.m. · Minutes 65–80 · Page 6 of 6
+:::
+:::
