@@ -1,0 +1,514 @@
+---
+title: "Structure of a Research Paper"
+subtitle: "14.33 Research and Communication in Economics"
+author: "Jon Cohen"
+date: "October 13, 2026"
+css: research-paper-structure.css
+---
+
+## Motivation: writing as thinking
+
+- Writing organizes scattered ideas into a structured argument
+    - Low-latency writing builds same skills for high-latency speech
+- Editing asks "is the explanation unclear, or is the argument incomplete?"
+    - Inspect each step and spot gaps that conversation or thought can gloss over
+
+## Learning goals
+
+From narrow to broad:
+
+1. Write a clear empirical economics research paper
+2. Identify useful analysis based on how it will feature in the paper
+3. Apply heuristics to other forms of communication (e.g., slides, emails, arguments, etc)
+
+## Key takeaways {.takeaways}
+
+1. Everything in a research paper must be [R]{style="color: red;"}[A]{style="color: blue;"}[P]{style="color: green;"}-relevant
+    - You will iteratively refine these as you progress
+
+::: {.fragment}
+
+2. State the argument or key idea upfront
+    - Helps a thorough reader anticipate and follow the details
+    - You're not writing a mystery novel with a gradual build-up to a twist
+
+:::
+
+::: {.fragment}
+
+3. Make the argument easy to skim
+    - Helps a cursory reader still extract key ideas
+    - Both section takeaways and topic sentences alone should each convey the paper’s argument coherently
+    - Body paragraphs and body sentences should each simply descend into the details of the key takeaways
+
+:::
+
+## Unifying theme: state ideas then descend into details
+
+- The paper structure is like a fractal
+    - Section headings subdivide overall paper
+    - Subsection headings subdivides each section
+    - Paragraph topic sentences subdivides each subsection
+    - Paragraph body sentences support their topic sentence
+
+## Agenda {.agenda}
+
+1. Purpose of paper: RAP
+2. Structure of paper: Outline
+3. Details of paper: Paragraphs
+4. Prose of paper: Sentences structure and word choice
+
+## Purpose of paper: RAP {.section-open}
+
+## RAP
+
+- [R]{style="color: red;"}esearch question
+    - "What are you doing?"
+- [A]{style="color: blue;"}nswer
+    - "What do you find?"
+- [P]{style="color: green;"}ositioning statement
+    - "Why does it matter?"
+
+## Relevance of the RAP
+
+- This is the contract you set with the reader
+- In your current analysis stage, a tentative RAP helps prioritization
+
+::: {.fragment}
+- In your future writing stage, a clear RAP helps exposition. If any content isn't RAP-relevant, then either:
+    1. The RAP should be reframed
+    2. The content should be reframed
+    3. The content should be cut from the paper
+
+:::
+
+## Research question
+
+- What the project does
+- Strikes balance between specificity to focus reader vs. broadness to highlight importance
+
+## Answer
+
+- What the project finds
+- The high-level takeaway from the detailed findings
+
+## Positioning statement
+
+- Why the findings matter
+- The single sentence highlighting the gap between what is already known and what would be useful to know
+    - "What is already known" = positioning in existing literature
+    - "What would be useful to know" = positioning for improving economic theory or policy
+
+## Connection with the class's initial taxonomy
+
+- Topic development taxonomy was "question, setting, data"
+- Encouragement to motivate question with economic theory or policy was preparation for "P"
+- Encouragement to specify setting to a precise causal effect or descriptive theory test was preparation for "A"
+
+## Connections between R, A, and P
+
+- P $\rightarrow$ R motivation: gap that a reader naturally wants filled
+- A $\leftrightarrow$ R wording: "Does..."="yes/no", "Why..."="Because...", "How..."="By..."
+- A $\rightarrow$ P framing: broad but defensible scope for who cares and why
+
+## Exercise: Deconstructing a RAP {.activity .example-slide}
+
+- The following is a concise single-sentence RAP. Deconstruct it into its separate R, A, and P:
+
+> We argue that with a higher-frequency measure of US monetary policy shocks, the pass-through of monetary policy onto mortgage rates is stronger than is found through conventional measures.
+
+## Structure of paper: Outline {.section-open}
+
+## Relevance of an outline
+
+- Expands the RAP into a paper structure
+- Focuses next steps: highlights analysis necessary to develop argument
+- Works back from a desired end state: headings in final paper help readers see logical flow and find answers to their own questions
+
+## High-level outline: sections
+
+- Use common key words (e.g. "Institutional Details", "Theoretical Framework", “Data”, “Empirical Strategy”, “Results”, "Policy Implications")
+- Add specifics to those key words to give clearer first impression of the RAP (e.g. "Data: Credit Bureau Panel", “Empirical Strategy: Regression Discontinuity Around Loan Approval Threshold”, Results: Null Impacts of Approval on Default”)
+
+::: {.fragment}
+
+- The Introduction and Conclusion sections are mini-papers of their own, so we will defer on outlining those
+
+:::
+
+## Illustrative short paper example: [Boxell, Gentzkow, and Shapiro (2024)](https://shapiro.scholars.harvard.edu/sites/g/files/omnuum7731/files/shapiro/files/cross-polar.pdf) {.paper-example .scrollable}
+
+- Title: "Cross-Country Trends in Affective Polarization"
+- Exceptionally clear 5-page descriptive paper with sections but no subsections:
+    - Data and Measure of Affective Polarization
+    - Comparison of Trends in Affective Polarization
+    - Comparison of Trends in Potential Explanatory Factors
+
+## Low-level outline: subections
+
+- Each section heading will have subsection headings further developing the argument
+- For example, under the section heading “Empirical Strategy: Regression Discontinuity Around Approval Threshold”” could be:
+    - "Local randomization-based estimating equation"
+    - "Identifying assumption: As-if random assignment within window"
+    - "Validation tests: Continuity in running variable density and pre-treatment characteristics"
+
+## Guidelines for (sub)section headings
+
+- Ensure a logical flow from one (sub)section to the next
+    - If details in a subsequent (sub)section are necessary to understand a current (sub)section, then switch the ordering
+- Consider how much reader must hold in their head to follow the argument
+    - Method 1 $\rightarrow$ Method 2 $\rightarrow$ Results 1 $\rightarrow$ Results 2?
+- Construct headings to answer natural reader questions
+    - What methods do you use?
+    - How does Section 3 connect to Section 4?
+    - Why is assumption B reasonable?
+
+## Filling in outline details: ~1 paragraph takeaways
+
+- Start with a 1-sentence high-level takeaway of each (sub)section
+- This natural provokes probing questions:
+    - *There is no evidence of manipulation around the loan approval threshold* $\rightarrow$ "How do you measure this?", "How powered is the test?", "Is there an a priori reason we would expect this?", etc
+- A ~1 paragraph takeaway cohesively addresses the most pressing questions
+- Looking forward: 
+    - section takeaways may appear in the final paper under the heading
+    - subsection takeaways useful to write paragraph topic sentences
+
+## Reverse-engineering an outline from real economics papers
+
+- This exercise shows papers that follow this general recipe in different ways
+- There's discretion in which sections to include, what to title them, and how to order them
+
+## Example 1: [Izadi and Tuhkuri (2026)](https://joonastuhkuri.com/pdf/stereotypes.pdf) {.paper-example .scrollable}
+
+- Title: "Beyond IQ: The Rising Value of Extraversion"
+- Structure choice: Informative section and subsection titles with section titles and takeaways containing purpose but not findings
+
+## Example 1: Section and Subsection Headings {.paper-example .scrollable}
+
+[Izadi and Tuhkuri (2026)](https://joonastuhkuri.com/pdf/stereotypes.pdf)
+
+<details>
+<summary>Data on Psychological Traits, Education, and Work</summary>
+
+- Psychological Traits
+- Labor Market Outcomes and Background Characteristics
+- Educational Records
+- Main Estimation Sample
+
+</details>
+
+<details>
+<summary>Trends in the Returns to Psychological Traits</summary>
+
+- Rising Returns to Noncognitive Skills
+- Extraversion Is Driving the Rising Returns
+- Trends Are Robust to Different Personality Measures
+- Role of Education
+- Employment Is Driving the Rising Returns to Extraversion
+- Trends Are Strongest at the Bottom of the Income Distribution
+- Interactions between Traits Decrease
+- Illustrating Magnitudes with Discrete Groups
+- Addressing Measurement Error
+- Decomposing Trends
+
+</details>
+
+<details>
+<summary>Contextualizing the Traits in School and Labor Market</summary>
+
+- Education Responds in Different Ways to Different Traits
+- Personality Matters in the Labor Market
+- Diverging Paths to Success for Different Personalities
+
+</details>
+
+## Example 1: Section Takeaways {.paper-example .scrollable}
+
+[Izadi and Tuhkuri (2026)](https://joonastuhkuri.com/pdf/stereotypes.pdf)
+
+<details>
+<summary>Data on Psychological Traits, Education, and Work</summary>
+
+> In this paper, we estimate earnings regressions by combining military test score data with administrative tax and education records using unique person identifiers
+
+</details>
+
+<details>
+<summary>Trends in the Returns to Psychological Traits</summary>
+
+> The primary objective of our analysis is to estimate the labor market returns to different psychological traits over time. We estimate the following types of descriptive regressions: [details]
+
+</details>
+
+<details>
+<summary>Contextualizing the Traits in School and Labor Market</summary>
+
+> We now contextualize our findings and explore the role of these psychological traits in the labor market more broadly, analyzing their effects at school and work, and on occupational sorting and labor market participation.
+
+</details>
+
+## Example 2: [Hsiao, Moscona, and Sastry (2026)](https://allanhsiao.com/files/HMS_foodpolicy.pdf) {.paper-example .scrollable}
+
+- Title: Food Policy in a Warming World
+- Structure choice: Boilerplate section titles, informative subsection titles, terse takeaways
+
+## Example 2: Section and Subsection Headings {.paper-example .scrollable}
+
+[Hsiao, Moscona, and Sastry (2026)](https://allanhsiao.com/files/HMS_foodpolicy.pdf)
+
+<details>
+<summary>Data and Measurement</summary>
+
+- Agricultural Policy
+- Extreme Heat Exposure
+- Production, Trade, Elections, and Debt
+- Summarizing and Visualizing the Data
+- Validation: Extreme Heat Lowers Crop Yields
+
+</details>
+
+<details>
+<summary>Empirical Results</summary>
+
+- Local Extreme Heat Leads to Pro-Consumer Policy
+- Governments Primarily Respond Through Border Policies
+- Foreign Extreme Heat Leads to Pro-Producer Policy
+- Policy Responses Are Persistent
+- Mechanisms and Heterogeneity
+
+</details>
+
+<details>
+<summary>Why Does Food Policy Respond to Shocks?</summary>
+
+- A Model of Food Policy and Redistribution
+- Optimal Policy and Its Response to Shocks
+- Rationalizing Our Empirical Results
+- Alternative Models
+
+</details>
+
+<details>
+<summary>Quantification</summary>
+
+- Model
+- Results
+
+</details>
+
+## Example 2: Section Takeaways {.paper-example .scrollable}
+
+[Hsiao, Moscona, and Sastry (2026)](https://allanhsiao.com/files/HMS_foodpolicy.pdf)
+
+<details>
+<summary>Data and Measurement</summary>
+
+> We construct a panel dataset on agricultural policy, extreme heat shocks, and other agricultural, political, and economic outcomes.
+
+</details>
+
+<details>
+<summary>Empirical Results</summary>
+
+> This section presents our main empirical findings. First, extreme heat shocks to local production lead to large shifts in agricultural policy that favor domestic consumers. Second, these effects are driven by policies at the border. Third, foreign shocks that put upward pressure on global food prices lead to producer assistance. Fourth, policy changes do not anticipate shocks but do persist for several years, and also respond to longer-run changes in the climate. Fifth, policy responses reflect short-term political and fiscal incentives, but seem broadly similar for countries that are more or less developed or democratic.
+
+</details>
+
+<details>
+<summary>Why Does Food Policy React to Shocks</summary>
+
+> We next show that our full set of empirical results can be rationalized with a model of trade policy as an instrument for domestic redistribution. We also discuss why alternative models predicated on insurance motives and price stabilization are less consistent with our empirical results.
+
+</details>
+
+<details>
+<summary>Quantification</summary>
+
+> We combine our empirical estimates and model to show how policy responses shape the aggregate and distributional effects of extreme heat shocks.
+
+</details>
+
+## Example 3: [Ganong et al (2025)](https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/1/801/files/2025/09/2025-08-20-earnings-instability.pdf) {.paper-example .scrollable}
+
+- Title: Earnings Instability
+- Structure choice: Flowery section titles, informative subsection titles, verbose takeaways
+
+## Example 3: Section and Subsection Headings {.paper-example .scrollable}
+
+[Ganong et al (2025)](https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/1/801/files/2025/09/2025-08-20-earnings-instability.pdf)
+
+<details>
+<summary>Data Description and Measuring Volatility</summary>
+
+- Payroll Records
+- Bank Records
+- Measuring Earnings Instability
+
+</details>
+
+<details>
+<summary>Facts About Monthly Earnings Volatility</summary>
+
+- Earnings Are Volatile Within Ongoing Employment Relationships
+- Hourly Workers Face More Volatility Than Salaried Workers
+- Volatility Is Pervasive but Is Highest for Low-Income Workers
+- Monthly Earnings Changes Are Not Very Persistent
+
+</details>
+
+<details>
+<summary>Channels That Do and Do Not Explain Earnings Volatility</summary>
+
+- Channels That Are Not Important for Explaining Earnings Volatility
+- Role of Firms in Driving Monthly Earnings Volatility
+
+</details>
+
+<details>
+<summary>Monthly Earnings Instability is Costly</summary>
+
+- Spending Evidence
+- Job Quits Evidence
+
+</details>
+
+## Example 3: Section Takeaways {.paper-example .scrollable}
+
+[Ganong et al (2025)](https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/1/801/files/2025/09/2025-08-20-earnings-instability.pdf)
+
+<details>
+<summary>Data Description and Measuring Volatility</summary>
+
+> We use two main datasets to study monthly earnings volatility. The primary dataset comes from a payroll processor. Its greatest strength is that we observe many details about employees’ paychecks. We also analyze bank account data from the JPMorganChase Institute where we can link income with consumption
+
+</details>
+
+<details>
+<summary>Facts About Monthly Earnings Volatility</summary>
+
+> This section describes the empirical patterns of monthly earnings volatility. Our first and main finding is that monthly earnings volatility is substantial in both payroll and bank account data. Second, we find that volatility is higher for hourly workers than salaried workers. Third, we find that volatility is highest for low-wage workers (who are often paid hourly). Fourth, we find monthly earnings volatility is mostly transitory.
+
+</details>
+
+<details>
+<summary>Channels That Do and Do Not Explain Earnings Volatility</summary>
+
+> Having documented evidence of substantial earnings fluctuations, we now ask why earnings are so volatile. Since the descriptive patterns in the previous section demonstrated that volatility for salaried workers was primarily from bonuses while volatility for hourly workers was primarily from hours, we focus in the remainder of the paper primarily on hourly workers, asking specifically why hours are so volatile month to month. We first examine three specific channels which could, in principle, contribute meaningfully to volatility—predictable seasonal variation, leisure-related labor supply choices, or childcare needs—but find that these channels are quantitatively unimportant. We then explore a channel which we do find to be important: firms. They play a large role in driving monthly hours volatility both through high-frequency changes in total firm hours and through idiosyncratic hours volatility (e.g., management practices).
+
+</details>
+
+<details>
+<summary>Monthly Earnings Instability is Costly</summary>
+
+> We have now shown that workers face significant fluctuations in monthly pay, and that firm-driven labor demand changes, rather than worker choices, play an important role in driving these movements. However, there are theoretical reasons to think these earnings fluctuations still might not matter much for welfare. First, Section 3.4 shows that they are transitory. Second, although Section 4.1 showed a lack of seasonality, these fluctuations may actually be predictable to the workers themselves.
+>
+> In this section, we provide two complementary pieces of evidence that, despite these theoretical reasons for skepticism, pay volatility indeed matters for workers in practice. First, in Section 5.1 we show that month-to-month pay volatility causes month-to-month spending volatility. Second, in Section 5.2, we show that workers are more likely to quit jobs with high pay volatility. Both effects are quantitatively large, suggesting that the high-frequency earnings risk missed in annual data is indeed welfare relevant and should not be ignored.
+
+</details>
+
+## Exercise: Identifying RAP-Relevance in Section Takeaways
+
+- Which part(s) of RAP does each sentence the takeaways in Example 2 (Hsiao, Moscona, and Sastry '26) likely advance?
+- Do the same the takeaways in Example 3 (Ganong et al. '25)
+- What differences do you notice?
+
+## Details of paper: Paragraphs {.section-open}
+
+## Going from an outline to a draft
+
+- Recall that each ~1 paragraph subsection takeaway is a coherent argument covering the main ideas of that subsection
+- Since all of the ideas are in the same subsection, there should be a logical flow between them
+- Each distinct idea gets its own paragraph
+    - Topic sentence states the idea
+    - Body sentences descend into the details to support it
+
+## Writing the topic sentence
+
+- Highlight link between the message and the overall argument 
+    - "I collect multiple independent elicitations of numeracy to address measurement error in any given one."
+- When possible, it helps to have multiple parts of the RAP
+    - "The model’s main departure from the previous literature is that is has three periods."
+- Set expectations for the evidence you'll provide in the paragraph
+
+## Writing the supporting sentences
+
+- Meet the expectations you set in the topic sentence
+- Don't:
+    - Underperform expectations by omitting supporting evidence
+    - Exceed expectations by including other important ideas in the paragraph
+
+## Rules of thumb for writing paragraphs
+
+- Questions that should be answered:
+    - Topic sentence: “What is the main message of this paragraph? How is it relevant to the whole story (i.e., RAP)?”
+    - Body sentences: “What details support this message?”
+- Aim for six sentences or fewer
+
+## Exercise: Examining topic sentences in Ganong et al. (2025) {.activity .compact-exercise .scrollable}
+
+- Topic sentences in Subsection 3.2 "Hourly Workers Face More Volatility Than Salaried Workers":
+    - Figure 4 shows that frequent earnings fluctuations are the norm for hourly workers but relatively rare for salaried workers.
+    - Differences in volatility between hourly and salaried workers are even larger when compared to liquidity. 
+    - Changes in hours—-and changes in earnings for hourly workers-—are roughly symmetric.
+    - Earnings changes for salaried workers, in contrast, are mostly increases off a stable base. 
+    - While these bonus payments are infrequent, they are also large.
+    - However, it is still important to note that even though hourly workers face much more frequent and less predictable fluctuations, this does not imply that salaried workers face no monthly income risk. 
+- Exercises:
+    1. Identify RAP-relevance in each topic sentence
+    2. Identify flows across each topic sentence
+
+## Exercise: Examining body sentences in Ganong et al. (2025) {.activity .compact-exercise .scrollable}
+
+- First paragraph in Subsection 3.2 "Hourly Workers Face More Volatility Than Salaried Workers":
+    - "Figure 4 shows that frequent earnings fluctuations are the norm for hourly workers but relatively rare for salaried workers. Table 1, Panel C shows that hourly workers experience earnings changes in 92 percent of months—meaning that in 11 out of 12 months, they earn a different amount than the prior month. These changes are sizable: the median absolute change is 9 percent, and the 75th percentile is 21 percent. Table 1, Panel D shows similar patterns for full-time and prime-age hourly workers, revealing that these differences are not simply due to weaker labor force attachment among hourly workers. In contrast, salaried workers’ earnings are far more stable: the median absolute change is zero, and the 75th percentile is only 6 percent."
+- Exercises:
+    1. What are the questions provoked by the topic sentence that the body sentences answer?
+    2. How does the text write-up of results add to the figures and tables that readers can directly reference themselves?
+    3. How does word choice connect body sentences?
+
+## Prose of paper: Sentences structure and word choice {.section-open}
+
+## Use consistent terminology
+
+- Use the same wording across sections for a concept
+    - In Adam's project: "equity" = "win probability" = "propensity score"
+- Choose wording that's true to the setting but accessible for outside readers
+    - In Adam's project: arguably "win probability"
+- Repeating specific phrases across sections and paragraphs reinforces ideas
+
+## Use varied logical structure
+
+- *“Although”*: competing evidence, creating tension to resolve
+- *“First…second…finally”*: step-by-step flow to follow
+- *“Because, therefore”*: cause and effect
+- Logical connectors (e.g. *“however”*, *“nevertheless”*, etc.): context for the relationship you think is obvious only because of your familiarity
+
+## Aside on AI-isms {.ai-isms}
+
+- You're not allowed to use AI for drafting prose
+- Aesthetic preferences can vary on AI writing tells, but some of them do not follow best practices for research writing:
+
+1. **Inflated diction**
+    - [✗]{style="color: #b33;"} "Delve into the intricate interplay..."
+    - [✓]{style="color: #287a45;"} "Examine how X affects Y"
+2. **Empty emphasis**
+    - [✗]{style="color: #b33;"} "It is crucial to underscore..."
+    - [✓]{style="color: #287a45;"} "X is necessary for Y because Z"
+3. **Automatic contrasts**
+    - [✗]{style="color: #b33;"} "This isn't merely about X; it's about Y."
+    - [✓]{style="color: #287a45;"} "This is Y because..."
+
+## General best practices
+
+- The passive voice should be avoided
+- Eschew unnecessarily abstruse diction
+- Avoid the utilization of nouns when verbs will do
+- Always make sure to cut out any words that are unnecessary, redundant, or otherwise not needed
+- Be specific about things and stuff
+
+## Summary {.takeaways}
+
+- RAP contains the main message of your paper
+- Lay out key ideas and then descend into details
+    - Section headings $\rightarrow$ Subsection headings $\rightarrow$ Topic sentences $\rightarrow$ Body sentences
+- Every key idea must be RAP-relevant
