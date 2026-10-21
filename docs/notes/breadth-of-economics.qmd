@@ -1,0 +1,90 @@
+---
+pagetitle: "The breadth of economics research"
+format:
+  html:
+    embed-resources: true
+    toc: false
+    link-external-newwindow: true
+    include-in-header:
+      text: |
+        <style>
+        main { max-width: 850px; font-size: 15px; }
+        h1 { font-size: 1.65rem; }
+        h2 { font-size: 1.15rem; }
+        li { margin-bottom: 0.3rem; }
+        a { color: #a31f34; }
+        @media print {
+          @page { size: letter; margin: 0.55in 0.6in; }
+          main { font-size: 10pt; line-height: 1.2; }
+          h1 { font-size: 17pt; }
+          h2 { font-size: 11pt; }
+          li { margin-bottom: 3pt; }
+        }
+        </style>
+  typst:
+    papersize: us-letter
+    fontsize: 11pt
+    margin:
+      top: 0.5in
+      bottom: 0.5in
+      left: 0.6in
+      right: 0.6in
+    number-sections: false
+    include-in-header:
+      text: |
+        #set page(numbering: none)
+        #set par(leading: 0.5em, spacing: 0.55em)
+        #set list(spacing: 0.35em)
+        #show link: set text(fill: rgb("#a31f34"))
+        #show heading.where(level: 1): set text(size: 17pt)
+        #show heading.where(level: 2): set text(size: 11pt)
+    include-before-body:
+      text: |
+        #set page(numbering: none)
+---
+
+# The breadth of economics research
+
+*14.33 Research and Communication in Economics · Fall 2026*
+
+Economists study health, politics, history, discrimination, networks, and much more. The examples below illustrate how a personal interest can become a research topic. [MIT economics professors](https://economics.mit.edu/research) work across these areas, including research using machine learning. Applications include [bail decisions](https://academic.oup.com/qje/article/133/1/237/4095198), [predicting mortality to assess end-of-life spending](http://science.sciencemag.org/content/360/6396/1462), and [measuring political polarization from speech](http://web.stanford.edu/~gentzkow/research/politext.pdf). Econometricians also develop tools for [causal inference with high-dimensional data](https://arxiv.org/abs/1311.2645).
+
+## Examples of economics research
+
+- **Crime:** [Pretrial detention increases guilty pleas and reduces employment, with no detectable effect on future crime](https://www.aeaweb.org/articles?id=10.1257/aer.20161503). — Dobbie, Goldin, Yang
+
+- **Development:** [Longer life expectancy can increase investment in education](https://www.nber.org/papers/w13947). — Jayachandran, Lleras-Muney
+
+- **Education:** [Assistance with financial aid applications increases college enrollment among low-income students](https://www.nber.org/papers/w15361). — Bettinger, Long, Oreopoulos, Sanbonmatsu
+
+- **Environment:** [Changes in wind direction help identify the mortality costs of air pollution](http://deryugina.com/the-mortality-and-medical-costs-of-air-pollution-evidence-from-changes-in-wind-direction/). — Deryugina, Heutel, Miller, Molitor, Reif
+
+- **Finance:** [Life insurers' exposure to mortality risk creates incentives to fund medical research](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3140940). — Koijen, Van Nieuwerburgh
+
+- **Gender:** [Surgeon gender affects how referring physicians respond to patient outcomes](https://scholar.harvard.edu/files/sarsons/files/sarsons_jmp.pdf). — Sarsons
+
+- **Health:** [Black men select more preventive services when matched with a Black doctor](https://www.aeaweb.org/articles?id=10.1257/aer.20181446). — Alsan, Garrick, Graziani
+
+- **History:** [Trade models and ancient merchants' clay tablets help locate lost Assyrian cities](https://economics.stanford.edu/sites/g/files/sbiybj9386/f/bcch-bronzeagetrade.pdf). — Barjamovic, Chaney, Coşar, Hortaçsu
+
+- **Industrial organization:** [Utilities pass most emissions-permit costs through to electricity prices](https://www.aeaweb.org/articles?id=10.1257/aer.104.9.2872). — Fabra, Reguant
+
+- **International trade:** [The 2018 trade war reduced aggregate U.S. real income](http://www.econ.ucla.edu/pfajgelbaum/RTP.pdf). — Fajgelbaum, Goldberg, Kennedy, Khandelwal
+
+- **Labor:** [Discrimination can become a self-fulfilling prophecy by reducing worker performance](https://scholar.harvard.edu/files/pallais/files/discrimination2017.pdf). — Glover, Pallais, Pariente
+
+- **Macro:** [Recessions are amplified when workers most exposed to job loss also cut spending most as income falls](https://drive.google.com/file/d/1OWidrXgo-3EHK7nQW4jJ-uZ2X3M0JQhW/view). — Patterson
+
+- **Networks:** [Aggregate relationship data can reveal network structure without listing every connection](https://arxiv.org/abs/1703.04157). — Breza, Chandrasekhar, McCormick, Pan
+
+- **Political economy:** [The Voting Rights Act shifted public spending toward counties with larger Black populations](https://academic.oup.com/qje/article-abstract/129/1/379/1897098?redirectedFrom=PDF). — Cascio, Washington
+
+- **Public finance:** [State corporate tax cuts benefit firms, landowners, and workers](http://www.jcsuarez.com/Files/Suarez_Serrato-Zidar-Corp_Tax.pdf). — Suárez Serrato, Zidar
+
+- **Race:** [Rising returns to skills help explain why racial earnings gaps persist despite educational convergence](https://static1.squarespace.com/static/5ab28203f8370a9da09fc47e/t/5ad3ee7570a6ad118a98da06/1523838596528/Bayer-Charles-Divergent.pdf). — Bayer, Charles
+
+- **Real estate:** [Rent control reduces displacement of covered tenants but reduces rental supply and raises market rents](https://www.aeaweb.org/articles?id=10.1257/aer.20181289). — Diamond, McQuade, Qian
+
+- **Theory:** [Strategic information disclosure can influence another person's decisions](http://web.stanford.edu/~gentzkow/research/BayesianPersuasion.pdf). — Kamenica, Gentzkow
+
+**Read more:** Start with abstracts. Accessible summaries: [Microeconomic Insights](http://microeconomicinsights.org/), [VoxEU](https://voxeu.org/), [AEA Research Highlights](https://www.aeaweb.org/research). Podcasts: [VoxTalks](https://voxeu.org/pages/vox-talks), [AEA](https://www.aeaweb.org/research/podcasts), [Probable Causation](https://www.probablecausation.com/).
