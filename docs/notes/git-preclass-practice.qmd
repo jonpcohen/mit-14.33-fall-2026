@@ -114,7 +114,7 @@ git status
 The first entry from `git stash list` should include `Before Git practice exercise`. `git status` should now include `working tree clean`.
 :::
 
-If you created a stash, make a note that you must restore it in section 6. If you did not create a stash, ignore all later stash instructions.
+If you created a stash, make a note that you must restore it in section 7. If you did not create a stash, ignore all later stash instructions.
 
 5. Download commits that exist on GitHub but not in your local repository.
 
@@ -300,7 +300,83 @@ git push
 
 **Pause and reflect:** After you unstaged the file, where did the new line remain?
 
-## 5. Mistake 3: reverse a pushed commit
+## 5. Create and merge a branch
+
+A branch gives a line of work its own name. You will make one commit on a new branch and then merge it into `main`.
+
+1. Create a branch named `practice-branch` and switch to it.
+
+```bash
+git switch -c practice-branch
+```
+
+`-c` tells `git switch` to create the named branch before switching to it.
+
+2. Confirm that `practice-branch` is the current branch.
+
+```bash
+git branch --show-current
+```
+
+`--show-current` prints the current branch name.
+
+3. Add this line at the end of `git-practice.md`:
+
+```text
+I can develop a change on a separate branch and merge it into main.
+```
+
+4. Save, inspect, stage, and commit the change.
+
+```bash
+git status --short
+git diff
+git add git-practice.md
+git diff --staged
+git commit -m "Add branch practice note"
+```
+
+`--short` requests compact status output, `--staged` shows the proposed commit, and `-m` supplies the commit message.
+
+5. Inspect the branch's new commit.
+
+```bash
+git log -1 --oneline --decorate
+```
+
+`-1` limits the log to one commit, `--oneline` uses one line, and `--decorate` shows branch labels.
+
+6. Switch to `main` and merge `practice-branch` into it.
+
+```bash
+git switch main
+git merge practice-branch
+```
+
+Git will usually report a **fast-forward** merge here. Because `main` did not change, Git can move the `main` label to the branch's commit.
+
+7. Inspect the merged history.
+
+```bash
+git log -2 --oneline --decorate
+```
+
+`-2` limits the log to two commits, `--oneline` uses one line per commit, and `--decorate` shows branch labels.
+
+8. Delete the merged branch and push the updated `main` branch.
+
+```bash
+git branch -d practice-branch
+git push
+```
+
+`-d` deletes the branch label only if Git confirms that its commit is already merged.
+
+Delete a short-lived branch after you merge it. The commit stays in `main`; only the temporary branch label is removed.
+
+**Pause and reflect:** Did merging create another commit, or did it move the `main` label to the branch's commit?
+
+## 6. Mistake 3: reverse a pushed commit
 
 You will publish an incorrect commit. You will then reverse it with a new commit. This process preserves the history on GitHub.
 
@@ -362,24 +438,25 @@ git push
 
 **Pause and reflect:** Why did `git revert` add a commit instead of erasing the incorrect commit?
 
-## 6. Verify your completed exercise
+## 7. Verify your completed exercise
 
 1. Run the final checks.
 
 ```bash
 git status
-git log -4 --oneline
+git log -5 --oneline
 ```
 
-`-4` limits the log to four commits, and `--oneline` displays each commit on one line.
+`-5` limits the log to five commits, and `--oneline` displays each commit on one line.
 
 Your final `git status` must include `working tree clean`.
 
-Your recent history should include these four commits, with the newest commit first:
+Your recent history should include these five commits, with the newest commit first:
 
 ```text
 Revert "Add an incorrect practice statement"
 Add an incorrect practice statement
+Add branch practice note
 Document the staging workflow
 Add Git practice notes
 ```
@@ -388,7 +465,7 @@ Add Git practice notes
 3. Confirm that `git-practice.md` does not contain either incorrect sentence.
 4. Confirm that GitHub shows the same recent commits.
 
-You have completed the Git practice when the file and all four commits are visible on GitHub.
+You have completed the Git practice when the file and all five commits are visible on GitHub.
 
 5. **Conditional:** Complete the remaining steps only if you created a stash in section 1. Otherwise, the exercise is complete.
 
@@ -418,6 +495,7 @@ Before class, explain these distinctions in your own words. You do not need to s
 1. How are staging, committing, and pushing different?
 2. What kind of mistake does each command correct: `git restore`, `git restore --staged`, and `git revert`?
 3. Why should you inspect `git status` and the relevant diff before you stage, commit, discard, or reverse changes?
+4. What changed when you merged `practice-branch` into `main`?
 
 ## Command summary
 
@@ -432,6 +510,10 @@ Before class, explain these distinctions in your own words. You do not need to s
 | `git diff --staged` | Show the proposed commit |
 | `git commit -m "message"` | Record the staged snapshot |
 | `git push` | Send local commits to GitHub |
+| `git switch -c <branch>` | Create a branch and switch to it |
+| `git switch <branch>` | Switch to an existing branch |
+| `git merge <branch>` | Integrate the named branch into the current branch |
+| `git branch -d <branch>` | Delete a branch label after its work is merged |
 | `git restore <file>` | Discard uncommitted changes in one file |
 | `git restore --staged <file>` | Unstage one file without deleting its changes |
 | `git revert <commit>` | Create a new commit that reverses a prior commit |

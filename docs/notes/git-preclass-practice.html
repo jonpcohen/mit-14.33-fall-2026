@@ -2224,8 +2224,9 @@ a { color: #a31f34; }
   <li><a href="#create-stage-commit-and-push-a-change" id="toc-create-stage-commit-and-push-a-change" class="nav-link" data-scroll-target="#create-stage-commit-and-push-a-change">2. Create, stage, commit, and push a change</a></li>
   <li><a href="#mistake-1-discard-one-uncommitted-change" id="toc-mistake-1-discard-one-uncommitted-change" class="nav-link" data-scroll-target="#mistake-1-discard-one-uncommitted-change">3. Mistake 1: discard one uncommitted change</a></li>
   <li><a href="#mistake-2-unstage-a-change" id="toc-mistake-2-unstage-a-change" class="nav-link" data-scroll-target="#mistake-2-unstage-a-change">4. Mistake 2: unstage a change</a></li>
-  <li><a href="#mistake-3-reverse-a-pushed-commit" id="toc-mistake-3-reverse-a-pushed-commit" class="nav-link" data-scroll-target="#mistake-3-reverse-a-pushed-commit">5. Mistake 3: reverse a pushed commit</a></li>
-  <li><a href="#verify-your-completed-exercise" id="toc-verify-your-completed-exercise" class="nav-link" data-scroll-target="#verify-your-completed-exercise">6. Verify your completed exercise</a></li>
+  <li><a href="#create-and-merge-a-branch" id="toc-create-and-merge-a-branch" class="nav-link" data-scroll-target="#create-and-merge-a-branch">5. Create and merge a branch</a></li>
+  <li><a href="#mistake-3-reverse-a-pushed-commit" id="toc-mistake-3-reverse-a-pushed-commit" class="nav-link" data-scroll-target="#mistake-3-reverse-a-pushed-commit">6. Mistake 3: reverse a pushed commit</a></li>
+  <li><a href="#verify-your-completed-exercise" id="toc-verify-your-completed-exercise" class="nav-link" data-scroll-target="#verify-your-completed-exercise">7. Verify your completed exercise</a></li>
   <li><a href="#reflection-before-class" id="toc-reflection-before-class" class="nav-link" data-scroll-target="#reflection-before-class">Reflection before class</a></li>
   <li><a href="#command-summary" id="toc-command-summary" class="nav-link" data-scroll-target="#command-summary">Command summary</a></li>
   </ul>
@@ -2307,7 +2308,7 @@ a { color: #a31f34; }
 <div class="expected">
 <p>The first entry from <code>git stash list</code> should include <code>Before Git practice exercise</code>. <code>git status</code> should now include <code>working tree clean</code>.</p>
 </div>
-<p>If you created a stash, make a note that you must restore it in section 6. If you did not create a stash, ignore all later stash instructions.</p>
+<p>If you created a stash, make a note that you must restore it in section 7. If you did not create a stash, ignore all later stash instructions.</p>
 <ol start="5" type="1">
 <li>Download commits that exist on GitHub but not in your local repository.</li>
 </ol>
@@ -2437,8 +2438,59 @@ a { color: #a31f34; }
 <p><code>--staged</code> shows the proposed commit, and <code>-m</code> supplies the commit message.</p>
 <p><strong>Pause and reflect:</strong> After you unstaged the file, where did the new line remain?</p>
 </section>
+<section id="create-and-merge-a-branch" class="level2">
+<h2 class="anchored" data-anchor-id="create-and-merge-a-branch">5. Create and merge a branch</h2>
+<p>A branch gives a line of work its own name. You will make one commit on a new branch and then merge it into <code>main</code>.</p>
+<ol type="1">
+<li>Create a branch named <code>practice-branch</code> and switch to it.</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch <span class="at">-c</span> practice-branch</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>-c</code> tells <code>git switch</code> to create the named branch before switching to it.</p>
+<ol start="2" type="1">
+<li>Confirm that <code>practice-branch</code> is the current branch.</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">--show-current</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>--show-current</code> prints the current branch name.</p>
+<ol start="3" type="1">
+<li>Add this line at the end of <code>git-practice.md</code>:</li>
+</ol>
+<pre class="text"><code>I can develop a change on a separate branch and merge it into main.</code></pre>
+<ol start="4" type="1">
+<li>Save, inspect, stage, and commit the change.</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status <span class="at">--short</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add git-practice.md</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--staged</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Add branch practice note&quot;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>--short</code> requests compact status output, <code>--staged</code> shows the proposed commit, and <code>-m</code> supplies the commit message.</p>
+<ol start="5" type="1">
+<li>Inspect the branch’s new commit.</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">-1</span> <span class="at">--oneline</span> <span class="at">--decorate</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>-1</code> limits the log to one commit, <code>--oneline</code> uses one line, and <code>--decorate</code> shows branch labels.</p>
+<ol start="6" type="1">
+<li>Switch to <code>main</code> and merge <code>practice-branch</code> into it.</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> switch main</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge practice-branch</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Git will usually report a <strong>fast-forward</strong> merge here. Because <code>main</code> did not change, Git can move the <code>main</code> label to the branch’s commit.</p>
+<ol start="7" type="1">
+<li>Inspect the merged history.</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">-2</span> <span class="at">--oneline</span> <span class="at">--decorate</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>-2</code> limits the log to two commits, <code>--oneline</code> uses one line per commit, and <code>--decorate</code> shows branch labels.</p>
+<ol start="8" type="1">
+<li>Delete the merged branch and push the updated <code>main</code> branch.</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-d</span> practice-branch</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>-d</code> deletes the branch label only if Git confirms that its commit is already merged.</p>
+<p>Delete a short-lived branch after you merge it. The commit stays in <code>main</code>; only the temporary branch label is removed.</p>
+<p><strong>Pause and reflect:</strong> Did merging create another commit, or did it move the <code>main</code> label to the branch’s commit?</p>
+</section>
 <section id="mistake-3-reverse-a-pushed-commit" class="level2">
-<h2 class="anchored" data-anchor-id="mistake-3-reverse-a-pushed-commit">5. Mistake 3: reverse a pushed commit</h2>
+<h2 class="anchored" data-anchor-id="mistake-3-reverse-a-pushed-commit">6. Mistake 3: reverse a pushed commit</h2>
 <p>You will publish an incorrect commit. You will then reverse it with a new commit. This process preserves the history on GitHub.</p>
 <ol type="1">
 <li>Add this line at the end of <code>git-practice.md</code>:</li>
@@ -2447,50 +2499,51 @@ a { color: #a31f34; }
 <ol start="2" type="1">
 <li>Save, stage, inspect, commit, and push the incorrect change.</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status <span class="at">--short</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add git-practice.md</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--staged</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Add an incorrect practice statement&quot;</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status <span class="at">--short</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add git-practice.md</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> diff <span class="at">--staged</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">&quot;Add an incorrect practice statement&quot;</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>--short</code> requests compact status output, <code>--staged</code> shows the proposed commit, and <code>-m</code> supplies the commit message.</p>
 <ol start="3" type="1">
 <li>Inspect the recent history.</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">-3</span> <span class="at">--oneline</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">-3</span> <span class="at">--oneline</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>-3</code> limits the log to three commits, and <code>--oneline</code> displays each commit on one line.</p>
 <p>The first entry is the incorrect commit. The commit now exists locally and on GitHub.</p>
 <ol start="4" type="1">
 <li>Reverse the most recent commit with a new commit.</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert <span class="at">--no-edit</span> HEAD</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> revert <span class="at">--no-edit</span> HEAD</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>--no-edit</code> accepts Git’s automatic message for the reversal commit.</p>
 <p><code>git revert</code> does not erase the incorrect commit. It creates a new commit that reverses the earlier change.</p>
 <ol start="5" type="1">
 <li>Inspect the result.</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">-4</span> <span class="at">--oneline</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb34"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">-4</span> <span class="at">--oneline</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>-4</code> limits the log to four commits, and <code>--oneline</code> displays each commit on one line.</p>
 <p>Open <code>git-practice.md</code>. Confirm that the intentionally wrong sentence is gone.</p>
 <ol start="6" type="1">
 <li>Push the reversal commit.</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Pause and reflect:</strong> Why did <code>git revert</code> add a commit instead of erasing the incorrect commit?</p>
 </section>
 <section id="verify-your-completed-exercise" class="level2">
-<h2 class="anchored" data-anchor-id="verify-your-completed-exercise">6. Verify your completed exercise</h2>
+<h2 class="anchored" data-anchor-id="verify-your-completed-exercise">7. Verify your completed exercise</h2>
 <ol type="1">
 <li>Run the final checks.</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">-4</span> <span class="at">--oneline</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>-4</code> limits the log to four commits, and <code>--oneline</code> displays each commit on one line.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> log <span class="at">-5</span> <span class="at">--oneline</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><code>-5</code> limits the log to five commits, and <code>--oneline</code> displays each commit on one line.</p>
 <p>Your final <code>git status</code> must include <code>working tree clean</code>.</p>
-<p>Your recent history should include these four commits, with the newest commit first:</p>
+<p>Your recent history should include these five commits, with the newest commit first:</p>
 <pre class="text"><code>Revert &quot;Add an incorrect practice statement&quot;
 Add an incorrect practice statement
+Add branch practice note
 Document the staging workflow
 Add Git practice notes</code></pre>
 <ol start="2" type="1">
@@ -2498,18 +2551,18 @@ Add Git practice notes</code></pre>
 <li>Confirm that <code>git-practice.md</code> does not contain either incorrect sentence.</li>
 <li>Confirm that GitHub shows the same recent commits.</li>
 </ol>
-<p>You have completed the Git practice when the file and all four commits are visible on GitHub.</p>
+<p>You have completed the Git practice when the file and all five commits are visible on GitHub.</p>
 <ol start="5" type="1">
 <li><p><strong>Conditional:</strong> Complete the remaining steps only if you created a stash in section 1. Otherwise, the exercise is complete.</p></li>
 <li><p>Confirm that the stash still exists.</p></li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> stash list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb38"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> stash list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The first entry should include <code>Before Git practice exercise</code>.</p>
 <ol start="7" type="1">
 <li>Restore the files that you stored in the stash.</li>
 </ol>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> stash pop</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> stash pop</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> status</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Your earlier changes should return to the working tree. <code>git status</code> can now show modified or untracked files. This result is correct because you restored your earlier work.</p>
 <p>The stash steps at the beginning and end of this exercise are conditional. Do not run <code>git stash pop</code> unless you created the named stash in section 1.</p>
 </section>
@@ -2520,6 +2573,7 @@ Add Git practice notes</code></pre>
 <li>How are staging, committing, and pushing different?</li>
 <li>What kind of mistake does each command correct: <code>git restore</code>, <code>git restore --staged</code>, and <code>git revert</code>?</li>
 <li>Why should you inspect <code>git status</code> and the relevant diff before you stage, commit, discard, or reverse changes?</li>
+<li>What changed when you merged <code>practice-branch</code> into <code>main</code>?</li>
 </ol>
 </section>
 <section id="command-summary" class="level2">
@@ -2571,6 +2625,22 @@ Add Git practice notes</code></pre>
 <tr class="odd">
 <td><code>git push</code></td>
 <td>Send local commits to GitHub</td>
+</tr>
+<tr class="even">
+<td><code>git switch -c &lt;branch&gt;</code></td>
+<td>Create a branch and switch to it</td>
+</tr>
+<tr class="odd">
+<td><code>git switch &lt;branch&gt;</code></td>
+<td>Switch to an existing branch</td>
+</tr>
+<tr class="even">
+<td><code>git merge &lt;branch&gt;</code></td>
+<td>Integrate the named branch into the current branch</td>
+</tr>
+<tr class="odd">
+<td><code>git branch -d &lt;branch&gt;</code></td>
+<td>Delete a branch label after its work is merged</td>
 </tr>
 <tr class="even">
 <td><code>git restore &lt;file&gt;</code></td>
