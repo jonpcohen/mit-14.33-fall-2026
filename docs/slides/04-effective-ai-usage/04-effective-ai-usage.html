@@ -1824,11 +1824,13 @@ display:block!important;
 <h2>2. Context management</h2>
 <ul>
 <li>The agent knows only what is in its context window</li>
+<li>Substantive context matters more than prompt phrasing</li>
 <li>Write project knowledge to plain-text files</li>
 <li>Do not repeat yourself: codify recurring instructions</li>
 </ul>
 <aside class="notes">
 <p>Students already give context in prompts, for example by pasting a codebook. This section moves to two software-engineering ideas. First, keep project knowledge in documentation that persists after the session ends. Second, do not repeat yourself: turn instructions that you give often into files or code.</p>
+<p>A clear sample definition or codebook matters more than adding a stock phrase such as “think carefully” to the same underspecified request.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;
@@ -2411,6 +2413,7 @@ display:block!important;
 <h2>Takeaways: context management</h2>
 <ul>
 <li>Each session starts empty. The agent knows only what is in its window.</li>
+<li>Substantive context matters more than prompt phrasing</li>
 <li>Keep each session focused. Compact or restart on purpose.</li>
 <li>Keep decisions and plans in plain-text files in the repository</li>
 <li>Use project instructions for every-session rules and skills for repeated tasks</li>
@@ -3023,6 +3026,29 @@ display:block!important;
 <p>Run all tests with <code>pytest</code> after every change.</p>
 <p>The agent can write the test code. You decide what the test checks. Read the test as carefully as the code.</p>
 <p>In R, the <code>testthat</code> package does the same job.</p>
+<style type="text/css">
+span.MJX_Assistive_MathML {
+position:absolute!important;
+clip: rect(1px, 1px, 1px, 1px);
+padding: 1px 0 0 0!important;
+border: 0!important;
+height: 1px!important;
+width: 1px!important;
+overflow: hidden!important;
+display:block!important;
+}</style></aside>
+</section>
+<section id="example-test-an-estimator-with-simulated-data" class="slide level2">
+<h2>Example: test an estimator with simulated data</h2>
+<p>A <strong>data-generating process</strong> makes data for which you know the truth.</p>
+<p>Randomly assign half the sample to treatment (<span class="math inline">\(D_i=1\)</span>) and the rest to control (<span class="math inline">\(D_i=0\)</span>). Draw independent standard normal noise <span class="math inline">\(\varepsilon_i\)</span>:</p>
+<p><span class="math display">\[
+Y_i = 5 + 2D_i + \varepsilon_i
+\]</span></p>
+<p>The true treatment effect is <strong>2</strong>. Generate many samples, fit OLS of <span class="math inline">\(Y_i\)</span> on an intercept and <span class="math inline">\(D_i\)</span> in each, and check that the <strong>average estimated coefficient on <span class="math inline">\(D_i\)</span> is near 2</strong>. Individual estimates will vary.</p>
+<aside class="notes">
+<p>This extends the previous slide’s idea of a known input and answer. For example, generate 500 datasets of 500 observations each. In each dataset, assign treatment independently of the noise, then regress the outcome on an intercept and treatment. The mean estimated treatment coefficient should be close to 2. If the implementation also reports 95% confidence intervals, roughly 95% should contain 2. Choose a tolerance that allows for simulation noise rather than requiring any one estimate to equal 2 exactly.</p>
+<p>As a demonstration, omit the intercept from the fitted regression. The coefficient will be wrong because the untreated outcome has a baseline of 5. This simulation checks the estimator’s implementation and statistical behavior under the chosen assumptions. It does not establish that treatment is effectively randomized in real research data.</p>
 <style type="text/css">
 span.MJX_Assistive_MathML {
 position:absolute!important;

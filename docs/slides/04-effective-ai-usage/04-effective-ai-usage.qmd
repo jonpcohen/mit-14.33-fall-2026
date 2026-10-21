@@ -383,6 +383,7 @@ Leave on screen for 30 seconds. It is here for reference.
 ## 2. Context management {.section-open}
 
 - The agent knows only what is in its context window
+- Substantive context matters more than prompt phrasing
 - Write project knowledge to plain-text files
 - Do not repeat yourself: codify recurring instructions
 
@@ -392,6 +393,9 @@ This section moves to two software-engineering ideas. First, keep project
 knowledge in documentation that persists after the session ends. Second, do
 not repeat yourself: turn instructions that you give often into files or
 code.
+
+A clear sample definition or codebook matters more than adding a stock phrase
+such as "think carefully" to the same underspecified request.
 :::
 
 ## What enters the context window on each turn
@@ -851,6 +855,7 @@ procedure, and package it as a skill once you expect to reuse it.
 ## Takeaways: context management {.takeaways}
 
 - Each session starts empty. The agent knows only what is in its window.
+- Substantive context matters more than prompt phrasing
 - Keep each session focused. Compact or restart on purpose.
 - Keep decisions and plans in plain-text files in the repository
 - Use project instructions for every-session rules and skills for repeated tasks
@@ -1286,6 +1291,37 @@ The agent can write the test code. You decide what the test checks. Read the
 test as carefully as the code.
 
 In R, the `testthat` package does the same job.
+:::
+
+## Example: test an estimator with simulated data
+
+A **data-generating process** makes data for which you know the truth.
+
+Randomly assign half the sample to treatment ($D_i=1$) and the rest to
+control ($D_i=0$). Draw independent standard normal noise $\varepsilon_i$:
+
+$$
+Y_i = 5 + 2D_i + \varepsilon_i
+$$
+
+The true treatment effect is **2**. Generate many samples, fit OLS of $Y_i$
+on an intercept and $D_i$ in each, and check that the **average estimated
+coefficient on $D_i$ is near 2**. Individual estimates will vary.
+
+::: {.notes}
+This extends the previous slide's idea of a known input and answer. For
+example, generate 500 datasets of 500 observations each. In each dataset,
+assign treatment independently of the noise, then regress the outcome on an
+intercept and treatment. The mean estimated treatment coefficient should be
+close to 2. If the implementation also reports 95% confidence intervals,
+roughly 95% should contain 2. Choose a tolerance that allows for simulation
+noise rather than requiring any one estimate to equal 2 exactly.
+
+As a demonstration, omit the intercept from the fitted regression. The
+coefficient will be wrong because the untreated outcome has a baseline of 5.
+This simulation checks the estimator's implementation and statistical
+behavior under the chosen assumptions. It does not establish that treatment
+is effectively randomized in real research data.
 :::
 
 ## An assertion stops the pipeline on a broken assumption
