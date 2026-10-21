@@ -1,0 +1,89 @@
+/* Lecture 6 keeps the course's Clean Reveal.js typography and accent. */
+.reveal .agenda ol { font-size: 0.94em; line-height: 1.35; }
+.reveal .agenda li { margin-bottom: 0.5em; }
+.reveal table { font-size: 0.76em; }
+.reveal th, .reveal td { vertical-align: top; }
+.reveal .section-open h2,
+.reveal .takeaways h2 { color: #107895; }
+.reveal .section-open h2 {
+  border-bottom: 3px solid #107895;
+  padding-bottom: 0.2em;
+}
+.reveal .activity h2 { color: #107895; }
+.reveal .activity > p:first-of-type { font-size: 0.8em; color: #555; }
+.reveal .activity li { margin-bottom: 0.3em; }
+.reveal .comparison .columns { gap: 1.4em; }
+.reveal .comparison .column ul { font-size: 0.88em; }
+.reveal .comparison .column li { margin-bottom: 0.4em; }
+.reveal .comparison .column > p { font-size: 0.88em; }
+
+/* A text-native hierarchy stays crisp in projection and remains accessible. */
+.reveal .argument-pyramid { margin: 0.8em auto 0; width: 100%; }
+.reveal .pyramid-level {
+  box-sizing: border-box;
+  padding: 0.36em 0.55em;
+  margin: 0.16em auto;
+  text-align: center;
+  border: 1px solid #107895;
+  font-size: 0.77em;
+}
+.reveal .pyramid-level p { margin: 0; }
+.reveal .level-one { width: 66%; background: #107895; color: white; }
+.reveal .level-two { width: 78%; background: #dcedf2; }
+.reveal .level-three { width: 89%; background: #edf5f7; }
+.reveal .level-four { width: 100%; background: #f7fafb; }
+.reveal .pyramid-slide > p { font-size: 0.85em; }
+
+/* Compact worked examples without reducing the rest of the deck. */
+.reveal .case-slide > p { font-size: 0.78em; margin-top: 0.8em; }
+.reveal .case-slide > ul { font-size: 0.88em; }
+.reveal .answer-choice > p { font-size: 0.81em; margin-top: 0.6em; }
+.reveal .answer-choice > ol { font-size: 0.8em; }
+.reveal .repair-slide > p { font-size: 0.84em; margin-top: 0.7em; }
+.reveal .rap-example > p { font-size: 0.85em; margin-top: 0.85em; }
+.reveal .heading-puzzle > ul { font-size: 0.82em; line-height: 1.16; }
+.reveal .heading-puzzle > p { font-size: 0.8em; margin-top: 0.65em; }
+.reveal .reference-slide > p { font-size: 0.85em; margin-top: 0.8em; }
+
+/* Messages precede examples, with quoted prose kept wide and left-aligned. */
+.reveal .example-slide > p { font-size: 0.88em; margin-top: 0.75em; }
+.reveal .example-slide blockquote {
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  border-left: 3px solid #107895;
+  background: #edf5f7;
+  padding: 0.35em 0.6em;
+  margin: 0.6em 0;
+  box-shadow: none;
+}
+.reveal .example-slide blockquote p { font-size: 0.9em; margin: 0.3em 0; }
+.reveal .paper-example > p { font-size: 0.84em; margin-top: 0.7em; }
+.reveal .paper-example > p:has(> a) { font-size: 0.72em; }
+
+/* Expandable source examples retain the full quotations and heading lists. */
+.reveal details {
+  margin: 0.5em 0;
+  padding: 0.3em 0.5em;
+  border: 1px solid #8886;
+  border-radius: 0.2em;
+}
+.reveal summary { cursor: pointer; font-weight: 600; }
+.reveal summary:focus-visible { outline: 2px solid #107895; outline-offset: 3px; }
+.reveal details blockquote {
+  box-sizing: border-box;
+  width: auto;
+  font-size: 0.85em;
+  text-align: left;
+  border-left: 3px solid #107895;
+  padding: 0.2em 0.6em;
+  margin: 0.5em 0;
+  box-shadow: none;
+}
+.reveal details blockquote p { margin: 0.35em 0; }
+.reveal details ul { font-size: 0.85em; }
+
+/* Keep exercise prompts and their source passages legible together. */
+.reveal .compact-exercise > ul { font-size: 0.78em; }
+.reveal .ai-isms > ul,
+.reveal .ai-isms > ol { font-size: 0.9em; }
