@@ -1,0 +1,59 @@
+---
+title: "Course Feedback and Responses"
+subtitle: "14.33 Research and Communication in Economics"
+author: "Jon Cohen"
+date: "October 26, 2026"
+---
+
+## General takeaways
+
+- Positive sentiment about overall course structure and learning goals
+- Changes to meeting agendas and peer feedback structure based on feedback
+
+## Learning goals
+
+- No response of any learning goal not on track to be met
+- Supermajority of "maybe" for version-controlled, one-click reproducible research pipeline
+- Otherwise supermajorities/unanimity for "yes"
+
+## Version control, reproducibility, and AI tooling
+
+- Large variation in prior experience
+- Free text feedback to give more practical suggestions
+- **Changes**:
+    - Proactive (non-graded) auditing of GitHub repos to provide feedback on current practices
+    - Experiment with peer feedback knowledge sharing
+
+## Peer feedback
+
+- Majority favored current size, with others favoring smaller groups
+- Free text sentiment positive, but noting desire for more structure and less disruption
+- Very positive sentiment about verbal communication activities
+- **Changes**:
+    - Experiment with groups of two who have the same meeting time
+    - Experiment with more verbal presentation practice
+
+## 1-on-1 meeting agendas
+
+- Supermajorities with positive sentiment, without negative sentiment, and wanting 12 hour due date
+- **Changes**:
+    - Amend due date to 12 hours beforehand
+    - Trim down agenda to try making pre-meeting review still feasible
+
+## Lectures
+
+- Supermajorities like current pace, difficulty, and participation
+- Some thought too fast or too difficult
+    - Office hours, meeting issues, and/or email
+- Free text sentiment for class to use pre-class assignment
+- **Changes**: None (for two remaining lectures)
+
+## Unsolicited advice
+
+- **Be proactive about feedback/surfacing issues**
+    - No [continuous feedback responses](https://forms.gle/8t232gDcbSxMpejU6) after first week and 3/10 non-responses to mandatory mid-course feedback
+    - Future managers will not be as enthusiastic about soliciting information, but it is even more important for you to surface it then
+- **Prioritize sleep**
+    - [Giuntella et al (2026) JPE](https://www.journals.uchicago.edu/doi/10.1086/740221) RCT nudged US college students to increase sleep, which on average causally increased sleep by 19 minutes/night and GPA by 0.08 points
+- **Lean into struggle**
+    - Independent research is hard, but you learn by doing and iterating
