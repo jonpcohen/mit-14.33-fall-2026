@@ -1,0 +1,779 @@
+---
+title: "Writing an Introduction"
+subtitle: "14.33 Research and Communication in Economics"
+author: "Jon Cohen"
+date: "October 26, 2026"
+css: intro-structure.css
+---
+
+## Warm-up exercise {.activity .warm-up}
+
+- The Center for Global Development has a [very nice blog post](https://www.cgdev.org/blog/how-write-introduction-your-development-economics-paper) on writing an introduction
+- How is its suggested "formula" similar to Chaubey's? How is it different?
+
+::: {.intro-formula}
+
+1. Motivate with a puzzle or a problem (1–2 paragraphs)
+2. Clearly state your research question (1 paragraph)
+3. Empirical approach (1 paragraph)
+4. Detailed results (3–4 paragraphs)
+5. Value-added relative to related literature (1–3 paragraphs)
+6. Optional paragraphs: robustness checks, policy relevance, limitations
+7. Roadmap (1 paragraph)
+
+:::
+
+## Agenda {.agenda}
+
+1. Structure of the introduction
+2. Application to three published papers
+
+## Structure of the introduction {.section-open}
+
+## Chaubey's high-level introduction structure
+
+1. Part 1: provoke curiosity
+2. Part 2: state what the project does
+3. [My take on] Part 3: position your paper in the literature
+
+## Part 1: provoke curiosity
+
+- Time for P to shine!
+- A unique place in the paper where you're piquing interest rather than communicating information, so you can break the "standard rules":
+    - Topic sentences need not present the main idea of the paragraph
+    - The opening can be like a "mystery novel" that builds up
+
+## Common pitfalls in Part 1
+
+- Overly long wind-up
+    - Aim for 1–2 paragraphs
+- Purely academic literature motivation
+    - Aim for at least *some* "real-world" motivation
+- Stream-of-consciousness information dump
+    - Aim to use your P as a guide
+- Bait-and-switch opening that motivates a far grander question
+    - Aim to make your R feel inevitable
+
+## A concise first sentence that sets expectations for the paper
+
+- Angrist, Goldberg, and Jolliffe (2021) JEP
+    - (Example taken from [Varanya Chaubey's blog](https://bpb-us-w2.wpmucdn.com/campuspress.yale.edu/dist/6/3741/files/2021/07/JEP_Growth.pdf))
+- "GDP and growth estimates in developing countries are often perceived to be fraught with problems and potentially manipulated."
+    - (Followed by two paragraphs justifying this)
+- What do you expect R and A to be?
+
+## Part 2: state what the project does
+
+- Clearly state your research question
+- Map out how you answer it
+- Running example from Chaubey: [Chetty, Friedman, and Saez (2013)](https://eml.berkeley.edu/~saez/chetty-friedman-saezAER13EITC.pdf)
+
+## Bridge between Parts 1 and 2: paper in a paragraph {.paper-example .scrollable}
+
+- Once you've provoked curiosity, state the research question and how you answer it in a single paragraph
+
+<details>
+<summary>Part 1 paragraph</summary>
+
+A widely accepted view in the literature on labor supply is that income taxation leads to much larger responses on the extensive margin (participation) than on the intensive margin (hours of work or earnings conditional on working). This finding has important implications for ...
+
+</details>
+
+<details>
+<summary>Bridge between Part 1 and Part 2</summary>
+
+Our research design is based on a simple idea: individuals with no knowledge of a tax policy’s marginal incentives behave as they would in the absence of the policy. Hence we can identify the causal effect of a tax policy by comparing behaviors across cities that differ in knowledge about the policy but are otherwise comparable. We apply this method to analyze the impact of the EITC, the largest means-tested cash transfer program in the US, on earnings behavior and inequality.
+
+</details>
+
+<details>
+<summary>Part 2 paragraphs</summary>
+
+Our empirical analysis proceeds in two steps. First, ...
+
+</details>
+
+## Content of Part 2: adapt the outline to spell out A
+
+- Largely adapt your outline of section takeaways
+    - But don't take this too literally
+    - For example, if you have a Background section, don't include a separate Intro paragraph on that
+    - One section may become two introduction paragraphs, or several sections may be combined into one
+- End goals
+    1. A reader in your field can predict the main estimating equation
+    2. Any reader should be ready to ask the questions that will be answered by further details in the paper body
+
+## Exercise: mapping Part 2 topic sentences to section titles {.activity .matching-exercise}
+
+In Chetty, Friedman, and Saez (2013), how are Part 2 introduction paragraphs related to section titles?
+
+| Introduction paragraph openings | Paper body section headings |
+|:--|:--|
+| **1.** “First, we develop a proxy for local knowledge about tax policy: the degree of ‘sharp bunching’ by self-employed individuals...” | **A.** Model and Research Design |
+| **2.** “The key assumption needed to use sharp bunching as a proxy is that individuals in low-bunching neighborhoods believe that the EITC has no impact on their marginal tax rates...” | **B.** Data and Institutional Background |
+| **3.** “We present two pieces of evidence supporting this assumption...” | **C.** Neighborhood Variation in Bunching and EITC Knowledge |
+| **4.** “Next, using the sharp bunching proxy, we identify the causal impact of tax policy on wage earnings...” | **D.** Effects of the EITC on Wage Earnings |
+| **5.** “We find that wage earnings...” | |
+
+## Part 3: position your paper in the literature
+
+- Contextualize your contributions
+    - Don't just list related work!
+- Organize topic sentences into separate strands of the literature
+
+## Application to three published papers
+
+Continue with the three example papers from last class:
+
+1. [Hsiao, Moscona, and Sastry (2026)](https://allanhsiao.com/files/HMS_foodpolicy.pdf), *Food Policy in a Warming World*
+2. [Ganong et al. (2025)](https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/1/801/files/2025/09/2025-08-20-earnings-instability.pdf), *Earnings Instability*
+3. [Izadi and Tuhkuri (2026)](https://joonastuhkuri.com/pdf/stereotypes.pdf), *Beyond IQ: The Rising Value of Extraversion*
+
+## Example 1: [Hsiao, Moscona, and Sastry (2026)](https://allanhsiao.com/files/HMS_foodpolicy.pdf), Part 1 {.paper-example .scrollable}
+
+<details>
+<summary>[Builds out from specific anecdotes to broader policy relevance]</summary>
+
+IN March 2022, a heat wave in India reduced the country’s wheat production by 11 million metric tons, or 10% of expected output (Beillard and Singh (2022)). On May 13, citing
+concerns that elevated prices threatened food security, the government announced a ban
+on wheat exports. While this policy had potential benefits for Indian consumers, it was
+controversial both in India and around the world. Farmer Ranbeer Singh Sirsa, quoted in
+the New York Times on May 14, decried the government’s action: “If the price wants to go
+up, let it settle at the international price. Who are they trying to protect now, at the cost
+of farmers?” (Yasir and Kim (2022)). Ashok Gulati, former chairman of India’s Commission for Agricultural Costs and Prices, concurred that the policy was “antifarmer” and
+“painted a very sorry picture” of India’s role in global commerce (India Today (2022)).
+Other critics focused on the global repercussions: on the policy’s announcement, global
+wheat prices jumped 6%, exacerbating food security concerns in other countries (Lockett
+and Fildes (2022)). In 2023 alone, a similar story could be told for palm oil in Indonesia,
+rice in India and Myanmar, olives in Spain and Turkey, onions in Kenya and Tanzania,
+and potatoes and tomatoes in Morocco (Ghosal, Musambi, and Calupitan (2023)).
+
+These examples have three ingredients that are increasingly common in a warming
+world. First, extreme heat is dramatically disrupting global agricultural production. Second, governments may not be passive observers and instead might react with policy interventions that balance different stakeholders’ interests. Third, these policy reactions may
+redistribute the economic burden of environmental shocks, both domestically and around
+the world, and could either mitigate or exacerbate overall economic losses.
+
+</details>
+
+## Example 1: [Hsiao, Moscona, and Sastry (2026)](https://allanhsiao.com/files/HMS_foodpolicy.pdf), Bridge between Parts 1 and 2 {.paper-example .scrollable}
+
+<details>
+<summary>[States the research question and outlines the data and empirical strategy]</summary>
+
+This paper combines measurement and theory to study the interaction between climate
+conditions and agricultural policy. In particular, we ask: does policy systematically respond to climate extremes? If so, how and why? And what are the implications for global
+adaptation to a warming world?
+
+To study these questions empirically, we compile a global dataset of temperature extremes and agricultural policy interventions since 1980. We measure annual exposure
+to extreme temperatures for every country-crop pair, combining gridded, global data on
+daily temperature realizations from the ERA5 dataset (MDAA+ (2021)) with expert-elicited estimates of temperature tolerances for individual plant species. Our main empirical strategy exploits the differential exposure of country-crop pairs to exogenous variation in extreme heat over time. We validate that our measure of extreme heat reduces
+crop-specific yields in international panel data.
+
+</details>
+
+## Example 1: [Hsiao, Moscona, and Sastry (2026)](https://allanhsiao.com/files/HMS_foodpolicy.pdf), Part 2 {.paper-example .scrollable}
+
+<details>
+<summary>We measure agricultural policy interventions using data from the World Bank’s Distortions to Agricultural Incentives project.</summary>
+
+This database
+reports the “nominal rate of assistance” (NRA), which measures percent distortions of
+domestic prices from international prices, as driven by policy interventions. The database
+covers 79 agricultural products and 81 countries, covering about 85% of global agricultural production (Anderson, Rausser, and Swinnen (2013)). The NRA is an appealing
+measure for our study because it takes into account multiple policy instruments, including
+border taxes, quantity restrictions, and domestic subsidies. We also use the specific components of the summary NRA measure, as well as measures of tariffs from the United
+Nations’ Trade Analysis Information System database and of other policy interventions
+from the Global Trade Alert database, to further differentiate between policy levers and
+to validate our findings with independently collected data.
+
+</details>
+
+<details>
+<summary>First, we document that local extreme heat exposure systematically induces policy interventions that assist consumers by lowering domestic prices.</summary>
+
+These effects are particularly
+large for economically important staple crops. Moving from the first to fourth quartile
+of extreme heat exposure for staple crops induces a 32 percentage point change in the
+nominal rate of assistance. That is, a country with no distortion initially would implement a 32% domestic consumer subsidy. Decomposing this result across different policy
+tools, we find that governments respond primarily through border policies. We find no
+effects on agricultural input policies (e.g., fertilizer subsidies) and much weaker effects
+on nonborder, output-based policies (e.g., agricultural buybacks). We then replicate our
+findings in independently collected data on tariffs and export restrictions. Consistent with
+our baseline results, domestic heat shocks lead to tariff reductions for net importing markets and to export restrictions for net exporting markets. While all countries respond to
+domestic shocks with consumer support, the policy tools they use depend on their precise
+circumstances.
+
+</details>
+
+<details>
+<summary>Second, we investigate how extreme heat exposure in foreign markets affects agricultural policy.</summary>
+
+We measure external shocks with two strategies: a leave-one-out average of
+shocks to all global producers and a country-specific measure that weights shocks by preperiod import and export linkages. With both approaches, we find that foreign extreme
+heat shocks lead to a more producer-oriented policy at home. Unconditional increases in global prices also lead to pro-producer policy, and this effect is larger and more precisely
+estimated when we instrument for international prices with extreme heat shocks. Thus,
+a threat to food production that originates overseas has precisely the opposite effect as
+one that originates domestically. This finding is inconsistent with the hypothesis that governments’ singular goal is to reduce price fluctuations for consumers, regardless of their
+origins. It also contradicts narratives of food policy “contagion” and “multiplier effects”
+in case studies of global food trade disruptions (e.g., Ghosal, Musambi, and Calupitan
+(2023)). Explaining the opposite policy responses to domestic and foreign supply disruptions is a key novelty of our theoretical model, which we describe below.
+
+</details>
+
+<details>
+<summary>Third, we investigate the dynamics of policy responses to extreme heat shocks.</summary>
+
+Policy does not anticipate future changes in extreme heat, but persists for up to 3 years after the original shock. Motivated by this finding, we also study how long-run changes in
+climate affect long-run policy stances. In principle, long-run responses could be weaker
+than short-run responses if there is mean reversion in policy or adaptation in production
+and trade (Dell, Jones, and Olken (2012), Burke and Emerick (2016)). However, we find
+decadal-frequency effects that are consistent with, and slightly larger than, our baseline
+annual-frequency estimates. Governments respond not only to short-run weather fluctuations, but also to longer-run climate trends.
+
+</details>
+
+<details>
+<summary>Finally, we consider mechanisms by studying heterogeneity in our baseline estimates of
+how extreme heat affects policy.</summary>
+
+We first examine short-term political incentives, treating the timing of elections as within-country variation in the salience of constituent demands. In the lead-up to elections, we estimate effects that are five times as large as our
+baseline estimates. Short-term political incentives shape policy responses to extreme heat
+shocks, and thus their distributional consequences. Second, we investigate the mitigating
+effect of fiscal constraints, and we find muted effects when countries’ debt-to-GDP ratio is
+high. When countries lack fiscal flexibility, they are less likely to intervene in response to
+shocks. Third, we investigate differences based on proxies for country-level economic development and political institutions. We find little evidence of heterogeneity along these
+margins. Rich and poor nations and democratic and autocratic regimes all seem to face
+strong incentives to assist consumers when the supply of staple foods is threatened. But
+we do find some evidence of stronger responses in less agricultural countries—those that
+are more urban and those that import a large share of their food—and in products that
+are disproportionately consumed by the poor.
+
+</details>
+
+<details>
+<summary>We rationalize this collection of results with a model of optimal government policy
+with redistributive concerns, in the tradition of...</summary>
+
+ Grossman and Helpman (1994), Goldberg and Maggi (1999), and Maggi and Rodríguez-Clare (2000). A government sets a
+border tax to maximize a weighted sum of consumer surplus, producer surplus, and government revenue. If the government is sufficiently redistribution-focused—as defined by a
+condition that we derive on the extent of government concern for consumers and producers compared to revenue—then optimal policy responds to domestic supply shocks with
+pro-consumer policy interventions. In this case, the government’s main consideration is
+that reduced domestic supply shifts the burden of lowering prices away from domestic
+producers and toward foreign producers, on whom the government places no weight. The
+same logic implies that the government would intervene to raise domestic prices and assist producers in response to a shock that reduces foreign production or raises foreign
+demand.
+
+</details>
+
+<details>
+<summary>We use the model to show how policy responses redistribute welfare losses from extreme heat shocks.</summary>
+
+Within our historical sample, our empirical estimates imply that government intervention dampens price increases in shocked markets by 29%. This intervention reduces damages for domestic consumers, but it also exacerbates damages for
+domestic producers and foreign consumers. Because policy responses occur in an already
+second-best world, they sometimes lessen and sometimes amplify preexisting distortions.
+Globally, we find that policy responses have regressive effects, increasing deadweight loss
+and reducing total welfare in the poorest and most heat-affected markets. This result is
+consistent with the intuition that lower-income countries subsidize food consumption and
+tax agriculture at baseline (Anderson, Rausser, and Swinnen (2013)), are hit frequently by
+temperature extremes, and respond to these shocks by further subsidizing consumption.
+
+</details>
+
+## Example 1: [Hsiao, Moscona, and Sastry (2026)](https://allanhsiao.com/files/HMS_foodpolicy.pdf), Part 3 {.paper-example .scrollable}
+
+<details>
+<summary>Our main contribution is to show that agricultural policy responds to extreme heat
+shocks, thereby shaping their aggregate and distributional effects. We build on existing
+work studying distortions to agricultural incentives.</summary>
+
+Others have documented these distortions around the world (Krueger, Schiff, and Valdés (1988), Johnson (1991), Anderson
+(2009), Anderson, Rausser, and Swinnen (2013), Anderson, Ivanic, and Martin (2014))
+and argued that they are driven by politicians’ desire to redistribute between the producers and consumers of food (Barrett (2013), Bates (2014)). We depart from existing work
+by focusing on responses to exogenous exposure to temperature extremes, rather than political trends or static cross-country differences. **We show that policy responses reshape
+and, in some cases, worsen the economic impacts of extreme temperatures.**
+
+</details>
+
+<details>
+<summary>A large literature quantifies the impacts of extreme heat on agricultural production</summary>
+
+(see, e.g., Lobell and Field (2007), Schlenker and Roberts (2009), Lobell, Schlenker, and
+Costa-Roberts (2011)). Costinot, Donaldson, and Smith (2016) study global adaptation
+via trade and how it might reduce projected welfare losses from climate change. Others study how trade interacts with other mechanisms, which include crop switching (Baldos, Hertel, and Moore (2019), HCDG+ (2025)), land and water use (Carleton, Crews,
+and Nath (2025)), sectoral reallocation (Rudik, Lyn, Tan, and Ortiz-Bobea (2022), Nath
+(2025)), migration (Cruz and Rossi-Hansberg (2024), Conte (2025)), technology (Farrokhi and Pellegrina (2023)), and regulation (Shapiro (2021), Farrokhi and Lashkaripour
+(2025), Hsiao (2026)). **Each treats domestic policy distortions as fixed. We show that policy itself responds to environmental changes and that these policy responses can create
+frictions to adaptation.**
+
+</details>
+
+## Example 2: [Ganong et al. (2025)](https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/1/801/files/2025/09/2025-08-20-earnings-instability.pdf), Part 1 {.paper-example .scrollable}
+
+<details>
+<summary>[Immediately summarize the paper in a sentence and provide several motivations for why it matters]</summary>
+
+This paper uses high-frequency administrative earnings data to investigate the prevalence, causes,
+and consequences of monthly earnings volatility among U.S. workers. We find that beneath the
+surface of stable employment lies a hidden pattern of instability: for most workers, earnings vary
+substantially from month to month, even within continuing employment relationships. Although
+this monthly instability is pervasive, it is masked in the annual income data used most commonly in
+economics research. Moreover, this volatility is unequally distributed. Hourly workers, who tend to
+be lower income and more financially fragile, face much more volatility than salaried, higher-income
+workers. These fluctuations are in turn economically meaningful—shaping spending behavior, job
+mobility, and the lived experience of work for the 60 percent of the U.S. workforce that is paid
+hourly.
+
+</details>
+
+## Example 2: [Ganong et al. (2025)](https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/1/801/files/2025/09/2025-08-20-earnings-instability.pdf), Bridge between Parts 1 and 2 {.paper-example .scrollable}
+
+<details>
+<summary>[Lists paper components in numbered parts]</summary>
+
+The paper establishes this conclusion in three parts. First, using comprehensive administrative
+data from both workers and firms, we document that monthly earnings fluctuate considerably,
+especially for hourly workers. Although it has been well documented that wages are largely stable
+from month to month, we find that hours fluctuate substantially. Thus, wage stability does not
+translate into earnings stability for most U.S. workers. Second, we explore why hours change from
+month to month: is this driven by workers choosing to vary hours, or is this something that is
+outside of their control? We find evidence that firm-driven labor demand changes are a key driver
+of hours fluctuations, while worker choices play a limited role. Third, we provide direct empirical
+evidence that these fluctuations impose substantial welfare costs on workers: we find that monthly
+earnings volatility causes consumption volatility and leads workers to leave their jobs in search of
+improved stability. Overall, our estimates suggest that a typical hourly worker would give up 4-11
+percent of their income in exchange for the income stability experienced by salaried workers.
+
+</details>
+
+## Example 2: [Ganong et al. (2025)](https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/1/801/files/2025/09/2025-08-20-earnings-instability.pdf), Part 2 {.paper-example .scrollable}
+
+<details>
+<summary>To measure earnings volatility, we use administrative data from both the firm side (via a payroll
+processor) and the worker side (via paycheck deposits into Chase bank accounts).</summary>
+
+The payroll-level
+data allows us to measure detailed characteristics of individual pay, like hours, wages, and bonuses
+for the universe of workers at a given firm. The bank account data enables us to link earnings data
+with spending and liquidity. Throughout, we focus on pay variation within ongoing employment
+relationships. Including the additional volatility arising from unemployment and job transitions—
+which we cannot reliably measure in our data—would only amplify our conclusion that monthly
+pay volatility is large.
+
+</details>
+
+<details>
+<summary>Our paper starts with simple descriptive patterns, with four main findings. First, we find that
+monthly earnings volatility is substantial.</summary>
+
+In about three quarters of months, workers receive a
+different amount of pay than they received the prior month. The median month has a change of
+5 percent, and in one quarter of months the change in pay is at least 17 percent. These earnings
+changes are large relative to changes in wages, relative to various benchmark models of the earnings
+process used in the past literature, and relative to typical liquidity holdings.
+
+</details>
+
+<details>
+<summary>Second, we find that earnings volatility differs markedly between salaried and hourly workers.</summary>
+
+Earnings for hourly workers change in almost every month, and these changes are often quite large: the median change is 9 percent, and in one quarter of months earnings change by at least 21
+percent. The vast majority of this earnings volatility is driven by fluctuations in hours. In contrast,
+salaried workers’ pay rarely varies from month to month. When it does vary, it usually varies to
+the upside. This upside volatility is primarily driven by performance pay such as bonuses and
+commissions. Thus, the 60 percent of U.S. workers who are paid hourly have earnings dynamics
+that are completely different from the 40 percent of U.S. workers who are salaried. This crucial
+dimension of heterogeneity has received little attention in past studies of income dynamics.
+
+</details>
+
+<details>
+<summary>Third, we find that there is a strong negative relationship between income levels and earnings
+volatility.</summary>
+
+Because low-income workers also have less liquidity, this suggests that the most financially
+fragile workers also face the greatest variability in pay. This income profile of earnings volatility
+arises primarily because low-income workers are more likely to work in hourly jobs.
+
+</details>
+
+<details>
+<summary>Fourth, we find that while earnings changes are quite common, they are also fairly transitory.</summary>
+
+This is important for two reasons: first, optimal behavior in models of income risk will depend not
+just on the distribution of income changes but also on their persistence, so this is a useful target
+for modeling income dynamics. Second, this observation helps explain why the earnings instability
+prevalent in monthly data is hard to pick up in annual earnings data.
+
+</details>
+
+<details>
+<summary>This descriptive analysis raises two natural follow-up questions which we explore in the remaining two parts of the paper: Why do hours move from month to month? Does this instability matter
+for worker welfare?</summary>
+
+</details>
+
+<details>
+<summary>The second part of the paper explores the determinants of monthly hours fluctuations. We
+start by showing that several ex-ante plausible explanations have little support in the data.</summary>
+
+ First,
+temporary unpaid leave (e.g. vacation, family leave, medical leave) is too small a share of overall
+hours to explain the high level of typical monthly changes. Second, we find no evidence that
+hours volatility is driven by childcare-related demands for flexibility. Third, predictable seasonal
+fluctuations explain little of the hours fluctuations in ongoing employment relationships.
+
+</details>
+
+<details>
+<summary>In contrast, we provide evidence that firms play an important role in driving changes in worker
+hours.</summary>
+
+We show that this firm-driven volatility arises in part because firms have substantial month-to-month fluctuations in total hours, which we argue most likely arise from labor demand. We use
+two distinct methodological approaches to show that these monthly fluctuations in total firm hours
+are big enough to drive substantial volatility in hours for individual workers. The first builds on the
+excess reallocation statistic in Davis and Haltiwanger (1992) while the second estimates the effect of
+moving between firms with different levels of total hours volatility. These two distinct approaches
+both imply that around half of the volatility for a typical worker is caused by firm-level fluctuations
+in total hours. We also find evidence that firms contribute to worker volatility through channels that
+go beyond fluctuations in total labor demand. Even if total hours at the firm level were constant
+from month to month, there could still be significant monthly hours volatility for individual workers,
+and firms could contribute to this volatility (for example, through their scheduling practices). To
+capture the full set of pathways through which firms can affect the volatility for their workers we
+estimate fixed effects specifications with movers, building on the model of firm effects in Abowd, Kramarz, and Margolis (1999). These fixed effects imply an even larger role of firms in driving
+individual fluctuations than when focusing on only fluctuations in total labor demand.
+
+</details>
+
+<details>
+<summary>Overall, this evidence pointing to a large role for firms in driving worker-level earnings volatility
+leads us to conclude that the volatility we document in the first part of the paper does not simply
+reflect desired choices by workers.</summary>
+
+Instead, it appears that a meaningful share of this instability
+is imposed on the worker and is outside their control. However, even if all earnings changes were
+exogenous from the worker’s perspective, there are still two theoretical reasons to think they may
+not be welfare relevant. First, these earnings changes are relatively transitory, and many theoretical
+models imply that transitory shocks should not matter much for welfare. Second, if workers have
+information about their hours changes in advance, they may be able to blunt any potential negative
+impacts of this instability.
+
+</details>
+
+<details>
+<summary>In the final part of the paper, however, we provide two pieces of empirical evidence that monthly
+earnings instability is indeed welfare relevant.</summary>
+
+First, using bank account data, we show that income
+volatility causes spending volatility. Our primary strategy instruments for individual earnings
+volatility using firm-level volatility and finds that spending volatility increases when workers move
+to higher-volatility firms. Heterogeneity analysis strengthens the causal interpretation: effects are
+larger for low-liquidity workers, consistent with binding budget constraints. We also find that
+income volatility for salaried workers is essentially irrelevant for their spending volatility. This
+contrast further highlights that the nature of monthly earnings volatility differs fundamentally
+between salaried and hourly work.
+
+</details>
+
+<details>
+<summary>The second complementary piece of evidence that this volatility is costly is that hourly workers
+are more likely to quit high-volatility jobs.</summary>
+
+To address concerns that this correlation is driven by
+marginally attached workers who are more likely to quit also choosing more variable hours, we
+instrument for individual volatility with firm-level volatility and control for time-invariant worker
+characteristics. We also show that firm volatility affects quit rates of hourly workers much more
+than salaried workers at the same firms. This suggests that volatility itself—rather than some other
+firm characteristic—is the primary driver of increased quits.
+
+</details>
+
+<details>
+<summary>Using back-of-the-envelope calculations, we translate our estimates of the effects of hours volatility on both spending and separations into an implied willingness to pay to avoid such volatility.</summary>
+
+For the spending estimates, we apply the Lucas (1987) formula to infer how much a worker would
+pay to eliminate the spending fluctuations induced by hours volatility. For the separations estimates, we use Gronberg and Reed (1994) and compare the elasticity of quits with respect to that
+disamenity (in our case, earnings volatility) to the elasticity of quits with respect to wages. In both
+cases, we find substantial welfare implications: a median hourly worker would be willing to forgo
+4–11 percent of their income to attain the more stable income of a median salaried worker.
+
+</details>
+
+<details>
+<summary>Because earnings instability has a significant welfare cost and it is concentrated among lower-income workers, this disamenity amplifies compensation inequality relative to wage inequality.</summary>
+
+One
+estimate of the importance of amenities for compensation inequality comes from Maestas et al.
+(2023), which estimates the willingness to pay for nine different job amenities. It finds that the
+90-10 compensation differential—inclusive of amenities—is 8 log points larger than the 90-10 wage
+differential. We show that incorporating just one additional (dis)amenity—earnings instability—
+raises this gap from 8 to 13 log points.
+
+</details>
+
+<details>
+<summary>The fact that workers adjust their spending in response to income volatility and actively leave
+more volatile jobs provides compelling evidence that these fluctuations are costly.</summary>
+
+Such behavior
+is inconsistent with monthly volatility stemming solely from measurement error, deliberate labor
+supply choices, or other non-risk forces that render them irrelevant. Instead, our findings reveal that
+these earnings fluctuations represent genuine, welfare-relevant risk that materially shapes household
+decisions.
+
+</details>
+
+## Example 2: [Ganong et al. (2025)](https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/1/801/files/2025/09/2025-08-20-earnings-instability.pdf), Part 3 {.paper-example .scrollable}
+
+- Intro is so long that they have a separate section!
+
+<details>
+<summary>Our paper contributes to several existing streams of research. There is a vast prior literature
+measuring income risk.</summary>
+
+One large branch of this literature uses data from the Panel Survey of
+Income Dynamics (PSID). Moffitt and Zhang (2018) provides an overview of many of these PSID
+studies. A second recent branch instead uses large administrative data sets. This work includes
+Guvenen, Ozkan, and Song (2014, social security data), Abowd and McKinney (2024, Longitudinal
+Employer-Household Dynamics data) and Pruitt and Turner (2020, IRS tax data). Other papers
+link various data sets together including Kniesner, Viscusi, and Ziliak (2006) and Moffitt et al.
+(2022). A distinguishing feature of this literature is that it mostly focuses on the volatility of
+annual income. **In contrast, our study highlights the importance of monthly income fluctuations,
+which we find are largely masked in the annual data.**
+
+</details>
+
+<details>
+<summary>Although there are few direct measures of high-frequency earnings risk, such risk is often an
+important input to models of household behavior.</summary>
+
+For example, in leading heterogeneous agent
+macro models the degree of high-frequency earnings risk determines the household’s optimal level
+of liquid assets, which in turn drives the sensitivity of consumption to transitory shocks. Without
+access to panel data on within-year earnings risk for U.S. workers, the literature has been forced
+to infer high-frequency earnings dynamics from low-frequency annual data. Since those models are
+estimated using only annual data, any identification of high-frequency earnings dynamics comes
+from imposing parametric restrictions on the underlying data generating process. Recent examples
+using this methodology include Kaplan, Moll, and Violante (2018), Maxted, Laibson, and Moll
+(2025), Crawley, Holm, and Tretvoll (2022), and Kaplan and Violante (2022). **We show that the
+actual level of monthly income risk we measure in the data has much more frequent sizable changes
+than what is inferred from annual data using this approach. Even though we show that these
+monthly income changes are costly, their low persistence makes them hard to detect in annual
+data. The high-frequency income moments we report can be used to directly calibrate future
+income models rather than relying on this indirect, parametric approach.**
+
+</details>
+
+<details>
+<summary>We also show that there is substantial heterogeneity in monthly volatility.</summary>
+
+Modern macroeconomic models with earnings risk incorporate increasingly rich sources of heterogeneity, and our
+moments can directly inform how to model such heterogeneity. **Most prominently, we show that
+there is a large difference in income volatility between hourly and salaried workers, suggesting that
+this is an important margin to include in future heterogeneous agent models.**
+
+</details>
+
+<details>
+<summary>Although most prior empirical estimates of earnings volatility rely on annual data, we complement two types of prior studies that also analyze higher-frequency data.</summary>
+
+First, there are two studies
+of monthly earnings volatility using administrative data from outside the US. Druedahl, Graber,
+and Jørgensen (2023) estimates a monthly income model using Danish administrative data, and
+Brewer, Cominetti, and Jenkins (2025) documents monthly pay volatility in UK administrative
+data. The descriptive analysis in the first part of our paper overlaps in several ways with these
+papers: for example, Druedahl, Graber, and Jørgensen (2023) finds a high frequency of monthly
+earnings changes, although lower than we find in our U.S. data. This likely reflects the fact that
+there are fewer hourly workers in Denmark. Brewer, Cominetti, and Jenkins (2025) builds on an
+earlier working draft of our paper and finds some similar patterns of heterogeneity across industries
+and contract types to those that we document. **However, these papers do not try to distinguish
+whether fluctuations are driven by workers or firms and they do not quantify the costs of these
+fluctuations.**
+
+</details>
+
+<details>
+<summary>Second, a number of surveys estimate monthly volatility in the US.</summary>
+
+In particular, we build
+most closely on the pioneering work of Hannagan and Morduch (2015) and Morduch and Schneider
+(2017). This work surveys 235 low- and moderate-income households on a monthly basis for one
+year and documents striking income instability. Motivated in part by these findings, many U.S.
+household surveys have recently added questions measuring the extent of month-to-month earnings
+volatility or week-to-week hours volatility, indicating growing interest by policymakers and statistical agencies in this topic. However, volatility is difficult to measure in these surveys because it
+relies on worker recall and surveys often only allow respondents to choose among a limited number
+of categories. **Relative to these two prior sources of sub-annual volatility estimates, we contribute the first
+systematic and representative estimates of monthly income volatility for U.S. workers. Furthermore,
+beyond documenting facts about the level and distribution of monthly volatility, we also provide
+causal estimates of the sources and consequences of this volatility.**
+
+</details>
+
+<details>
+<summary>In tandem with the growth of survey evidence on the extent of income volatility, there has also
+been work in sociology and operations research on the welfare consequences of earnings volatility.</summary>
+
+Lambert, Henly, and Kim (2019) show that for hourly workers, the magnitude of volatility in weekly work hours is negatively correlated with their perceptions of financial insecurity. Schneider and
+Harknett (2019) find that for hourly retail workers, routine schedule instability is associated with
+worse psychological distress, sleep quality, and happiness. Other work has found quasi-experimental
+evidence that pay volatility makes workers more likely to quit in the retail (Kesavan and Kuhnen
+2017) and home health (Bergman, David, and Song 2023) sectors. **Relative to this prior work,
+we estimate a causal effect of pay volatility and quantify its welfare consequences using economic
+models.**
+
+</details>
+
+<details>
+<summary>Although research in economics on the welfare consequences of earnings volatility is limited,
+labor economists have studied income volatility in the context of a literature examining how firms
+choose to structure workers’ compensation.</summary>
+
+This literature typically focuses on when and how
+to offer performance pay, which gives rise to a tradeoff between risk and incentives. Because
+performance pay is mostly offered to salaried workers, workers who are paid hourly are often
+interpreted as facing the least risk. For example, MacLeod and Parent (1999) treats hourly workers
+as having deterministic pay while salaried workers in many cases are classified as having stochastic
+pay. **Our finding that hourly workers face meaningful income risk arising from hours variation
+shows that earnings risk is more complicated and in some important dimensions hourly workers
+have more risk than salaried workers.**
+
+</details>
+
+<details>
+<summary>Our estimates of the disamenity value of earnings instability contribute to a rapidly growing
+literature on revealed preference estimates of non-wage amenities.</summary>
+
+Researchers in this area have
+used discrete choice experiments, offer data, worker flows, equilibrium models, and job separations
+in the model of Gronberg and Reed (1994) to estimate the value of amenities. We implement the
+separations approach—which has been used in several prior papers—in our data. We also use a
+structural approach based on Lucas (1987) which is feasible only because we are studying a job
+amenity that affects workers’ consumption. **To the best of our knowledge this latter approach is
+novel to the amenities literature.**
+
+</details>
+
+<details>
+<summary>Our finding that earnings instability is highest among the lowest-income workers contributes
+to the broader literature on labor market inequality (e.g., Katz and Autor 1999).</summary>
+
+Much of this
+research investigates the role of firms in shaping wage inequality, often using job movers to identify
+firm-specific pay premiums. While wages are the most visible component of compensation, they do
+not fully capture all welfare-relevant aspects of employment. For example, Lachowska et al. (2023)
+find that most workers are “mismatched” in the sense that they would prefer to work more hours
+than they are offered at their current employer. One common question for this literature is how incorporating amenities changes the distribution of total compensation. **We find that accounting
+for the additional (dis)amenity of pay volatility meaningfully increases the contribution of amenities
+to compensation inequality.**
+
+</details>
+
+<details>
+<summary>Finally, our finding that hourly workers are exposed to a significant amount of risk that is
+driven by firm labor demand shocks is related to a literature on rent-sharing in labor economics.</summary>
+
+Card et al. (2018) summarize this literature as finding elasticities of annual wages to firm’s value
+added per worker between 0.05 and 0.15. Within this literature, we are particularly related to the
+analysis in Guiso, Pistaferri, and Schivardi (2005) who study the response of wages to transitory
+firm productivity shocks. **Although we study a different shock and country, our finding that hours
+fluctuate much more than wages in response to monthly firm labor demand shocks is consistent
+with the limited pass-through of transitory firm productivity shocks to wages that they find in
+Italy.**
+
+</details>
+
+## Example 3: [Izadi and Tuhkuri (2026)](https://joonastuhkuri.com/pdf/stereotypes.pdf), Part 1 {.paper-example .scrollable}
+
+<details>
+<summary>[Warning: motivation based on the academic literature!]</summary>
+
+New research documents that noncognitive skills have become increasingly important in the labor market over recent decades (Deming 2017; Edin et al. 2022), while the returns to cognitive skills have declined (Acemoglu and Autor 2011; Castex and Kogan Dechter 2014; Beaudry, Green, and Sand 2016). Noncognitive skills are multiple in nature (Cunha and Heckman 2007), and what dimensions have contributed to this pattern remains unclear.
+
+</details>
+
+## Example 3: [Izadi and Tuhkuri (2026)](https://joonastuhkuri.com/pdf/stereotypes.pdf), Bridge between Parts 1 and 2 {.paper-example .scrollable}
+
+- No bridge of "paper in a paragraph"!
+- Instead, they state the research question and move right to the "Data" section of the outline
+
+<details>
+<summary>We investigate which noncognitive skills drive the rising returns.</summary>
+
+So far, lack of data with direct measures of different noncognitive skills has limited the scope of this research. We overcome this limitation by using consistent cognitive and personality test records from half a million Finnish men, collected during mandatory military service across 18 birth cohorts born from 1962 to 1979. We combine these data with administrative tax and education records to study the economic returns to cognitive and noncognitive skills. The available data measure eight different personality traits. Using insights from psychology, we group these multidimensional data into two components: extraversion and conscientiousness, common constructs in personality psychology.
+
+</details>
+
+## Example 3: [Izadi and Tuhkuri (2026)](https://joonastuhkuri.com/pdf/stereotypes.pdf), Part 2 {.paper-example .scrollable}
+
+<details>
+<summary>In line with earlier studies, we observe a decline in the value of cognitive skills and an increase in the value of noncognitive skills between 2001 and 2015 for men aged 36–39.</summary>
+
+However, analyzing noncognitive skills without
+accounting for their multidimensional nature hides significant trends. We
+find that traits related to extraversion entirely drive the increase in the value
+of noncognitive skills, whereas the earnings premium to conscientiousness-related traits has remained stable. This result is robust to various reasonable
+groupings of the traits.
+
+</details>
+
+<details>
+<summary>A more detailed analysis reveals that the increasing returns to extraversion
+are explained mainly by the extensive margin: the employment rate for extraverts has steadily improved.</summary>
+
+ The intensive margin returns for those with
+stronger labor force attachment have increased only modestly. We also find
+that the trends are stronger at the bottom of the wage distribution. Collectively, our results document that the increased importance of extraversion
+relates mainly to the employment prospects of low-earning men.
+
+</details>
+
+<details>
+<summary>Including educational attainment in the analysis does not substantially
+change the trends but has a dramatic effect on the coefficients’ levels.</summary>
+
+Conditional on years of education, we find that the partial returns to conscientiousness are not only flat over time but precisely zero in absolute terms. Conversely, controlling for education increases the returns to extraversion, even
+above the premia for cognitive skills and years of education.
+
+</details>
+
+And so on...
+
+## Example 3: [Izadi and Tuhkuri (2026)](https://joonastuhkuri.com/pdf/stereotypes.pdf), Part 3 {.paper-example .scrollable}
+
+<details>
+<summary>This paper adds to the expanding literature on the rising importance of
+noncognitive skills in the labor market.</summary>
+
+We are aware of few other papers that
+study the returns to noncognitive skills, social skills, or other “higher-order
+skills” over time. The papers closest to ours are Deming (2017) and Edin et al. (2022). Our main results are consistent with both. Deming (2017) shows that
+the economic returns to social skills increased between the 1980s and 2000s in
+the United States. Edin et al. (2022) document that the returns to noncognitive skills have risen between the 1990s and 2010s in Sweden. **Our novel finding is that increasing returns to extraversion—and not conscientiousness—is
+a critical driver of this trend.**
+
+</details>
+
+<details>
+<summary>Our research relates to the large literature on skill-biased technological
+change (Katz and Murphy 1992; Goldin and Katz 2008; Acemoglu and
+Autor 2011).</summary>
+
+Which skills have become more valuable and which less valuable over time? One view is that cognitive and technical skills have become
+more important for workers to operate new machines effectively. Another
+view is that social and outward-oriented skills have become more relevant,
+as that is where machines are weaker. Our evidence is consistent with the latter view. We are uncertain what exactly has been driving the increasing returns to extraversion. Deming (2017) provides convincing evidence for
+the role of teamwork. Other simultaneous drivers are possible. For example,
+Izadi and Tuhkuri (2023), building on the foundational contributions of
+Nelson and Phelps (1966), Welch (1970), and Schultz (1975), document
+the adaptive value of extraversion in the labor market. **As a whole, our evidence points toward explanations focusing on labor force participation of
+worse-performing men.**
+
+</details>
+
+<details>
+<summary>An active literature shows that noncognitive skills matter in the labor market.</summary>
+
+Besides the papers mentioned earlier, important contributions include
+Heckman, Stixrud, and Urzua (2006), Lindqvist and Vestman (2011), and
+Borghans et al. (2016). **We show in one setting with large-scale data that extraversion predicts low school performance but good labor market performance, while conscientiousness predicts success in both.**
+
+</details>
