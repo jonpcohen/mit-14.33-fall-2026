@@ -57,3 +57,22 @@ date: "October 26, 2026"
     - [Giuntella et al (2026) JPE](https://www.journals.uchicago.edu/doi/10.1086/740221) RCT nudged US college students to increase sleep, which on average causally increased sleep by 19 minutes/night and GPA by 0.08 points
 - **Lean into struggle**
     - Independent research is hard, but you learn by doing and iterating
+
+## Reminder on grade components
+
+- 5% of grade is final code quality and replicability
+    - Ensure code is reproducible as you go rather than trying to fix it up at the end
+- 25% of grade is final exam
+    - Ensure you understand your work as you go rather than "studying" at the end
+    - Example question: "Referee suggests [X] would be a problem for your identification strategy. Explain why that is or isn't the case."
+
+## Next assignment: initial paper draft
+- Due date pushed to Tuesday 11/3 (1 day later than previous syllabus)
+- No penalty for placeholders of planned results
+    - But feedback will be better with actual results
+- No bonus for length
+    - Graded on the information you communicate, not the number of words it takes to do so
+- Must include:
+    1. Introduction
+    2. Data section with (some) actual summary statistics
+    3. Topic sentences for paragraphs with placeholder of planned results
