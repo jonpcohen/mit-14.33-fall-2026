@@ -132,9 +132,9 @@ Continue with the three example papers from last class:
 ## Example 1: [Hsiao, Moscona, and Sastry (2026)](https://allanhsiao.com/files/HMS_foodpolicy.pdf), Part 1 {.paper-example .scrollable}
 
 <details>
-<summary>[Builds out from specific anecdotes to broader policy relevance]</summary>
+<summary>[Moves from specific anecdotes to policy relevance and then to broader themes]</summary>
 
-IN March 2022, a heat wave in India reduced the country’s wheat production by 11 million metric tons, or 10% of expected output (Beillard and Singh (2022)). On May 13, citing
+In March 2022, a heat wave in India reduced the country’s wheat production by 11 million metric tons, or 10% of expected output (Beillard and Singh (2022)). On May 13, citing
 concerns that elevated prices threatened food security, the government announced a ban
 on wheat exports. While this policy had potential benefits for Indian consumers, it was
 controversial both in India and around the world. Farmer Ranbeer Singh Sirsa, quoted in
@@ -158,7 +158,7 @@ the world, and could either mitigate or exacerbate overall economic losses.
 ## Example 1: [Hsiao, Moscona, and Sastry (2026)](https://allanhsiao.com/files/HMS_foodpolicy.pdf), Bridge between Parts 1 and 2 {.paper-example .scrollable}
 
 <details>
-<summary>[States the research question and outlines the data and empirical strategy]</summary>
+<summary>[States the exact research question(s) and outlines the data and empirical strategy]</summary>
 
 This paper combines measurement and theory to study the interaction between climate
 conditions and agricultural policy. In particular, we ask: does policy systematically respond to climate extremes? If so, how and why? And what are the implications for global
@@ -172,6 +172,8 @@ crop-specific yields in international panel data.
 </details>
 
 ## Example 1: [Hsiao, Moscona, and Sastry (2026)](https://allanhsiao.com/files/HMS_foodpolicy.pdf), Part 2 {.paper-example .scrollable}
+
+- Topic sentences of paragraphs are scannable and ordered with numbered logical connectors:
 
 <details>
 <summary>We measure agricultural policy interventions using data from the World Bank’s Distortions to Agricultural Incentives project.</summary>
@@ -281,6 +283,8 @@ temperature extremes, and respond to these shocks by further subsidizing consump
 
 ## Example 1: [Hsiao, Moscona, and Sastry (2026)](https://allanhsiao.com/files/HMS_foodpolicy.pdf), Part 3 {.paper-example .scrollable}
 
+- The topic sentence highlights a literature theme, supporting sentences discuss related papers, and final sentences highlight the contribution:
+
 <details>
 <summary>Our main contribution is to show that agricultural policy responds to extreme heat
 shocks, thereby shaping their aggregate and distributional effects. We build on existing
@@ -310,7 +314,7 @@ frictions to adaptation.**
 ## Example 2: [Ganong et al. (2025)](https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/1/801/files/2025/09/2025-08-20-earnings-instability.pdf), Part 1 {.paper-example .scrollable}
 
 <details>
-<summary>[Immediately summarize the paper in a sentence and provide several motivations for why it matters]</summary>
+<summary>[Immediately summarize the paper in a sentence and provide several motivations for why it matters.]</summary>
 
 This paper uses high-frequency administrative earnings data to investigate the prevalence, causes,
 and consequences of monthly earnings volatility among U.S. workers. We find that beneath the
@@ -325,10 +329,13 @@ hourly.
 
 </details>
 
+- The opening sentence looks like "paper in a sentence". What is its purpose, and why does it appear in Part 1?
+- What are flowery words and phrases that pique curiosity but wouldn't appear in the main text?
+
 ## Example 2: [Ganong et al. (2025)](https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/1/801/files/2025/09/2025-08-20-earnings-instability.pdf), Bridge between Parts 1 and 2 {.paper-example .scrollable}
 
 <details>
-<summary>[Lists paper components in numbered parts]</summary>
+<summary>[Lists paper components in numbered parts.]</summary>
 
 The paper establishes this conclusion in three parts. First, using comprehensive administrative
 data from both workers and firms, we document that monthly earnings fluctuate considerably,
@@ -344,6 +351,8 @@ improved stability. Overall, our estimates suggest that a typical hourly worker 
 percent of their income in exchange for the income stability experienced by salaried workers.
 
 </details>
+
+- How does it parallel Part 1?
 
 ## Example 2: [Ganong et al. (2025)](https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/1/801/files/2025/09/2025-08-20-earnings-instability.pdf), Part 2 {.paper-example .scrollable}
 
@@ -522,9 +531,15 @@ decisions.
 
 </details>
 
+- What's the deal with numbered logical connectors within numbered parts of the paper?
+- How does this parallel Part 1 and the bridge?
+- How are topic sentences connected to one another? What are non-numbered logical connectors?
+
 ## Example 2: [Ganong et al. (2025)](https://bpb-us-w2.wpmucdn.com/voices.uchicago.edu/dist/1/801/files/2025/09/2025-08-20-earnings-instability.pdf), Part 3 {.paper-example .scrollable}
 
 - Intro is so long that they have a separate section!
+- How do some of the topic sentence purposes differ from those in Example 1?
+
 
 <details>
 <summary>Our paper contributes to several existing streams of research. There is a vast prior literature
@@ -684,16 +699,19 @@ Italy.**
 ## Example 3: [Izadi and Tuhkuri (2026)](https://joonastuhkuri.com/pdf/stereotypes.pdf), Part 1 {.paper-example .scrollable}
 
 <details>
-<summary>[Warning: motivation based on the academic literature!]</summary>
+<summary>[Two sentences of motivation]</summary>
 
 New research documents that noncognitive skills have become increasingly important in the labor market over recent decades (Deming 2017; Edin et al. 2022), while the returns to cognitive skills have declined (Acemoglu and Autor 2011; Castex and Kogan Dechter 2014; Beaudry, Green, and Sand 2016). Noncognitive skills are multiple in nature (Cunha and Heckman 2007), and what dimensions have contributed to this pattern remains unclear.
 
 </details>
 
+- How does the motivation source differ from the other papers (and potentially this lecture's advice)?
+
 ## Example 3: [Izadi and Tuhkuri (2026)](https://joonastuhkuri.com/pdf/stereotypes.pdf), Bridge between Parts 1 and 2 {.paper-example .scrollable}
 
 - No bridge of "paper in a paragraph"!
-- Instead, they state the research question and move right to the "Data" section of the outline
+- They clearly state the research question and move right to the "Data" section of the outline
+- Note the literature-based P statement
 
 <details>
 <summary>We investigate which noncognitive skills drive the rising returns.</summary>
@@ -703,6 +721,9 @@ So far, lack of data with direct measures of different noncognitive skills has l
 </details>
 
 ## Example 3: [Izadi and Tuhkuri (2026)](https://joonastuhkuri.com/pdf/stereotypes.pdf), Part 2 {.paper-example .scrollable}
+
+- How scannable and standalone is each topic sentence?
+- Notice how positioning relative to existing literature (P) is woven into the discussion of results
 
 <details>
 <summary>In line with earlier studies, we observe a decline in the value of cognitive skills and an increase in the value of noncognitive skills between 2001 and 2015 for men aged 36–39.</summary>
@@ -735,9 +756,114 @@ above the premia for cognitive skills and years of education.
 
 </details>
 
-And so on...
+
+<details>
+<summary> The second part of this paper contextualizes the traits we study—extraversion, conscientiousness, and cognitive skills—in the labor market more
+broadly. </summary>
+
+Extensive evidence shows that noncognitive skills improve labor market success (Almlund et al. 2011), but the channels are incompletely understood. One view is that noncognitive skills directly improve productivity at
+work. For example, Deming (2017) argues that social skills facilitate teamwork.
+Another view is that noncognitive skills affect labor market performance indirectly—for example, through education (Cunha and Heckman 2007).
+
+</details>
+
+
+<details>
+<summary> Turning our analysis to the cross section, we establish a robust pattern:
+extraversion and conscientiousness influence labor market success through
+largely separate domains. </summary>
+
+Conscientiousness is a strong predictor of educational attainment across cohorts, both in test scores and in years of education, and also predicts higher earnings. In contrast, extraversion predicts
+worse educational performance but still positive labor market outcomes.
+
+</details>
+
+
+<details>
+<summary> These cross-sectional patterns provide some empirical grounds for the
+common stereotypes of socially awkward “nerds” and outgoing “jocks,”
+which suggest an inverse relationship between academic achievement and
+particular dimensions of noncognitive skills. </summary>
+
+High achievers in school
+may lack at least some dimensions of economically valuable personality
+traits. Conversely, low-achieving students may have some redeeming qualities that compensate in the labor market for their lack of academic success.
+A path to success can be achieved through either route.
+
+</details>
+
+
+<details>
+<summary> These results should be discussed in the context of two earlier key papers. </summary>
+
+The observation that some noncognitive skills can be harmful in some domains and useful in others has been raised earlier by Levine and Rubinstein
+(2017) and Papageorge, Ronda, and Zheng (2022). Levine and Rubinstein
+(2017) show that “illicit” tendencies in the youth combined with high cognitive skills is associated with a successful career in entrepreneurship. Papageorge, Ronda, and Zheng (2022) find that boys’ externalizing behavior is
+associated with low school performance but positive wage returns. They argue that externalizing behavior (e.g., hyperactivity, aggression, rule breaking) is a productive skill, not merely a proxy for valuable unobservables.
+
+</details>
+
+
+<details>
+<summary> Our study contributes to this discussion by documenting an increasing
+value over time for extraversion, a trait exhibiting this inverse pattern.  </summary>
+
+Although pinpointing a unifying concept behind these measures—harmful in
+one context but beneficial in another—is challenging, their common denominator appears to be an orientation toward action.
+
+</details>
+
+
+<details>
+<summary> We also explore the mechanisms of how personality influences earnings in
+the labor market. </summary>
+
+Conscientiousness predicts higher education, later career
+starts, and, in the end, higher-paying professions. Extraversion predicts
+lower education, earlier career starts, and fewer unemployment spells but
+does not predict ending up in particularly high-paying occupations. However, extraverted men more often advance to managerial roles. That is, conscientiousness predicts formal skills and formal occupations, while extraversion predicts informal skills and jobs where education is less important. The
+evidence is also consistent with the idea that conscientiousness works primarily through sorting, while extraversion is valuable in a broader set of contexts.
+
+</details>
+
+
+<details>
+<summary> Finally, we estimate potential complementarities between different skill
+dimensions. </summary>
+
+ Perhaps surprisingly, we observe a clear downward trend in
+the interaction term between cognitive and noncognitive skills. Having both
+high cognitive and noncognitive skills appears less important than before (cf.
+Deming 2017; Levine and Rubinstein 2017). The group that experienced the
+highest earnings growth between 2001 and 2015 is those in the lowest tercile
+of cognitive skills and highest tercile of extraversion. The main trends are robust to including interaction terms: the only trait that trends upward is the
+main effect for extraversion. Our novel results also show that more men
+have either high cognitive skills or high extraversion and are less likely to
+have both. Specialization into these “separating” skill bundles is consistent
+with a supply-side response, where increasing returns to social skills encourage skill specialization (echoing the observations of Hermo et al. 2022).
+
+</details>
+
+
+<details>
+<summary> Discussion on the relative importance of different traits is not meaningful
+without addressing the problem of potential measurement error.  </summary>
+
+Grönqvist,
+Öckert, and Vlachos (2017) show that noncognitive skills are likely measured with more error relative to cognitive skills, which would attenuate
+their point estimates toward zero and make them appear smaller relative
+to cognitive skill estimates. We employ several strategies to address this concern: an instrumental variable approach that exploits the similarity of traits
+between brothers, a simulation exercise that adds noise, and validity scales
+embedded in the military test directly aimed at gauging measurement error.
+Our results are robust to these tests.
+
+</details>
+
+
 
 ## Example 3: [Izadi and Tuhkuri (2026)](https://joonastuhkuri.com/pdf/stereotypes.pdf), Part 3 {.paper-example .scrollable}
+
+- The topic sentence highlights a literature theme, supporting sentences discuss related papers, and final sentences highlight the contribution:
 
 <details>
 <summary>This paper adds to the expanding literature on the rising importance of
