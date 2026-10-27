@@ -52,7 +52,7 @@ format:
 
 | | |
 |---|---|
-| **Class meetings** | Mondays and Wednesdays, 10:30 a.m.–12:00 p.m. |
+| **Class meetings** | Mondays and Wednesdays, 10:30 a.m.–12:00 p.m. (Tuesday, Oct. 13 replaces Monday, Oct. 12) |
 | **Location** | E51-395 (primary classroom); E51-385 (breakout space) |
 | **Instructor** | Jon Cohen ([jpcohen@mit.edu](mailto:jpcohen@mit.edu)), E52-508 <br>`#linebreak()`{=typst}Office hours: Mondays, 2:00–4:00 p.m. |
 | **Teaching assistant** | Laurel Britt ([lrl@mit.edu](mailto:lrl@mit.edu)) <br>`#linebreak()`{=typst}Office hours: Fridays, 10:00–11:00 a.m. E52-548 and 4:00–5:00 p.m. E52-416 |
@@ -83,11 +83,11 @@ By the end of the semester, students will be able to:
 
 ## Course format
 
-- 8 class meetings will be lectures. Each lecture will have a small but mandatory assignment to complete beforehand. The goal is to have the lectures be interactive, so thoughtfully engaging with the assigned material and completing the mandatory assignment prior to class is essential.
+- 9 class meetings will include lectures. Each lecture after the course overview will have a small but mandatory assignment to complete beforehand. The goal is to have the lectures be interactive, so thoughtfully engaging with the assigned material and completing the mandatory assignment prior to class is essential.
 
-- 12 class meetings will be research meetings. Students will rotate between scheduled 1-on-1 meetings with the instructor or TA. At least 24 hours before each 1-on-1 meeting, the student will submit a meeting-specific GitHub issue (see [bottom of syllabus](#individual-meeting-preparation) for details). When the student is not in a 1-on-1 meeting, they will be in assigned small groups to do a project-related exercise or provide structured peer feedback.
+- 12 class meetings will be research meetings. Students will rotate between scheduled 1-on-1 meetings with the instructor or TA. At least 12 hours before each 1-on-1 meeting, the student will submit a meeting-specific GitHub issue, except on dates marked optional in the schedule (see [Individual meeting preparation](#individual-meeting-preparation) for details). When the student is not in a 1-on-1 meeting, they will be in assigned small groups to do a project-related exercise or provide structured peer feedback.
 
-- 2 class meetings will focus primarily on small-group writing exercises.
+- 2 class meetings will include small-group writing exercises. The October 26 meeting will also include a lecture.
 
 - 4 class meetings will be presentations in front of your peers.
 
@@ -98,11 +98,11 @@ By the end of the semester, students will be able to:
 Final grade calculation:
 
 - 15% pre-class assignments and meeting-preparation issues
-- 5% paper outline (due Tuesday October 20 by 10:30am)
-- 5% initial paper draft (due Monday November 2 by 10:30am)
-- 10% revised paper draft (due Wednesday November 18 by 10:30am)
-- 20% final paper (due Friday December 4 by 11:59pm)
-- 5% final code quality and reproducibility (due Friday December 4 by 11:59pm)
+- 5% paper outline (due Tuesday, October 20, by 10:30 a.m.)
+- 5% initial paper draft (due Tuesday, November 3, by 10:30 a.m.)
+- 10% revised paper draft (due Thursday, November 19, by 10:30 a.m.)
+- 20% final paper (due Friday, December 4, by 11:59 p.m.)
+- 5% final code quality and reproducibility (due Friday, December 4, by 11:59 p.m.)
 - 15% final presentation (December 7 or December 9)
 - 25% final exam (Tuesday, December 15, 9:00 a.m.–12:00 p.m., E51-145)
 
@@ -142,7 +142,7 @@ Every submitted assignment must include an AI-use statement. If there was no AI 
 
 ## Accessibility and accommodations
 
-MIT is committed to the principle of equal access. Students who need disability accommodations are encouraged to speak with Disability and Access Services (DAS), prior to or early in the semester so that accommodation requests can be evaluated and addressed in a timely fashion. The instructor and TA are ready to assist with any approved accommodations.
+MIT is committed to the principle of equal access. Students who need disability accommodations are encouraged to speak with Disability and Access Services (DAS) prior to or early in the semester so that accommodation requests can be evaluated and addressed in a timely fashion. The instructor and TA are ready to assist with any approved accommodations.
 
 ## Late submissions
 
@@ -150,11 +150,11 @@ The course structure scaffolds assignments to build on one another, so it is hig
 
 ## Inclusion
 
-Course participants will refer to one another using each person's preferred first name. Using preferred first names rather than pronouns has two purposes: engender a collegial atmosphere and avoid unintentional misgendering. Students will be provided name cards to facilitate learning each other's names. The one exception is for communicating with the instructor: please address the instructor and all other faculty members as 'Professor [Last Name]' in speech and email, unless expressly invited to do otherwise. The purpose is to maintain professional equity and respect for all instructors.
+Course participants will refer to one another using each person's preferred first name. Using preferred first names rather than pronouns has two purposes: to engender a collegial atmosphere and to avoid unintentional misgendering. Students will be provided name cards to facilitate learning each other's names. The one exception is for communicating with the instructor: please address the instructor and all other faculty members as 'Professor [Last Name]' in speech and email, unless expressly invited to do otherwise. The purpose is to maintain professional equity and respect for all instructors.
 
 Students are expected to be respectful when providing peer feedback. A growth mindset is useful when receiving feedback, but this is difficult to do when the feedback is ad hominem or destructive rather than substantive and constructive. Students should report any concerns to either the instructor or TA.
 
-## Course Feedback
+## Course feedback
 
 The course is structured to facilitate learning, but the instructor and TA are open to your feedback on how it can be improved. There will be a formal process at the course midpoint for collecting and addressing feedback on what's going well and what's not going well using [this form](https://docs.google.com/forms/d/e/1FAIpQLSe8bMoxDBezOTSmM1nVhWJh7AJX7EpEalII7n-kzErKrsabhQ/viewform?usp=sharing&ouid=107655664528523787088). But students are encouraged to anonymously send in constructive feedback to [this form](https://docs.google.com/forms/d/e/1FAIpQLSfiJ3Ash9kRQoSbOJtbyCOc8oxiTNxpTRo4AWuMAIoezVq9kA/viewform?usp=sharing&ouid=107655664528523787088) at any point in the semester.
 
@@ -173,21 +173,21 @@ The course is structured to facilitate learning, but the instructor and TA are o
 | 9 | Wed., Oct. 7 | Individual meetings | • Meeting-preparation issue<br>`#linebreak()`{=typst}• 1-paragraph project proposal |
 | — | Mon., Oct. 12 | **No class — Indigenous Peoples' Day** | N/A |
 | 10 | Tues., Oct. 13 | Lecture: Structure of a Research Paper | Read through "Layer 1" of Chaubey (pages 1-59) and write a >=1 sentence takeaway of each section |
-| 11 | Wed., Oct. 14 | Small group exercises on paper outline | Read through "Layer 2" of Chaubey (pg 59-85) and write a >=1 sentence takeaway of each section |
-| 12 | Mon., Oct. 19 | Individual meetings | • Meeting-preparation issue<br>`#linebreak()`{=typst}• Paper outline due Tues., Oct. 20|
-| 13 | Wed., Oct. 21 | Individual meetings | Mid-course feedback |
+| 11 | Wed., Oct. 14 | Small group exercises on paper outline | Read through "Layer 2" of Chaubey (pg 59-98) and write a >=1 sentence takeaway of each section |
+| 12 | Mon., Oct. 19 | Individual meetings | • Meeting-preparation issue<br>`#linebreak()`{=typst}• Paper outline due Tues., Oct. 20 |
+| 13 | Wed., Oct. 21 | • Individual meetings<br>`#linebreak()`{=typst}• Feedback on outline | • Optional meeting-preparation issue<br>`#linebreak()`{=typst}• Mid-course feedback |
 | 14 | Mon., Oct. 26 | Lecture: Writing an Introduction; Small group exercises on paper drafting | Complete Chaubey (pg 99-173) and write a >=1 sentence takeaway of each section |
 | 15 | Wed., Oct. 28 | Individual meetings | Meeting-preparation issue |
-| 16 | Mon., Nov. 2 | Individual meetings | • Meeting-preparation issue<br>`#linebreak()`{=typst}• Paper draft |
-| 17 | Wed., Nov. 4 | Individual meetings | • Meeting-preparation issue<br>`#linebreak()`{=typst}• Feedback provided on paper drafts |
-| 18 | Mon., Nov. 9 | Individual meetings | Meeting-preparation issue |
+| 16 | Mon., Nov. 2 | Individual meetings | • Meeting-preparation issue<br>`#linebreak()`{=typst}• Paper draft due Tues., Nov. 3 |
+| 17 | Wed., Nov. 4 | Individual meetings | Meeting-preparation issue |
+| 18 | Mon., Nov. 9 | Individual meetings | • Optional meeting-preparation issue<br>`#linebreak()`{=typst}• Feedback on draft |
 | — | Wed., Nov. 11 | **No class — Veterans Day** | N/A |
 | 19 | Mon., Nov. 16 | Lecture: Combining Theory and Empirics | >=1 sentence each on: >=3 general economic principles that the paper's results demonstrate/test and >=3 mechanisms that could drive the paper's results |
-| 20 | Wed., Nov. 18 | Individual meetings | • Meeting-preparation issue<br>`#linebreak()`{=typst}• Revised paper draft |
-| 21 | Mon., Nov. 23 | Individual meetings | Meeting-preparation issue |
-| 22 | Wed., Nov. 25 | Individual meetings (excused absence for Thanksgiving travel) | Meeting-preparation issue |
+| 20 | Wed., Nov. 18 | Individual meetings | • Meeting-preparation issue<br>`#linebreak()`{=typst}• Revised paper draft due Thurs., Nov. 19 |
+| 21 | Mon., Nov. 23 | Individual meetings | • Optional meeting-preparation issue<br>`#linebreak()`{=typst}• Feedback provided on paper drafts |
+| 22 | Wed., Nov. 25 | Individual meetings (excused absence for Thanksgiving travel) | Optional meeting-preparation issue |
 | 23 | Mon., Nov. 30 | Lecture: Giving an effective talk | Draft titles for each slide |
-| 24 | Wed., Dec. 2 | Small group practice presentations | • Draft presentation<br>`#linebreak()`{=typst}• Final paper due Fri., Dec 4 |
+| 24 | Wed., Dec. 2 | Small group practice presentations | • Draft presentation<br>`#linebreak()`{=typst}• Final paper and code due Fri., Dec. 4 |
 | 25 | Mon., Dec. 7 | Final presentations | N/A |
 | 26 | Wed., Dec. 9 | Final presentations | N/A |
 | 27 | Tues., Dec. 15 | Written final exam (9:00 a.m.–12:00 p.m., E51-145) | N/A |
@@ -196,9 +196,9 @@ The course is structured to facilitate learning, but the instructor and TA are o
 
 ## Individual meeting preparation {#individual-meeting-preparation}
 
-This section details how students will prepare agendas for their 1-on-1 meetings. At least 24 hours before the meeting, the student will open a meeting-specific issue in their GitHub repository using the template below. The instructor or TA will prepare for the meeting by reading the meeting agenda issue beforehand. The suggested word count for the agenda is approximately 250 words, excluding links and tables. Students should focus on results and decisions rather than time spent (e.g., write “Estimated the baseline specification and found...” rather than “Worked on regressions”).
+This section details how students will prepare agendas for their 1-on-1 meetings. At least 12 hours before the meeting, the student will open a meeting-specific issue in their GitHub repository using the template below, except on dates marked optional in the schedule. The instructor or TA will prepare for the meeting by reading the meeting agenda issue beforehand. The suggested word count for the agenda is approximately 250 words, excluding links and tables. Students should focus on results and decisions rather than time spent (e.g., write “Estimated the baseline specification and found...” rather than “Worked on regressions”).
 
-Students will use the following labels for both the overall project and the next course deliverable:
+Students will use the following labels for the overall project:
 
 - **On track:** Progress can continue without intervention.
 - **At risk:** A problem could affect the project or deliverable, but there is a plausible path forward.
@@ -217,11 +217,15 @@ Title the issue `Meeting preparation — YYYY-MM-DD`.
 #### 1. Bottom line
 
 - **Overall project:** On track / At risk / Blocked (one-sentence explanation)
-- **Next course deliverable:** Name and due date
-- **Deliverable status:** On track / At risk / Blocked (one-sentence explanation)
 - **Goal for this meeting:** By the end of the meeting, I want to have decided or resolved...
 
 #### 2. Current project state
+
+List 1-sentence summaries for each component. Note if there are any changes since the last 1-on-1 meeting:
+
+- **Research question:**
+- **Answer:**
+- **Positioning statement:**
 
 **Work modes:** Not started / Building / Testing / Revising / Rebuilding / Holding steady
 
@@ -248,27 +252,18 @@ For each row, select the progress description that best represents what is curre
 | Results | Select one writing artifact | Select one work mode |
 | Introduction | Select one writing artifact | Select one work mode |
 
-#### 3. Progress and learnings
-
-Report concrete findings rather than activities or time spent. Findings can be unexpected results or newly-discovered roadblocks.
-
-- **Finding:** Brief description + link to evidence
-- **Finding:** Brief description + link to evidence
-
-**Implication:** How did this help you make progress on the project? How does it inform the project's next steps?
-
-#### 4. Decisions, questions, or blockers
+#### 3. Decisions, questions, or blockers
 
 Include 1-3 items, ordered by descending importance. For a blocker, include what you have already tried and the specific help needed in the brief description.
 
 1. **Decision, question, or blocker:** Brief description
    - **Context and evidence:** Link to a separate issue, or provide 1–2 sentences explaining the relevant context and evidence.
    - **Preliminary recommendation and reasoning (pre-meeting):** Completed prior to the meeting with the perceived best path forward
-   - **Next steps (post-meeting):** Completed after the meeting before resolving the meeting agenda, potentially linking to newly-created GitHub issues
+   - **Next steps (post-meeting):** Completed after the meeting before closing the meeting agenda issue, potentially linking to newly created GitHub issues
 2. ...
 3. ...
 
-#### 5. Committed next steps
+#### 4. Committed next steps
 
 Draft this section prior to the meeting and revise this section after the meeting. List 1-3 commitments. Each commitment should identify an observable output, its target date, and what will count as complete.
 
@@ -279,6 +274,7 @@ Draft this section prior to the meeting and revise this section after the meetin
 
 ## Revision history
 
+- **October 26, 2026:** Shortened meeting agenda and revised deadline to 12 hours beforehand; updated assignment due dates and corrected internal inconsistencies.
 - **October 17, 2026:** Revised paper outline due date, removed Oct. 21 meeting-preparation issue, added mid-course feedback form, and added paper Introduction writing lecture.
 - **September 28, 2026:** Added final exam details and clarified Parley web chat and API access.
 - **September 14, 2026:** Replaced office hours availability poll with scheduled times.
