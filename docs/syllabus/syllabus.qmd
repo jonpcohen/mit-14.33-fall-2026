@@ -272,9 +272,15 @@ Draft this section prior to the meeting and revise this section after the meetin
 3. ...
 
 
+#### 5. AI disclosure
+
+For the work reported in this agenda, state whether you used AI. If there was no AI use, simply state that. If there was any AI use, write 2–4 sentences describing what you used it for, one benefit, and one limitation. You may consider effects on both your work and your learning. If AI was forbidden for any component of the work, attest that you complied with that restriction.
+
+- **AI-use statement:**
+
 ## Revision history
 
-- **October 26, 2026:** Shortened meeting agenda and revised deadline to 12 hours beforehand; updated assignment due dates and corrected internal inconsistencies.
+- **October 26, 2026:** Shortened meeting agenda, added an AI disclosure prompt, and revised deadline to 12 hours beforehand; updated assignment due dates and corrected internal inconsistencies.
 - **October 17, 2026:** Revised paper outline due date, removed Oct. 21 meeting-preparation issue, added mid-course feedback form, and added paper Introduction writing lecture.
 - **September 28, 2026:** Added final exam details and clarified Parley web chat and API access.
 - **September 14, 2026:** Replaced office hours availability poll with scheduled times.
