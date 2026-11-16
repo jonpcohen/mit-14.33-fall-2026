@@ -100,7 +100,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>After that, rerunning your code and rebuilding the PDF keeps every number, table and figure in sync with your analysis.</p>
 <pre><code>code  →  paper_output/  →  paper.qmd or paper.tex  →  PDF</code></pre>
-<p>You need a LaTeX installation (TeX Live or MiKTeX). For a Quarto paper, you also need <a href="https://quarto.org/docs/get-started/">Quarto</a>.</p>
+<p><strong>Quarto or LaTeX?</strong> Your paper is written in one of two formats, and you build it with the matching tool. Both produce the same kind of PDF, so pick whichever you are comfortable with — you only use one.</p>
+<ul>
+<li><strong>LaTeX</strong> is a typesetting system long used for technical and economics writing. You write a plain-text <code>.tex</code> file with markup for sections, math, figures and citations, then compile it to a PDF. It gives fine control, but the syntax is heavier.</li>
+<li><strong>Quarto</strong> is a newer publishing tool built on Markdown. You write a <code>.qmd</code> file in a lighter, more readable syntax, and Quarto turns it into a PDF (using LaTeX behind the scenes, which is why both routes need a LaTeX installation). It is easier to write, but it is an extra program to install.</li>
+</ul>
+</section>
+<section id="step-0-install-the-dependencies" class="level2">
+<h2 class="anchored" data-anchor-id="step-0-install-the-dependencies">Step 0: Install the dependencies</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>You need</th>
+<th>For</th>
+<th>How to install</th>
+<th>Check it works</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>The full TeX Live (<code>scheme-full</code>)</td>
+<td>Building the PDF, for both <code>paper.tex</code> and <code>paper.qmd</code></td>
+<td>Mac: install <a href="https://tug.org/mactex/">MacTeX</a>, which is the full TeX Live. Windows and Linux: run the <a href="https://tug.org/texlive/">TeX Live installer</a> and choose the full scheme (on Ubuntu or Debian, <code>sudo apt install texlive-full</code> also works)</td>
+<td><code>pdflatex --version</code> and <code>latexmk --version</code></td>
+</tr>
+<tr class="even">
+<td><a href="https://quarto.org/docs/get-started/">Quarto</a></td>
+<td><code>paper.qmd</code> only</td>
+<td>Download and run the installer for your system</td>
+<td><code>quarto --version</code></td>
+</tr>
+</tbody>
+</table>
+<p>The full TeX Live includes every LaTeX package the templates use, so there is nothing else to install.</p>
 </section>
 <section id="step-1-create-paper_output" class="level2">
 <h2 class="anchored" data-anchor-id="step-1-create-paper_output">Step 1: Create paper_output</h2>
@@ -143,7 +175,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="instructions-for-your-coding-agent" class="level3">
 <h3 class="anchored" data-anchor-id="instructions-for-your-coding-agent">Instructions for your coding agent</h3>
-<p>When you modify your code to produce these outputs, each file must be in exactly the right form for your paper to read it. If you use a coding agent, save the instructions below in your project root as <code>AGENTS.md</code> (Claude Code reads <code>CLAUDE.md</code>), so the agent follows them every time. Then ask for each output in plain words, for example: “Save the mean age after cleaning as the paper output <code>mean-age</code>.”</p>
+<p>When you modify your code to produce these outputs, each file must be in exactly the right form for your paper to read it. If you use a coding agent, add the instructions below to the agent instruction file in your project root, so the agent follows them every time. Most agents read <code>AGENTS.md</code>; Claude Code reads <code>CLAUDE.md</code>.</p>
+<p><strong>Paste the block at the end of that file.</strong> Do not replace the file: it holds instructions your project depends on.</p>
+<p>Then ask for each output in plain words, for example: “Save the mean age after cleaning as the paper output <code>mean-age</code>.”</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Paper outputs</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>The paper reads results from the paper_output folder in the project root.</span>
@@ -163,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Only a LaTeX tabular: start with \begin{tabular}, end with \end{tabular}.</span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>No table environment, \caption, \label or \centering.</span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use booktabs rules (\toprule, \midrule, \bottomrule).</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Escape _ % &amp; $ # in all cell and header text.</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Escape _ % &amp; $ # ~ ^ in all cell and header text.</span>
 <span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## Figures (name.pdf)</span></span>
 <span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>A vector PDF, about 6.5 x 4 inches.</span>
@@ -179,63 +213,334 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="step-2-paste-your-draft-into-a-template">Step 2: Paste your draft into a template</h2>
 <ol type="1">
 <li>In Google Docs, choose <strong>File → Download → Plain text (.txt)</strong>.</li>
-<li>In your project root, create <code>paper.qmd</code> or <code>paper.tex</code> from a template below, and add your title and name.</li>
+<li>In your project root, create <code>paper.qmd</code> or <code>paper.tex</code> from a template below, and add your title and name. In <code>paper.qmd</code>, type the title normally, with no backslashes. In <code>paper.tex</code>, escape the title as in Step 3.</li>
 <li>Replace <code>PASTE YOUR TEXT HERE</code> with your text.</li>
-<li>Leave an empty line between paragraphs.</li>
-<li>In <code>paper.tex</code> only, write <code>%</code>, <code>&amp;</code>, <code>$</code>, <code>#</code> and <code>_</code> as <code>\%</code>, <code>\&amp;</code>, <code>\$</code>, <code>\#</code> and <code>\_</code>.</li>
 </ol>
-<p>Use these templates rather than your own. They define the <code>\stat</code>, <code>\fig</code> and <code>\tbl</code> commands and tell the paper to look in <code>paper_output</code>; without them, the commands in Step 3 will not work. If you must use your own template, copy the lines from <code>% Find every file</code> through the <code>\tbl</code> definition into its preamble.</p>
+<p>Use these templates rather than your own. They define the <code>\stat</code>, <code>\fig</code> and <code>\tbl</code> commands, load the packages those commands need, and tell the paper to look in <code>paper_output</code>. Without them, the commands in Step 4 will not work.</p>
+<p>If you must use your own template, copy this whole block into its preamble, before <code>\begin{document}</code>. Keep the <code>\usepackage</code> lines even if your template already loads those packages: figures need <code>graphicx</code>, tables need <code>booktabs</code>, and math needs <code>amsmath</code>. In a <code>.qmd</code> file, put the block under <code>include-in-header:</code>, as in the Quarto template.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode latex code-with-copy"><code class="sourceCode latex"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">% --- Reproducible paper setup: copy this whole block into your preamble ---</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">graphicx</span>}   <span class="co">% needed by \fig</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">booktabs</span>}   <span class="co">% needed by the tables in paper_output</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">amsmath</span>}    <span class="co">% needed for math such as \text{} and \eqref{}</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">% Find every file by name in the paper_output folder</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\makeatletter\def\input@path</span>{{paper_output/}}<span class="fu">\makeatother</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">\graphicspath</span>{{paper_output/}}</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">% \stat{name}: the number in name.txt</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="fu">\newcommand</span>{<span class="ex">\stat</span>}[1]{<span class="fu">\input</span>{#1.txt}<span class="fu">\unskip</span>}</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">% \fig{name}{caption}: name.pdf as a numbered figure</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">\newcommand</span>{<span class="ex">\fig</span>}[2]{<span class="kw">\begin</span>{<span class="ex">figure</span>}[htbp]<span class="fu">\centering</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="bu">\includegraphics</span>[width=0.8<span class="fu">\textwidth</span>]{<span class="ex">#1.pdf</span>}<span class="fu">\caption</span>{#2}<span class="kw">\label</span>{<span class="ex">fig:#1</span>}<span class="kw">\end</span>{<span class="ex">figure</span>}}</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">% \tbl{name}{caption}: name.tex as a numbered table</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="fu">\newcommand</span>{<span class="ex">\tbl</span>}[2]{<span class="kw">\begin</span>{<span class="ex">table</span>}[htbp]<span class="fu">\centering</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\caption</span>{#2}<span class="kw">\label</span>{<span class="ex">tbl:#1</span>}<span class="fu">\input</span>{#1.tex}<span class="kw">\end</span>{<span class="ex">table</span>}}</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">% --- end of setup ---</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>paper.qmd</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Your Title"</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Your Name"</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> pdf</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="an">include-in-header:</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">  text: |</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">    \usepackage{booktabs}</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">    % Find every file by name in the paper_output folder</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">    \makeatletter\def\input@path{{paper_output/}}\makeatother</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">    \graphicspath{{paper_output/}}</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">    % \stat{name}: the number in name.txt</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">    \newcommand{\stat}[1]{\input{#1.txt}\unskip}</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">    % \fig{name}{caption}: name.pdf as a numbered figure</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">    \newcommand{\fig}[2]{\begin{figure}[htbp]\centering</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">      \includegraphics[width=0.8\textwidth]{#1.pdf}\caption{#2}\label{fig:#1}\end{figure}}</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">    % \tbl{name}{caption}: name.tex as a numbered table</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">    \newcommand{\tbl}[2]{\begin{table}[htbp]\centering</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">      \caption{#2}\label{tbl:#1}\input{#1.tex}\end{table}}</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>PASTE YOUR TEXT HERE</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Your Title"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Your Name"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span><span class="co"> pdf</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="an">bibliography:</span><span class="co"> references.bib</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="an">include-in-header:</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">  text: |</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">    \usepackage{booktabs}</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">    % Find every file by name in the paper_output folder</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">    \makeatletter\def\input@path{{paper_output/}}\makeatother</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">    \graphicspath{{paper_output/}}</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">    % \stat{name}: the number in name.txt</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">    \newcommand{\stat}[1]{\input{#1.txt}\unskip}</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co">    % \fig{name}{caption}: name.pdf as a numbered figure</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co">    \newcommand{\fig}[2]{\begin{figure}[htbp]\centering</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">      \includegraphics[width=0.8\textwidth]{#1.pdf}\caption{#2}\label{fig:#1}\end{figure}}</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">    % \tbl{name}{caption}: name.tex as a numbered table</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">    \newcommand{\tbl}[2]{\begin{table}[htbp]\centering</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">      \caption{#2}\label{tbl:#1}\input{#1.tex}\end{table}}</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>PASTE YOUR TEXT HERE</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><code>paper.tex</code>:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode latex code-with-copy"><code class="sourceCode latex"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[11pt]{<span class="ex">article</span>}</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[margin=1in]{<span class="ex">geometry</span>}</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">graphicx, booktabs, hyperref</span>}</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">% Find every file by name in the paper_output folder</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">\makeatletter\def\input@path</span>{{paper_output/}}<span class="fu">\makeatother</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">\graphicspath</span>{{paper_output/}}</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">% \stat{name}: the number in name.txt</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">\newcommand</span>{<span class="ex">\stat</span>}[1]{<span class="fu">\input</span>{#1.txt}<span class="fu">\unskip</span>}</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">% \fig{name}{caption}: name.pdf as a numbered figure</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">\newcommand</span>{<span class="ex">\fig</span>}[2]{<span class="kw">\begin</span>{<span class="ex">figure</span>}[htbp]<span class="fu">\centering</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>  <span class="bu">\includegraphics</span>[width=0.8<span class="fu">\textwidth</span>]{<span class="ex">#1.pdf</span>}<span class="fu">\caption</span>{#2}<span class="kw">\label</span>{<span class="ex">fig:#1</span>}<span class="kw">\end</span>{<span class="ex">figure</span>}}</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co">% \tbl{name}{caption}: name.tex as a numbered table</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">\newcommand</span>{<span class="ex">\tbl</span>}[2]{<span class="kw">\begin</span>{<span class="ex">table</span>}[htbp]<span class="fu">\centering</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\caption</span>{#2}<span class="kw">\label</span>{<span class="ex">tbl:#1</span>}<span class="fu">\input</span>{#1.tex}<span class="kw">\end</span>{<span class="ex">table</span>}}</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">\title</span>{Your Title}</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="fu">\author</span>{Your Name}</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="fu">\maketitle</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>PASTE YOUR TEXT HERE</span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode latex code-with-copy"><code class="sourceCode latex"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>[11pt]{<span class="ex">article</span>}</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[margin=1in]{<span class="ex">geometry</span>}</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[round]{<span class="ex">natbib</span>}   <span class="co">% author-year citations, in (round) parentheses</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">graphicx, booktabs, amsmath, hyperref</span>}</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">% Find every file by name in the paper_output folder</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">\makeatletter\def\input@path</span>{{paper_output/}}<span class="fu">\makeatother</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">\graphicspath</span>{{paper_output/}}</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">% \stat{name}: the number in name.txt</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">\newcommand</span>{<span class="ex">\stat</span>}[1]{<span class="fu">\input</span>{#1.txt}<span class="fu">\unskip</span>}</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">% \fig{name}{caption}: name.pdf as a numbered figure</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">\newcommand</span>{<span class="ex">\fig</span>}[2]{<span class="kw">\begin</span>{<span class="ex">figure</span>}[htbp]<span class="fu">\centering</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="bu">\includegraphics</span>[width=0.8<span class="fu">\textwidth</span>]{<span class="ex">#1.pdf</span>}<span class="fu">\caption</span>{#2}<span class="kw">\label</span>{<span class="ex">fig:#1</span>}<span class="kw">\end</span>{<span class="ex">figure</span>}}</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co">% \tbl{name}{caption}: name.tex as a numbered table</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="fu">\newcommand</span>{<span class="ex">\tbl</span>}[2]{<span class="kw">\begin</span>{<span class="ex">table</span>}[htbp]<span class="fu">\centering</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">\caption</span>{#2}<span class="kw">\label</span>{<span class="ex">tbl:#1</span>}<span class="fu">\input</span>{#1.tex}<span class="kw">\end</span>{<span class="ex">table</span>}}</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">\title</span>{Your Title}</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="fu">\author</span>{Your Name}</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">document</span>}</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="fu">\maketitle</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>PASTE YOUR TEXT HERE</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a><span class="bu">\bibliographystyle</span>{<span class="ex">plainnat</span>}   <span class="co">% author-year citation style</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="bu">\bibliography</span>{<span class="ex">references</span>}      <span class="co">% reads references.bib</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">document</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="add-your-bibliography" class="level3">
+<h3 class="anchored" data-anchor-id="add-your-bibliography">Add your bibliography</h3>
+<p>If your paper cites sources, export your references as BibTeX from your reference manager (Zotero, Mendeley, EndNote, Paperpile, …) and save the file as <code>references.bib</code> in your project root, next to your paper file. The templates above already look for it — Quarto through the <code>bibliography:</code> line, LaTeX through <code>\bibliography{references}</code>.</p>
+<p>The reference list is built automatically from the works you cite in your text (covered next), and appears at the end of the paper. In LaTeX the section is titled “References” for you; in Quarto, end your text with a <code># References</code> heading if you want it titled.</p>
+<ul>
+<li><strong>Name the file <code>references.bib</code>,</strong> or change the name in the template (the <code>bibliography:</code> line for Quarto, <code>\bibliography{...}</code> for LaTeX).</li>
+<li><strong>No bibliography?</strong> Delete these lines from your template, or the build will look for a <code>references.bib</code> that isn’t there.</li>
+<li><strong>Check it is wired</strong> before you have added any citations by listing every entry once: add <code>\nocite{*}</code> just before <code>\bibliography</code> (LaTeX), or <code>nocite: '@*'</code> under the header (Quarto). Remove it after you start citing real works.</li>
+</ul>
 </section>
-<section id="step-3-add-the-commands-and-build" class="level2">
-<h2 class="anchored" data-anchor-id="step-3-add-the-commands-and-build">Step 3: Add the commands and build</h2>
+</section>
+<section id="step-3-format-your-text" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-format-your-text">Step 3: Format your text</h2>
+<p>The plain-text download keeps your words but drops all of Google Docs’ formatting. You put back what your paper needs, in the syntax of your file type:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Lost in the download</th>
+<th>What happens</th>
+<th>Restore it</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Paragraph breaks</td>
+<td>Paragraphs sit on consecutive lines and run together</td>
+<td>An empty line between paragraphs (below)</td>
+</tr>
+<tr class="even">
+<td>Headings</td>
+<td>Heading styles become ordinary lines of text</td>
+<td>Heading syntax (Quarto or LaTeX section)</td>
+</tr>
+<tr class="odd">
+<td>Italics, bold</td>
+<td>The emphasis disappears</td>
+<td>Emphasis syntax (Quarto or LaTeX section)</td>
+</tr>
+<tr class="even">
+<td>Footnotes</td>
+<td>They no longer sit where you placed them</td>
+<td>Footnote syntax (Quarto or LaTeX section)</td>
+</tr>
+<tr class="odd">
+<td>Equations</td>
+<td>Equation-editor content does not come through usably</td>
+<td>Retype in LaTeX math (below)</td>
+</tr>
+</tbody>
+</table>
+<p>Your file type also treats a few ordinary characters as commands, so those need escaping (below).</p>
+<section id="in-both-file-types" class="level3">
+<h3 class="anchored" data-anchor-id="in-both-file-types">In both file types</h3>
+<ul>
+<li><p><strong>Leave an empty line between paragraphs.</strong> Both formats run consecutive lines together into one paragraph.</p></li>
+<li><p><strong>Escape special characters in your text</strong> (not in math; see below):</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Character</th>
+<th>Write</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>%</code> <code>&amp;</code> <code>$</code> <code>#</code> <code>_</code></td>
+<td><code>\%</code> <code>\&amp;</code> <code>\$</code> <code>\#</code> <code>\_</code></td>
+</tr>
+<tr class="even">
+<td><code>~</code> <code>^</code></td>
+<td><code>\textasciitilde{}</code> <code>\textasciicircum{}</code></td>
+</tr>
+</tbody>
+</table>
+<p>Left as they are, they can stop the build or silently delete text.</p></li>
+<li><p><strong>Write math in LaTeX math.</strong> Equations from Google Docs do not survive the plain-text download, so retype each one. Symbols such as <code>≥</code> or <code>α</code> also go in math: <code>$\geq$</code>, <code>$\alpha$</code>. Inside math, do not escape: <code>$\beta_1$</code> and <code>$x^2$</code> use <code>_</code> and <code>^</code> as normal, and a <code>$</code> that opens or closes math stays a plain <code>$</code>. Escape only a dollar sign that means money: <code>\$5</code>.</p></li>
+<li><p><strong>Delete any numbers you typed into headings,</strong> such as “1. Background”. Both formats number headings for you, and in Quarto a typed number turns the heading into a list item.</p></li>
+</ul>
+</section>
+<section id="quarto-paper.qmd" class="level3">
+<h3 class="anchored" data-anchor-id="quarto-paper.qmd">Quarto (<code>paper.qmd</code>)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>To write</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Section</td>
+<td><code># Introduction</code></td>
+</tr>
+<tr class="even">
+<td>Subsection</td>
+<td><code>## Background</code></td>
+</tr>
+<tr class="odd">
+<td>Sub-subsection</td>
+<td><code>### Data</code></td>
+</tr>
+<tr class="even">
+<td>Italics, bold</td>
+<td><code>*word*</code>, <code>**word**</code></td>
+</tr>
+<tr class="odd">
+<td>Footnote</td>
+<td><code>text.^[The footnote.]</code></td>
+</tr>
+<tr class="even">
+<td>Inline math</td>
+<td><code>$\beta_1 = 0.4$</code></td>
+</tr>
+<tr class="odd">
+<td>Display math</td>
+<td><code>$$</code> on its own line, the equation, then <code>$$</code> on its own line</td>
+</tr>
+<tr class="even">
+<td>Numbered equation</td>
+<td>Add <code>{#eq-name}</code> after the closing <code>$$</code></td>
+</tr>
+<tr class="odd">
+<td>Equation number in text</td>
+<td><code>@eq-name</code> (prints “Equation 1”, so do not type “Equation” before it)</td>
+</tr>
+</tbody>
+</table>
+<p>Put each heading on its own line, with an empty line above and below. To number your headings (1, 1.1, …), add <code>number-sections: true</code> on its own line below <code>format: pdf</code> in the header.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">## Model</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>We estimate the model in @eq-model.</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>\text{GPA}_i = \beta_0 + \beta_1 \, \text{hours}_i + \varepsilon_i</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>$$ {#eq-model}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="latex-paper.tex" class="level3">
+<h3 class="anchored" data-anchor-id="latex-paper.tex">LaTeX (<code>paper.tex</code>)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>To write</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Section</td>
+<td><code>\section{Introduction}</code></td>
+</tr>
+<tr class="even">
+<td>Subsection</td>
+<td><code>\subsection{Background}</code></td>
+</tr>
+<tr class="odd">
+<td>Sub-subsection</td>
+<td><code>\subsubsection{Data}</code></td>
+</tr>
+<tr class="even">
+<td>Unnumbered heading</td>
+<td><code>\section*{Acknowledgments}</code></td>
+</tr>
+<tr class="odd">
+<td>Italics, bold</td>
+<td><code>\emph{word}</code>, <code>\textbf{word}</code></td>
+</tr>
+<tr class="even">
+<td>Footnote</td>
+<td><code>text.\footnote{The footnote.}</code></td>
+</tr>
+<tr class="odd">
+<td>Inline math</td>
+<td><code>$\beta_1 = 0.4$</code></td>
+</tr>
+<tr class="even">
+<td>Display math</td>
+<td><code>\[</code> on its own line, the equation, then <code>\]</code> on its own line</td>
+</tr>
+<tr class="odd">
+<td>Numbered equation</td>
+<td><code>\begin{equation}</code>, the equation, <code>\label{eq:name}</code>, <code>\end{equation}</code></td>
+</tr>
+<tr class="even">
+<td>Equation number in text</td>
+<td><code>Equation \eqref{eq:name}</code> (prints “Equation (1)”)</td>
+</tr>
+</tbody>
+</table>
+<p>Headings are numbered automatically. Escape special characters inside headings too: <code>\section{Results for 18\% of users}</code>.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode latex code-with-copy"><code class="sourceCode latex"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\subsection</span>{Model}</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>We estimate the model in Equation <span class="kw">\eqref</span>{<span class="ex">eq:model</span>}.</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">equation</span>}</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="sc">\text</span>{GPA}<span class="ss">_i = </span><span class="sc">\beta</span><span class="ss">_0 + </span><span class="sc">\beta</span><span class="ss">_1 </span><span class="sc">\,</span><span class="ss"> </span><span class="sc">\text</span>{hours}<span class="ss">_i + </span><span class="sc">\varepsilon</span><span class="ss">_i</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="sc">\label</span><span class="ss">{eq:model}</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">equation</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="cite-your-sources" class="level3">
+<h3 class="anchored" data-anchor-id="cite-your-sources">Cite your sources</h3>
+<p>Cite a work by its <strong>key</strong> in <code>references.bib</code> — the label at the start of the entry, such as <code>stigler1961economics</code>. The key must match exactly, just like the name in <code>\stat{name}</code>. The reference list then builds itself from whatever you cite.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>To cite</th>
+<th>Quarto (<code>paper.qmd</code>)</th>
+<th>LaTeX (<code>paper.tex</code>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>In parentheses — (Author, Year)</td>
+<td><code>[@key]</code></td>
+<td><code>\citep{key}</code></td>
+</tr>
+<tr class="even">
+<td>In the sentence — Author (Year)</td>
+<td><code>@key</code></td>
+<td><code>\citet{key}</code></td>
+</tr>
+<tr class="odd">
+<td>Several at once</td>
+<td><code>[@key1; @key2]</code></td>
+<td><code>\citep{key1,key2}</code></td>
+</tr>
+<tr class="even">
+<td>With a page or note</td>
+<td><code>[@key, p. 5]</code></td>
+<td><code>\citep[p.~5]{key}</code></td>
+</tr>
+</tbody>
+</table>
+<p>For example:</p>
+<ul>
+<li>Quarto: <code>Search was formalized by @stigler1961economics, and dispersion persists [@varian1980model].</code></li>
+<li>LaTeX: <code>Search was formalized by \citet{stigler1961economics}, and dispersion persists \citep{varian1980model}.</code></li>
+</ul>
+<p>Both print the citation in your text and add the work to the reference list at the end — you never type the reference list yourself.</p>
+</section>
+</section>
+<section id="step-4-add-the-commands-and-build" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-add-the-commands-and-build">Step 4: Add the commands and build</h2>
 <p>Replace each result in your text with its command. The first set of braces holds <strong>name</strong>: the file’s name in <code>paper_output</code>, without the extension. It must match the file name exactly.</p>
 <table class="caption-top table">
 <colgroup>
@@ -286,8 +591,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>For figures and tables, the second set of braces holds the caption you write. For a figure or table number, put <code>fig:</code> or <code>tbl:</code> before the name.</p>
-<p>Put each <code>\fig</code> and <code>\tbl</code> on its own line, with an empty line above and below. Keep units outside the command: <code>\stat{share}%</code>.</p>
-<p>Build the PDF with <code>quarto render paper.qmd</code> or <code>latexmk -pdf paper.tex</code>.</p>
+<p>Put each <code>\fig</code> and <code>\tbl</code> on its own line, with an empty line above and below. Keep units outside the command, escaped as in Step 3: <code>\stat{share}\%</code>.</p>
+<section id="captions-are-latex-in-both-file-types" class="level3">
+<h3 class="anchored" data-anchor-id="captions-are-latex-in-both-file-types">Captions are LaTeX in both file types</h3>
+<p>The caption inside <code>\fig{name}{caption}</code> and <code>\tbl{name}{caption}</code> is read as LaTeX, even in <code>paper.qmd</code>. Escape special characters in every caption:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>In a caption, write</th>
+<th>Not</th>
+<th>What goes wrong otherwise</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>\%</code></td>
+<td><code>%</code></td>
+<td>Quarto prints the whole <code>\fig</code> or <code>\tbl</code> command as plain text instead of the figure; LaTeX stops the build</td>
+</tr>
+<tr class="even">
+<td><code>\&amp;</code></td>
+<td><code>&amp;</code></td>
+<td>The build stops</td>
+</tr>
+<tr class="odd">
+<td><code>\_</code></td>
+<td><code>_</code></td>
+<td>The build stops</td>
+</tr>
+<tr class="even">
+<td><code>\$</code> and <code>\#</code></td>
+<td><code>$</code> and <code>#</code></td>
+<td>The build stops</td>
+</tr>
+<tr class="odd">
+<td><code>\textasciitilde{}</code></td>
+<td><code>~</code></td>
+<td>The <code>~</code> silently disappears</td>
+</tr>
+<tr class="even">
+<td><code>\emph{word}</code></td>
+<td><code>*word*</code></td>
+<td>The asterisks print</td>
+</tr>
+</tbody>
+</table>
+<p>For example: <code>\fig{first-gen}{Share of first-generation students (20\% sample), by \emph{region}.}</code></p>
+</section>
+<section id="build" class="level3">
+<h3 class="anchored" data-anchor-id="build">Build</h3>
+<p>Build the PDF with <code>quarto render paper.qmd</code> or <code>latexmk -pdf paper.tex</code>. <code>latexmk</code> runs every pass for you, including the <code>bibtex</code> pass a bibliography needs. If <code>latexmk</code> does not run, build by hand: run <code>pdflatex paper.tex</code>, then <code>bibtex paper</code> (only if you have a bibliography), then <code>pdflatex paper.tex</code> twice more — so figure numbers, table numbers, citations and the reference list all resolve.</p>
+</section>
 </section>
 <section id="troubleshooting" class="level2">
 <h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
@@ -320,28 +679,87 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Add an empty line between them.</td>
 </tr>
 <tr class="odd">
-<td>Error near <code>%</code>, <code>&amp;</code>, <code>$</code>, <code>#</code> or <code>_</code></td>
-<td>In <code>paper.tex</code>, escape it with <code>\</code>.</td>
+<td>Text missing after a <code>%</code>, or an error near <code>&amp;</code>, <code>$</code>, <code>#</code>, <code>_</code> or <code>^</code></td>
+<td>Escape the character as in Step 3, in both file types.</td>
+</tr>
+<tr class="even">
+<td>A <code>\fig</code> or <code>\tbl</code> prints as plain text</td>
+<td>Its caption contains an unescaped <code>%</code>. Write <code>\%</code>.</td>
+</tr>
+<tr class="odd">
+<td>Asterisks appear in a caption</td>
+<td>Captions are LaTeX: write <code>\emph{word}</code>, not <code>*word*</code>.</td>
+</tr>
+<tr class="even">
+<td><code>YAMLException: unknown escape sequence</code></td>
+<td>Remove the backslashes from the title in <code>paper.qmd</code>.</td>
+</tr>
+<tr class="odd">
+<td>A symbol prints as a box, or <code>Unicode character ... not set up</code></td>
+<td>Write the symbol as math, such as <code>$\geq$</code>.</td>
 </tr>
 <tr class="even">
 <td>Error inside a table</td>
 <td>The <code>.tex</code> file has a caption or table environment, or an unescaped <code>_</code>.</td>
 </tr>
+<tr class="odd">
+<td>A citation prints as <code>[?]</code>, <code>(???)</code>, or <code>Citation 'key' undefined</code></td>
+<td>The key doesn’t match an entry in <code>references.bib</code>; or, if building by hand, you skipped the <code>bibtex</code> pass.</td>
+</tr>
+<tr class="even">
+<td>The reference list is empty or missing</td>
+<td>You haven’t cited anything yet, or <code>references.bib</code> is not in the project root.</td>
+</tr>
 </tbody>
 </table>
 </section>
-<section id="using-a-coding-agent-for-steps-2-and-3" class="level2">
-<h2 class="anchored" data-anchor-id="using-a-coding-agent-for-steps-2-and-3">Using a coding agent for Steps 2 and 3</h2>
+<section id="using-a-coding-agent-for-steps-2-to-4" class="level2">
+<h2 class="anchored" data-anchor-id="using-a-coding-agent-for-steps-2-to-4">Using a coding agent for Steps 2 to 4</h2>
 <p>A coding agent with access to your full project can fill in the commands for you: it can read your draft, find each hard-coded result, work out which file in <code>paper_output</code> it comes from, and swap in the command. This is risky. The agent can link a number to the wrong file, and nothing will flag it, because the paper still builds.</p>
 <p><strong>The agent may:</strong> - Replace hard-coded results with commands. - Format your text: add headings, empty lines between paragraphs, and LaTeX code such as <code>\%</code> or <code>\section{}</code>.</p>
 <p><strong>The agent may not:</strong> - Change your wording, fix typos, reorder text, or add or remove sentences. - Change your code or the files in <code>paper_output</code>.</p>
-<p><strong>All drafting still happens in Google Docs.</strong> The agent only converts your finished text; it never writes or revises it. To change your writing, edit the Google Doc, then repeat Steps 2 and 3.</p>
 <p>A prompt to start from:</p>
-<pre><code>In paper.qmd [or paper.tex], replace each hard-coded statistic, table and
-figure with the matching command from the guide, using files in
-paper_output. You may also fix formatting. Do not change any wording.
-List every replacement: the original text, the command, and the file.</code></pre>
+<pre><code>In paper.qmd [or paper.tex], replace each hard-coded result with a command
+that reads its file in paper_output: \stat{name} for name.txt,
+\fig{name}{caption} for name.pdf, \tbl{name}{caption} for name.tex, and
+Figure \ref{fig:name} or Table \ref{tbl:name} for figure and table numbers.
+You may also fix formatting and escape special characters (\%, \&amp;, \_),
+including in captions, which are LaTeX: use \emph{word}, not *word*.
+Do not change any wording. List every replacement: the original text, the
+command, and the file.</code></pre>
 <p><strong>Check every replacement yourself.</strong> For each one, open the file it points to and confirm it holds the result your draft reported. Then read the PDF against your original draft to make sure no wording changed.</p>
+</section>
+<section id="rebuilding-the-paper-with-run_all.sh" class="level2">
+<h2 class="anchored" data-anchor-id="rebuilding-the-paper-with-run_all.sh">Rebuilding the paper with <code>run_all.sh</code></h2>
+<p>The template project repository includes a script, <code>run_all.sh</code>, in the project root. It runs your full analysis and then compiles the paper, in one command, so you never run the steps by hand. This is what makes the paper reproducible: change your analysis and rerun the script, and the PDF updates itself.</p>
+<section id="before-you-run-it" class="level3">
+<h3 class="anchored" data-anchor-id="before-you-run-it">Before you run it</h3>
+<ul>
+<li><strong>Finish Steps 0–4.</strong> The dependencies are installed, your code writes every result to <code>paper_output</code>, and your <code>paper.qmd</code> or <code>paper.tex</code> is in the project root with the commands filled in.</li>
+<li><strong>Keep <code>run_all.sh</code> in the project root,</strong> next to <code>paper_output</code>, your <code>code</code>, and your paper file. The script builds whatever is in that folder.</li>
+</ul>
+</section>
+<section id="set-it-up-once" class="level3">
+<h3 class="anchored" data-anchor-id="set-it-up-once">Set it up once</h3>
+<p>Open <code>run_all.sh</code> and edit the two settings near the top:</p>
+<ol type="1">
+<li><p><strong>Your analysis.</strong> In the <code>run_analysis</code> function, put the command(s) that regenerate <code>paper_output</code>. The template runs <code>python3 code/analyze.py</code>; change or add lines to match how your project builds its results.</p></li>
+<li><p><strong>Your pipeline.</strong> Set <code>PIPELINE</code> to match your paper file — there is no autodetection, so you must hard-code it:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="va">PIPELINE</span><span class="op">=</span><span class="st">"quarto"</span>   <span class="co"># builds paper.qmd</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># PIPELINE="latex"  # builds paper.tex</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>If you build with <code>quarto</code>, do not keep a <code>paper.tex</code> in the folder: <code>quarto render</code> creates and deletes its own <code>paper.tex</code> and will overwrite yours.</p></li>
+</ol>
+</section>
+<section id="run-it" class="level3">
+<h3 class="anchored" data-anchor-id="run-it">Run it</h3>
+<p>From the project root, run:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bash</span> run_all.sh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Or make it executable once with <code>chmod +x run_all.sh</code>, then run <code>./run_all.sh</code>. (On Windows, run it from Git Bash or WSL, since it is a shell script.) When it finishes, it has written <code>paper.pdf</code>.</p>
+</section>
+<section id="from-now-on" class="level3">
+<h3 class="anchored" data-anchor-id="from-now-on">From now on</h3>
+<p>Whenever you change your analysis code or your data, just run <code>run_all.sh</code> again. It reruns your analysis, refreshes every file in <code>paper_output</code>, and rebuilds <code>paper.pdf</code> — so every number, table and figure in the paper updates to match your latest results, with nothing copied in by hand.</p>
+</section>
 </section>
 </section>
 
